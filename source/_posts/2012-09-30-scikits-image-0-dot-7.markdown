@@ -3,7 +3,7 @@ layout: post
 title: "scikits-image 0.7"
 date: 2012-09-30 16:18
 comments: true
-categories: 
+categories: [image processing, scipy, python, science]
 ---
 
 We're happy to announce the 7th version of scikits-image!
