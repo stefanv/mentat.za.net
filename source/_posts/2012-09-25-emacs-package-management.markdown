@@ -19,46 +19,46 @@ fashion.  Here are some relevant configuration snippets:
 
 ```common-lisp
 
-    ; Everything gets installed into ~/elisp, a folder
-    ; I sync across all my machines
+; Everything gets installed into ~/elisp, a folder
+; I sync across all my machines
 
-    (setq el-get-dir "~/elisp/el-get")
-    (setq el-get-install-dir "~/elisp/el-get/el-get")
-    (add-to-list 'load-path el-get-install-dir)
+(setq el-get-dir "~/elisp/el-get")
+(setq el-get-install-dir "~/elisp/el-get/el-get")
+(add-to-list 'load-path el-get-install-dir)
 
-    ; If el-get is missing, install it automatically
+; If el-get is missing, install it automatically
 
-    (unless (require 'el-get nil t)
-      (url-retrieve
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-       (lambda (s)
-         (goto-char (point-max))
-         (eval-print-last-sexp))))
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (goto-char (point-max))
+     (eval-print-last-sexp))))
 
-    ; Install these packages, and call the specified configuration snippets
-    ; after each load
-    (setq el-get-sources
-          '(
+; Install these packages, and call the specified configuration snippets
+; after each load
+(setq el-get-sources
+      '(
 
-            (:name ethan-wspace
-             :after (progn
-                      (global-ethan-wspace-mode 1)
-                      (set-face-background 'ethan-wspace-face "gray95")))
+        (:name ethan-wspace
+         :after (progn
+                  (global-ethan-wspace-mode 1)
+                  (set-face-background 'ethan-wspace-face "gray95")))
 
-            (:name column-marker
-             :after (add-hook 'font-lock-mode-hook
-                              (lambda () (interactive) (column-marker-1 80))))
+        (:name column-marker
+         :after (add-hook 'font-lock-mode-hook
+                          (lambda () (interactive) (column-marker-1 80))))
 
-    ; Also install these packages, no configuration required
-    (setq my-packages
-          (append
-           '(el-get maxframe markdown-mode ein python)
-           (mapcar 'el-get-source-name el-get-sources)
-           )
-    )
+; Also install these packages, no configuration required
+(setq my-packages
+      (append
+       '(el-get maxframe markdown-mode ein python)
+       (mapcar 'el-get-source-name el-get-sources)
+       )
+)
 
-    ; Check packages and install any that are missing
-    (el-get 'sync my-packages)
+; Check packages and install any that are missing
+(el-get 'sync my-packages)
 ```
 
 There are two ways to specify packages to be installed: either include them in
