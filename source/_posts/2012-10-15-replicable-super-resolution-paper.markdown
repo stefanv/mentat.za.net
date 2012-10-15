@@ -7,7 +7,7 @@ categories: [super-resolution, image-processing, python, science]
 ---
 
 While I loved the topic of my PhD, I had to take a break after staring at that
-problem for several years.  Thereafter, I got side-tracked by
+problem for several years.  Thereafter, I was side-tracked by
 [several](http://github.com/scipy) [other](http://scikit-image.org)
 [projects](http://dipy.org), and never got around to publishing a paper on
 [my dissertation][thesis].
@@ -24,7 +24,7 @@ problem as a sparse linear system was well known at the time, phrasing Drizzle
 as a linear operator and using it for super-resolution was not.
 
 But the proof of the pudding is in the eating! Have a look at the
-[results and published code][supreme] -- you can download it all (including a a
+[results and published code][supreme] -- you can download it all (including a
 sample data-set) and play with the different reconstruction parameters.  Quite
 a bit of the code has since graduated into [scikit-image][].
 
