@@ -1,0 +1,41 @@
+/**
+ * Sphinx stylesheet -- default theme
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+@import url("basic.css");
+@import url("Refresh.css");
+
+#api-reference ul:first-child {
+  float: left;
+  width: 35em;
+  margin-top: 0;
+  padding-top: 0;
+  list-style: none;
+  overflow: auto;
+}
+
+#api-reference ul li {
+  float: left;
+  position: relative;
+  margin-right: 1em;
+  width: 17em;
+  padding: 0;
+}
+
+#api-reference ul li ul {
+  margin-left: 2em;
+  padding: 0px;
+}
+
+pre {
+  margin: 5px 0;
+  padding: 10px;
+  text-align: left;
+  display: block;
+  overflow: auto;
+  font: 500 1em/1.5em 'Lucida Console', 'courier new', monospace ;
+  /* white-space: pre; */
+  background: #FAFAFA;
+  border: 1px solid #f2f2f2;
+}

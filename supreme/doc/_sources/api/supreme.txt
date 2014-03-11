@@ -1,0 +1,16 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`supreme`
+==============
+.. automodule:: supreme
+
+.. currentmodule:: supreme
+.. autosummary::
+
+   supreme.iterable
+
+iterable
+--------
+
+.. autofunction:: supreme.iterable
+

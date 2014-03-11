@@ -1,0 +1,137 @@
+ .centered
+ {
+     text-align:center;
+     display:block;
+ }
+
+.newsbox
+{
+    border-style: solid;
+    border-width: 1px;
+    width: 48%;
+    padding-left: 0px;
+    padding-right: 5px;
+    margin-left: 0px;
+    background: #E0E0F0;
+    margin-bottom: 0.5em;
+}
+
+#google_plus {
+    margin-left: 1em;
+    padding-left: 1em;
+    font-size: 0.75em;
+}
+
+#google_plus ul {
+    list-style: inside
+    margin-left: 0;
+    padding-left: 1em;
+}
+
+#tweet {
+    margin-left: 0em;
+    padding-left: 0em;
+    font-size: 0.75em;
+}
+
+.newsbox h2 {
+    padding-left: 0.5em;
+    margin-left: 0.5em;
+    font-size: 0.9em;
+    font-variant: small-caps;
+}
+
+body {
+	margin:0px;
+	padding:0px;
+	font-family:verdana, arial, helvetica, sans-serif;
+	color:#333;
+	background-color:white;
+	}
+h1 {
+	margin:0px 0px 0.2em 0px;
+	padding:0px;
+	font-size:1.5em;
+	line-height:1.2em;
+	font-weight:900;
+	/*color:#aaa;*/
+	color:#444;
+	background-color:#eee;
+/*	background-image:url(skystrip.png);
+	background-repeat:repeat-x;*/
+	}
+p {
+	font: verdana, arial, helvetica, sans-serif;
+	margin:0px 0px 0.8em 0px;
+	padding-top:5px;
+	}
+#Content>p {margin:0px 0px 1em;}
+#Content>p+p {text-indent:1.5em;}
+
+a {
+	color:#09c;
+	font-size:1em;
+	text-decoration:none;
+	font-weight:600;
+	font-family:verdana, arial, helvetica, sans-serif;
+	}
+a:link {color:#05a;}
+a:visited {color:#038;}
+a:hover {background-color:#eee;}
+
+#Header {
+	margin:0em 0px 1em 0px;
+	padding:0.6em 0px 1.5em 1em;
+	border-style:solid;
+	border-color:black;
+	border-width:0px 0px 1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
+	line-height:1em;
+       	background-color:#eee;
+	}
+/* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct 
+length values to user agents that exhibit the parsing error exploited above yet get 
+the CSS box model right and understand the CSS2 parent-child selector. ALWAYS include
+a "be nice to Opera 5" rule every time you use the Tantek Celik hack (above). */
+body>#Header {height:1em;}
+
+#Header>a {
+	font-size:1em;
+	color:#038;
+}
+
+#Content {
+	margin:0px 12.3em 50px 0.6em;
+	padding:0.3em;
+	}
+
+.Note {
+	border-style:solid;
+	border-width: 1px 1px 1px 1px;	
+	background-color:#fbffc3;
+	padding:0.5em;
+	margin: 0em 0em 0.5em 0em;
+}
+
+#Menu {
+	position:absolute;
+	top:3.3em;
+	right:0.6em;
+	padding:0.6em;
+	background-color:#eee;
+	border:1px dashed #999;
+	line-height:1em;
+/* Again, the ugly brilliant hack. */
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	width:10.2em;
+	}
+/* Again, "be nice to Opera 5". */
+body>#Menu {width:10.2em;}
+
+iframe { padding: 0;
+         margin: 0 0 0 0;
+	 }
+
+img { padding: 0.3em;
+      margin: 0.5em;
+    }

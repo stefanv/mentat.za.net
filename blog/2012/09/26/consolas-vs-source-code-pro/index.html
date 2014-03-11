@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Adobe's new free font: Source Code Pro - Stefan van der Walt</title>
+  <meta name="author" content="Stefan van der Walt">
+
+  
+  <meta name="description" content="Adobe yesterday
+released its free and open source Type family, Source Code Pro,
+which includes an eye-pleasing monospace font ideally suited for &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://stefanv.github.com/blog/2012/09/26/consolas-vs-source-code-pro/">
+  <link href="/blog/favicon.png" rel="icon">
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Stefan van der Walt" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+
+<!-- Enable mathjax support -->
+<script type="text/x-mathjax-config">
+<!--
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX", "TeX"]
+    }
+});
+-->
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35089033-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/blog/">Stefan van der Walt</a></h1>
+  
+    <h2>Programming / science / education / life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:stefanv.github.com/blog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/blog/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Adobe's New Free Font: Source Code Pro</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-26T11:49:00-05:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Adobe yesterday
+<a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html">released its free and open source Type family, Source Code Pro</a>,
+which includes an eye-pleasing monospace font  ideally suited for coding.
+In the past, and at the recommendation of <a href="http://blog.fperez.org/">Fernando Perez</a>, I&#8217;ve
+used the beautiful (but non-free) <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879">Consolas by Microsoft</a>; now,
+which is best?</p>
+
+<p>To install on Linux:</p>
+
+<ol>
+<li><a href="https://sourceforge.net/projects/sourcecodepro.adobe/">Grab the font</a>.</li>
+<li>Copy the files to <code>~/.fonts</code>.</li>
+<li>Run <code>fc-cache -f -v</code>.</li>
+</ol>
+
+
+<p>The font should now be available for selection in apps such as Firefox, Gnome
+Terminal, etc.  To make it the default font in Emacs::</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Source Code Pro&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here&#8217;s a comparison of Consolas (left) and Source Code Pro (right):</p>
+
+<p><img src="/blog/images/posts/consolas_vs_source_code_pro.png"></p>
+
+<p>Comments also on <a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik">Google+</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Stefan van der Walt</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-26T11:49:00-05:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/coding/'>coding</a>, <a class='category' href='/blog/categories/emacs/'>emacs</a>, <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://stefanv.github.com/blog/2012/09/26/consolas-vs-source-code-pro/" data-via="stefanvdwalt" data-counturl="http://stefanv.github.com/blog/2012/09/26/consolas-vs-source-code-pro/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/09/25/emacs-package-management/" title="Previous Post: Emacs package management">&laquo; Emacs package management</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/09/30/scikits-image-0-dot-7/" title="Next Post: scikits-image 0.7">scikits-image 0.7 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/06/27/scipy2013-proceedings/">SciPy2013 Proceedings</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/15/replicable-super-resolution-paper/">Replicable super-resolution paper</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/30/scikits-image-0-dot-7/">scikits-image 0.7</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/26/consolas-vs-source-code-pro/">Adobe's new free font: Source Code Pro</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/25/emacs-package-management/">Emacs package management</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/sjvdwalt?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("stefanvdwalt", 4, false);
+    });
+  </script>
+  <script src="/blog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/stefanvdwalt" class="twitter-follow-button" data-show-count="false">Follow @stefanvdwalt</a>
+  
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Stefan van der Walt -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'stefanvdwalt';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://stefanv.github.com/blog/2012/09/26/consolas-vs-source-code-pro/';
+        var disqus_url = 'http://stefanv.github.com/blog/2012/09/26/consolas-vs-source-code-pro/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

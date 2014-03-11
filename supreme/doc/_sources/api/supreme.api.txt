@@ -1,0 +1,16 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`api`
+==========
+.. automodule:: supreme.api
+
+.. currentmodule:: supreme.api
+.. autosummary::
+
+   supreme.api.iterable
+
+iterable
+--------
+
+.. autofunction:: supreme.api.iterable
+

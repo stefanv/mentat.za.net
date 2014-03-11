@@ -1,0 +1,30 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+API Reference
+=============
+
+.. toctree::
+
+   supreme.config
+   supreme.ext
+   supreme.feature
+   supreme.feature.RANSAC
+   supreme.feature.SIFT
+   supreme.geometry
+   supreme.geometry.coord_path
+   supreme.geometry.cut
+   supreme.geometry.window
+   supreme.io
+   supreme.io.vgg
+   supreme.lib.dpt
+   supreme.lib.fast
+   supreme.lib.klt
+   supreme.noise
+   supreme.noise.wavelet
+   supreme.photometry.hdr
+   supreme.register
+   supreme.register.stack
+   supreme.resolve
+   supreme.resolve.iterative
+   supreme.resolve.lsqr
+   supreme.transform

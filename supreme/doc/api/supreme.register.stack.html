@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>register.stack &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="resolve" href="supreme.resolve.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.register.stack">
+<h1><tt class="xref docutils literal"><span class="pre">register.stack</span></tt><a class="headerlink" href="#module-supreme.register.stack" title="Permalink to this headline">¶</a></h1>
+<p>Stack warped images.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.stack.with_transform</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.stack.mask_roi</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.stack.corners</span></tt></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="with-transform">
+<h2>with_transform<a class="headerlink" href="#with-transform" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.stack.with_transform">
+<tt class="descclassname">supreme.register.stack.</tt><tt class="descname">with_transform</tt><big>(</big><em>images</em>, <em>matrices</em>, <em>weights=None</em>, <em>order=1</em>, <em>oshape=None</em>, <em>save_tiff=False</em>, <em>method='interpolate'</em><big>)</big><a class="headerlink" href="#supreme.register.stack.with_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stack images after performing coordinate transformations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>images</strong> : list of ndarray</p>
+<blockquote>
+<p>Images to be stacked.</p>
+</blockquote>
+<p><strong>matrices</strong> : list of (3,3) ndarray</p>
+<blockquote>
+<p>Coordinate transformation matrices.</p>
+</blockquote>
+<p><strong>weights</strong> : list of float</p>
+<blockquote>
+<p>Weight of each input image.  By default, all images are
+weighted equally.  The merging algorithm takes into account
+whether images overlap.</p>
+</blockquote>
+<p><strong>order</strong> : int</p>
+<blockquote>
+<p>Order of the interpolant used by the scaling algorithm.  Linear,
+by default.</p>
+</blockquote>
+<p><strong>oshape</strong> : tuple of int</p>
+<blockquote>
+<p>Output shape.  If not specified, the output shape is auto determined to
+include all images.</p>
+</blockquote>
+<p><strong>save_tiff</strong> : bool</p>
+<blockquote>
+<p>Whether to save copies of the warped images.  False by default.</p>
+</blockquote>
+<p><strong>method</strong> : {&#8216;interpolate&#8217;, &#8216;polygon&#8217;}</p>
+<blockquote class="last">
+<p>Use standard interpolation (default) or polygon interpolation.
+Note: Polygon interpolation is currently disabled.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For each image, a 3x3 coordinate transformation matrix, <tt class="docutils literal"><span class="pre">A</span></tt>,
+must be given. Each coordinate, <tt class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">[x,y,1]^T</span></tt>, in the source
+image is then translated to its position in the destination image,
+<tt class="docutils literal"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">A*c</span></tt>.</p>
+<p>After warping the images, they are combined according to the given
+weights.  Note that the overlap of frames is taken into account.
+For example, in areas where only one image occurs, the pixels of
+that image will carry a weight of one, whereas in other areas it
+may be less, depending on the overlap of other images.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="mask-roi">
+<h2>mask_roi<a class="headerlink" href="#mask-roi" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.stack.mask_roi">
+<tt class="descclassname">supreme.register.stack.</tt><tt class="descname">mask_roi</tt><big>(</big><em>rows</em>, <em>cols</em>, <em>bounds</em><big>)</big><a class="headerlink" href="#supreme.register.stack.mask_roi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="corners">
+<h2>corners<a class="headerlink" href="#corners" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.stack.corners">
+<tt class="descclassname">supreme.register.stack.</tt><tt class="descname">corners</tt><big>(</big><em>dims</em><big>)</big><a class="headerlink" href="#supreme.register.stack.corners" title="Permalink to this definition">¶</a></dt>
+<dd>Return the corner coordinates for a matrix of the given
+dimensions.</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">register.stack</span></tt></a><ul>
+<li><a class="reference external" href="#with-transform">with_transform</a></li>
+<li><a class="reference external" href="#mask-roi">mask_roi</a></li>
+<li><a class="reference external" href="#corners">corners</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.resolve.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">resolve</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.register.stack.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.resolve.html" title="resolve"
+             accesskey="N">next</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

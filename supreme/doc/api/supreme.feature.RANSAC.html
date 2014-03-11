@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>feature.RANSAC &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="prev" title="feature" href="supreme.feature.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.feature.RANSAC">
+<h1><tt class="xref docutils literal"><span class="pre">feature.RANSAC</span></tt><a class="headerlink" href="#module-supreme.feature.RANSAC" title="Permalink to this headline">¶</a></h1>
+<p>RANdom SAmple Consensus</p>
+<p>Martin A. Fischler and Robert C. Bolles,
+&#8220;Random sample consensus: a paradigm for model fitting with applications to
+image analysis and automated cartography&#8221;,
+Communications of the ACM, 1981</p>
+<div class="section" id="imodel">
+<h2><a title="supreme.feature.RANSAC.IModel" class="reference internal" href="#supreme.feature.RANSAC.IModel"><tt class="xref docutils literal"><span class="pre">IModel</span></tt></a><a class="headerlink" href="#imodel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.feature.RANSAC.IModel">
+<em class="property">class </em><tt class="descclassname">supreme.feature.RANSAC.</tt><tt class="descname">IModel</tt><a class="headerlink" href="#supreme.feature.RANSAC.IModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines the structure for a model.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="xref docutils literal"><span class="pre">parameters</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">ndp</span></tt></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.feature.RANSAC.IModel.estimate" class="reference internal" href="#supreme.feature.RANSAC.IModel.estimate"><tt class="xref docutils literal"><span class="pre">estimate</span></tt></a>(data)</td>
+<td>Estimate model parameters from data.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.feature.RANSAC.IModel.estimate">
+<tt class="descname">estimate</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#supreme.feature.RANSAC.IModel.estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate model parameters from data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array</p>
+<blockquote>
+<p>Data points as row vectors.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>parameters:</strong> :</p>
+<blockquote>
+<p>Model parameters in any format the model can interpret.</p>
+</blockquote>
+<p><strong>residual</strong> : float</p>
+<blockquote class="last">
+<p>Measure of data fit.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ransac">
+<h2><a title="supreme.feature.RANSAC.RANSAC" class="reference internal" href="#supreme.feature.RANSAC.RANSAC"><tt class="xref docutils literal"><span class="pre">RANSAC</span></tt></a><a class="headerlink" href="#ransac" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.feature.RANSAC.RANSAC">
+<em class="property">class </em><tt class="descclassname">supreme.feature.RANSAC.</tt><tt class="descname">RANSAC</tt><big>(</big><em>model=None</em>, <em>p_inlier=None</em><big>)</big><a class="headerlink" href="#supreme.feature.RANSAC.RANSAC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<p>RANdom SAmple Consensus</p>
+<dl class="method">
+<dt id="supreme.feature.RANSAC.RANSAC.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>model=None</em>, <em>p_inlier=None</em><big>)</big><a class="headerlink" href="#supreme.feature.RANSAC.RANSAC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>model</strong> : Model</p>
+<blockquote>
+<p>Model describing inlier data.</p>
+</blockquote>
+<p><strong>p_inlier</strong> : float (0..1)</p>
+<blockquote class="last">
+<p>Probability that any data point is an inlier.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+</tbody>
+</table>
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">feature.RANSAC</span></tt></a><ul>
+<li><a class="reference external" href="#imodel"><tt class="docutils literal"><span class="pre">IModel</span></tt></a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#ransac"><tt class="docutils literal"><span class="pre">RANSAC</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.feature.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">feature</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.feature.RANSAC.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.feature.html" title="feature"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

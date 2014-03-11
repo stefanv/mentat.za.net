@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://stefanv.github.com/blog/2012/09/25/emacs-package-management/</loc>
+        <lastmod>2013-06-27T18:07:49-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://stefanv.github.com/blog/2012/09/26/consolas-vs-source-code-pro/</loc>
+        <lastmod>2013-06-27T18:07:49-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://stefanv.github.com/blog/2012/09/30/scikits-image-0-dot-7/</loc>
+        <lastmod>2013-06-27T18:07:49-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://stefanv.github.com/blog/2012/10/15/replicable-super-resolution-paper/</loc>
+        <lastmod>2013-06-27T18:07:49-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://stefanv.github.com/blog/2013/06/27/scipy2013-proceedings/</loc>
+        <lastmod>2013-06-27T18:07:49-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://stefanv.github.com/blog/archives/</loc>
+        <lastmod>2013-06-27T18:07:49-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://stefanv.github.com/blog/</loc>
+        <lastmod>2013-06-27T18:07:49-05:00</lastmod>
+    </url>
+</urlset>

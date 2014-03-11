@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: image processing | Stefan van der Walt]]></title>
+  <link href="http://stefanv.github.com/blog/categories/image-processing/atom.xml" rel="self"/>
+  <link href="http://stefanv.github.com/blog/"/>
+  <updated>2013-06-27T18:09:53-05:00</updated>
+  <id>http://stefanv.github.com/blog/</id>
+  <author>
+    <name><![CDATA[Stefan van der Walt]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[scikits-image 0.7]]></title>
+    <link href="http://stefanv.github.com/blog/2012/09/30/scikits-image-0-dot-7/"/>
+    <updated>2012-09-30T16:18:00-05:00</updated>
+    <id>http://stefanv.github.com/blog/2012/09/30/scikits-image-0-dot-7</id>
+    <content type="html"><![CDATA[<p>We're happy to announce the 7th version of scikits-image!</p>
+
+<p>Scikits-image is an image processing toolbox for SciPy that includes algorithms
+for segmentation, geometric transformations, color space manipulation,
+analysis, filtering, morphology, feature detection, and more.</p>
+
+<p>For more information, examples, and documentation, please visit <a href="http://skimage.org">our website</a>.</p>
+
+<h2>New Features</h2>
+
+<p>It's been only 3 months since scikits-image 0.6 was released, but in that short
+time, we've managed to add plenty of new features and enhancements, including</p>
+
+<ul>
+<li>Geometric image transforms</li>
+<li>3 new image segmentation routines (Felsenzwalb, Quickshift, SLIC)</li>
+<li>Local binary patterns for texture characterization</li>
+<li>Morphological reconstruction</li>
+<li>Polygon approximation</li>
+<li>CIE Lab color space conversion</li>
+<li>Image pyramids</li>
+<li>Multispectral support in random walker segmentation</li>
+<li>Slicing, concatenation, and natural sorting of image collections</li>
+<li>Perimeter and coordinates measurements in regionprops</li>
+<li>An extensible image viewer based on Qt and Matplotlib, with plugins for edge
+detection, line-profiling, and viewing image collections</li>
+</ul>
+
+
+<p>Plus, this release adds a number of bug fixes, new examples, and performance
+enhancements.</p>
+
+<p><img src="/images/posts/lena_superpixels.jpg" title="Comparison of pupular segmentation algorithms" ></p>
+
+<h2>Contributors to this release</h2>
+
+<p>This release was only possible due to the efforts of many contributors, both
+new and old.</p>
+
+<ul>
+<li>Andreas Mueller</li>
+<li>Andreas Wuerl</li>
+<li>Andy Wilson</li>
+<li>Brian Holt</li>
+<li>Christoph Gohlke</li>
+<li>Dharhas Pothina</li>
+<li>Emmanuelle Gouillart</li>
+<li>Guillaume Gay</li>
+<li>Josh Warner</li>
+<li>James Bergstra</li>
+<li>Johannes Schönberger</li>
+<li>Jonathan J. Helmus</li>
+<li>Juan Nunez-Iglesias</li>
+<li>Leon Tietz</li>
+<li>Marianne Corvellec</li>
+<li>Matt McCormick</li>
+<li>Neil Yager</li>
+<li>Nicolas Pinto</li>
+<li>Nicolas Poilvert</li>
+<li>Pavel Campr</li>
+<li>Petter Strandmark</li>
+<li>Stéfan van der Walt</li>
+<li>Tim Sheerman-Chase</li>
+<li>Tomas Kazmar</li>
+<li>Tony S Yu</li>
+<li>Wei Li</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

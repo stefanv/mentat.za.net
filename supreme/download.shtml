@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+
+  <meta name="Description" content="A free super-resolution library: download" />
+  <meta name="Keywords" content="super resolution, image processing,
+                                 python, numpy, scipy" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="Distribution" content="Global" />
+  <meta name="Author" content="St&eacute;fan van der Walt" />
+  <meta name="Robots" content="index,follow" />
+
+  <link rel="stylesheet" href="images/Refresh.css" type="text/css" />
+
+  <title>Super-resolution methods</title>
+</head>
+
+
+<body>
+
+
+<!--#include virtual="header.html" -->
+
+<div id="content-wrap">
+
+<div id="sidebar">
+
+<h1>Dependencies</h1>
+
+
+<div class="left-box">
+
+<ul class="sidemenu">
+
+
+        <li>Required</li>
+
+        <li><a href="http://www.python.org">Python &gt;= 2.5</a></li>
+        <li><a href="http://www.scipy.org">NumPy and SciPy</a></li>
+        <li><a href="http://matplotlib.sf.net">Matplotlib</a></li>
+
+        <li>Recommended</li>
+
+        <li><a href="http://ipython.org">IPython</a></li>
+
+</ul>
+
+</div>
+
+<!-- end column -->
+</div>
+
+
+
+
+<div id="main">
+
+<a name="License"></a>
+<h1>License</h1>
+
+Please refer to <a href="doc/license.html"/>the documentation</a>.
+
+<a name="Download"></a>
+<h1>Download</h1>
+
+<ul>
+<li><a href="http://github.com/stefanv/supreme">Browse the repository</a></li>
+<li>Data packs: <a href="data/library.tar.gz">Library</a></li>
+</ul>
+
+<a name="Installation"></a>
+<h1>Installation</h1>
+
+<h3>Use git to clone the source tree:</h3>
+
+<code>
+git clone https://github.com/stefanv/supreme.git<br/>
+cd supreme
+</code>
+
+<h3>Install system-wide:</h3>
+
+<ul>
+
+<li>python setup.py install</li>
+
+</ul>
+
+<h3>Or compile in-place:</h3>
+<ul>
+<li>python setup.py build_ext --inplace</li>
+
+</ul>
+
+<h3>Check that everything works:</h3>
+
+<code>
+$ nosetests supreme<br/>
+........................................................................................................................<br/>
+----------------------------------------------------------------------<br/>
+Ran 120 tests in 5.041s<br/>
+<br/>
+OK
+</code>
+
+</div>
+
+</div>
+
+
+<!--#include virtual="footer.html" -->
+
+</body>
+</html>

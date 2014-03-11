@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>resolve.lsqr &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="transform" href="supreme.transform.html" />
+    <link rel="prev" title="resolve.iterative" href="supreme.resolve.iterative.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.resolve.lsqr">
+<h1><tt class="xref docutils literal"><span class="pre">resolve.lsqr</span></tt><a class="headerlink" href="#module-supreme.resolve.lsqr" title="Permalink to this headline">¶</a></h1>
+<p>Sparse Equations and Least Squares.</p>
+<p>The original Fortran code was written by C. C. Paige and M. A. Saunders as
+described in</p>
+<p>C. C. Paige and M. A. Saunders, LSQR: An algorithm for sparse linear
+equations and sparse least squares, TOMS 8(1), 43&#8211;71 (1982).</p>
+<p>C. C. Paige and M. A. Saunders, Algorithm 583; LSQR: Sparse linear
+equations and least-squares problems, TOMS 8(2), 195&#8211;209 (1982).</p>
+<p>It is licensed under the following BSD license:</p>
+<p>Copyright (c) 2006, Systems Optimization Laboratory
+All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:</p>
+<blockquote>
+<ul class="simple">
+<li>Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following
+disclaimer in the documentation and/or other materials provided
+with the distribution.</li>
+<li>Neither the name of Stanford University nor the names of its
+contributors may be used to endorse or promote products derived
+from this software without specific prior written permission.</li>
+</ul>
+</blockquote>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+&#8220;AS IS&#8221; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<p>The Fortran code was translated to Python for use in CVXOPT by Jeffery
+Kline with contributions by Mridul Aanjaneya and Bob Myhill.</p>
+<p>Adapted for SciPy by Stefan van der Walt.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.resolve.lsqr.lsqr" class="reference internal" href="#supreme.resolve.lsqr.lsqr"><tt class="xref docutils literal"><span class="pre">supreme.resolve.lsqr.lsqr</span></tt></a>(A,&nbsp;AT,&nbsp;n,&nbsp;b[,&nbsp;...])</td>
+<td>Find the least-squares solution to a large, sparse, linear system of equations.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="lsqr">
+<h2>lsqr<a class="headerlink" href="#lsqr" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.resolve.lsqr.lsqr">
+<tt class="descclassname">supreme.resolve.lsqr.</tt><tt class="descname">lsqr</tt><big>(</big><em>A</em>, <em>AT</em>, <em>n</em>, <em>b</em>, <em>damp=0.0</em>, <em>atol=1e-08</em>, <em>btol=1e-08</em>, <em>conlim=100000000.0</em>, <em>iter_lim=None</em>, <em>show=False</em>, <em>calc_var=False</em><big>)</big><a class="headerlink" href="#supreme.resolve.lsqr.lsqr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the least-squares solution to a large, sparse, linear system
+of equations.</p>
+<p>The function solves <tt class="docutils literal"><span class="pre">Ax</span> <span class="pre">=</span> <span class="pre">b</span></tt>  or  <tt class="docutils literal"><span class="pre">min</span> <span class="pre">||b</span> <span class="pre">-</span> <span class="pre">Ax||^2</span></tt> or
+<a href="#id1"><span class="problematic" id="id2">``</span></a>min ||Ax - b||^2 + d^2 ||x||^2.</p>
+<p>The matrix A may be square or rectangular (over-determined or
+under-determined), and may have any rank.</p>
+<div class="highlight-python"><pre>1. Unsymmetric equations --    solve  A*x = b
+
+2. Linear least squares  --    solve  A*x = b
+                               in the least-squares sense
+
+3. Damped least squares  --    solve  (   A    )*x = ( b )
+                                      ( damp*I )     ( 0 )
+                               in the least-squares sense</pre>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>A</strong> : callable A(x, m, n)</p>
+<blockquote>
+<p>Calculate <tt class="docutils literal"><span class="pre">A*x</span></tt> where <tt class="docutils literal"><span class="pre">A</span></tt> is a large, sparse <tt class="docutils literal"><span class="pre">(m,</span> <span class="pre">n)</span></tt> array.</p>
+</blockquote>
+<p><strong>AT</strong> : callable AT(x, m, n)</p>
+<blockquote>
+<p>Calculate <tt class="docutils literal"><span class="pre">A^T</span> <span class="pre">*</span> <span class="pre">x</span></tt>.</p>
+</blockquote>
+<p><strong>n</strong> : int</p>
+<blockquote>
+<p>Number of columns in A.</p>
+</blockquote>
+<p><strong>b</strong> : (m,) ndarray</p>
+<blockquote>
+<p>Right-hand side vector <tt class="docutils literal"><span class="pre">b</span></tt>.</p>
+</blockquote>
+<p><strong>damp</strong> : float</p>
+<blockquote>
+<p>Damping coefficient.</p>
+</blockquote>
+<p><strong>atol, btol</strong> : float</p>
+<blockquote>
+<p>Stopping tolerances. If both are 1.0e-9 (say), the final
+residual norm should be accurate to about 9 digits.  (The
+final x will usually have fewer correct digits, depending on
+cond(A) and the size of damp.)</p>
+</blockquote>
+<p><strong>conlim</strong> : float</p>
+<blockquote>
+<p>Another stopping tolerance.  lsqr terminates if an estimate of
+<tt class="docutils literal"><span class="pre">cond(A)</span></tt> exceeds <cite>conlim</cite>.  For compatible systems <tt class="docutils literal"><span class="pre">Ax</span> <span class="pre">=</span>
+<span class="pre">b</span></tt>, <cite>conlim</cite> could be as large as 1.0e+12 (say).  For
+least-squares problems, conlim should be less than 1.0e+8.
+Maximum precision can be obtained by setting <tt class="docutils literal"><span class="pre">atol</span> <span class="pre">=</span> <span class="pre">btol</span> <span class="pre">=</span>
+<span class="pre">conlim</span> <span class="pre">=</span> <span class="pre">zero</span></tt>, but the number of iterations may then be
+excessive.</p>
+</blockquote>
+<p><strong>iter_lim</strong> : int</p>
+<blockquote>
+<p>Explicit limitation on number of iterations (for safety).</p>
+</blockquote>
+<p><strong>show</strong> : bool</p>
+<blockquote>
+<p>Display an iteration log.</p>
+</blockquote>
+<p><strong>calc_var</strong> : bool</p>
+<blockquote>
+<p>Whether to estimate diagonals of <tt class="docutils literal"><span class="pre">(A'A</span> <span class="pre">+</span> <span class="pre">damp^2*I)^{-1}</span></tt>.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>x</strong> : ndarray of float</p>
+<blockquote>
+<p>The final solution.</p>
+</blockquote>
+<p><strong>istop</strong> : int</p>
+<blockquote>
+<p>Gives the reason for termination.
+1 means x is an approximate solution to Ax = b.
+2 means x approximately solves the least-squares problem.</p>
+</blockquote>
+<p><strong>itn</strong> : int</p>
+<blockquote>
+<p>Iteration number upon termination.</p>
+</blockquote>
+<p><strong>r1norm</strong> : float</p>
+<blockquote>
+<p><tt class="docutils literal"><span class="pre">norm(r)</span></tt>, where <tt class="docutils literal"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">Ax</span></tt>.</p>
+</blockquote>
+<p><strong>r2norm</strong> : float</p>
+<blockquote>
+<p><tt class="docutils literal"><span class="pre">sqrt(</span> <span class="pre">norm(r)^2</span>&nbsp; <span class="pre">+</span>&nbsp; <span class="pre">damp^2</span> <span class="pre">*</span> <span class="pre">norm(x)^2</span> <span class="pre">)</span></tt>.  Equal to <cite>r1norm</cite> if
+<tt class="docutils literal"><span class="pre">damp</span> <span class="pre">==</span> <span class="pre">0</span></tt>.</p>
+</blockquote>
+<p><strong>anorm</strong> : float</p>
+<blockquote>
+<p>Estimate of Frobenius norm of <tt class="docutils literal"><span class="pre">Abar</span> <span class="pre">=</span> <span class="pre">[[A];</span> <span class="pre">[damp*I]]</span></tt>.</p>
+</blockquote>
+<p><strong>acond</strong> : float</p>
+<blockquote>
+<p>Estimate of <tt class="docutils literal"><span class="pre">cond(Abar)</span></tt>.</p>
+</blockquote>
+<p><strong>arnorm</strong> : float</p>
+<blockquote>
+<p>Estimate of <tt class="docutils literal"><span class="pre">norm(A'*r</span> <span class="pre">-</span> <span class="pre">damp^2*x)</span></tt>.</p>
+</blockquote>
+<p><strong>xnorm</strong> : float</p>
+<blockquote>
+<p><tt class="docutils literal"><span class="pre">norm(x)</span></tt></p>
+</blockquote>
+<p><strong>var</strong> : ndarray of float</p>
+<blockquote class="last">
+<p>If <tt class="docutils literal"><span class="pre">calc_var</span></tt> is True, estimates all diagonals of
+<tt class="docutils literal"><span class="pre">(A'A)^{-1}</span></tt> (if <tt class="docutils literal"><span class="pre">damp</span> <span class="pre">==</span> <span class="pre">0</span></tt>) or more generally <tt class="docutils literal"><span class="pre">(A'A</span> <span class="pre">+</span>
+<span class="pre">damp^2*I)^{-1}</span></tt>.  This is well defined if A has full column
+rank or <tt class="docutils literal"><span class="pre">damp</span> <span class="pre">&gt;</span> <span class="pre">0</span></tt>.  (Not sure what var means if <tt class="docutils literal"><span class="pre">rank(A)</span>
+<span class="pre">&lt;</span> <span class="pre">n</span></tt> and <tt class="docutils literal"><span class="pre">damp</span> <span class="pre">=</span> <span class="pre">0.</span></tt>)</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>LSQR uses an iterative method to approximate the solution.  The
+number of iterations required to reach a certain accuracy depends
+strongly on the scaling of the problem.  Poor scaling of the rows
+or columns of A should therefore be avoided where possible.</p>
+<p>For example, in problem 1 the solution is unaltered by
+row-scaling.  If a row of A is very small or large compared to
+the other rows of A, the corresponding row of ( A  b ) should be
+scaled up or down.</p>
+<p>In problems 1 and 2, the solution x is easily recovered
+following column-scaling.  Unless better information is known,
+the nonzero columns of A should be scaled so that they all have
+the same Euclidean norm (e.g., 1.0).</p>
+<p>In problem 3, there is no freedom to re-scale if damp is
+nonzero.  However, the value of damp should be assigned only
+after attention has been paid to the scaling of A.</p>
+<p>The parameter damp is intended to help regularize
+ill-conditioned systems, by preventing the true solution from
+being very large.  Another aid to regularization is provided by
+the parameter acond, which may be used to terminate iterations
+before the computed solution becomes very large.</p>
+<p>If some initial estimate <tt class="docutils literal"><span class="pre">x0</span></tt> is known and if <tt class="docutils literal"><span class="pre">damp</span> <span class="pre">==</span> <span class="pre">0</span></tt>,
+one could proceed as follows:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>Compute a residual vector <tt class="docutils literal"><span class="pre">r0</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">-</span> <span class="pre">A*x0</span></tt>.</li>
+<li>Use LSQR to solve the system  <tt class="docutils literal"><span class="pre">A*dx</span> <span class="pre">=</span> <span class="pre">r0</span></tt>.</li>
+<li>Add the correction dx to obtain a final solution <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x0</span> <span class="pre">+</span> <span class="pre">dx</span></tt>.</li>
+</ol>
+</blockquote>
+<p>This requires that <tt class="docutils literal"><span class="pre">x0</span></tt> be available before and after the call
+to LSQR.  To judge the benefits, suppose LSQR takes k1 iterations
+to solve A*x = b and k2 iterations to solve A*dx = r0.
+If x0 is &#8220;good&#8221;, norm(r0) will be smaller than norm(b).
+If the same stopping tolerances atol and btol are used for each
+system, k1 and k2 will be similar, but the final solution x0 + dx
+should be more accurate.  The only way to reduce the total work
+is to use a larger stopping tolerance for the second system.
+If some value btol is suitable for A*x = b, the larger value
+btol*norm(b)/norm(r0)  should be suitable for A*dx = r0.</p>
+<p>Preconditioning is another way to reduce the number of iterations.
+If it is possible to solve a related system <tt class="docutils literal"><span class="pre">M*x</span> <span class="pre">=</span> <span class="pre">b</span></tt>
+efficiently, where M approximates A in some helpful way (e.g. M -
+A has low rank or its elements are small relative to those of A),
+LSQR may converge more rapidly on the system <tt class="docutils literal"><span class="pre">A*M(inverse)*z</span> <span class="pre">=</span>
+<span class="pre">b</span></tt>, after which x can be recovered by solving M*x = z.</p>
+<p>If A is symmetric, LSQR should not be used!</p>
+<p>Alternatives are the symmetric conjugate-gradient method (cg)
+and/or SYMMLQ.  SYMMLQ is an implementation of symmetric cg that
+applies to any symmetric A and will converge more rapidly than
+LSQR.  If A is positive definite, there are other implementations
+of symmetric cg that require slightly less work per iteration than
+SYMMLQ (but will take the same number of iterations).</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r20" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[R20]</a></td><td>C. C. Paige and M. A. Saunders (1982a).
+&#8220;LSQR: An algorithm for sparse linear equations and
+sparse least squares&#8221;, ACM TOMS 8(1), 43-71.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r21" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[R21]</a></td><td>C. C. Paige and M. A. Saunders (1982b).
+&#8220;Algorithm 583.  LSQR: Sparse linear equations and least
+squares problems&#8221;, ACM TOMS 8(2), 195-209.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r22" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[R22]</a></td><td>M. A. Saunders (1995).  &#8220;Solution of sparse rectangular
+systems using LSQR and CRAIG&#8221;, BIT 35, 588-604.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">resolve.lsqr</span></tt></a><ul>
+<li><a class="reference external" href="#lsqr">lsqr</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.resolve.iterative.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">resolve.iterative</span></tt></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.transform.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">transform</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.resolve.lsqr.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.transform.html" title="transform"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supreme.resolve.iterative.html" title="resolve.iterative"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

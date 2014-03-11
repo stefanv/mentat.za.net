@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>photometry.hdr &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="register" href="supreme.register.html" />
+    <link rel="prev" title="noise.wavelet" href="supreme.noise.wavelet.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.photometry.hdr">
+<h1><tt class="xref docutils literal"><span class="pre">photometry.hdr</span></tt><a class="headerlink" href="#module-supreme.photometry.hdr" title="Permalink to this headline">¶</a></h1>
+<p>High dynamic range imaging via tone-mapping.</p>
+<dl class="docutils">
+<dt>See: Recovering High Dynamic Range Radiance Maps from Photographs</dt>
+<dd>Paul E. Debevec and Jitendra Malik
+<a class="reference external" href="http://www.debevec.org/Research/HDR/">http://www.debevec.org/Research/HDR/</a></dd>
+</dl>
+<div class="section" id="deviceresponse">
+<h2><a title="supreme.photometry.hdr.DeviceResponse" class="reference internal" href="#supreme.photometry.hdr.DeviceResponse"><tt class="xref docutils literal"><span class="pre">DeviceResponse</span></tt></a><a class="headerlink" href="#deviceresponse" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.photometry.hdr.DeviceResponse">
+<em class="property">class </em><tt class="descclassname">supreme.photometry.hdr.</tt><tt class="descname">DeviceResponse</tt><big>(</big><em>pm_sampler</em><big>)</big><a class="headerlink" href="#supreme.photometry.hdr.DeviceResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="supreme.photometry.hdr.DeviceResponse.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>pm_sampler</em><big>)</big><a class="headerlink" href="#supreme.photometry.hdr.DeviceResponse.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="hdrmappernaive">
+<h2><a title="supreme.photometry.hdr.HDRMapperNaive" class="reference internal" href="#supreme.photometry.hdr.HDRMapperNaive"><tt class="xref docutils literal"><span class="pre">HDRMapperNaive</span></tt></a><a class="headerlink" href="#hdrmappernaive" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.photometry.hdr.HDRMapperNaive">
+<em class="property">class </em><tt class="descclassname">supreme.photometry.hdr.</tt><tt class="descname">HDRMapperNaive</tt><big>(</big><em>device_response</em><big>)</big><a class="headerlink" href="#supreme.photometry.hdr.HDRMapperNaive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="supreme.photometry.hdr.HDRMapperNaive.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>device_response</em><big>)</big><a class="headerlink" href="#supreme.photometry.hdr.HDRMapperNaive.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="photometrysampler">
+<h2><a title="supreme.photometry.hdr.PhotometrySampler" class="reference internal" href="#supreme.photometry.hdr.PhotometrySampler"><tt class="xref docutils literal"><span class="pre">PhotometrySampler</span></tt></a><a class="headerlink" href="#photometrysampler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.photometry.hdr.PhotometrySampler">
+<em class="property">class </em><tt class="descclassname">supreme.photometry.hdr.</tt><tt class="descname">PhotometrySampler</tt><big>(</big><em>image_collection</em><big>)</big><a class="headerlink" href="#supreme.photometry.hdr.PhotometrySampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="supreme.photometry.hdr.PhotometrySampler.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>image_collection</em><big>)</big><a class="headerlink" href="#supreme.photometry.hdr.PhotometrySampler.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+</tbody>
+</table>
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">photometry.hdr</span></tt></a><ul>
+<li><a class="reference external" href="#deviceresponse"><tt class="docutils literal"><span class="pre">DeviceResponse</span></tt></a></li>
+<li><a class="reference external" href="#hdrmappernaive"><tt class="docutils literal"><span class="pre">HDRMapperNaive</span></tt></a></li>
+<li><a class="reference external" href="#photometrysampler"><tt class="docutils literal"><span class="pre">PhotometrySampler</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.noise.wavelet.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">noise.wavelet</span></tt></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.register.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">register</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.photometry.hdr.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.register.html" title="register"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supreme.noise.wavelet.html" title="noise.wavelet"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

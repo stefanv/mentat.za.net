@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>transform &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="prev" title="resolve.lsqr" href="supreme.resolve.lsqr.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.transform">
+<h1><tt class="xref docutils literal"><span class="pre">transform</span></tt><a class="headerlink" href="#module-supreme.transform" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.transform.chirpz" class="reference internal" href="#supreme.transform.chirpz"><tt class="xref docutils literal"><span class="pre">supreme.transform.chirpz</span></tt></a>(x,&nbsp;A,&nbsp;W,&nbsp;M)</td>
+<td>Compute the chirp z-transform.</td>
+</tr>
+<tr><td><a title="supreme.transform.chirpz2" class="reference internal" href="#supreme.transform.chirpz2"><tt class="xref docutils literal"><span class="pre">supreme.transform.chirpz2</span></tt></a>(x,&nbsp;A_row,&nbsp;W_row,&nbsp;...)</td>
+<td>Perform the Chirp z-Transform on a 2D signal.</td>
+</tr>
+<tr><td><a title="supreme.transform.homography" class="reference internal" href="#supreme.transform.homography"><tt class="xref docutils literal"><span class="pre">supreme.transform.homography</span></tt></a>(image,&nbsp;matrix)</td>
+<td>Perform a matrix transform on an image.</td>
+</tr>
+<tr><td><a title="supreme.transform.logpolar" class="reference internal" href="#supreme.transform.logpolar"><tt class="xref docutils literal"><span class="pre">supreme.transform.logpolar</span></tt></a>(image[,&nbsp;angles,&nbsp;...])</td>
+<td>Perform the log polar transform on an image.</td>
+</tr>
+<tr><td><a title="supreme.transform.matrix" class="reference internal" href="#supreme.transform.matrix"><tt class="xref docutils literal"><span class="pre">supreme.transform.matrix</span></tt></a>(image,&nbsp;matrix[,&nbsp;...])</td>
+<td>Perform a matrix transform on an image.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="chirpz">
+<h2>chirpz<a class="headerlink" href="#chirpz" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.transform.chirpz">
+<tt class="descclassname">supreme.transform.</tt><tt class="descname">chirpz</tt><big>(</big><em>x</em>, <em>A</em>, <em>W</em>, <em>M</em><big>)</big><a class="headerlink" href="#supreme.transform.chirpz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the chirp z-transform.</p>
+<p>The discrete z-transform,</p>
+<p>X(z) = sum_{n=0}^{N-1} x_n z^{-n}</p>
+<p>is calculated at M points,</p>
+<p>z_k = AW^-k, k = 0,1,...,M-1</p>
+<p>for A and W complex, which gives</p>
+<p>X(z_k) = sum_{n=0}^{N-1} x_n z_k^{-n}</p>
+</dd></dl>
+
+</div>
+<div class="section" id="chirpz2">
+<h2>chirpz2<a class="headerlink" href="#chirpz2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.transform.chirpz2">
+<tt class="descclassname">supreme.transform.</tt><tt class="descname">chirpz2</tt><big>(</big><em>x</em>, <em>A_row</em>, <em>W_row</em>, <em>M_row</em>, <em>A_column</em>, <em>W_column</em>, <em>M_column</em><big>)</big><a class="headerlink" href="#supreme.transform.chirpz2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform the Chirp z-Transform on a 2D signal.</p>
+<p>x &#8211; 2 dimensional input signal
+A_row,W_row,M_row &#8211; A, W and M applied to rows
+A_column,W_column,M_column &#8211; A, W and M applied to columns</p>
+<p>Returns the Chirp z-Transform of dimension (M_row,M_column).</p>
+<p>See also: chirpz</p>
+</dd></dl>
+
+</div>
+<div class="section" id="homography">
+<h2>homography<a class="headerlink" href="#homography" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.transform.homography">
+<tt class="descclassname">supreme.transform.</tt><tt class="descname">homography</tt><big>(</big><em>image</em>, <em>matrix</em>, <em>output_shape=None</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0.0</em>, <em>_coords=None</em><big>)</big><a class="headerlink" href="#supreme.transform.homography" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a matrix transform on an image.</p>
+<p>Each coordinate (x,y,1) is multiplied by matrix to find its
+new position.  E.g., to rotate by theta degrees clockwise,
+the matrix should be</p>
+<dl class="docutils">
+<dt>[[cos(theta) -sin(theta) 0]</dt>
+<dd>[sin(theta)  cos(theta) 0]
+[0            0         1]]</dd>
+</dl>
+<p>or to translate x by 10 and y by 20,</p>
+<dl class="docutils">
+<dt>[[1 0 10]</dt>
+<dd>[0 1 20]
+[0 0 1 ]].</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="logpolar">
+<h2>logpolar<a class="headerlink" href="#logpolar" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.transform.logpolar">
+<tt class="descclassname">supreme.transform.</tt><tt class="descname">logpolar</tt><big>(</big><em>image</em>, <em>angles=None</em>, <em>Rs=None</em>, <em>mode='M'</em>, <em>cval=0</em>, <em>output=None</em>, <em>_coords_r=None</em>, <em>_coords_c=None</em>, <em>extra_info=False</em><big>)</big><a class="headerlink" href="#supreme.transform.logpolar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform the log polar transform on an image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>lpt</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Log polar transform of the input image.</p>
+</blockquote>
+<p><strong>angles</strong> : ndarray of float</p>
+<blockquote>
+<p>Angles used.  Only returned if <cite>extra_info</cite> is set
+to True.</p>
+</blockquote>
+<p><strong>log_base</strong> : int</p>
+<blockquote class="last">
+<p>Log base used.  Only returned if <cite>extra_info</cite> is set
+to True.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r24" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R24]</a></td><td>Matungka, Zheng and Ewing, &#8220;Image Registration Using Adaptive
+Polar Transform&#8221;. IEEE Transactions on Image Processing, Vol. 18,
+No. 10, October 2009.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="matrix">
+<h2>matrix<a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.transform.matrix">
+<tt class="descclassname">supreme.transform.</tt><tt class="descname">matrix</tt><big>(</big><em>image</em>, <em>matrix</em>, <em>output_shape=None</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0.0</em>, <em>_coords=None</em><big>)</big><a class="headerlink" href="#supreme.transform.matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a matrix transform on an image.</p>
+<p>Each coordinate (x,y,1) is multiplied by matrix to find its
+new position.  E.g., to rotate by theta degrees clockwise,
+the matrix should be</p>
+<dl class="docutils">
+<dt>[[cos(theta) -sin(theta) 0]</dt>
+<dd>[sin(theta)  cos(theta) 0]
+[0            0         1]]</dd>
+</dl>
+<p>or to translate x by 10 and y by 20,</p>
+<dl class="docutils">
+<dt>[[1 0 10]</dt>
+<dd>[0 1 20]
+[0 0 1 ]].</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">transform</span></tt></a><ul>
+<li><a class="reference external" href="#chirpz">chirpz</a></li>
+<li><a class="reference external" href="#chirpz2">chirpz2</a></li>
+<li><a class="reference external" href="#homography">homography</a></li>
+<li><a class="reference external" href="#logpolar">logpolar</a></li>
+<li><a class="reference external" href="#matrix">matrix</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.resolve.lsqr.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">resolve.lsqr</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.transform.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.resolve.lsqr.html" title="resolve.lsqr"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

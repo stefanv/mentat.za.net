@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>geometry.coord_path &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="geometry.cut" href="supreme.geometry.cut.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.geometry.coord_path">
+<h1><tt class="xref docutils literal"><span class="pre">geometry.coord_path</span></tt><a class="headerlink" href="#module-supreme.geometry.coord_path" title="Permalink to this headline">¶</a></h1>
+<p>Build coordinate paths from common geometric shapes.</p>
+<p>A coordinate path is an ordered collection of coordinates,
+as calculated from some parametric function.  Provided functions
+include common geometric shapes, like lines, circles and Bézier
+curves.</p>
+<p>The path coordinates are discretised to the grid (always integer
+values), and contain no adjacent duplicates (however, duplicates may
+occur in the total path if the parametric curve crosses itself).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.geometry.coord_path.build" class="reference internal" href="#supreme.geometry.coord_path.build"><tt class="xref docutils literal"><span class="pre">supreme.geometry.coord_path.build</span></tt></a>(*iterables)</td>
+<td>Build a coordinate-path from one or more iterable.</td>
+</tr>
+<tr><td><a title="supreme.geometry.coord_path.line" class="reference internal" href="#supreme.geometry.coord_path.line"><tt class="xref docutils literal"><span class="pre">supreme.geometry.coord_path.line</span></tt></a>(start,&nbsp;end)</td>
+<td>Generate coordinates for a line.</td>
+</tr>
+<tr><td><a title="supreme.geometry.coord_path.circle" class="reference internal" href="#supreme.geometry.coord_path.circle"><tt class="xref docutils literal"><span class="pre">supreme.geometry.coord_path.circle</span></tt></a>(centre,&nbsp;...)</td>
+<td>Generate coordinates for a circle.</td>
+</tr>
+<tr><td><a title="supreme.geometry.coord_path.spline" class="reference internal" href="#supreme.geometry.coord_path.spline"><tt class="xref docutils literal"><span class="pre">supreme.geometry.coord_path.spline</span></tt></a>(pts)</td>
+<td>Generate coordinates for a cubic spline.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="build">
+<h2>build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.geometry.coord_path.build">
+<tt class="descclassname">supreme.geometry.coord_path.</tt><tt class="descname">build</tt><big>(</big><em>*iterables</em><big>)</big><a class="headerlink" href="#supreme.geometry.coord_path.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a coordinate-path from one or more iterable.</p>
+<p>Every iterator should yield coordinate tuples/arrays between (and
+including) start and end.  The points generated should be roughly
+one pixel apart, and does not need to be discretised
+(i.e. (1.41,2.06) is fine).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="line">
+<h2>line<a class="headerlink" href="#line" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.geometry.coord_path.line">
+<tt class="descclassname">supreme.geometry.coord_path.</tt><tt class="descname">line</tt><big>(</big><em>start</em>, <em>end</em><big>)</big><a class="headerlink" href="#supreme.geometry.coord_path.line" title="Permalink to this definition">¶</a></dt>
+<dd>Generate coordinates for a line.</dd></dl>
+
+</div>
+<div class="section" id="circle">
+<h2>circle<a class="headerlink" href="#circle" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.geometry.coord_path.circle">
+<tt class="descclassname">supreme.geometry.coord_path.</tt><tt class="descname">circle</tt><big>(</big><em>centre</em>, <em>radius</em><big>)</big><a class="headerlink" href="#supreme.geometry.coord_path.circle" title="Permalink to this definition">¶</a></dt>
+<dd>Generate coordinates for a circle.</dd></dl>
+
+</div>
+<div class="section" id="spline">
+<h2>spline<a class="headerlink" href="#spline" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.geometry.coord_path.spline">
+<tt class="descclassname">supreme.geometry.coord_path.</tt><tt class="descname">spline</tt><big>(</big><em>pts</em><big>)</big><a class="headerlink" href="#supreme.geometry.coord_path.spline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate coordinates for a cubic spline.</p>
+<p>A 4-dimensional (3rd order) spline is guided by a polyline through
+the provided list of points.  At least 3 points must be specified.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">geometry.coord_path</span></tt></a><ul>
+<li><a class="reference external" href="#build">build</a></li>
+<li><a class="reference external" href="#line">line</a></li>
+<li><a class="reference external" href="#circle">circle</a></li>
+<li><a class="reference external" href="#spline">spline</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.geometry.cut.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">geometry.cut</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.geometry.coord_path.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.geometry.cut.html" title="geometry.cut"
+             accesskey="N">next</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

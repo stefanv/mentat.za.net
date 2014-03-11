@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>lib.dpt &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="lib.fast" href="supreme.lib.fast.html" />
+    <link rel="prev" title="io.vgg" href="supreme.io.vgg.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.lib.dpt">
+<h1><tt class="xref docutils literal"><span class="pre">lib.dpt</span></tt><a class="headerlink" href="#module-supreme.lib.dpt" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="connectedregion">
+<h2><a title="supreme.lib.dpt.ConnectedRegion" class="reference internal" href="#supreme.lib.dpt.ConnectedRegion"><tt class="xref docutils literal"><span class="pre">ConnectedRegion</span></tt></a><a class="headerlink" href="#connectedregion" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.dpt.ConnectedRegion">
+<em class="property">class </em><tt class="descclassname">supreme.lib.dpt.</tt><tt class="descname">ConnectedRegion</tt><a class="headerlink" href="#supreme.lib.dpt.ConnectedRegion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<p>A 4 or 8-connected region is stored in a modified Compressed
+Sparse Row matrix format.</p>
+<p>Since the region is connected, we only have to store one value.
+Along a single row, connected regions are stored as index pairs, e.g.</p>
+<p>&#8212;00-000&#8211; would be represented as [3, 5, 6, 9]</p>
+<p>This class should be queried using the methods in
+<cite>connected_region_handler</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>shape</strong> : tuple</p>
+<blockquote class="last">
+<p>Shape of the region.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="13%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>rowptr</td>
+<td>list of int</td>
+<td><cite>rowptr[i]</cite> tells us where in <cite>colptr</cite> the elements of row i are
+described</td>
+</tr>
+<tr><td>colptr</td>
+<td>list of int</td>
+<td>Always contains 2N elements, where N are the number of connected
+regions (see description above).  Each entry describes the half-open
+interval <tt class="docutils literal"><span class="pre">(start_position,</span> <span class="pre">end_position]</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.lib.dpt.ConnectedRegion.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.dpt.ConnectedRegion.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</dd></dl>
+
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.dpt.connected_regions" class="reference internal" href="#supreme.lib.dpt.connected_regions"><tt class="xref docutils literal"><span class="pre">supreme.lib.dpt.connected_regions</span></tt></a></td>
+<td>Return ConnectedRegions that, together, compose the whole image.</td>
+</tr>
+<tr><td><a title="supreme.lib.dpt.decompose" class="reference internal" href="#supreme.lib.dpt.decompose"><tt class="xref docutils literal"><span class="pre">supreme.lib.dpt.decompose</span></tt></a></td>
+<td>Decompose a two-dimensional signal into pulses.</td>
+</tr>
+<tr><td><a title="supreme.lib.dpt.reconstruct" class="reference internal" href="#supreme.lib.dpt.reconstruct"><tt class="xref docutils literal"><span class="pre">supreme.lib.dpt.reconstruct</span></tt></a></td>
+<td>Reconstruct an image from the given connected regions / pulses.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="connected-regions">
+<h2>connected_regions<a class="headerlink" href="#connected-regions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.dpt.connected_regions">
+<tt class="descclassname">supreme.lib.dpt.</tt><tt class="descname">connected_regions</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.dpt.connected_regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return ConnectedRegions that, together, compose the whole image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray</p>
+<blockquote>
+<p>Input image.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
+<blockquote>
+<p><cite>img</cite>, labeled by connectivity.</p>
+</blockquote>
+<p><strong>c</strong> : dict</p>
+<blockquote class="last">
+<p>Dictionary of ConnectedRegions, indexed by label value.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="decompose">
+<h2>decompose<a class="headerlink" href="#decompose" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.dpt.decompose">
+<tt class="descclassname">supreme.lib.dpt.</tt><tt class="descname">decompose</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.dpt.decompose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decompose a two-dimensional signal into pulses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : 2-D ndarray of ints</p>
+<blockquote>
+<p>Input signal.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pulses</strong> : dict</p>
+<blockquote class="last">
+<p>Dictionary of ConnectedRegion objects, indexed by pulse area.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a title="supreme.lib.dpt.reconstruct" class="reference internal" href="#supreme.lib.dpt.reconstruct"><tt class="xref docutils literal"><span class="pre">reconstruct</span></tt></a></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="reconstruct">
+<h2>reconstruct<a class="headerlink" href="#reconstruct" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.dpt.reconstruct">
+<tt class="descclassname">supreme.lib.dpt.</tt><tt class="descname">reconstruct</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.dpt.reconstruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstruct an image from the given connected regions / pulses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>regions</strong> : dict</p>
+<blockquote>
+<p>Impulses indexed by area.  This is the output of <cite>decompose</cite>.</p>
+</blockquote>
+<p><strong>shape</strong> : tuple</p>
+<blockquote>
+<p>Shape of the output image.</p>
+</blockquote>
+<p><strong>min_area, max_area</strong> : int</p>
+<blockquote>
+<p>Impulses with areas in [min_area, max_area] are used for the
+reconstruction.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndimage</p>
+<blockquote>
+<p>Reconstructed image.</p>
+</blockquote>
+<p><strong>areas</strong> : 1d ndarray</p>
+<blockquote>
+<p>Pulses with these areas occur in the image.</p>
+</blockquote>
+<p><strong>area_count</strong> : 1d ndarray</p>
+<blockquote class="last">
+<p>For each area in the above list, there are this many impulses.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">lib.dpt</span></tt></a><ul>
+<li><a class="reference external" href="#connectedregion"><tt class="docutils literal"><span class="pre">ConnectedRegion</span></tt></a></li>
+<li><a class="reference external" href="#connected-regions">connected_regions</a></li>
+<li><a class="reference external" href="#decompose">decompose</a></li>
+<li><a class="reference external" href="#reconstruct">reconstruct</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.io.vgg.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">io.vgg</span></tt></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.lib.fast.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">lib.fast</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.lib.dpt.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.lib.fast.html" title="lib.fast"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supreme.io.vgg.html" title="io.vgg"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

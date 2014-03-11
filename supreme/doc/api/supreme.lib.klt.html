@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>lib.klt &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="noise" href="supreme.noise.html" />
+    <link rel="prev" title="lib.fast" href="supreme.lib.fast.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.lib.klt">
+<h1><tt class="xref docutils literal"><span class="pre">lib.klt</span></tt><a class="headerlink" href="#module-supreme.lib.klt" title="Permalink to this headline">¶</a></h1>
+<p>Wrapper for Birchfield&#8217;s free implementation of the Kanade-Lucas-Tomasi feature tracker.</p>
+<div class="section" id="feature">
+<h2><a title="supreme.lib.klt.Feature" class="reference internal" href="#supreme.lib.klt.Feature"><tt class="xref docutils literal"><span class="pre">Feature</span></tt></a><a class="headerlink" href="#feature" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.klt.Feature">
+<em class="property">class </em><tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">Feature</tt><a class="headerlink" href="#supreme.lib.klt.Feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">_ctypes.Structure</span></tt></p>
+<dl class="method">
+<dt id="supreme.lib.klt.Feature.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.klt.Feature.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_Axx">
+<tt class="descname">aff_Axx</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_Axx" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_Axy">
+<tt class="descname">aff_Axy</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_Axy" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_Ayx">
+<tt class="descname">aff_Ayx</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_Ayx" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_Ayy">
+<tt class="descname">aff_Ayy</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_Ayy" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_img">
+<tt class="descname">aff_img</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_img" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_img_gradx">
+<tt class="descname">aff_img_gradx</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_img_gradx" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_img_grady">
+<tt class="descname">aff_img_grady</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_img_grady" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_x">
+<tt class="descname">aff_x</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_x" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.aff_y">
+<tt class="descname">aff_y</tt><a class="headerlink" href="#supreme.lib.klt.Feature.aff_y" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.val">
+<tt class="descname">val</tt><a class="headerlink" href="#supreme.lib.klt.Feature.val" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.x">
+<tt class="descname">x</tt><a class="headerlink" href="#supreme.lib.klt.Feature.x" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.Feature.y">
+<tt class="descname">y</tt><a class="headerlink" href="#supreme.lib.klt.Feature.y" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="featurehistory">
+<h2><a title="supreme.lib.klt.FeatureHistory" class="reference internal" href="#supreme.lib.klt.FeatureHistory"><tt class="xref docutils literal"><span class="pre">FeatureHistory</span></tt></a><a class="headerlink" href="#featurehistory" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.klt.FeatureHistory">
+<em class="property">class </em><tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">FeatureHistory</tt><a class="headerlink" href="#supreme.lib.klt.FeatureHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">_ctypes.Structure</span></tt></p>
+<dl class="method">
+<dt id="supreme.lib.klt.FeatureHistory.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.klt.FeatureHistory.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FeatureHistory.feature">
+<tt class="descname">feature</tt><a class="headerlink" href="#supreme.lib.klt.FeatureHistory.feature" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FeatureHistory.nFrames">
+<tt class="descname">nFrames</tt><a class="headerlink" href="#supreme.lib.klt.FeatureHistory.nFrames" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="featurelist">
+<h2><a title="supreme.lib.klt.FeatureList" class="reference internal" href="#supreme.lib.klt.FeatureList"><tt class="xref docutils literal"><span class="pre">FeatureList</span></tt></a><a class="headerlink" href="#featurelist" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.klt.FeatureList">
+<em class="property">class </em><tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">FeatureList</tt><big>(</big><em>n</em><big>)</big><a class="headerlink" href="#supreme.lib.klt.FeatureList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">_ctypes.Structure</span></tt></p>
+<dl class="method">
+<dt id="supreme.lib.klt.FeatureList.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n</em><big>)</big><a class="headerlink" href="#supreme.lib.klt.FeatureList.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.klt.FeatureList.as_array">
+<tt class="descname">as_array</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.klt.FeatureList.as_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FeatureList.feature">
+<tt class="descname">feature</tt><a class="headerlink" href="#supreme.lib.klt.FeatureList.feature" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FeatureList.nFeatures">
+<tt class="descname">nFeatures</tt><a class="headerlink" href="#supreme.lib.klt.FeatureList.nFeatures" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.klt.FeatureList.to_image">
+<tt class="descname">to_image</tt><big>(</big><em>img</em><big>)</big><a class="headerlink" href="#supreme.lib.klt.FeatureList.to_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="featuretable">
+<h2><a title="supreme.lib.klt.FeatureTable" class="reference internal" href="#supreme.lib.klt.FeatureTable"><tt class="xref docutils literal"><span class="pre">FeatureTable</span></tt></a><a class="headerlink" href="#featuretable" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.klt.FeatureTable">
+<em class="property">class </em><tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">FeatureTable</tt><a class="headerlink" href="#supreme.lib.klt.FeatureTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">_ctypes.Structure</span></tt></p>
+<dl class="method">
+<dt id="supreme.lib.klt.FeatureTable.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.klt.FeatureTable.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FeatureTable.feature">
+<tt class="descname">feature</tt><a class="headerlink" href="#supreme.lib.klt.FeatureTable.feature" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FeatureTable.nFeatures">
+<tt class="descname">nFeatures</tt><a class="headerlink" href="#supreme.lib.klt.FeatureTable.nFeatures" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FeatureTable.nFrames">
+<tt class="descname">nFrames</tt><a class="headerlink" href="#supreme.lib.klt.FeatureTable.nFrames" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="floatimage">
+<h2><a title="supreme.lib.klt.FloatImage" class="reference internal" href="#supreme.lib.klt.FloatImage"><tt class="xref docutils literal"><span class="pre">FloatImage</span></tt></a><a class="headerlink" href="#floatimage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.klt.FloatImage">
+<em class="property">class </em><tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">FloatImage</tt><a class="headerlink" href="#supreme.lib.klt.FloatImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">_ctypes.Structure</span></tt></p>
+<dl class="method">
+<dt id="supreme.lib.klt.FloatImage.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.klt.FloatImage.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FloatImage.data">
+<tt class="descname">data</tt><a class="headerlink" href="#supreme.lib.klt.FloatImage.data" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FloatImage.ncols">
+<tt class="descname">ncols</tt><a class="headerlink" href="#supreme.lib.klt.FloatImage.ncols" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.FloatImage.nrows">
+<tt class="descname">nrows</tt><a class="headerlink" href="#supreme.lib.klt.FloatImage.nrows" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="structure">
+<h2><a title="supreme.lib.klt.Structure" class="reference internal" href="#supreme.lib.klt.Structure"><tt class="xref docutils literal"><span class="pre">Structure</span></tt></a><a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.klt.Structure">
+<em class="property">class </em><tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">Structure</tt><a class="headerlink" href="#supreme.lib.klt.Structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">_ctypes._CData</span></tt></p>
+<p>Structure base class</p>
+<dl class="method">
+<dt id="supreme.lib.klt.Structure.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.klt.Structure.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="trackingcontext">
+<h2><a title="supreme.lib.klt.TrackingContext" class="reference internal" href="#supreme.lib.klt.TrackingContext"><tt class="xref docutils literal"><span class="pre">TrackingContext</span></tt></a><a class="headerlink" href="#trackingcontext" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.klt.TrackingContext">
+<em class="property">class </em><tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">TrackingContext</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">_ctypes.Structure</span></tt></p>
+<dl class="method">
+<dt id="supreme.lib.klt.TrackingContext.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.klt.TrackingContext.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.borderx">
+<tt class="descname">borderx</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.borderx" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.bordery">
+<tt class="descname">bordery</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.bordery" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.grad_sigma">
+<tt class="descname">grad_sigma</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.grad_sigma" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.lighting_insensitive">
+<tt class="descname">lighting_insensitive</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.lighting_insensitive" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.max_iterations">
+<tt class="descname">max_iterations</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.max_iterations" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.max_residue">
+<tt class="descname">max_residue</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.max_residue" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.min_determinant">
+<tt class="descname">min_determinant</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.min_determinant" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.min_displacement">
+<tt class="descname">min_displacement</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.min_displacement" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.min_eigenvalue">
+<tt class="descname">min_eigenvalue</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.min_eigenvalue" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.mindist">
+<tt class="descname">mindist</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.mindist" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.nPyramidLevels">
+<tt class="descname">nPyramidLevels</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.nPyramidLevels" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.nSkippedPixels">
+<tt class="descname">nSkippedPixels</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.nSkippedPixels" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.pyramid_last">
+<tt class="descname">pyramid_last</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.pyramid_last" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.pyramid_last_gradx">
+<tt class="descname">pyramid_last_gradx</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.pyramid_last_gradx" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.pyramid_last_grady">
+<tt class="descname">pyramid_last_grady</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.pyramid_last_grady" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.pyramid_sigma_fact">
+<tt class="descname">pyramid_sigma_fact</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.pyramid_sigma_fact" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.sequentialMode">
+<tt class="descname">sequentialMode</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.sequentialMode" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.smoothBeforeSelecting">
+<tt class="descname">smoothBeforeSelecting</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.smoothBeforeSelecting" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.smooth_sigma_fact">
+<tt class="descname">smooth_sigma_fact</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.smooth_sigma_fact" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.subsampling">
+<tt class="descname">subsampling</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.subsampling" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.window_height">
+<tt class="descname">window_height</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.window_height" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.window_width">
+<tt class="descname">window_width</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.window_width" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.klt.TrackingContext.writeInternalImages">
+<tt class="descname">writeInternalImages</tt><a class="headerlink" href="#supreme.lib.klt.TrackingContext.writeInternalImages" title="Permalink to this definition">¶</a></dt>
+<dd>Structure/Union member</dd></dl>
+
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.klt.replace_lost_features" class="reference internal" href="#supreme.lib.klt.replace_lost_features"><tt class="xref docutils literal"><span class="pre">supreme.lib.klt.replace_lost_features</span></tt></a>(...)</td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.lib.klt.select_good_features" class="reference internal" href="#supreme.lib.klt.select_good_features"><tt class="xref docutils literal"><span class="pre">supreme.lib.klt.select_good_features</span></tt></a>(...)</td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.lib.klt.track_features" class="reference internal" href="#supreme.lib.klt.track_features"><tt class="xref docutils literal"><span class="pre">supreme.lib.klt.track_features</span></tt></a>(...)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="replace-lost-features">
+<h2>replace_lost_features<a class="headerlink" href="#replace-lost-features" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.klt.replace_lost_features">
+<tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">replace_lost_features</tt><big>(</big><em>tracking_context</em>, <em>img</em>, <em>features</em><big>)</big><a class="headerlink" href="#supreme.lib.klt.replace_lost_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="select-good-features">
+<h2>select_good_features<a class="headerlink" href="#select-good-features" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.klt.select_good_features">
+<tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">select_good_features</tt><big>(</big><em>tracking_context</em>, <em>img</em>, <em>features</em><big>)</big><a class="headerlink" href="#supreme.lib.klt.select_good_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="track-features">
+<h2>track_features<a class="headerlink" href="#track-features" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.klt.track_features">
+<tt class="descclassname">supreme.lib.klt.</tt><tt class="descname">track_features</tt><big>(</big><em>tracking_context</em>, <em>img1</em>, <em>img2</em>, <em>features</em><big>)</big><a class="headerlink" href="#supreme.lib.klt.track_features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">lib.klt</span></tt></a><ul>
+<li><a class="reference external" href="#feature"><tt class="docutils literal"><span class="pre">Feature</span></tt></a></li>
+<li><a class="reference external" href="#featurehistory"><tt class="docutils literal"><span class="pre">FeatureHistory</span></tt></a></li>
+<li><a class="reference external" href="#featurelist"><tt class="docutils literal"><span class="pre">FeatureList</span></tt></a></li>
+<li><a class="reference external" href="#featuretable"><tt class="docutils literal"><span class="pre">FeatureTable</span></tt></a></li>
+<li><a class="reference external" href="#floatimage"><tt class="docutils literal"><span class="pre">FloatImage</span></tt></a></li>
+<li><a class="reference external" href="#structure"><tt class="docutils literal"><span class="pre">Structure</span></tt></a></li>
+<li><a class="reference external" href="#trackingcontext"><tt class="docutils literal"><span class="pre">TrackingContext</span></tt></a></li>
+<li><a class="reference external" href="#replace-lost-features">replace_lost_features</a></li>
+<li><a class="reference external" href="#select-good-features">select_good_features</a></li>
+<li><a class="reference external" href="#track-features">track_features</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.lib.fast.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">lib.fast</span></tt></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.noise.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">noise</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.lib.klt.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.noise.html" title="noise"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supreme.lib.fast.html" title="lib.fast"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

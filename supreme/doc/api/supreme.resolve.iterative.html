@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>resolve.iterative &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="resolve.lsqr" href="supreme.resolve.lsqr.html" />
+    <link rel="prev" title="resolve" href="supreme.resolve.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.resolve.iterative">
+<h1><tt class="xref docutils literal"><span class="pre">resolve.iterative</span></tt><a class="headerlink" href="#module-supreme.resolve.iterative" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.resolve.iterative.solve</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.resolve.iterative.default_camera</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.resolve.iterative.cost_squared_error</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.resolve.iterative.iresolve</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.resolve.iterative.initial_guess_avg</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.resolve.iterative.cost_prior_xsq</span></tt></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="solve">
+<h2>solve<a class="headerlink" href="#solve" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.resolve.iterative.solve">
+<tt class="descclassname">supreme.resolve.iterative.</tt><tt class="descname">solve</tt><big>(</big><em>images</em>, <em>tf_matrices</em>, <em>scale</em>, <em>x0=None</em>, <em>tol=1e-10</em>, <em>iter_lim=None</em>, <em>damp=0.10000000000000001</em>, <em>method='CG'</em>, <em>operator='bilinear'</em><big>)</big><a class="headerlink" href="#supreme.resolve.iterative.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Super-resolve a set of low-resolution images by solving
+a large, sparse set of linear equations.</p>
+<p>This method approximates the camera with a downsampling operator,
+using bilinear interpolation.  The LSQR method is used to solve
+the equation <img class="math" src="../_images/math/72f5a1fe2378a0ad7aa213d5e5dd395992bf6eac.png" alt="A\mathbf{x} = b"/> where <img class="math" src="../_images/math/019e9892786e493964e145e7c5cf7b700314e53b.png" alt="A"/> is the
+downsampling operator, <img class="math" src="../_images/math/5f61118f2ae912f86e683687c005145b5eb54aec.png" alt="\mathbf{x}"/> is the high-resolution
+estimate (flattened in raster scan or lexicographic order), and
+<img class="math" src="../_images/math/fccad4b3914168405510f7854bb8f10d4115f56f.png" alt="\mathbf{b}"/> is a stacked vector of all the low-resolution
+images.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>images</strong> : list of ndarrays</p>
+<blockquote>
+<p>Low-resolution input frames.</p>
+</blockquote>
+<p><strong>tf_matrices</strong> : list of (3, 3) ndarrays</p>
+<blockquote>
+<p>Transformation matrices that relate all low-resolution frames
+to a reference low-resolution frame (usually <tt class="docutils literal"><span class="pre">images[0]</span></tt>).</p>
+</blockquote>
+<p><strong>scale</strong> : float</p>
+<blockquote>
+<p>The resolution of the output image is <cite>scale</cite> times the resolution
+of the input images.</p>
+</blockquote>
+<p><strong>x0</strong> : ndarray, optional</p>
+<blockquote>
+<p>Initial guess of HR image.</p>
+</blockquote>
+<p><strong>damp</strong> : float, optional</p>
+<blockquote>
+<p>If an initial guess is provided, <cite>damp</cite> specifies how much that
+estimate is weighed in the entire process.  A larger value of
+<cite>damp</cite> results in a solution closer to <cite>x0</cite>, whereas a smaller
+version of <cite>damp</cite> yields a solution closer to the solution
+obtained without any initial estimate.</p>
+</blockquote>
+<p><strong>method</strong> : {&#8216;CG&#8217;, &#8216;LSQR&#8217;, &#8216;descent&#8217;}</p>
+<blockquote>
+<p>Whether to use conjugate gradients, least-squares or gradient descent
+to determine the solution.</p>
+</blockquote>
+<p><strong>operator</strong> : {&#8216;bilinear&#8217;, &#8216;polygon&#8217;}</p>
+<blockquote>
+<p>The camera model is approximated as an interpolation process.  The
+polygon interpolation operator works well for zoom ratios &lt; 2.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>HR</strong> : ndarray</p>
+<blockquote class="last">
+<p>High-resolution estimate.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="default-camera">
+<h2>default_camera<a class="headerlink" href="#default-camera" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.resolve.iterative.default_camera">
+<tt class="descclassname">supreme.resolve.iterative.</tt><tt class="descname">default_camera</tt><big>(</big><em>img_nr</em>, <em>img</em>, <em>H</em>, <em>scale</em>, <em>oshape</em>, <em>std=1.0</em>, <em>_coords=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#supreme.resolve.iterative.default_camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>The default camera model simply blurs and downscales the image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img_nr</strong> : int</p>
+<blockquote>
+<p>The number of this image in the set.  Useful for storing image-specific
+parameters, such as coordinates.</p>
+</blockquote>
+<p><strong>img</strong> : ndarray</p>
+<blockquote>
+<p>High-resolution image data.</p>
+</blockquote>
+<p><strong>H</strong> : (3,3) ndarray</p>
+<blockquote>
+<p>Transformation matrix to apply to <cite>img</cite>.</p>
+</blockquote>
+<p><strong>oshape</strong> : tuple of ints</p>
+<blockquote>
+<p>Output shape.</p>
+</blockquote>
+<p><strong>std</strong> : float</p>
+<blockquote>
+<p>Standard deviation of the blur mask.</p>
+</blockquote>
+<p><strong>_coords</strong> : ndarray</p>
+<blockquote class="last">
+<p>Coordinates suitable for use in <tt class="docutils literal"><span class="pre">ndimage.map_coordinates</span></tt>.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="cost-squared-error">
+<h2>cost_squared_error<a class="headerlink" href="#cost-squared-error" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.resolve.iterative.cost_squared_error">
+<tt class="descclassname">supreme.resolve.iterative.</tt><tt class="descname">cost_squared_error</tt><big>(</big><em>nr</em>, <em>x</em>, <em>y</em>, <em>HR</em>, <em>HR_avg</em><big>)</big><a class="headerlink" href="#supreme.resolve.iterative.cost_squared_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="iresolve">
+<h2>iresolve<a class="headerlink" href="#iresolve" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.resolve.iterative.iresolve">
+<tt class="descclassname">supreme.resolve.iterative.</tt><tt class="descname">iresolve</tt><big>(</big><em>images</em>, <em>tf_matrices</em>, <em>scale=1.3</em>, <em>initial_guess=&lt;function initial_guess_avg at 0x1067ea230&gt;</em>, <em>initial_guess_args={}</em>, <em>camera=None</em>, <em>camera_args={}</em>, <em>cost_measure=None</em>, <em>cost_args={}</em><big>)</big><a class="headerlink" href="#supreme.resolve.iterative.iresolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Super-resolve a set of low-resolution images.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>images</strong> : list of ndarrays</p>
+<blockquote>
+<p>Low-resolution input frames.</p>
+</blockquote>
+<p><strong>tf_matrices</strong> : list of (3, 3) ndarrays</p>
+<blockquote>
+<p>List of transformation matrices to transform each
+low-resolution frame to a reference image (typically,
+<tt class="docutils literal"><span class="pre">images[0]</span></tt>).</p>
+</blockquote>
+<p><strong>scale</strong> : float</p>
+<blockquote>
+<p>Resolution improvement required.</p>
+</blockquote>
+<p><strong>initial_guess</strong> : callable, f(imgs, Hs, scale, oshape, <a href="#id1"><span class="problematic" id="id2">**</span></a>initial_guess_args)</p>
+<blockquote>
+<p>Function that calculates an initial estimate of the high-resolution
+image for initialising the iterative process.  If not specified,
+<tt class="docutils literal"><span class="pre">initial_guess_avg</span></tt> is used.  See <tt class="docutils literal"><span class="pre">initial_guess_avg</span></tt> for
+more information.</p>
+</blockquote>
+<p><strong>initial_guess_args</strong> : dict, optional</p>
+<blockquote>
+<p>Optional keyword arguments for <cite>initial_guess</cite>.</p>
+</blockquote>
+<p><strong>camera</strong> : callable, f(nr, img, H, scale, oshape, <a href="#id3"><span class="problematic" id="id4">**</span></a>camera_args), optional</p>
+<blockquote>
+<p>Function that emulates the effect of the camera on a
+high-resolution frame.  See the docstring of <tt class="docutils literal"><span class="pre">default_camera</span></tt>
+for more detail.  If not specified, <tt class="docutils literal"><span class="pre">default_camera</span></tt> is used.</p>
+</blockquote>
+<p><strong>camera_args</strong> : dict, optional</p>
+<blockquote>
+<p>Optional keyword arguments for <cite>camera</cite>.</p>
+</blockquote>
+<p><strong>cost_measure</strong> : callable, f(nr, x, y, <a href="#id5"><span class="problematic" id="id6">**</span></a>cost_args)</p>
+<blockquote>
+<p>Function that calculates the difference between two
+low-resolution frames.  If not specified, <tt class="docutils literal"><span class="pre">cost_squared_error</span></tt>
+is used.</p>
+</blockquote>
+<p><strong>cost_args</strong> : dict, optional</p>
+<blockquote>
+<p>Optional keyword arguments for <cite>cost_measure</cite>.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
+<blockquote class="last">
+<p>Super-resolved image.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="initial-guess-avg">
+<h2>initial_guess_avg<a class="headerlink" href="#initial-guess-avg" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.resolve.iterative.initial_guess_avg">
+<tt class="descclassname">supreme.resolve.iterative.</tt><tt class="descname">initial_guess_avg</tt><big>(</big><em>images</em>, <em>tf_matrices</em>, <em>scale</em>, <em>oshape</em><big>)</big><a class="headerlink" href="#supreme.resolve.iterative.initial_guess_avg" title="Permalink to this definition">¶</a></dt>
+<dd><p>From the given low-resolution images and transforms, make an
+initial guess of the high-resolution image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>images</strong> : list of ndarray</p>
+<blockquote>
+<p>Low-resolution images.</p>
+</blockquote>
+<p><strong>tf_matrices</strong> : list of (3, 3) ndarray</p>
+<blockquote>
+<p>Transformation matrices that warp the images to the reference
+image (usually <tt class="docutils literal"><span class="pre">images[0]</span></tt>).</p>
+</blockquote>
+<p><strong>scale</strong> : float</p>
+<blockquote>
+<p>The scale of the high-resolution reconstruction relative to the
+low-resolution frames.  Typically between 1 and 2.</p>
+</blockquote>
+<p><strong>oshape</strong> : tuple of int</p>
+<blockquote class="last">
+<p>Shape of the high-resolution reconstruction.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="cost-prior-xsq">
+<h2>cost_prior_xsq<a class="headerlink" href="#cost-prior-xsq" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.resolve.iterative.cost_prior_xsq">
+<tt class="descclassname">supreme.resolve.iterative.</tt><tt class="descname">cost_prior_xsq</tt><big>(</big><em>nr</em>, <em>x</em>, <em>y</em>, <em>HR</em>, <em>HR_avg</em>, <em>lam=0.01</em><big>)</big><a class="headerlink" href="#supreme.resolve.iterative.cost_prior_xsq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">resolve.iterative</span></tt></a><ul>
+<li><a class="reference external" href="#solve">solve</a></li>
+<li><a class="reference external" href="#default-camera">default_camera</a></li>
+<li><a class="reference external" href="#cost-squared-error">cost_squared_error</a></li>
+<li><a class="reference external" href="#iresolve">iresolve</a></li>
+<li><a class="reference external" href="#initial-guess-avg">initial_guess_avg</a></li>
+<li><a class="reference external" href="#cost-prior-xsq">cost_prior_xsq</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.resolve.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">resolve</span></tt></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.resolve.lsqr.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">resolve.lsqr</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.resolve.iterative.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.resolve.lsqr.html" title="resolve.lsqr"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supreme.resolve.html" title="resolve"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

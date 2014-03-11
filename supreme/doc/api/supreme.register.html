@@ -1,0 +1,939 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>register &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="prev" title="photometry.hdr" href="supreme.photometry.hdr.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.register">
+<h1><tt class="xref docutils literal"><span class="pre">register</span></tt><a class="headerlink" href="#module-supreme.register" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="grid">
+<h2><a title="supreme.register.Grid" class="reference internal" href="#supreme.register.Grid"><tt class="xref docutils literal"><span class="pre">Grid</span></tt></a><a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.register.Grid">
+<em class="property">class </em><tt class="descclassname">supreme.register.</tt><tt class="descname">Grid</tt><big>(</big><em>rows</em>, <em>cols</em><big>)</big><a class="headerlink" href="#supreme.register.Grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<p>Regular grid.</p>
+<dl class="method">
+<dt id="supreme.register.Grid.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>rows</em>, <em>cols</em><big>)</big><a class="headerlink" href="#supreme.register.Grid.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>Create a grid given rows and columns.</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.register.Grid.coords">
+<tt class="descname">coords</tt><a class="headerlink" href="#supreme.register.Grid.coords" title="Permalink to this definition">¶</a></dt>
+<dd>Return an array of all coordinates.</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="pointcorrespondence">
+<h2><a title="supreme.register.PointCorrespondence" class="reference internal" href="#supreme.register.PointCorrespondence"><tt class="xref docutils literal"><span class="pre">PointCorrespondence</span></tt></a><a class="headerlink" href="#pointcorrespondence" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.register.PointCorrespondence">
+<em class="property">class </em><tt class="descclassname">supreme.register.</tt><tt class="descname">PointCorrespondence</tt><big>(</big><em>ref_feat_rows</em>, <em>ref_feat_cols</em>, <em>target_feat_rows</em>, <em>target_feat_cols</em>, <em>**args</em><big>)</big><a class="headerlink" href="#supreme.register.PointCorrespondence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<p>Estimate point correspondence homographies.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.register.PointCorrespondence.RANSAC" class="reference internal" href="#supreme.register.PointCorrespondence.RANSAC"><tt class="xref docutils literal"><span class="pre">RANSAC</span></tt></a>([mode])</td>
+<td>Mode can be &#8216;direct&#8217; or &#8216;iterative&#8217;.</td>
+</tr>
+<tr><td><a title="supreme.register.PointCorrespondence.estimate" class="reference internal" href="#supreme.register.PointCorrespondence.estimate"><tt class="xref docutils literal"><span class="pre">estimate</span></tt></a>()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.register.PointCorrespondence.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>ref_feat_rows</em>, <em>ref_feat_cols</em>, <em>target_feat_rows</em>, <em>target_feat_cols</em>, <em>**args</em><big>)</big><a class="headerlink" href="#supreme.register.PointCorrespondence.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.register.PointCorrespondence.RANSAC">
+<tt class="descname">RANSAC</tt><big>(</big><em>mode='direct'</em><big>)</big><a class="headerlink" href="#supreme.register.PointCorrespondence.RANSAC" title="Permalink to this definition">¶</a></dt>
+<dd>Mode can be &#8216;direct&#8217; or &#8216;iterative&#8217;.</dd></dl>
+
+<dl class="method">
+<dt id="supreme.register.PointCorrespondence.estimate">
+<tt class="descname">estimate</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.register.PointCorrespondence.estimate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.affine_tm</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.correspond</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.dense_MI</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.fft_corr</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.gauss</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.joint_hist</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.logpolar</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.lp_patch_match</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.mutual_info</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.ncc</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.patch_match</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.phase_corr</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.radial_sum</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.refine</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.sat</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.sat_sum</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.sparse</span></tt></td>
+<td></td>
+</tr>
+<tr><td><tt class="xref docutils literal"><span class="pre">supreme.register.window_wrap</span></tt></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="affine-tm">
+<h2>affine_tm<a class="headerlink" href="#affine-tm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.affine_tm">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">affine_tm</tt><big>(</big><em>theta=0</em>, <em>tx=0</em>, <em>ty=0</em>, <em>scale=None</em>, <em>scale_x=None</em>, <em>scale_y=None</em><big>)</big><a class="headerlink" href="#supreme.register.affine_tm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the transformation matrix for an affine transformation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>theta</strong> : float</p>
+<blockquote>
+<p>Rotation angle in radians.</p>
+</blockquote>
+<p><strong>tx, ty</strong> : float</p>
+<blockquote>
+<p>X and Y translations.</p>
+</blockquote>
+<p><strong>scale</strong> : float</p>
+<blockquote>
+<p>Scaling in both the X and the Y directions.  Defaults to 1.</p>
+</blockquote>
+<p><strong>scale_x</strong> : float</p>
+<blockquote>
+<p>Scaling in the X direction.  Cannot be used together with <cite>scale</cite>.</p>
+</blockquote>
+<p><strong>scale_y</strong> : float</p>
+<blockquote>
+<p>Scaling in the Y direction.  Cannot be used with <cite>scale</cite>.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray of float</p>
+<blockquote class="last">
+<p>Transformation matrix with the supplied parameters.  Can be used to
+transform any homogeneous coordinate <tt class="docutils literal"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">[[x,</span> <span class="pre">y,</span> <span class="pre">1]].T</span></tt> by
+<tt class="docutils literal"><span class="pre">np.dot(M,</span> <span class="pre">p)</span></tt>.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="correspond">
+<h2>correspond<a class="headerlink" href="#correspond" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.correspond">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">correspond</tt><big>(</big><em>fA</em>, <em>A</em>, <em>fB</em>, <em>B</em>, <em>win_size=9</em><big>)</big><a class="headerlink" href="#supreme.register.correspond" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given coordinates of features in two images, determine
+possible correspondences.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fA</strong> : list of tuple (x,y)</p>
+<blockquote>
+<p>Coordinates of the features in the source image.</p>
+</blockquote>
+<p><strong>A</strong> : (m,n) ndarray of type uint8</p>
+<blockquote>
+<p>Source image.</p>
+</blockquote>
+<p><strong>fB</strong> : list of tuple (x,y)</p>
+<blockquote>
+<p>Coordinates of the features in the target image.</p>
+</blockquote>
+<p><strong>A</strong> : (m,n) ndarray of type uint8</p>
+<blockquote>
+<p>Target image.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>matches</strong> : list</p>
+<blockquote class="last">
+<p>[((coord_source), (coord_target)), ...]</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="dense-mi">
+<h2>dense_MI<a class="headerlink" href="#dense-mi" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.dense_MI">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">dense_MI</tt><big>(</big><em>A</em>, <em>B</em>, <em>p=None</em>, <em>levels=4</em>, <em>fast=False</em>, <em>std=1</em>, <em>win_size=5</em>, <em>translation_only=False</em><big>)</big><a class="headerlink" href="#supreme.register.dense_MI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register image B to A, using mutual information and an image pyramid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>A, B</strong> : ndarray of uint</p>
+<blockquote>
+<p>Images to register.</p>
+</blockquote>
+<p><strong>levels</strong> : int</p>
+<blockquote>
+<p>Number of levels in the image pyramid.  Each level is downsampled
+by 2.</p>
+</blockquote>
+<p><strong>p</strong> : list of floats, optional</p>
+<blockquote>
+<p>The five initial parameters passed to the optimiser.  These are
+rotation angle, skew in the X direction, skew in the Y direction,
+translation in x and translation in y.</p>
+</blockquote>
+<p><strong>fast</strong> : bool</p>
+<blockquote>
+<p>If true, the histogram is not smoothed.</p>
+</blockquote>
+<p><strong>std</strong> : float</p>
+<blockquote>
+<p>Standard deviation used by the smoothing window.</p>
+</blockquote>
+<p><strong>win_size</strong> : int (odd)</p>
+<blockquote>
+<p>Window size of the smoother.</p>
+</blockquote>
+<p><strong>translation_only</strong> : bool</p>
+<blockquote>
+<p>Whether to use a translation-only motion model.  By default,
+a full homography is estimated.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : (3,3) ndarray of float</p>
+<blockquote class="last">
+<p>Transformation matrix that transforms B to A.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="fft-corr">
+<h2>fft_corr<a class="headerlink" href="#fft-corr" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.fft_corr">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">fft_corr</tt><big>(</big><em>A</em>, <em>B</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#supreme.register.fft_corr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="gauss">
+<h2>gauss<a class="headerlink" href="#gauss" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.gauss">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">gauss</tt><big>(</big><em>size=5</em>, <em>std=1.0</em><big>)</big><a class="headerlink" href="#supreme.register.gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discretised Gaussian window.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>size</strong> : int</p>
+<blockquote>
+<p>The generated window has dimensions <tt class="docutils literal"><span class="pre">(size,</span> <span class="pre">size)</span></tt>.</p>
+</blockquote>
+<p><strong>std</strong> : float</p>
+<blockquote>
+<p>Standard deviation.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>w</strong> : (size, size) ndarray</p>
+<blockquote class="last">
+<p>Discretised Gaussian window.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="joint-hist">
+<h2>joint_hist<a class="headerlink" href="#joint-hist" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.joint_hist">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">joint_hist</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.register.joint_hist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate the joint histogram of A and B.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>A, B</strong> : (M, N) ndarray of uint8</p>
+<blockquote>
+<p>Input images.</p>
+</blockquote>
+<p><strong>L</strong> : int</p>
+<blockquote>
+<p>Number of grey-levels in histogram.</p>
+</blockquote>
+<p><strong>win_size</strong> : int</p>
+<blockquote>
+<p>Width of Gaussian window used in the approximation.  A larger
+window can represent the Gaussian kernel somewhat more
+accurately.</p>
+</blockquote>
+<p><strong>std</strong> : float</p>
+<blockquote>
+<p>Standard deviation of the Gaussian used in the Parzen estimation.
+The higher the standard deviation, the smoother the resulting
+histogram.  <cite>win_size</cite> must be made large enough to accommodate
+an increased standard deviation.</p>
+</blockquote>
+<p><strong>fast</strong> : bool</p>
+<blockquote>
+<p>Calculate the classical histogram, instead of using a Parzen
+Window.  Fast, but does not estimate the PDF as accurately.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>H</strong> : (256, 256) ndarray of float</p>
+<blockquote class="last">
+<p>Estimation of the joint probability density function between A and B.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="logpolar">
+<h2>logpolar<a class="headerlink" href="#logpolar" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.logpolar">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">logpolar</tt><big>(</big><em>ref_img</em>, <em>img_list</em>, <em>window_shape=None</em>, <em>angles=181</em>, <em>variance_threshold=0.089999999999999997</em>, <em>peak_thresh=5</em><big>)</big><a class="headerlink" href="#supreme.register.logpolar" title="Permalink to this definition">¶</a></dt>
+<dd>Register the given images using log polar transforms.</dd></dl>
+
+</div>
+<div class="section" id="lp-patch-match">
+<h2>lp_patch_match<a class="headerlink" href="#lp-patch-match" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.lp_patch_match">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">lp_patch_match</tt><big>(</big><em>a</em>, <em>b</em>, <em>angles=360</em>, <em>Rs=None</em>, <em>plot_corr=False</em><big>)</big><a class="headerlink" href="#supreme.register.lp_patch_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align two patches, using the log polar transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Reference image.</p>
+</blockquote>
+<p><strong>b</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Target image.</p>
+</blockquote>
+<p><strong>angles</strong> : int</p>
+<blockquote>
+<p>Number of angles to use in log-polar transform.</p>
+</blockquote>
+<p><strong>Rs</strong> : int</p>
+<blockquote>
+<p>Number of radial samples used in the log-polar transform.</p>
+</blockquote>
+<p><strong>plot_corr</strong> : bool, optional</p>
+<blockquote>
+<p>Whether to plot the phase correlation coefficients.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c</strong> : float</p>
+<blockquote>
+<p>Peak correlation value.</p>
+</blockquote>
+<p><strong>theta</strong> : float</p>
+<blockquote>
+<p>Estimated rotation angle from <cite>a</cite> to <cite>b</cite>.</p>
+</blockquote>
+<p><strong>scale</strong> : float</p>
+<blockquote class="last">
+<p>Estimated scaling from <cite>a</cite> to <cite>b</cite>.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="mutual-info">
+<h2>mutual_info<a class="headerlink" href="#mutual-info" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.mutual_info">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">mutual_info</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.register.mutual_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the joint histogram of two images, calculate
+their mutual information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>H</strong> : (256, 256) ndarray of double</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>S</strong> : float</p>
+<blockquote class="last">
+<p>Mutual information.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="ncc">
+<h2>ncc<a class="headerlink" href="#ncc" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.ncc">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">ncc</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.register.ncc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Circular normalised cross-correlation of source and
+template image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>imgS</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Source image.</p>
+</blockquote>
+<p><strong>imgT</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Template image.  The dimensions of the template image must be
+smaller or equal to that of the source.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ncc</strong> : ndarray of float</p>
+<blockquote class="last">
+<p>Normalised correlation coefficients, of the same shape as the
+source image.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>While integral images are used, not all the suggestions made in
+[2] have been investigated.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R13]</a></td><td>J.P. Lewis, Fast Normalized Cross-Correlation, 1995,
+<a class="reference external" href="http://www.idiom.com/~zilla/">http://www.idiom.com/~zilla/</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R14]</a></td><td>D. Tsai and C. Lin, &#8220;Fast normalized cross correlation for
+defect detection,&#8221; Pattern Recognition Letters, vol. 24, 2003.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[R15]</a></td><td>F.C. Crow, &#8220;Summed-area tables for texture mapping,&#8221;
+ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="patch-match">
+<h2>patch_match<a class="headerlink" href="#patch-match" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.patch_match">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">patch_match</tt><big>(</big><em>a</em>, <em>b</em>, <em>angles=360</em>, <em>Rs=None</em>, <em>plot_corr=False</em><big>)</big><a class="headerlink" href="#supreme.register.patch_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align two patches, using the log polar transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Reference image.</p>
+</blockquote>
+<p><strong>b</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Target image.</p>
+</blockquote>
+<p><strong>angles</strong> : int</p>
+<blockquote>
+<p>Number of angles to use in log-polar transform.</p>
+</blockquote>
+<p><strong>Rs</strong> : int</p>
+<blockquote>
+<p>Number of radial samples used in the log-polar transform.</p>
+</blockquote>
+<p><strong>plot_corr</strong> : bool, optional</p>
+<blockquote>
+<p>Whether to plot the phase correlation coefficients.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c</strong> : float</p>
+<blockquote>
+<p>Peak correlation value.</p>
+</blockquote>
+<p><strong>theta</strong> : float</p>
+<blockquote>
+<p>Estimated rotation angle from <cite>a</cite> to <cite>b</cite>.</p>
+</blockquote>
+<p><strong>scale</strong> : float</p>
+<blockquote class="last">
+<p>Estimated scaling from <cite>a</cite> to <cite>b</cite>.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="phase-corr">
+<h2>phase_corr<a class="headerlink" href="#phase-corr" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.phase_corr">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">phase_corr</tt><big>(</big><em>A</em>, <em>B</em><big>)</big><a class="headerlink" href="#supreme.register.phase_corr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phase correlation of two images.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>A, B</strong> : (M,N) ndarray</p>
+<blockquote>
+<p>Input images.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (M,N) ndarray</p>
+<blockquote class="last">
+<p>Correlation coefficients.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Set up test data.  One array is offset (10, 10) from the other.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">10</span><span class="p">:,</span> <span class="mi">10</span><span class="p">:]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Correlate the two arrays, and ensure the peak is at (10, 10).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">phase_corr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span>
+<span class="go">(10, 10)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="radial-sum">
+<h2>radial_sum<a class="headerlink" href="#radial-sum" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.radial_sum">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">radial_sum</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.register.radial_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum the elements of an array outward along 360 directions
+(1-degree increments).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : (M,N) ndarray of double</p>
+<blockquote>
+<p>Input image.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>R</strong> : (360,) ndarray of double</p>
+<blockquote class="last">
+<p>Summed elements of <cite>img</cite> along each of 360 directions.  The central
+element, which belongs to all directions, is discarded.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">radial_sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">R</span><span class="p">[[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">315</span><span class="p">]]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="refine">
+<h2>refine<a class="headerlink" href="#refine" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.refine">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">refine</tt><big>(</big><em>reference</em>, <em>target</em>, <em>M_ref</em>, <em>M_target</em><big>)</big><a class="headerlink" href="#supreme.register.refine" title="Permalink to this definition">¶</a></dt>
+<dd>Refine registration parameters iteratively.</dd></dl>
+
+</div>
+<div class="section" id="sat">
+<h2>sat<a class="headerlink" href="#sat" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.sat">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">sat</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.register.sat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Summed area table / integral image.</p>
+<p>The integral image contains the sum of all elements above and to the
+left of it, i.e.:</p>
+<div class="math">
+<p><img src="../_images/math/60eb18acdabe921f0fcbc69cf1dfc9fe4934bb1d.png" alt="S[m, n] = \sum_{i \leq m} \sum_{j \leq n} X[i, j]" /></p>
+</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Input image.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>S</strong> : ndarray</p>
+<blockquote class="last">
+<p>Summed area table.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[R16]</a></td><td>F.C. Crow, &#8220;Summed-area tables for texture mapping,&#8221;
+ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="sat-sum">
+<h2>sat_sum<a class="headerlink" href="#sat-sum" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.sat_sum">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">sat_sum</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.register.sat_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Using a summed area table / integral image, calculate the sum
+over a given window.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sat</strong> : ndarray of uint64</p>
+<blockquote>
+<p>Summed area table / integral image.</p>
+</blockquote>
+<p><strong>r0, c0</strong> : int</p>
+<blockquote>
+<p>Top-left corner of block to be summed.</p>
+</blockquote>
+<p><strong>r1, c1</strong> : int</p>
+<blockquote>
+<p>Bottom-right corner of block to be summed.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>S</strong> : int</p>
+<blockquote class="last">
+<p>Sum over the given window.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="sparse">
+<h2>sparse<a class="headerlink" href="#sparse" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.sparse">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">sparse</tt><big>(</big><em>ref_feat_rows</em>, <em>ref_feat_cols</em>, <em>target_feat_rows</em>, <em>target_feat_cols</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#supreme.register.sparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compatibility wrapper. Calculate the PointCorrespondence
+homography which maps reference features to target features.</p>
+<p>See also: PointCorrespondence</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ref_feat_rows, ref_feat_cols</strong> : array of floats</p>
+<blockquote>
+<p>Coordinates in the reference image.</p>
+</blockquote>
+<p><strong>target_feat_rows, target_feat_cols</strong> : array of floats</p>
+<blockquote>
+<p>Coordinates in the target image.</p>
+</blockquote>
+<p><strong>mode</strong> : {&#8216;direct&#8217;, &#8216;iterative&#8217;, &#8216;RANSAC&#8217;}, optional</p>
+<blockquote>
+<p>Method used to estimate the correspondences.  See also
+<tt class="docutils literal"><span class="pre">PointCorrespondence</span></tt>.</p>
+</blockquote>
+<p><strong>RANSAC_mode</strong> : {&#8216;direct&#8217;, &#8216;iterative&#8217;}, optional</p>
+<blockquote class="last">
+<p>Whether RANSAC should estimates homographies directly
+or iteratively.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="window-wrap">
+<h2>window_wrap<a class="headerlink" href="#window-wrap" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.register.window_wrap">
+<tt class="descclassname">supreme.register.</tt><tt class="descname">window_wrap</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.register.window_wrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the corner-coordinates of the sub-windows resulting
+when wrapping one window around another.</p>
+<div class="highlight-python"><pre>No wrapping:
+
+.________.
+|  ___   |
+| |   |  |
+| |___|  |
+|________|
+
+Column wrapping:
+
+.________.
+|_      _|
+| |    | |
+|_|    |_|
+|________|
+
+Row wrapping:
+
+.________.
+|  |___| |
+|        |
+|  .___. |
+|__|___|_|
+
+Diagonal wrapping:
+
+.________.
+|__|  |__|
+|        |
+|__.  .__|
+|__|__|__|</pre>
+</div>
+<p class="rubric">Notes</p>
+<p>The algorithm works as follows:</p>
+<ul class="simple">
+<li>Assume that all wrappings take place</li>
+<li>Calculate the corners for each resulting window</li>
+<li>Remove windows with negative coordinates</li>
+<li>Clip all coordinates to the clipping window boundary</li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">register</span></tt></a><ul>
+<li><a class="reference external" href="#grid"><tt class="docutils literal"><span class="pre">Grid</span></tt></a></li>
+<li><a class="reference external" href="#pointcorrespondence"><tt class="docutils literal"><span class="pre">PointCorrespondence</span></tt></a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#affine-tm">affine_tm</a></li>
+<li><a class="reference external" href="#correspond">correspond</a></li>
+<li><a class="reference external" href="#dense-mi">dense_MI</a></li>
+<li><a class="reference external" href="#fft-corr">fft_corr</a></li>
+<li><a class="reference external" href="#gauss">gauss</a></li>
+<li><a class="reference external" href="#joint-hist">joint_hist</a></li>
+<li><a class="reference external" href="#logpolar">logpolar</a></li>
+<li><a class="reference external" href="#lp-patch-match">lp_patch_match</a></li>
+<li><a class="reference external" href="#mutual-info">mutual_info</a></li>
+<li><a class="reference external" href="#ncc">ncc</a></li>
+<li><a class="reference external" href="#patch-match">patch_match</a></li>
+<li><a class="reference external" href="#phase-corr">phase_corr</a></li>
+<li><a class="reference external" href="#radial-sum">radial_sum</a></li>
+<li><a class="reference external" href="#refine">refine</a></li>
+<li><a class="reference external" href="#sat">sat</a></li>
+<li><a class="reference external" href="#sat-sum">sat_sum</a></li>
+<li><a class="reference external" href="#sparse">sparse</a></li>
+<li><a class="reference external" href="#window-wrap">window_wrap</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.photometry.hdr.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">photometry.hdr</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.register.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.photometry.hdr.html" title="photometry.hdr"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

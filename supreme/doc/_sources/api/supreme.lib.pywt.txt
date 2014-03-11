@@ -1,0 +1,232 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`lib.pywt`
+===============
+.. automodule:: supreme.lib.pywt
+
+.. currentmodule:: supreme.lib.pywt
+
+:class:`MODES`
+--------------
+
+
+.. autoclass:: MODES
+  :members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+  .. automethod:: __init__
+
+:class:`Wavelet`
+----------------
+
+
+.. autoclass:: Wavelet
+  :members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+  .. automethod:: __init__
+
+:class:`BaseNode`
+-----------------
+
+
+.. autoclass:: BaseNode
+  :members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+  .. automethod:: __init__
+
+:class:`Node`
+-------------
+
+
+.. autoclass:: Node
+  :members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+  .. automethod:: __init__
+
+:class:`WaveletPacket`
+----------------------
+
+
+.. autoclass:: WaveletPacket
+  :members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+  .. automethod:: __init__
+
+:class:`Node2D`
+---------------
+
+
+.. autoclass:: Node2D
+  :members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+  .. automethod:: __init__
+
+:class:`WaveletPacket2D`
+------------------------
+
+
+.. autoclass:: WaveletPacket2D
+  :members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+  .. automethod:: __init__
+.. autosummary::
+
+   supreme.lib.pywt.dwt
+   supreme.lib.pywt.dwt_coeff_len
+   supreme.lib.pywt.dwt_max_level
+   supreme.lib.pywt.idwt
+   supreme.lib.pywt.swt
+   supreme.lib.pywt.swt_max_level
+   supreme.lib.pywt.upcoef
+   supreme.lib.pywt.downcoef
+   supreme.lib.pywt.wavelist
+   supreme.lib.pywt.families
+   supreme.lib.pywt.wavedec
+   supreme.lib.pywt.waverec
+   supreme.lib.pywt.wavedec2
+   supreme.lib.pywt.waverec2
+   supreme.lib.pywt.dwt2
+   supreme.lib.pywt.idwt2
+   supreme.lib.pywt.swt2
+   supreme.lib.pywt.dwtn
+   supreme.lib.pywt.intwave
+   supreme.lib.pywt.centfrq
+   supreme.lib.pywt.scal2frq
+   supreme.lib.pywt.qmf
+   supreme.lib.pywt.orthfilt
+
+dwt
+---
+
+.. autofunction:: supreme.lib.pywt.dwt
+
+dwt_coeff_len
+-------------
+
+.. autofunction:: supreme.lib.pywt.dwt_coeff_len
+
+dwt_max_level
+-------------
+
+.. autofunction:: supreme.lib.pywt.dwt_max_level
+
+idwt
+----
+
+.. autofunction:: supreme.lib.pywt.idwt
+
+swt
+---
+
+.. autofunction:: supreme.lib.pywt.swt
+
+swt_max_level
+-------------
+
+.. autofunction:: supreme.lib.pywt.swt_max_level
+
+upcoef
+------
+
+.. autofunction:: supreme.lib.pywt.upcoef
+
+downcoef
+--------
+
+.. autofunction:: supreme.lib.pywt.downcoef
+
+wavelist
+--------
+
+.. autofunction:: supreme.lib.pywt.wavelist
+
+families
+--------
+
+.. autofunction:: supreme.lib.pywt.families
+
+wavedec
+-------
+
+.. autofunction:: supreme.lib.pywt.wavedec
+
+waverec
+-------
+
+.. autofunction:: supreme.lib.pywt.waverec
+
+wavedec2
+--------
+
+.. autofunction:: supreme.lib.pywt.wavedec2
+
+waverec2
+--------
+
+.. autofunction:: supreme.lib.pywt.waverec2
+
+dwt2
+----
+
+.. autofunction:: supreme.lib.pywt.dwt2
+
+idwt2
+-----
+
+.. autofunction:: supreme.lib.pywt.idwt2
+
+swt2
+----
+
+.. autofunction:: supreme.lib.pywt.swt2
+
+dwtn
+----
+
+.. autofunction:: supreme.lib.pywt.dwtn
+
+intwave
+-------
+
+.. autofunction:: supreme.lib.pywt.intwave
+
+centfrq
+-------
+
+.. autofunction:: supreme.lib.pywt.centfrq
+
+scal2frq
+--------
+
+.. autofunction:: supreme.lib.pywt.scal2frq
+
+qmf
+---
+
+.. autofunction:: supreme.lib.pywt.qmf
+
+orthfilt
+--------
+
+.. autofunction:: supreme.lib.pywt.orthfilt
+

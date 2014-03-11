@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Reference &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="next" title="config" href="supreme.config.html" />
+    <link rel="prev" title="Table of Contents" href="../contents.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="supreme.config.html"><tt class="docutils literal"><span class="pre">config</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.config.html#ftype"><tt class="docutils literal"><span class="pre">ftype</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.config.html#itype"><tt class="docutils literal"><span class="pre">itype</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.config.html#abs-path">abs_path</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.config.html#get-log">get_log</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.ext.html"><tt class="docutils literal"><span class="pre">ext</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.ext.html#correlate">correlate</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.ext.html#interp-bilinear">interp_bilinear</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.ext.html#interp-transf-polygon">interp_transf_polygon</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.ext.html#line-intersect">line_intersect</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.ext.html#npnpoly">npnpoly</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.ext.html#poly-clip">poly_clip</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.ext.html#poly-interp-op">poly_interp_op</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.ext.html#variance-map">variance_map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.feature.html"><tt class="docutils literal"><span class="pre">feature</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.feature.html#match">match</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.feature.RANSAC.html"><tt class="docutils literal"><span class="pre">feature.RANSAC</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.feature.RANSAC.html#imodel"><tt class="docutils literal"><span class="pre">IModel</span></tt></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="supreme.feature.RANSAC.html#ransac"><tt class="docutils literal"><span class="pre">RANSAC</span></tt></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.feature.SIFT.html"><tt class="docutils literal"><span class="pre">feature.SIFT</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.feature.SIFT.html#fromfile">fromfile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.geometry.html"><tt class="docutils literal"><span class="pre">geometry</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.geometry.html#grid"><tt class="docutils literal"><span class="pre">Grid</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.geometry.html#polygon"><tt class="docutils literal"><span class="pre">Polygon</span></tt></a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.geometry.coord_path.html"><tt class="docutils literal"><span class="pre">geometry.coord_path</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.geometry.coord_path.html#build">build</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.geometry.coord_path.html#line">line</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.geometry.coord_path.html#circle">circle</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.geometry.coord_path.html#spline">spline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.geometry.cut.html"><tt class="docutils literal"><span class="pre">geometry.cut</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.geometry.cut.html#along-path">along_path</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.geometry.window.html"><tt class="docutils literal"><span class="pre">geometry.window</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.geometry.window.html#gauss">gauss</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.io.html"><tt class="docutils literal"><span class="pre">io</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.io.html#image"><tt class="docutils literal"><span class="pre">Image</span></tt></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="supreme.io.html#imagecollection"><tt class="docutils literal"><span class="pre">ImageCollection</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.io.html#imread">imread</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.io.html#imsave">imsave</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.io.html#load-vgg">load_vgg</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.io.vgg.html"><tt class="docutils literal"><span class="pre">io.vgg</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.io.vgg.html#load-vgg">load_vgg</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.lib.dpt.html"><tt class="docutils literal"><span class="pre">lib.dpt</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.dpt.html#connectedregion"><tt class="docutils literal"><span class="pre">ConnectedRegion</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.dpt.html#connected-regions">connected_regions</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.dpt.html#decompose">decompose</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.dpt.html#reconstruct">reconstruct</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.lib.fast.html"><tt class="docutils literal"><span class="pre">lib.fast</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.fast.html#corner-detect">corner_detect</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.fast.html#nonmax">nonmax</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.lib.klt.html"><tt class="docutils literal"><span class="pre">lib.klt</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#feature"><tt class="docutils literal"><span class="pre">Feature</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#featurehistory"><tt class="docutils literal"><span class="pre">FeatureHistory</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#featurelist"><tt class="docutils literal"><span class="pre">FeatureList</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#featuretable"><tt class="docutils literal"><span class="pre">FeatureTable</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#floatimage"><tt class="docutils literal"><span class="pre">FloatImage</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#structure"><tt class="docutils literal"><span class="pre">Structure</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#trackingcontext"><tt class="docutils literal"><span class="pre">TrackingContext</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#replace-lost-features">replace_lost_features</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#select-good-features">select_good_features</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.lib.klt.html#track-features">track_features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.noise.html"><tt class="docutils literal"><span class="pre">noise</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.noise.html#dwt-denoise">dwt_denoise</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.noise.html#variance">variance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.noise.wavelet.html"><tt class="docutils literal"><span class="pre">noise.wavelet</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.noise.wavelet.html#dwt-denoise">dwt_denoise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.photometry.hdr.html"><tt class="docutils literal"><span class="pre">photometry.hdr</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.photometry.hdr.html#deviceresponse"><tt class="docutils literal"><span class="pre">DeviceResponse</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.photometry.hdr.html#hdrmappernaive"><tt class="docutils literal"><span class="pre">HDRMapperNaive</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.photometry.hdr.html#photometrysampler"><tt class="docutils literal"><span class="pre">PhotometrySampler</span></tt></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.register.html"><tt class="docutils literal"><span class="pre">register</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#grid"><tt class="docutils literal"><span class="pre">Grid</span></tt></a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#pointcorrespondence"><tt class="docutils literal"><span class="pre">PointCorrespondence</span></tt></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#affine-tm">affine_tm</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#correspond">correspond</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#dense-mi">dense_MI</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#fft-corr">fft_corr</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#gauss">gauss</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#joint-hist">joint_hist</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#logpolar">logpolar</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#lp-patch-match">lp_patch_match</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#mutual-info">mutual_info</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#ncc">ncc</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#patch-match">patch_match</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#phase-corr">phase_corr</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#radial-sum">radial_sum</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#refine">refine</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#sat">sat</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#sat-sum">sat_sum</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#sparse">sparse</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.html#window-wrap">window_wrap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.register.stack.html"><tt class="docutils literal"><span class="pre">register.stack</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.stack.html#with-transform">with_transform</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.stack.html#mask-roi">mask_roi</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.register.stack.html#corners">corners</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.resolve.html"><tt class="docutils literal"><span class="pre">resolve</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.html#cost-prior-xsq">cost_prior_xsq</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.html#cost-squared-error">cost_squared_error</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.html#default-camera">default_camera</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.html#initial-guess-avg">initial_guess_avg</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.html#iresolve">iresolve</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.html#solve">solve</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.resolve.iterative.html"><tt class="docutils literal"><span class="pre">resolve.iterative</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.iterative.html#solve">solve</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.iterative.html#default-camera">default_camera</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.iterative.html#cost-squared-error">cost_squared_error</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.iterative.html#iresolve">iresolve</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.iterative.html#initial-guess-avg">initial_guess_avg</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.iterative.html#cost-prior-xsq">cost_prior_xsq</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.resolve.lsqr.html"><tt class="docutils literal"><span class="pre">resolve.lsqr</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.resolve.lsqr.html#lsqr">lsqr</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="supreme.transform.html"><tt class="docutils literal"><span class="pre">transform</span></tt></a><ul>
+<li class="toctree-l2"><a class="reference external" href="supreme.transform.html#chirpz">chirpz</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.transform.html#chirpz2">chirpz2</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.transform.html#homography">homography</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.transform.html#logpolar">logpolar</a></li>
+<li class="toctree-l2"><a class="reference external" href="supreme.transform.html#matrix">matrix</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="../contents.html"
+                                  title="previous chapter">Table of Contents</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.config.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">config</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/api.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.config.html" title="config"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../contents.html" title="Table of Contents"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>noise &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="noise.wavelet" href="supreme.noise.wavelet.html" />
+    <link rel="prev" title="lib.klt" href="supreme.lib.klt.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.noise">
+<h1><tt class="xref docutils literal"><span class="pre">noise</span></tt><a class="headerlink" href="#module-supreme.noise" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.noise.dwt_denoise" class="reference internal" href="#supreme.noise.dwt_denoise"><tt class="xref docutils literal"><span class="pre">supreme.noise.dwt_denoise</span></tt></a>(X[,&nbsp;wavelet,&nbsp;...])</td>
+<td>Denoise an image using the Discrete Wavelet Transform.</td>
+</tr>
+<tr><td><a title="supreme.noise.variance" class="reference internal" href="#supreme.noise.variance"><tt class="xref docutils literal"><span class="pre">supreme.noise.variance</span></tt></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="dwt-denoise">
+<h2>dwt_denoise<a class="headerlink" href="#dwt-denoise" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.noise.dwt_denoise">
+<tt class="descclassname">supreme.noise.</tt><tt class="descname">dwt_denoise</tt><big>(</big><em>X</em>, <em>wavelet='db8'</em>, <em>levels=4</em>, <em>alpha=2</em><big>)</big><a class="headerlink" href="#supreme.noise.dwt_denoise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Denoise an image using the Discrete Wavelet Transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : ndarray of uint8</p>
+<blockquote>
+<p>Image to denoise.</p>
+</blockquote>
+<p><strong>wavelet</strong> : str</p>
+<blockquote>
+<p>Wavlet family to use.  See <cite>supreme.lib.pywt.wavelist()</cite> for a
+complete list.</p>
+</blockquote>
+<p><strong>levels</strong> : int</p>
+<blockquote>
+<p>Number of levels to use in the decomposition.</p>
+</blockquote>
+<p><strong>alpha</strong> : float</p>
+<blockquote>
+<p>Parameter used to tweak the Wiener estimator.  A larger
+value of <cite>alpha</cite> results in a smoother output.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Y</strong> : ndarray of float64</p>
+<blockquote class="last">
+<p>Denoised image.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Implemented according to the overview of <a class="reference internal" href="#r8">[R8]</a> given in <a class="reference internal" href="#r7">[R7]</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R7]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> J. Fridrich, &#8220;Digital Image Forensics,&#8221; IEEE Signal Processing
+Magazine, vol. 26, 2009, pp. 26-37.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R8]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> M. Mihcak, I. Kozintsev, K. Ramchandran, and P. Moulin,
+&#8220;Low-complexity image denoising based on statistical
+modeling of wavelet coefficients,&#8221; IEEE Signal Processing
+Letters, vol. 6, 1999, pp. 300-303.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="variance">
+<h2>variance<a class="headerlink" href="#variance" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.noise.variance">
+<tt class="descclassname">supreme.noise.</tt><tt class="descname">variance</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.noise.variance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">noise</span></tt></a><ul>
+<li><a class="reference external" href="#dwt-denoise">dwt_denoise</a></li>
+<li><a class="reference external" href="#variance">variance</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.lib.klt.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">lib.klt</span></tt></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.noise.wavelet.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">noise.wavelet</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.noise.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.noise.wavelet.html" title="noise.wavelet"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supreme.lib.klt.html" title="lib.klt"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

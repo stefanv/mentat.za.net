@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>lib.decorator &mdash; SupReMe v0.1 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.1 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="lib.dpt" href="supreme.lib.dpt.html" />
+    <link rel="prev" title="lib.EXIF" href="supreme.lib.EXIF.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../../download.shtml">Download</a></li>
+				<li><a href="../../bibliography/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.lib.decorator">
+<h1><tt class="xref docutils literal"><span class="pre">lib.decorator</span></tt><a class="headerlink" href="#module-supreme.lib.decorator" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.decorator.decorator" class="reference internal" href="#supreme.lib.decorator.decorator"><tt class="xref docutils literal"><span class="pre">supreme.lib.decorator.decorator</span></tt></a>(caller[,&nbsp;func])</td>
+<td>General purpose decorator factory: takes a caller function as input and returns a decorator with the same attributes.</td>
+</tr>
+<tr><td><a title="supreme.lib.decorator.getinfo" class="reference internal" href="#supreme.lib.decorator.getinfo"><tt class="xref docutils literal"><span class="pre">supreme.lib.decorator.getinfo</span></tt></a>(func)</td>
+<td>Returns an info dictionary containing:</td>
+</tr>
+<tr><td><a title="supreme.lib.decorator.update_wrapper" class="reference internal" href="#supreme.lib.decorator.update_wrapper"><tt class="xref docutils literal"><span class="pre">supreme.lib.decorator.update_wrapper</span></tt></a>(...[,&nbsp;...])</td>
+<td>An improvement over functools.update_wrapper.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="decorator">
+<h2>decorator<a class="headerlink" href="#decorator" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.decorator.decorator">
+<tt class="descclassname">supreme.lib.decorator.</tt><tt class="descname">decorator</tt><big>(</big><em>caller</em>, <em>func=None</em><big>)</big><a class="headerlink" href="#supreme.lib.decorator.decorator" title="Permalink to this definition">¶</a></dt>
+<dd><p>General purpose decorator factory: takes a caller function as
+input and returns a decorator with the same attributes.
+A caller function is any function like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+    <span class="c"># do something</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is an example of usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nd">@decorator</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">chatty</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;Calling </span><span class="si">%r</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="o">.</span><span class="n">__name__</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">chatty</span><span class="o">.</span><span class="n">__name__</span>
+<span class="go">&#39;chatty&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nd">@chatty</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span> <span class="k">pass</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">()</span>
+<span class="go">Calling &#39;f&#39;</span>
+</pre></div>
+</div>
+<p>For sake of convenience, the decorator factory can also be called with
+two arguments. In this casem <tt class="docutils literal"><span class="pre">decorator(caller,</span> <span class="pre">func)</span></tt> is just a
+shortcut for <tt class="docutils literal"><span class="pre">decorator(caller)(func)</span></tt>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="getinfo">
+<h2>getinfo<a class="headerlink" href="#getinfo" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.decorator.getinfo">
+<tt class="descclassname">supreme.lib.decorator.</tt><tt class="descname">getinfo</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#supreme.lib.decorator.getinfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an info dictionary containing:
+- name (the name of the function : str)
+- argnames (the names of the arguments : list)
+- defaults (the values of the default arguments : tuple)
+- signature (the signature : str)
+- doc (the docstring : str)
+- module (the module name : str)
+- dict (the function __dict__ : str)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span> <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">info</span> <span class="o">=</span> <span class="n">getinfo</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span>
+<span class="go">&#39;f&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="p">[</span><span class="s">&quot;argnames&quot;</span><span class="p">]</span>
+<span class="go">[&#39;self&#39;, &#39;x&#39;, &#39;y&#39;, &#39;args&#39;, &#39;kw&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="p">[</span><span class="s">&quot;defaults&quot;</span><span class="p">]</span>
+<span class="go">(1, 2)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="p">[</span><span class="s">&quot;signature&quot;</span><span class="p">]</span>
+<span class="go">&#39;self, x, y, *args, **kw&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-wrapper">
+<h2>update_wrapper<a class="headerlink" href="#update-wrapper" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.decorator.update_wrapper">
+<tt class="descclassname">supreme.lib.decorator.</tt><tt class="descname">update_wrapper</tt><big>(</big><em>wrapper</em>, <em>wrapped</em>, <em>create=False</em><big>)</big><a class="headerlink" href="#supreme.lib.decorator.update_wrapper" title="Permalink to this definition">¶</a></dt>
+<dd>An improvement over functools.update_wrapper. By default it works the
+same, but if the &#8216;create&#8217; flag is set, generates a copy of the wrapper
+with the right signature and update the copy, not the original.
+Moreovoer, &#8216;wrapped&#8217; can be a dictionary with keys &#8216;name&#8217;, &#8216;doc&#8217;, &#8216;module&#8217;,
+&#8216;dict&#8217;, &#8216;defaults&#8217;.</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">lib.decorator</span></tt></a><ul>
+<li><a class="reference external" href="#decorator">decorator</a></li>
+<li><a class="reference external" href="#getinfo">getinfo</a></li>
+<li><a class="reference external" href="#update-wrapper">update_wrapper</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.lib.EXIF.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">lib.EXIF</span></tt></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.lib.dpt.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">lib.dpt</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.lib.decorator.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.lib.dpt.html" title="lib.dpt"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supreme.lib.EXIF.html" title="lib.EXIF"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.1 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

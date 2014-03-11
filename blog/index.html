@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Stefan van der Walt</title>
+  <meta name="author" content="Stefan van der Walt">
+
+  
+  <meta name="description" content="The talks for the 12th (fantastic) Python in Science conference just concluded,
+and I am happy to announce the
+conference proceedings. This may come &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://stefanv.github.com/blog/">
+  <link href="/blog/favicon.png" rel="icon">
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Stefan van der Walt" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+
+<!-- Enable mathjax support -->
+<script type="text/x-mathjax-config">
+<!--
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX", "TeX"]
+    }
+});
+-->
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35089033-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/blog/">Stefan van der Walt</a></h1>
+  
+    <h2>Programming / science / education / life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:stefanv.github.com/blog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/blog/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/27/scipy2013-proceedings/">SciPy2013 Proceedings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-27T17:20:00-05:00" pubdate data-updated="true">Jun 27<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/06/27/scipy2013-proceedings/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The talks for the 12th (fantastic) Python in Science conference just concluded,
+and I am happy to announce the
+<a href="https://dl.dropboxusercontent.com/u/380268/scipy_2013_proceedings_draft.pdf">conference proceedings</a>.</p>
+
+<p>This may come as a surprize to some, since in the past we have been unable to
+publish the proceedings in a timely manner.  So, what changed?</p>
+
+<h2>Review process</h2>
+
+<p>For 2013 we followed a <strong>very light-weight review process, via comments on
+GitHub pull-requests</strong>.  This change has an important consequence: in contrast
+to the traditional review process, where reviewers critically pull apart
+papers, the process now changes into a constructive conversation&#8211;the reviewer
+becomes an ally to the author, helping them to get their paper signed off on.</p>
+
+<p>In addition, this is a very familiar process to most members of our community
+who regularly collaborate to open source projects.  Most such projects nowadays
+follow a similar methodology for discussing and integrating patches.</p>
+
+<h2>Tools</h2>
+
+<p>Since we can&#8217;t expect reviewers to check out and build the papers themselves, a
+<a href="http://stefan.pythonanywhere.com">paper build bot</a> is provided to generate
+PDFs from pull-requests, which contain papers in plain-text ReStructuredText
+format (see the
+<a href="https://github.com/scipy/scipy_proceedings/tree/2013">proceedings repository</a> for
+examples, and all papers starting 2010).</p>
+
+<p>For authors, tools are provided to convert the ReStructuredText papers to
+PDFs in IEEE Computer Society paper style.</p>
+
+<h2>Help us with the final review</h2>
+
+<p>We welcome your feedback on the proceedings!  If you spot a mistake, please
+submit a pull request on
+<a href="https://github.com/scipy/scipy_proceedings/tree/2013">GitHub</a>.</p>
+
+<h2>Thanks</h2>
+
+<p>Finally, a big shout-out to the amazing team of people who organized this
+year&#8217;s conference, and to the wonderfully inclusive and talented Scientific
+Python community, of which I am proud to be part of.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/15/replicable-super-resolution-paper/">Replicable Super-resolution Paper</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-15T00:04:00-05:00" pubdate data-updated="true">Oct 15<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/15/replicable-super-resolution-paper/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While I loved the topic of my PhD, I had to take a break after staring at that
+problem for several years.  Thereafter, I was side-tracked by
+<a href="http://github.com/scipy">several</a> <a href="http://scikit-image.org">other</a>
+<a href="http://dipy.org">projects</a>, and never got around to publishing a paper on
+<a href="http://mentat.za.net/phd_dissertation.html">my dissertation</a>.</p>
+
+<p>Here, then, is a summary of the simple but effective super-resolution algorithm
+described therein:</p>
+
+<p><a href="http://arxiv.org/abs/1210.3404">http://arxiv.org/abs/1210.3404</a></p>
+
+<p>I also submitted this work to NIPS: the reviewers liked the paper, but they
+were not convinced of its novelty.  Having spent a lot of time studying the
+existing literature, all I can say in response is that, while solving the
+problem as a sparse linear system was well known at the time, phrasing Drizzle
+as a linear operator and using it for super-resolution was not.</p>
+
+<p>But the proof of the pudding is in the eating! Have a look at the
+<a href="http://mentat.za.net/supreme">results and published code</a> &#8211; you can download it all (including a
+sample data-set) and play with the different reconstruction parameters.  Quite
+a bit of the code has since graduated into <a href="http://scikit-image.org">scikit-image</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/30/scikits-image-0-dot-7/">Scikits-image 0.7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-30T16:18:00-05:00" pubdate data-updated="true">Sep 30<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/30/scikits-image-0-dot-7/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>We&#8217;re happy to announce the 7th version of scikits-image!</p>
+
+<p>Scikits-image is an image processing toolbox for SciPy that includes algorithms
+for segmentation, geometric transformations, color space manipulation,
+analysis, filtering, morphology, feature detection, and more.</p>
+
+<p>For more information, examples, and documentation, please visit <a href="http://skimage.org">our website</a>.</p>
+
+<h2>New Features</h2>
+
+<p>It&#8217;s been only 3 months since scikits-image 0.6 was released, but in that short
+time, we&#8217;ve managed to add plenty of new features and enhancements, including</p>
+
+<ul>
+<li>Geometric image transforms</li>
+<li>3 new image segmentation routines (Felsenzwalb, Quickshift, SLIC)</li>
+<li>Local binary patterns for texture characterization</li>
+<li>Morphological reconstruction</li>
+<li>Polygon approximation</li>
+<li>CIE Lab color space conversion</li>
+<li>Image pyramids</li>
+<li>Multispectral support in random walker segmentation</li>
+<li>Slicing, concatenation, and natural sorting of image collections</li>
+<li>Perimeter and coordinates measurements in regionprops</li>
+<li>An extensible image viewer based on Qt and Matplotlib, with plugins for edge
+detection, line-profiling, and viewing image collections</li>
+</ul>
+
+
+<p>Plus, this release adds a number of bug fixes, new examples, and performance
+enhancements.</p>
+
+<p><img src="/blog/images/posts/lena_superpixels.jpg" title="Comparison of pupular segmentation algorithms" ></p>
+
+<h2>Contributors to this release</h2>
+
+<p>This release was only possible due to the efforts of many contributors, both
+new and old.</p>
+
+<ul>
+<li>Andreas Mueller</li>
+<li>Andreas Wuerl</li>
+<li>Andy Wilson</li>
+<li>Brian Holt</li>
+<li>Christoph Gohlke</li>
+<li>Dharhas Pothina</li>
+<li>Emmanuelle Gouillart</li>
+<li>Guillaume Gay</li>
+<li>Josh Warner</li>
+<li>James Bergstra</li>
+<li>Johannes Schönberger</li>
+<li>Jonathan J. Helmus</li>
+<li>Juan Nunez-Iglesias</li>
+<li>Leon Tietz</li>
+<li>Marianne Corvellec</li>
+<li>Matt McCormick</li>
+<li>Neil Yager</li>
+<li>Nicolas Pinto</li>
+<li>Nicolas Poilvert</li>
+<li>Pavel Campr</li>
+<li>Petter Strandmark</li>
+<li>Stéfan van der Walt</li>
+<li>Tim Sheerman-Chase</li>
+<li>Tomas Kazmar</li>
+<li>Tony S Yu</li>
+<li>Wei Li</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/26/consolas-vs-source-code-pro/">Adobe&#8217;s New Free Font: Source Code Pro</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-26T11:49:00-05:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/26/consolas-vs-source-code-pro/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Adobe yesterday
+<a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html">released its free and open source Type family, Source Code Pro</a>,
+which includes an eye-pleasing monospace font  ideally suited for coding.
+In the past, and at the recommendation of <a href="http://blog.fperez.org/">Fernando Perez</a>, I&#8217;ve
+used the beautiful (but non-free) <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879">Consolas by Microsoft</a>; now,
+which is best?</p>
+
+<p>To install on Linux:</p>
+
+<ol>
+<li><a href="https://sourceforge.net/projects/sourcecodepro.adobe/">Grab the font</a>.</li>
+<li>Copy the files to <code>~/.fonts</code>.</li>
+<li>Run <code>fc-cache -f -v</code>.</li>
+</ol>
+
+
+<p>The font should now be available for selection in apps such as Firefox, Gnome
+Terminal, etc.  To make it the default font in Emacs::</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Source Code Pro&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here&#8217;s a comparison of Consolas (left) and Source Code Pro (right):</p>
+
+<p><img src="/blog/images/posts/consolas_vs_source_code_pro.png"></p>
+
+<p>Comments also on <a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik">Google+</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/25/emacs-package-management/">Emacs Package Management</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-25T17:14:00-05:00" pubdate data-updated="true">Sep 25<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/25/emacs-package-management/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently tried to install MuMaMo as one of the dependencies for Takafumi
+Arakaki&#8217;s <a href="https://github.com/tkf/emacs-ipython-notebook">Emacs-based IPython notebook</a>.  The instructions on the MuMaMo
+webpage were as clear as mud and aimed primarily at Windows users.  Enters
+<a href="https://github.com/dimitri/el-get">apt-get for Emacs</a>!</p>
+
+<p>My Emacs setup is shared across multiple machines: a synchronized <code>elisp</code>
+folder, containing <code>*.el</code> files, along with my <code>.emacs</code> configuration.
+<code>el-get</code> allows you to share your package installation folder in a similar
+fashion.  Here are some relevant configuration snippets:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="c1">; Everything gets installed into ~/elisp, a folder</span>
+</span><span class='line'><span class="c1">; I sync across all my machines</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-dir</span> <span class="s">&quot;~/elisp/el-get&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-install-dir</span> <span class="s">&quot;~/elisp/el-get/el-get&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="nv">el-get-install-dir</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">; If el-get is missing, install it automatically</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;el-get</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nv">url-retrieve</span>
+</span><span class='line'>   <span class="s">&quot;https://raw.github.com/dimitri/el-get/master/el-get-install.el&quot;</span>
+</span><span class='line'>   <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">s</span><span class="p">)</span>
+</span><span class='line'>     <span class="p">(</span><span class="nv">goto-char</span> <span class="p">(</span><span class="nv">point-max</span><span class="p">))</span>
+</span><span class='line'>     <span class="p">(</span><span class="nv">eval-print-last-sexp</span><span class="p">))))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">; Install these packages, and call the specified configuration snippets</span>
+</span><span class='line'><span class="c1">; after each load</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-sources</span>
+</span><span class='line'>      <span class="o">&#39;</span><span class="p">(</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">(</span><span class="ss">:name</span> <span class="nv">ethan-wspace</span>
+</span><span class='line'>         <span class="ss">:after</span> <span class="p">(</span><span class="k">progn</span>
+</span><span class='line'>                  <span class="p">(</span><span class="nv">global-ethan-wspace-mode</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>                  <span class="p">(</span><span class="nv">set-face-background</span> <span class="ss">&#39;ethan-wspace-face</span> <span class="s">&quot;gray95&quot;</span><span class="p">)))</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">(</span><span class="ss">:name</span> <span class="nv">column-marker</span>
+</span><span class='line'>         <span class="ss">:after</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;font-lock-mode-hook</span>
+</span><span class='line'>                          <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span> <span class="p">(</span><span class="nv">column-marker-1</span> <span class="mi">80</span><span class="p">))))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">; Also install these packages, no configuration required</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">my-packages</span>
+</span><span class='line'>      <span class="p">(</span><span class="nb">append</span>
+</span><span class='line'>       <span class="o">&#39;</span><span class="p">(</span><span class="nv">el-get</span> <span class="nv">maxframe</span> <span class="nv">markdown-mode</span> <span class="nv">ein</span> <span class="nv">python</span><span class="p">)</span>
+</span><span class='line'>       <span class="p">(</span><span class="nb">mapcar</span> <span class="ss">&#39;el-get-source-name</span> <span class="nv">el-get-sources</span><span class="p">)</span>
+</span><span class='line'>       <span class="p">)</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">; Check packages and install any that are missing</span>
+</span><span class='line'><span class="p">(</span><span class="nv">el-get</span> <span class="ss">&#39;sync</span> <span class="nv">my-packages</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There are two ways to specify packages to be installed: either include them in
+the <code>my-packages</code> list, or add them to <code>el-get-sources</code>, which in addition
+allows further customization upon successful loading of the package.</p>
+
+<p><a href="http://software-carpentry.org/2012/09/whats-in-your-stack/">What&#8217;s in your stack?</a> Here&#8217;s my list of Emacs packages:</p>
+
+<pre><code>Org Mode, Ethan's wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
+JS2
+</code></pre>
+
+<p>Do you know of any other useful packages?  Let me know!</p>
+
+<!-- References -->
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/06/27/scipy2013-proceedings/">SciPy2013 Proceedings</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/15/replicable-super-resolution-paper/">Replicable super-resolution paper</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/30/scikits-image-0-dot-7/">scikits-image 0.7</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/26/consolas-vs-source-code-pro/">Adobe&#8217;s new free font: Source Code Pro</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/25/emacs-package-management/">Emacs package management</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/sjvdwalt?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("stefanvdwalt", 4, false);
+    });
+  </script>
+  <script src="/blog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/stefanvdwalt" class="twitter-follow-button" data-show-count="false">Follow @stefanvdwalt</a>
+  
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Stefan van der Walt -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'stefanvdwalt';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

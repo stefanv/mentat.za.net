@@ -1,0 +1,1459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>lib.pywt &mdash; SupReMe v0.1 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.1 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="prev" title="lib.klt" href="supreme.lib.klt.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../../download.shtml">Download</a></li>
+				<li><a href="../../bibliography/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.lib.pywt">
+<h1><tt class="xref docutils literal"><span class="pre">lib.pywt</span></tt><a class="headerlink" href="#module-supreme.lib.pywt" title="Permalink to this headline">¶</a></h1>
+<p>Discrete forward and inverse wavelet transform, stationary wavelet transform,
+wavelet packets signal decomposition and reconstruction module.</p>
+<div class="section" id="modes">
+<h2><a title="supreme.lib.pywt.MODES" class="reference internal" href="#supreme.lib.pywt.MODES"><tt class="xref docutils literal"><span class="pre">MODES</span></tt></a><a class="headerlink" href="#modes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.pywt.MODES">
+<em class="property">class </em><tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">MODES</tt><a class="headerlink" href="#supreme.lib.pywt.MODES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<p>Different ways of dealing with border distortion problem while performing
+Discrete Wavelet Transform analysis.</p>
+<p>To reduce this effect the signal or image can be extended by adding extra samples.</p>
+<p>zpd - zero-padpadding                0  0 | x1 x2 ... xn | 0  0
+cpd - constant-padding              x1 x1 | x1 x2 ... xn | xn xn
+sym - symmetric-padding             x2 x1 | x1 x2 ... xn | xn xn-1
+ppd - periodic-padding            xn-1 xn | x1 x2 ... xn | x1 x2
+sp1 - smooth-padding               (1st derivative interpolation)</p>
+<p>DWT performed for these extension modes is slightly redundant, but ensure
+a perfect reconstruction for IDWT.</p>
+<dl class="docutils">
+<dt>per - periodization - like periodic-padding but gives the smallest number</dt>
+<dd>of decomposition coefficients. IDWT must be performed with the same mode.</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.pywt.MODES.from_object" class="reference internal" href="#supreme.lib.pywt.MODES.from_object"><tt class="xref docutils literal"><span class="pre">from_object</span></tt></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.lib.pywt.MODES.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.MODES.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.MODES.from_object">
+<tt class="descname">from_object</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.MODES.from_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="wavelet">
+<h2><a title="supreme.lib.pywt.Wavelet" class="reference internal" href="#supreme.lib.pywt.Wavelet"><tt class="xref docutils literal"><span class="pre">Wavelet</span></tt></a><a class="headerlink" href="#wavelet" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.pywt.Wavelet">
+<em class="property">class </em><tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">Wavelet</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<p>Wavelet(name, filter_bank=None) object describe properties of
+a wavelet identified by name.</p>
+<p>In order to use a built-in wavelet the parameter name must be
+a valid name from the wavelist() list.
+To create a custom wavelet object, filter_bank parameter must
+be specified. It can be either a list of four filters or an object
+that a <cite>filter_bank</cite> attribute which returns a list of four
+filters - just like the Wavelet instance itself.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.pywt.Wavelet.get_filters_coeffs" class="reference internal" href="#supreme.lib.pywt.Wavelet.get_filters_coeffs"><tt class="xref docutils literal"><span class="pre">get_filters_coeffs</span></tt></a></td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Wavelet.get_reverse_filters_coeffs" class="reference internal" href="#supreme.lib.pywt.Wavelet.get_reverse_filters_coeffs"><tt class="xref docutils literal"><span class="pre">get_reverse_filters_coeffs</span></tt></a></td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Wavelet.wavefun" class="reference internal" href="#supreme.lib.pywt.Wavelet.wavefun"><tt class="xref docutils literal"><span class="pre">wavefun</span></tt></a>([level])</td>
+<td>Calculates aproximations of scaling function (<em>phi</em>) and wavelet function (<em>psi</em>) on xgrid (<em>x</em>) at a given level of refinement.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.lib.pywt.Wavelet.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Wavelet.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.biorthogonal">
+<tt class="descname">biorthogonal</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.biorthogonal" title="Permalink to this definition">¶</a></dt>
+<dd>Is biorthogonal</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.dec_hi">
+<tt class="descname">dec_hi</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.dec_hi" title="Permalink to this definition">¶</a></dt>
+<dd>Highpass decomposition filter</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.dec_len">
+<tt class="descname">dec_len</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.dec_len" title="Permalink to this definition">¶</a></dt>
+<dd>Decomposition filters length</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.dec_lo">
+<tt class="descname">dec_lo</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.dec_lo" title="Permalink to this definition">¶</a></dt>
+<dd>Lowpass decomposition filter</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.family_name">
+<tt class="descname">family_name</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.family_name" title="Permalink to this definition">¶</a></dt>
+<dd>Wavelet family name</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.filter_bank">
+<tt class="descname">filter_bank</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.filter_bank" title="Permalink to this definition">¶</a></dt>
+<dd>Returns tuple of wavelet filters coefficients
+(dec_lo, dec_hi, rec_lo, rec_hi)</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Wavelet.get_filters_coeffs">
+<tt class="descname">get_filters_coeffs</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Wavelet.get_filters_coeffs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Wavelet.get_reverse_filters_coeffs">
+<tt class="descname">get_reverse_filters_coeffs</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Wavelet.get_reverse_filters_coeffs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.inverse_filter_bank">
+<tt class="descname">inverse_filter_bank</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.inverse_filter_bank" title="Permalink to this definition">¶</a></dt>
+<dd>Tuple of inverse wavelet filters coefficients
+(rec_lo[::-1], rec_hi[::-1], dec_lo[::-1], dec_hi[::-1])</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.name">
+<tt class="descname">name</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.number">
+<tt class="descname">number</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.orthogonal">
+<tt class="descname">orthogonal</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.orthogonal" title="Permalink to this definition">¶</a></dt>
+<dd>Is orthogonal</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.rec_hi">
+<tt class="descname">rec_hi</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.rec_hi" title="Permalink to this definition">¶</a></dt>
+<dd>Highpass reconstruction filter</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.rec_len">
+<tt class="descname">rec_len</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.rec_len" title="Permalink to this definition">¶</a></dt>
+<dd>Reconstruction filters length</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.rec_lo">
+<tt class="descname">rec_lo</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.rec_lo" title="Permalink to this definition">¶</a></dt>
+<dd>Lowpass reconstruction filter</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.short_family_name">
+<tt class="descname">short_family_name</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.short_family_name" title="Permalink to this definition">¶</a></dt>
+<dd>Short wavelet family name</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.symmetry">
+<tt class="descname">symmetry</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.symmetry" title="Permalink to this definition">¶</a></dt>
+<dd>Wavelet symmetry</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.vanishing_moments_phi">
+<tt class="descname">vanishing_moments_phi</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.vanishing_moments_phi" title="Permalink to this definition">¶</a></dt>
+<dd>Number of vanishing moments for scaling function</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Wavelet.vanishing_moments_psi">
+<tt class="descname">vanishing_moments_psi</tt><a class="headerlink" href="#supreme.lib.pywt.Wavelet.vanishing_moments_psi" title="Permalink to this definition">¶</a></dt>
+<dd>Number of vanishing moments for wavelet function</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Wavelet.wavefun">
+<tt class="descname">wavefun</tt><big>(</big><em>int level=8</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Wavelet.wavefun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates aproximations of scaling function (<em>phi</em>) and wavelet
+function (<em>psi</em>) on xgrid (<em>x</em>) at a given level of refinement.</p>
+<p>For orthogonal wavelets returns scaling function, wavelet function
+and xgrid - [phi, psi, x].</p>
+<p>For biorthogonal wavelets returns scaling and wavelet function both
+for decomposition and reconstruction and xgrid
+- [phi_d, psi_d, phi_r, psi_r, x].</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="basenode">
+<h2><a title="supreme.lib.pywt.BaseNode" class="reference internal" href="#supreme.lib.pywt.BaseNode"><tt class="xref docutils literal"><span class="pre">BaseNode</span></tt></a><a class="headerlink" href="#basenode" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.pywt.BaseNode">
+<em class="property">class </em><tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">BaseNode</tt><big>(</big><em>parent</em>, <em>data</em>, <em>node_name</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.BaseNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="supreme.lib.pywt.BaseNode.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>parent</em>, <em>data</em>, <em>node_name</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.BaseNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.BaseNode.decompose">
+<tt class="descname">decompose</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.BaseNode.decompose" title="Permalink to this definition">¶</a></dt>
+<dd>Decompose node data creating DWT coefficients subnodes.&#8221;</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.BaseNode.get_leaf_nodes">
+<tt class="descname">get_leaf_nodes</tt><big>(</big><em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.BaseNode.get_leaf_nodes" title="Permalink to this definition">¶</a></dt>
+<dd>Returns leaf nodes.</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.BaseNode.get_subnode">
+<tt class="descname">get_subnode</tt><big>(</big><em>part</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.BaseNode.get_subnode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns subnode.</p>
+<p>part      - subnode name
+decompose - if True and subnode does not exist, it will be created using</p>
+<blockquote>
+coefficients from DWT decomposition of the current node.</blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.BaseNode.has_any_subnode">
+<tt class="descname">has_any_subnode</tt><a class="headerlink" href="#supreme.lib.pywt.BaseNode.has_any_subnode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.BaseNode.is_empty">
+<tt class="descname">is_empty</tt><a class="headerlink" href="#supreme.lib.pywt.BaseNode.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.BaseNode.maxlevel">
+<tt class="descname">maxlevel</tt><a class="headerlink" href="#supreme.lib.pywt.BaseNode.maxlevel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.BaseNode.node_name">
+<tt class="descname">node_name</tt><a class="headerlink" href="#supreme.lib.pywt.BaseNode.node_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.BaseNode.reconstruct">
+<tt class="descname">reconstruct</tt><big>(</big><em>update=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.BaseNode.reconstruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstruct node from subnodes.
+If update param is True, then reconstructed data replaces the current
+node data.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>original node data if subnodes do not exist</li>
+<li>IDWT of subnodes otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.BaseNode.walk">
+<tt class="descname">walk</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.BaseNode.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node -&gt; func(node, <a href="#id1"><span class="problematic" id="id2">*</span></a>args)
+If func returns True, descending to subnodes will continue.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.BaseNode.walk_depth">
+<tt class="descname">walk_depth</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.BaseNode.walk_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node starting from the bottom-most
+nodes.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="node">
+<h2><a title="supreme.lib.pywt.Node" class="reference internal" href="#supreme.lib.pywt.Node"><tt class="xref docutils literal"><span class="pre">Node</span></tt></a><a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.pywt.Node">
+<em class="property">class </em><tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">Node</tt><big>(</big><em>parent</em>, <em>data</em>, <em>node_name</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.wavelet_packets.BaseNode</span></tt></p>
+<p>WaveletPacket tree node.</p>
+<p>Subnodes are called <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">d</span></tt>, just like approximation
+and detail coefficients in the Discrete Wavelet Transform.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.pywt.Node.decompose" class="reference internal" href="#supreme.lib.pywt.Node.decompose"><tt class="xref docutils literal"><span class="pre">decompose</span></tt></a>()</td>
+<td>Decompose node data creating DWT coefficients subnodes.&#8221;</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node.get_leaf_nodes" class="reference internal" href="#supreme.lib.pywt.Node.get_leaf_nodes"><tt class="xref docutils literal"><span class="pre">get_leaf_nodes</span></tt></a>([decompose])</td>
+<td>Returns leaf nodes.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node.get_subnode" class="reference internal" href="#supreme.lib.pywt.Node.get_subnode"><tt class="xref docutils literal"><span class="pre">get_subnode</span></tt></a>(part[,&nbsp;decompose])</td>
+<td>Returns subnode.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node.reconstruct" class="reference internal" href="#supreme.lib.pywt.Node.reconstruct"><tt class="xref docutils literal"><span class="pre">reconstruct</span></tt></a>([update])</td>
+<td>Reconstruct node from subnodes.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node.walk" class="reference internal" href="#supreme.lib.pywt.Node.walk"><tt class="xref docutils literal"><span class="pre">walk</span></tt></a>(func[,&nbsp;args,&nbsp;kwargs,&nbsp;decompose])</td>
+<td>Walk tree and call func on every node -&gt; func(node, <a href="#id3"><span class="problematic" id="id4">*</span></a>args)</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node.walk_depth" class="reference internal" href="#supreme.lib.pywt.Node.walk_depth"><tt class="xref docutils literal"><span class="pre">walk_depth</span></tt></a>(func[,&nbsp;args,&nbsp;kwargs,&nbsp;decompose])</td>
+<td>Walk tree and call func on every node starting from the bottom-most nodes.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.lib.pywt.Node.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>parent</em>, <em>data</em>, <em>node_name</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node.decompose">
+<tt class="descname">decompose</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node.decompose" title="Permalink to this definition">¶</a></dt>
+<dd>Decompose node data creating DWT coefficients subnodes.&#8221;</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node.get_leaf_nodes">
+<tt class="descname">get_leaf_nodes</tt><big>(</big><em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node.get_leaf_nodes" title="Permalink to this definition">¶</a></dt>
+<dd>Returns leaf nodes.</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node.get_subnode">
+<tt class="descname">get_subnode</tt><big>(</big><em>part</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node.get_subnode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns subnode.</p>
+<p>part      - subnode name
+decompose - if True and subnode does not exist, it will be created using</p>
+<blockquote>
+coefficients from DWT decomposition of the current node.</blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Node.has_any_subnode">
+<tt class="descname">has_any_subnode</tt><a class="headerlink" href="#supreme.lib.pywt.Node.has_any_subnode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Node.is_empty">
+<tt class="descname">is_empty</tt><a class="headerlink" href="#supreme.lib.pywt.Node.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Node.maxlevel">
+<tt class="descname">maxlevel</tt><a class="headerlink" href="#supreme.lib.pywt.Node.maxlevel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Node.node_name">
+<tt class="descname">node_name</tt><a class="headerlink" href="#supreme.lib.pywt.Node.node_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node.reconstruct">
+<tt class="descname">reconstruct</tt><big>(</big><em>update=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node.reconstruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstruct node from subnodes.
+If update param is True, then reconstructed data replaces the current
+node data.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>original node data if subnodes do not exist</li>
+<li>IDWT of subnodes otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node.walk">
+<tt class="descname">walk</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node -&gt; func(node, <a href="#id5"><span class="problematic" id="id6">*</span></a>args)
+If func returns True, descending to subnodes will continue.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node.walk_depth">
+<tt class="descname">walk_depth</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node.walk_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node starting from the bottom-most
+nodes.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="waveletpacket">
+<h2><a title="supreme.lib.pywt.WaveletPacket" class="reference internal" href="#supreme.lib.pywt.WaveletPacket"><tt class="xref docutils literal"><span class="pre">WaveletPacket</span></tt></a><a class="headerlink" href="#waveletpacket" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.pywt.WaveletPacket">
+<em class="property">class </em><tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">WaveletPacket</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>mode='sym'</em>, <em>maxlevel=None</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.wavelet_packets.Node</span></tt></p>
+<p>Data structure representing Wavelet Packet decomposition of signal.</p>
+<p>data     - original data (signal)
+wavelet  - wavelet used in DWT decomposition and reconstruction
+mode     - signal extension mode - see MODES
+maxlevel - maximum level of decomposition (will be computed if not</p>
+<blockquote>
+specified)</blockquote>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.pywt.WaveletPacket.decompose" class="reference internal" href="#supreme.lib.pywt.WaveletPacket.decompose"><tt class="xref docutils literal"><span class="pre">decompose</span></tt></a>()</td>
+<td>Decompose node data creating DWT coefficients subnodes.&#8221;</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket.get_leaf_nodes" class="reference internal" href="#supreme.lib.pywt.WaveletPacket.get_leaf_nodes"><tt class="xref docutils literal"><span class="pre">get_leaf_nodes</span></tt></a>([decompose])</td>
+<td>Returns leaf nodes.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket.get_level" class="reference internal" href="#supreme.lib.pywt.WaveletPacket.get_level"><tt class="xref docutils literal"><span class="pre">get_level</span></tt></a>(level[,&nbsp;order,&nbsp;decompose])</td>
+<td>Returns all nodes on the specified level.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket.get_subnode" class="reference internal" href="#supreme.lib.pywt.WaveletPacket.get_subnode"><tt class="xref docutils literal"><span class="pre">get_subnode</span></tt></a>(part[,&nbsp;decompose])</td>
+<td>Returns subnode.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket.reconstruct" class="reference internal" href="#supreme.lib.pywt.WaveletPacket.reconstruct"><tt class="xref docutils literal"><span class="pre">reconstruct</span></tt></a>([update])</td>
+<td>Reconstruct data value using coefficients from subnodes.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket.walk" class="reference internal" href="#supreme.lib.pywt.WaveletPacket.walk"><tt class="xref docutils literal"><span class="pre">walk</span></tt></a>(func[,&nbsp;args,&nbsp;kwargs,&nbsp;decompose])</td>
+<td>Walk tree and call func on every node -&gt; func(node, <a href="#id7"><span class="problematic" id="id8">*</span></a>args)</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket.walk_depth" class="reference internal" href="#supreme.lib.pywt.WaveletPacket.walk_depth"><tt class="xref docutils literal"><span class="pre">walk_depth</span></tt></a>(func[,&nbsp;args,&nbsp;kwargs,&nbsp;decompose])</td>
+<td>Walk tree and call func on every node starting from the bottom-most nodes.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>mode='sym'</em>, <em>maxlevel=None</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket.decompose">
+<tt class="descname">decompose</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.decompose" title="Permalink to this definition">¶</a></dt>
+<dd>Decompose node data creating DWT coefficients subnodes.&#8221;</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket.get_leaf_nodes">
+<tt class="descname">get_leaf_nodes</tt><big>(</big><em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.get_leaf_nodes" title="Permalink to this definition">¶</a></dt>
+<dd>Returns leaf nodes.</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket.get_level">
+<tt class="descname">get_level</tt><big>(</big><em>level</em>, <em>order='natural'</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.get_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all nodes on the specified level.</p>
+<dl class="docutils">
+<dt>order - &#8220;natural&#8221; - left to right in tree</dt>
+<dd><ul class="first last simple">
+<li>&#8220;freq&#8221; - band ordered</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket.get_subnode">
+<tt class="descname">get_subnode</tt><big>(</big><em>part</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.get_subnode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns subnode.</p>
+<p>part      - subnode name
+decompose - if True and subnode does not exist, it will be created using</p>
+<blockquote>
+coefficients from DWT decomposition of the current node.</blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.WaveletPacket.has_any_subnode">
+<tt class="descname">has_any_subnode</tt><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.has_any_subnode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.WaveletPacket.is_empty">
+<tt class="descname">is_empty</tt><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.WaveletPacket.maxlevel">
+<tt class="descname">maxlevel</tt><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.maxlevel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.WaveletPacket.node_name">
+<tt class="descname">node_name</tt><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.node_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket.reconstruct">
+<tt class="descname">reconstruct</tt><big>(</big><em>update=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.reconstruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstruct data value using coefficients from subnodes.</p>
+<p>If update is True, then data values will be replaced by
+reconstruction values, also in subnodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket.walk">
+<tt class="descname">walk</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node -&gt; func(node, <a href="#id9"><span class="problematic" id="id10">*</span></a>args)
+If func returns True, descending to subnodes will continue.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket.walk_depth">
+<tt class="descname">walk_depth</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket.walk_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node starting from the bottom-most
+nodes.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="node2d">
+<h2><a title="supreme.lib.pywt.Node2D" class="reference internal" href="#supreme.lib.pywt.Node2D"><tt class="xref docutils literal"><span class="pre">Node2D</span></tt></a><a class="headerlink" href="#node2d" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.pywt.Node2D">
+<em class="property">class </em><tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">Node2D</tt><big>(</big><em>parent</em>, <em>data</em>, <em>node_name</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.wavelet_packets.BaseNode</span></tt></p>
+<p>WaveletPacket tree node.
+Subnodes are called &#8216;a&#8217; (LL), &#8216;h&#8217; (LH), &#8216;v&#8217; (HL) and  &#8216;d&#8217; (HH), like approximation and
+detail coefficients in 2D Discrete Wavelet Transform</p>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.pywt.Node2D.decompose" class="reference internal" href="#supreme.lib.pywt.Node2D.decompose"><tt class="xref docutils literal"><span class="pre">decompose</span></tt></a>()</td>
+<td>Decompose node data creating DWT coefficients subnodes.&#8221;</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node2D.expand_2d_path" class="reference internal" href="#supreme.lib.pywt.Node2D.expand_2d_path"><tt class="xref docutils literal"><span class="pre">expand_2d_path</span></tt></a>(path)</td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node2D.get_leaf_nodes" class="reference internal" href="#supreme.lib.pywt.Node2D.get_leaf_nodes"><tt class="xref docutils literal"><span class="pre">get_leaf_nodes</span></tt></a>([decompose])</td>
+<td>Returns leaf nodes.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node2D.get_subnode" class="reference internal" href="#supreme.lib.pywt.Node2D.get_subnode"><tt class="xref docutils literal"><span class="pre">get_subnode</span></tt></a>(part[,&nbsp;decompose])</td>
+<td>Returns subnode.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node2D.reconstruct" class="reference internal" href="#supreme.lib.pywt.Node2D.reconstruct"><tt class="xref docutils literal"><span class="pre">reconstruct</span></tt></a>([update])</td>
+<td>Reconstruct node from subnodes.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node2D.walk" class="reference internal" href="#supreme.lib.pywt.Node2D.walk"><tt class="xref docutils literal"><span class="pre">walk</span></tt></a>(func[,&nbsp;args,&nbsp;kwargs,&nbsp;decompose])</td>
+<td>Walk tree and call func on every node -&gt; func(node, <a href="#id11"><span class="problematic" id="id12">*</span></a>args)</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.Node2D.walk_depth" class="reference internal" href="#supreme.lib.pywt.Node2D.walk_depth"><tt class="xref docutils literal"><span class="pre">walk_depth</span></tt></a>(func[,&nbsp;args,&nbsp;kwargs,&nbsp;decompose])</td>
+<td>Walk tree and call func on every node starting from the bottom-most nodes.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.lib.pywt.Node2D.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>parent</em>, <em>data</em>, <em>node_name</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node2D.decompose">
+<tt class="descname">decompose</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D.decompose" title="Permalink to this definition">¶</a></dt>
+<dd>Decompose node data creating DWT coefficients subnodes.&#8221;</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node2D.expand_2d_path">
+<tt class="descname">expand_2d_path</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D.expand_2d_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node2D.get_leaf_nodes">
+<tt class="descname">get_leaf_nodes</tt><big>(</big><em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D.get_leaf_nodes" title="Permalink to this definition">¶</a></dt>
+<dd>Returns leaf nodes.</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node2D.get_subnode">
+<tt class="descname">get_subnode</tt><big>(</big><em>part</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D.get_subnode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns subnode.</p>
+<p>part      - subnode name
+decompose - if True and subnode does not exist, it will be created using</p>
+<blockquote>
+coefficients from DWT decomposition of the current node.</blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Node2D.has_any_subnode">
+<tt class="descname">has_any_subnode</tt><a class="headerlink" href="#supreme.lib.pywt.Node2D.has_any_subnode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Node2D.is_empty">
+<tt class="descname">is_empty</tt><a class="headerlink" href="#supreme.lib.pywt.Node2D.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Node2D.maxlevel">
+<tt class="descname">maxlevel</tt><a class="headerlink" href="#supreme.lib.pywt.Node2D.maxlevel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.Node2D.node_name">
+<tt class="descname">node_name</tt><a class="headerlink" href="#supreme.lib.pywt.Node2D.node_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node2D.reconstruct">
+<tt class="descname">reconstruct</tt><big>(</big><em>update=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D.reconstruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstruct node from subnodes.
+If update param is True, then reconstructed data replaces the current
+node data.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>original node data if subnodes do not exist</li>
+<li>IDWT of subnodes otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node2D.walk">
+<tt class="descname">walk</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node -&gt; func(node, <a href="#id13"><span class="problematic" id="id14">*</span></a>args)
+If func returns True, descending to subnodes will continue.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.Node2D.walk_depth">
+<tt class="descname">walk_depth</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.Node2D.walk_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node starting from the bottom-most
+nodes.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="waveletpacket2d">
+<h2><a title="supreme.lib.pywt.WaveletPacket2D" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D"><tt class="xref docutils literal"><span class="pre">WaveletPacket2D</span></tt></a><a class="headerlink" href="#waveletpacket2d" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.lib.pywt.WaveletPacket2D">
+<em class="property">class </em><tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">WaveletPacket2D</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>mode='sp1'</em>, <em>maxlevel=None</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.wavelet_packets.Node2D</span></tt></p>
+<p>Data structure representing 2D Wavelet Packet decomposition of signal.</p>
+<p>data     - original data (signal)
+wavelet  - wavelet used in DWT decomposition and reconstruction
+mode     - signal extension mode - see MODES
+maxlevel - maximum level of decomposition (will be computed if not</p>
+<blockquote>
+specified)</blockquote>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.pywt.WaveletPacket2D.decompose" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D.decompose"><tt class="xref docutils literal"><span class="pre">decompose</span></tt></a>()</td>
+<td>Decompose node data creating DWT coefficients subnodes.&#8221;</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket2D.expand_2d_path" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D.expand_2d_path"><tt class="xref docutils literal"><span class="pre">expand_2d_path</span></tt></a>(path)</td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket2D.get_leaf_nodes" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D.get_leaf_nodes"><tt class="xref docutils literal"><span class="pre">get_leaf_nodes</span></tt></a>([decompose])</td>
+<td>Returns leaf nodes.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket2D.get_level" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D.get_level"><tt class="xref docutils literal"><span class="pre">get_level</span></tt></a>(level[,&nbsp;order,&nbsp;decompose])</td>
+<td>Returns all nodes from specified level.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket2D.get_subnode" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D.get_subnode"><tt class="xref docutils literal"><span class="pre">get_subnode</span></tt></a>(part[,&nbsp;decompose])</td>
+<td>Returns subnode.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket2D.reconstruct" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D.reconstruct"><tt class="xref docutils literal"><span class="pre">reconstruct</span></tt></a>([update])</td>
+<td>Reconstruct data using coefficients from subnodes.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket2D.walk" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D.walk"><tt class="xref docutils literal"><span class="pre">walk</span></tt></a>(func[,&nbsp;args,&nbsp;kwargs,&nbsp;decompose])</td>
+<td>Walk tree and call func on every node -&gt; func(node, <a href="#id15"><span class="problematic" id="id16">*</span></a>args)</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.WaveletPacket2D.walk_depth" class="reference internal" href="#supreme.lib.pywt.WaveletPacket2D.walk_depth"><tt class="xref docutils literal"><span class="pre">walk_depth</span></tt></a>(func[,&nbsp;args,&nbsp;kwargs,&nbsp;decompose])</td>
+<td>Walk tree and call func on every node starting from the bottom-most nodes.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>mode='sp1'</em>, <em>maxlevel=None</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.decompose">
+<tt class="descname">decompose</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.decompose" title="Permalink to this definition">¶</a></dt>
+<dd>Decompose node data creating DWT coefficients subnodes.&#8221;</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.expand_2d_path">
+<tt class="descname">expand_2d_path</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.expand_2d_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.get_leaf_nodes">
+<tt class="descname">get_leaf_nodes</tt><big>(</big><em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.get_leaf_nodes" title="Permalink to this definition">¶</a></dt>
+<dd>Returns leaf nodes.</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.get_level">
+<tt class="descname">get_level</tt><big>(</big><em>level</em>, <em>order='natural'</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.get_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all nodes from specified level.</p>
+<p>If order is <cite>natural</cite>, a flat list is returned.</p>
+<p>If order is <cite>freq</cite>, a 2d structure with rows and cols
+sorted by corresponding dimension frequency of 2d
+coefficient array (adapted from 1d case).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.get_subnode">
+<tt class="descname">get_subnode</tt><big>(</big><em>part</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.get_subnode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns subnode.</p>
+<p>part      - subnode name
+decompose - if True and subnode does not exist, it will be created using</p>
+<blockquote>
+coefficients from DWT decomposition of the current node.</blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.WaveletPacket2D.has_any_subnode">
+<tt class="descname">has_any_subnode</tt><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.has_any_subnode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.WaveletPacket2D.is_empty">
+<tt class="descname">is_empty</tt><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.WaveletPacket2D.maxlevel">
+<tt class="descname">maxlevel</tt><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.maxlevel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.lib.pywt.WaveletPacket2D.node_name">
+<tt class="descname">node_name</tt><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.node_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.reconstruct">
+<tt class="descname">reconstruct</tt><big>(</big><em>update=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.reconstruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstruct data using coefficients from subnodes.</p>
+<p>If update is set to True then the coefficients of the current node
+and its subnodes will be replaced with values from reconstruction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.walk">
+<tt class="descname">walk</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=True</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node -&gt; func(node, <a href="#id17"><span class="problematic" id="id18">*</span></a>args)
+If func returns True, descending to subnodes will continue.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.lib.pywt.WaveletPacket2D.walk_depth">
+<tt class="descname">walk_depth</tt><big>(</big><em>func</em>, <em>args=()</em>, <em>kwargs={}</em>, <em>decompose=False</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.WaveletPacket2D.walk_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk tree and call func on every node starting from the bottom-most
+nodes.</p>
+<p>func - callable
+args - func parms
+kwargs - func keyword params</p>
+</dd></dl>
+
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.lib.pywt.dwt" class="reference internal" href="#supreme.lib.pywt.dwt"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.dwt</span></tt></a></td>
+<td>(cA, cD) = dwt(data, wavelet, mode=&#8217;sym&#8217;)</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.dwt_coeff_len" class="reference internal" href="#supreme.lib.pywt.dwt_coeff_len"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.dwt_coeff_len</span></tt></a></td>
+<td>dwt_coeff_len(int data_len, int filter_len, mode) -&gt; int</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.dwt_max_level" class="reference internal" href="#supreme.lib.pywt.dwt_max_level"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.dwt_max_level</span></tt></a></td>
+<td>dwt_max_level(int data_len, int filter_len) -&gt; int</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.idwt" class="reference internal" href="#supreme.lib.pywt.idwt"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.idwt</span></tt></a>(cA,&nbsp;cD,&nbsp;wavelet[,&nbsp;...])</td>
+<td>Single level Inverse Discrete Wavelet Transform</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.swt" class="reference internal" href="#supreme.lib.pywt.swt"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.swt</span></tt></a>(data,&nbsp;wavelet,&nbsp;level)</td>
+<td>Performs multilevel Stationary Wavelet Transform.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.swt_max_level" class="reference internal" href="#supreme.lib.pywt.swt_max_level"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.swt_max_level</span></tt></a>(input_len)</td>
+<td>Returns maximum level of Stationary Wavelet Transform for data of given length.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.upcoef" class="reference internal" href="#supreme.lib.pywt.upcoef"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.upcoef</span></tt></a>(part,&nbsp;coeffs,&nbsp;wavelet)</td>
+<td>Direct reconstruction from cefficients.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.downcoef" class="reference internal" href="#supreme.lib.pywt.downcoef"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.downcoef</span></tt></a>(part,&nbsp;data,&nbsp;wavelet)</td>
+<td>Partial Discrete Wavelet Transform data decomposition.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.wavelist" class="reference internal" href="#supreme.lib.pywt.wavelist"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.wavelist</span></tt></a></td>
+<td>wavelist(family=None) -&gt; []</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.families" class="reference internal" href="#supreme.lib.pywt.families"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.families</span></tt></a></td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.wavedec" class="reference internal" href="#supreme.lib.pywt.wavedec"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.wavedec</span></tt></a>(data,&nbsp;wavelet[,&nbsp;...])</td>
+<td>Multilevel 1D Discrete Wavelet Transform of data.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.waverec" class="reference internal" href="#supreme.lib.pywt.waverec"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.waverec</span></tt></a>(coeffs,&nbsp;wavelet[,&nbsp;mode])</td>
+<td>Multilevel 1D Inverse Discrete Wavelet Transform.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.wavedec2" class="reference internal" href="#supreme.lib.pywt.wavedec2"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.wavedec2</span></tt></a>(data,&nbsp;wavelet[,&nbsp;...])</td>
+<td>Multilevel 2D Discrete Wavelet Transform.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.waverec2" class="reference internal" href="#supreme.lib.pywt.waverec2"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.waverec2</span></tt></a>(coeffs,&nbsp;wavelet[,&nbsp;...])</td>
+<td>Multilevel 2D Inverse Discrete Wavelet Transform.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.dwt2" class="reference internal" href="#supreme.lib.pywt.dwt2"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.dwt2</span></tt></a>(data,&nbsp;wavelet[,&nbsp;mode])</td>
+<td>2D Discrete Wavelet Transform.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.idwt2" class="reference internal" href="#supreme.lib.pywt.idwt2"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.idwt2</span></tt></a>(coeffs,&nbsp;wavelet[,&nbsp;mode])</td>
+<td>2D Inverse Discrete Wavelet Transform. Reconstruct data from coefficients</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.swt2" class="reference internal" href="#supreme.lib.pywt.swt2"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.swt2</span></tt></a>(data,&nbsp;wavelet,&nbsp;level)</td>
+<td>2D Stationary Wavelet Transform.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.dwtn" class="reference internal" href="#supreme.lib.pywt.dwtn"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.dwtn</span></tt></a>(data,&nbsp;wavelet[,&nbsp;mode])</td>
+<td>Single-level n-dimensional Discrete Wavelet Transform.</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.intwave" class="reference internal" href="#supreme.lib.pywt.intwave"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.intwave</span></tt></a>(wavelet[,&nbsp;precision])</td>
+<td>intwave(wavelet, precision=8) -&gt; [int_psi, x]                   - for orthogonal wavelets</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.centfrq" class="reference internal" href="#supreme.lib.pywt.centfrq"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.centfrq</span></tt></a>(wavelet[,&nbsp;precision])</td>
+<td>centfrq(wavelet, precision=8) -&gt; float                  - for orthogonal wavelets</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.scal2frq" class="reference internal" href="#supreme.lib.pywt.scal2frq"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.scal2frq</span></tt></a>(wavelet,&nbsp;scale,&nbsp;delta)</td>
+<td>scal2frq(wavelet, scale, delta, precision=8) -&gt; float   - for orthogonal wavelets</td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.qmf" class="reference internal" href="#supreme.lib.pywt.qmf"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.qmf</span></tt></a>(filter)</td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.lib.pywt.orthfilt" class="reference internal" href="#supreme.lib.pywt.orthfilt"><tt class="xref docutils literal"><span class="pre">supreme.lib.pywt.orthfilt</span></tt></a>(scaling_filter)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dwt">
+<h2>dwt<a class="headerlink" href="#dwt" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.dwt">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">dwt</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.dwt" title="Permalink to this definition">¶</a></dt>
+<dd><p>(cA, cD) = dwt(data, wavelet, mode=&#8217;sym&#8217;)</p>
+<p>Single level Discrete Wavelet Transform</p>
+<p>data    - input signal
+wavelet - wavelet to use (Wavelet object or name)
+mode    - signal extension mode, see MODES</p>
+<p>Returns approximation (cA) and detail (cD) coefficients.</p>
+<p>Length of coefficients arrays depends on the selected mode:</p>
+<blockquote>
+<dl class="docutils">
+<dt>for all modes except periodization:</dt>
+<dd>len(cA) == len(cD) == floor((len(data) + wavelet.dec_len - 1) / 2)</dd>
+<dt>for periodization mode (&#8220;per&#8221;):</dt>
+<dd>len(cA) == len(cD) == ceil(len(data) / 2)</dd>
+</dl>
+</blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dwt-coeff-len">
+<h2>dwt_coeff_len<a class="headerlink" href="#dwt-coeff-len" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.dwt_coeff_len">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">dwt_coeff_len</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.dwt_coeff_len" title="Permalink to this definition">¶</a></dt>
+<dd><p>dwt_coeff_len(int data_len, int filter_len, mode) -&gt; int</p>
+<p>Returns length of dwt output for given data length, filter length and mode:</p>
+<blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt>for all modes except periodization:</dt>
+<dd><p class="first last">len(cA) == len(cD) == floor((len(data) + wavelet.dec_len - 1) / 2)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>for periodization mode (&#8220;per&#8221;):</dt>
+<dd><p class="first last">len(cA) == len(cD) == ceil(len(data) / 2)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="dwt-max-level">
+<h2>dwt_max_level<a class="headerlink" href="#dwt-max-level" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.dwt_max_level">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">dwt_max_level</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.dwt_max_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>dwt_max_level(int data_len, int filter_len) -&gt; int</p>
+<p>Compute the maximum usefull level of decomposition
+for given input data length and wavelet filter length.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="idwt">
+<h2>idwt<a class="headerlink" href="#idwt" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.idwt">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">idwt</tt><big>(</big><em>cA</em>, <em>cD</em>, <em>wavelet</em>, <em>mode='sym'</em>, <em>correct_size=0</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.idwt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single level Inverse Discrete Wavelet Transform</p>
+<p>cA      - approximation coefficients
+cD      - detail coefficients
+wavelet - wavelet to use (Wavelet object or name)
+mode    - signal extension mode, see MODES</p>
+<dl class="docutils">
+<dt>correct_size - under normal conditions (all data lengths dyadic) Ca and cD</dt>
+<dd>coefficients lists must have the same lengths. With correct_size
+set to True, length of cA may be greater by one than length of cA.
+Useful when doing multilevel decomposition and reconstruction of
+non-dyadic length signals.</dd>
+</dl>
+<p>Returns single level reconstruction of signal from given coefficients.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="swt">
+<h2>swt<a class="headerlink" href="#swt" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.swt">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">swt</tt><big>(</big><em>object data</em>, <em>object wavelet</em>, <em>int level</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.swt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs multilevel Stationary Wavelet Transform.</p>
+<p>data    - input signal
+wavelet - wavelet to use (Wavelet object or name)
+level   - transform level</p>
+<dl class="docutils">
+<dt>Returns list of approximation and details coefficients pairs in form</dt>
+<dd>[(cAn, cDn), ..., (cA2, cD2), (cA1, cD1)], where n = level</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="swt-max-level">
+<h2>swt_max_level<a class="headerlink" href="#swt-max-level" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.swt_max_level">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">swt_max_level</tt><big>(</big><em>int input_len</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.swt_max_level" title="Permalink to this definition">¶</a></dt>
+<dd>Returns maximum level of Stationary Wavelet Transform for data of given length.</dd></dl>
+
+</div>
+<div class="section" id="upcoef">
+<h2>upcoef<a class="headerlink" href="#upcoef" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.upcoef">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">upcoef</tt><big>(</big><em>part</em>, <em>coeffs</em>, <em>wavelet</em>, <em>level=1</em>, <em>take=0</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.upcoef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direct reconstruction from cefficients.</p>
+<dl class="docutils">
+<dt>part    - coefficients type:</dt>
+<dd>&#8216;a&#8217; - approximations reconstruction is performed
+&#8216;d&#8217; - details reconstruction is performed</dd>
+</dl>
+<p>coeffs  - coefficients array
+wavelet - wavelet to use (Wavelet object or name)
+level   - multilevel reconstruction level
+take    - take central part of length equal to &#8216;take&#8217; from the result</p>
+</dd></dl>
+
+</div>
+<div class="section" id="downcoef">
+<h2>downcoef<a class="headerlink" href="#downcoef" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.downcoef">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">downcoef</tt><big>(</big><em>part</em>, <em>data</em>, <em>wavelet</em>, <em>mode='sym'</em>, <em>level=1</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.downcoef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partial Discrete Wavelet Transform data decomposition.</p>
+<dl class="docutils">
+<dt>part    - decomposition type:</dt>
+<dd>&#8216;a&#8217; - compute approximations coefficients
+&#8216;d&#8217; - compute details coefficients</dd>
+</dl>
+<p>data    - input signal
+wavelet - wavelet to use (Wavelet object or name)
+mode    - signal extension mode, see MODES
+level   - decomposition level</p>
+</dd></dl>
+
+</div>
+<div class="section" id="wavelist">
+<h2>wavelist<a class="headerlink" href="#wavelist" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.wavelist">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">wavelist</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.wavelist" title="Permalink to this definition">¶</a></dt>
+<dd><p>wavelist(family=None) -&gt; []</p>
+<p>Returns list of available wavelet names for the given family name.</p>
+<p>family - short family name (&#8220;haar&#8221;, &#8220;db&#8221;, &#8220;sym&#8221;, &#8220;coif&#8221;, &#8220;bior&#8221;, &#8220;rbio&#8221; or &#8220;dmey&#8221;)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="families">
+<h2>families<a class="headerlink" href="#families" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.families">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">families</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.lib.pywt.families" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="wavedec">
+<h2>wavedec<a class="headerlink" href="#wavedec" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.wavedec">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">wavedec</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>mode='sym'</em>, <em>level=None</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.wavedec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilevel 1D Discrete Wavelet Transform of data.
+Returns coefficients list - [cAn, cDn, cDn-1, ..., cD2, cD1]</p>
+<p>data    - input data
+wavelet - wavelet to use (Wavelet object or name string)
+mode    - signal extension mode, see MODES
+level   - decomposition level. If level is None then it will be</p>
+<blockquote>
+calculated using <cite>dwt_max_level</cite> function.</blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="waverec">
+<h2>waverec<a class="headerlink" href="#waverec" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.waverec">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">waverec</tt><big>(</big><em>coeffs</em>, <em>wavelet</em>, <em>mode='sym'</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.waverec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilevel 1D Inverse Discrete Wavelet Transform.</p>
+<p>coeffs  - coefficients list [cAn, cDn, cDn-1, ..., cD2, cD1]
+wavelet - wavelet to use (Wavelet object or name string)
+mode    - signal extension mode, see MODES</p>
+</dd></dl>
+
+</div>
+<div class="section" id="wavedec2">
+<h2>wavedec2<a class="headerlink" href="#wavedec2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.wavedec2">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">wavedec2</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>mode='sym'</em>, <em>level=None</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.wavedec2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilevel 2D Discrete Wavelet Transform.</p>
+<p>data    - 2D input data
+wavelet - wavelet to use (Wavelet object or name string)
+mode    - signal extension mode, see MODES
+level   - decomposition level. If level is None then it will be</p>
+<blockquote>
+calculated using <cite>dwt_max_level</cite> function .</blockquote>
+<p>Returns coefficients list - [cAn, (cHn, cVn, cDn), ... (cH1, cV1, cD1)]</p>
+</dd></dl>
+
+</div>
+<div class="section" id="waverec2">
+<h2>waverec2<a class="headerlink" href="#waverec2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.waverec2">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">waverec2</tt><big>(</big><em>coeffs</em>, <em>wavelet</em>, <em>mode='sym'</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.waverec2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilevel 2D Inverse Discrete Wavelet Transform.</p>
+<p>coeffs  - coefficients list [cAn, (cHn, cVn, cDn), ... (cH1, cV1, cD1)]
+wavelet - wavelet to use (Wavelet object or name string)
+mode    - signal extension mode, see MODES</p>
+<p>Returns 2D array of reconstructed data.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dwt2">
+<h2>dwt2<a class="headerlink" href="#dwt2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.dwt2">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">dwt2</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>mode='sym'</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.dwt2" title="Permalink to this definition">¶</a></dt>
+<dd><p>2D Discrete Wavelet Transform.</p>
+<p>data    - 2D array with input data
+wavelet - wavelet to use (Wavelet object or name string)
+mode    - signal extension mode, see MODES</p>
+<p>Returns approximaion and three details 2D coefficients arrays.</p>
+<p>The result form four 2D coefficients arrays organized in tuples:</p>
+<blockquote>
+<dl class="docutils">
+<dt>(approximation,</dt>
+<dd>(horizontal details,
+vertical details,
+diagonal details)</dd>
+</dl>
+<p>)</p>
+</blockquote>
+<p>which sometimes is also interpreted as layed out in one 2D array
+of coefficients, where:</p>
+<div class="highlight-python"><pre>                        -----------------
+                        |       |       |
+                        | A(LL) | H(LH) |
+                        |       |       |
+(A, (H, V, D))  &lt;---&gt;   -----------------
+                        |       |       |
+                        | V(HL) | D(HH) |
+                        |       |       |
+                        -----------------</pre>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="idwt2">
+<h2>idwt2<a class="headerlink" href="#idwt2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.idwt2">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">idwt2</tt><big>(</big><em>coeffs</em>, <em>wavelet</em>, <em>mode='sym'</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.idwt2" title="Permalink to this definition">¶</a></dt>
+<dd><p>2D Inverse Discrete Wavelet Transform. Reconstruct data from coefficients
+arrays.</p>
+<dl class="docutils">
+<dt>coeffs  - four 2D coefficients arrays arranged as follows (in the same way</dt>
+<dd><blockquote class="first">
+as dwt2 output &#8211; see dwt2 description for details):</blockquote>
+<dl class="docutils">
+<dt>(approximation,</dt>
+<dd>(horizontal details,
+vertical details,
+diagonal details)</dd>
+</dl>
+<p class="last">)</p>
+</dd>
+</dl>
+<p>wavelet - wavelet to use (Wavelet object or name string)
+mode    - signal extension mode, see MODES</p>
+</dd></dl>
+
+</div>
+<div class="section" id="swt2">
+<h2>swt2<a class="headerlink" href="#swt2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.swt2">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">swt2</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>level</em>, <em>start_level=0</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.swt2" title="Permalink to this definition">¶</a></dt>
+<dd><p>2D Stationary Wavelet Transform.</p>
+<p>data    - 2D array with input data
+wavelet - wavelet to use (Wavelet object or name string)
+level   - how many decomposition steps to perform
+start_level - the level at which the decomposition will start</p>
+<p>Returns list of approximation and details coefficients:</p>
+<blockquote>
+<dl class="docutils">
+<dt>[</dt>
+<dd><dl class="first docutils">
+<dt>(cA_n,</dt>
+<dd>(cH_n, cV_n, cD_n)</dd>
+</dl>
+<p>),
+(cA_n+1,</p>
+<blockquote>
+(cH_n+1, cV_n+1, cD_n+1)</blockquote>
+<p>),
+...,
+(cA_n+level,</p>
+<blockquote>
+(cH_n+level, cV_n+level, cD_n+level)</blockquote>
+<p class="last">)</p>
+</dd>
+</dl>
+<p>]</p>
+</blockquote>
+<p>where cA is approximation, cH is horizontal details, cV is
+vertical details, cD is diagonal details and n is start_level.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dwtn">
+<h2>dwtn<a class="headerlink" href="#dwtn" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.dwtn">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">dwtn</tt><big>(</big><em>data</em>, <em>wavelet</em>, <em>mode='sym'</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.dwtn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single-level n-dimensional Discrete Wavelet Transform.</p>
+<p>data     - n-dimensional array
+wavelet - wavelet to use (Wavelet object or name string)
+mode    - signal extension mode, see MODES</p>
+<p>Results are arranged in a dictionary, where key specifies
+the transform type on each dimension and value is a n-dimensional
+coefficients array.</p>
+<dl class="docutils">
+<dt>For example, for a 2D case the result will look something like this:</dt>
+<dd><dl class="first docutils">
+<dt>{</dt>
+<dd>&#8216;aa&#8217;: &lt;coeffs&gt;  # A(LL) - approx. on 1st dim, approx. on 2nd dim
+&#8216;ad&#8217;: &lt;coeffs&gt;  # H(LH) - approx. on 1st dim, det. on 2nd dim
+&#8216;da&#8217;: &lt;coeffs&gt;  # V(HL) - det. on 1st dim, approx. on 2nd dim
+&#8216;dd&#8217;: &lt;coeffs&gt;  # D(HH) - det. on 1st dim, det. on 2nd dim</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="intwave">
+<h2>intwave<a class="headerlink" href="#intwave" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.intwave">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">intwave</tt><big>(</big><em>wavelet</em>, <em>precision=8</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.intwave" title="Permalink to this definition">¶</a></dt>
+<dd><p>intwave(wavelet, precision=8) -&gt; [int_psi, x]                   - for orthogonal wavelets
+intwave(wavelet, precision=8) -&gt; [int_psi_d, int_psi_r, x]      - for other wavelets
+intwave((function_approx, x), precision=8) -&gt; [int_function, x] - for (function approx., x grid) pair</p>
+<p>Integrate <em>psi</em> wavelet function from -Inf to x using the rectangle
+integration method.</p>
+<dl class="docutils">
+<dt>wavelet         - Wavelet to integrate (Wavelet object, wavelet name string</dt>
+<dd>or (wavelet function approx., x grid) pair)</dd>
+<dt>precision = 8   - Precision that will be used for wavelet function</dt>
+<dd>approximation computed with the wavefun(level=precision)
+Wavelet&#8217;s method.</dd>
+<dt>(function_approx, x)   - Function to integrate on the x grid. Used instead</dt>
+<dd>of Wavelet object to allow custom wavelet functions.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="centfrq">
+<h2>centfrq<a class="headerlink" href="#centfrq" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.centfrq">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">centfrq</tt><big>(</big><em>wavelet</em>, <em>precision=8</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.centfrq" title="Permalink to this definition">¶</a></dt>
+<dd><p>centfrq(wavelet, precision=8) -&gt; float                  - for orthogonal wavelets
+centfrq((function_aprox, x), precision=8) -&gt; float      - for (function approx., x grid) pair</p>
+<p>Computes the central frequency of the <em>psi</em> wavelet function.</p>
+<dl class="docutils">
+<dt>wavelet         - Wavelet (Wavelet object, wavelet name string</dt>
+<dd>or (wavelet function approx., x grid) pair)</dd>
+<dt>precision = 8   - Precision that will be used for wavelet function</dt>
+<dd>approximation computed with the wavefun(level=precision)
+Wavelet&#8217;s method.</dd>
+<dt>(function_approx, xgrid)   - Function defined on xgrid. Used instead</dt>
+<dd>of Wavelet object to allow custom wavelet functions.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="scal2frq">
+<h2>scal2frq<a class="headerlink" href="#scal2frq" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.scal2frq">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">scal2frq</tt><big>(</big><em>wavelet</em>, <em>scale</em>, <em>delta</em>, <em>precision=8</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.scal2frq" title="Permalink to this definition">¶</a></dt>
+<dd><p>scal2frq(wavelet, scale, delta, precision=8) -&gt; float   - for orthogonal wavelets
+scal2frq(wavelet, scale, delta, precision=8) -&gt; float   - for (function approx., x grid) pair</p>
+<p>wavelet
+scale
+delta   - sampling</p>
+</dd></dl>
+
+</div>
+<div class="section" id="qmf">
+<h2>qmf<a class="headerlink" href="#qmf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.qmf">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">qmf</tt><big>(</big><em>filter</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.qmf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="orthfilt">
+<h2>orthfilt<a class="headerlink" href="#orthfilt" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.lib.pywt.orthfilt">
+<tt class="descclassname">supreme.lib.pywt.</tt><tt class="descname">orthfilt</tt><big>(</big><em>scaling_filter</em><big>)</big><a class="headerlink" href="#supreme.lib.pywt.orthfilt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">lib.pywt</span></tt></a><ul>
+<li><a class="reference external" href="#modes"><tt class="docutils literal"><span class="pre">MODES</span></tt></a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#wavelet"><tt class="docutils literal"><span class="pre">Wavelet</span></tt></a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#basenode"><tt class="docutils literal"><span class="pre">BaseNode</span></tt></a></li>
+<li><a class="reference external" href="#node"><tt class="docutils literal"><span class="pre">Node</span></tt></a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#waveletpacket"><tt class="docutils literal"><span class="pre">WaveletPacket</span></tt></a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#node2d"><tt class="docutils literal"><span class="pre">Node2D</span></tt></a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#waveletpacket2d"><tt class="docutils literal"><span class="pre">WaveletPacket2D</span></tt></a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#dwt">dwt</a></li>
+<li><a class="reference external" href="#dwt-coeff-len">dwt_coeff_len</a></li>
+<li><a class="reference external" href="#dwt-max-level">dwt_max_level</a></li>
+<li><a class="reference external" href="#idwt">idwt</a></li>
+<li><a class="reference external" href="#swt">swt</a></li>
+<li><a class="reference external" href="#swt-max-level">swt_max_level</a></li>
+<li><a class="reference external" href="#upcoef">upcoef</a></li>
+<li><a class="reference external" href="#downcoef">downcoef</a></li>
+<li><a class="reference external" href="#wavelist">wavelist</a></li>
+<li><a class="reference external" href="#families">families</a></li>
+<li><a class="reference external" href="#wavedec">wavedec</a></li>
+<li><a class="reference external" href="#waverec">waverec</a></li>
+<li><a class="reference external" href="#wavedec2">wavedec2</a></li>
+<li><a class="reference external" href="#waverec2">waverec2</a></li>
+<li><a class="reference external" href="#dwt2">dwt2</a></li>
+<li><a class="reference external" href="#idwt2">idwt2</a></li>
+<li><a class="reference external" href="#swt2">swt2</a></li>
+<li><a class="reference external" href="#dwtn">dwtn</a></li>
+<li><a class="reference external" href="#intwave">intwave</a></li>
+<li><a class="reference external" href="#centfrq">centfrq</a></li>
+<li><a class="reference external" href="#scal2frq">scal2frq</a></li>
+<li><a class="reference external" href="#qmf">qmf</a></li>
+<li><a class="reference external" href="#orthfilt">orthfilt</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.lib.klt.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">lib.klt</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.lib.pywt.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.lib.klt.html" title="lib.klt"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.1 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

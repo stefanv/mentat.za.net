@@ -1,0 +1,28 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+:mod:`lib.decorator`
+====================
+.. automodule:: supreme.lib.decorator
+
+.. currentmodule:: supreme.lib.decorator
+.. autosummary::
+
+   supreme.lib.decorator.decorator
+   supreme.lib.decorator.getinfo
+   supreme.lib.decorator.update_wrapper
+
+decorator
+---------
+
+.. autofunction:: supreme.lib.decorator.decorator
+
+getinfo
+-------
+
+.. autofunction:: supreme.lib.decorator.getinfo
+
+update_wrapper
+--------------
+
+.. autofunction:: supreme.lib.decorator.update_wrapper
+

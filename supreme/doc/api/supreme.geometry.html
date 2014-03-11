@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>geometry &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="prev" title="feature.SIFT" href="supreme.feature.SIFT.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.geometry">
+<h1><tt class="xref docutils literal"><span class="pre">geometry</span></tt><a class="headerlink" href="#module-supreme.geometry" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="grid">
+<h2><a title="supreme.geometry.Grid" class="reference internal" href="#supreme.geometry.Grid"><tt class="xref docutils literal"><span class="pre">Grid</span></tt></a><a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.geometry.Grid">
+<em class="property">class </em><tt class="descclassname">supreme.geometry.</tt><tt class="descname">Grid</tt><big>(</big><em>rows</em>, <em>cols</em><big>)</big><a class="headerlink" href="#supreme.geometry.Grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref docutils literal"><span class="pre">object</span></tt></p>
+<p>Regular grid.</p>
+<dl class="method">
+<dt id="supreme.geometry.Grid.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>rows</em>, <em>cols</em><big>)</big><a class="headerlink" href="#supreme.geometry.Grid.__init__" title="Permalink to this definition">¶</a></dt>
+<dd>Create a grid given rows and columns.</dd></dl>
+
+<dl class="attribute">
+<dt id="supreme.geometry.Grid.coords">
+<tt class="descname">coords</tt><a class="headerlink" href="#supreme.geometry.Grid.coords" title="Permalink to this definition">¶</a></dt>
+<dd>Return an array of all coordinates.</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="polygon">
+<h2><a title="supreme.geometry.Polygon" class="reference internal" href="#supreme.geometry.Polygon"><tt class="xref docutils literal"><span class="pre">Polygon</span></tt></a><a class="headerlink" href="#polygon" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="supreme.geometry.Polygon">
+<em class="property">class </em><tt class="descclassname">supreme.geometry.</tt><tt class="descname">Polygon</tt><big>(</big><em>xp</em>, <em>yp</em><big>)</big><a class="headerlink" href="#supreme.geometry.Polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polygon class</p>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.geometry.Polygon.area" class="reference internal" href="#supreme.geometry.Polygon.area"><tt class="xref docutils literal"><span class="pre">area</span></tt></a>()</td>
+<td>Return the area of the polygon.</td>
+</tr>
+<tr><td><a title="supreme.geometry.Polygon.centroid" class="reference internal" href="#supreme.geometry.Polygon.centroid"><tt class="xref docutils literal"><span class="pre">centroid</span></tt></a>()</td>
+<td>Return the centroid of the polygon</td>
+</tr>
+<tr><td><a title="supreme.geometry.Polygon.inside" class="reference internal" href="#supreme.geometry.Polygon.inside"><tt class="xref docutils literal"><span class="pre">inside</span></tt></a>(xp,&nbsp;yp)</td>
+<td>Check whether the given points are inside the polygon.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="supreme.geometry.Polygon.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>xp</em>, <em>yp</em><big>)</big><a class="headerlink" href="#supreme.geometry.Polygon.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given xp and yp (both 1D arrays or sequences), create a new
+polygon.  The polygon is closed at instantiation.</p>
+<p>p.inside(x, y) - Calculate whether points lie inside the polygon.
+p.area() - The area enclosed by the polygon.
+p.centroid() - The centroid of the polygon</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.geometry.Polygon.area">
+<tt class="descname">area</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.geometry.Polygon.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the area of the polygon.</p>
+<dl class="docutils">
+<dt>From Paul Bourke&#8217;s webpage:</dt>
+<dd><a class="reference external" href="http://astronomy.swin.edu.au/~pbourke/geometry">http://astronomy.swin.edu.au/~pbourke/geometry</a></dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="supreme.geometry.Polygon.centroid">
+<tt class="descname">centroid</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.geometry.Polygon.centroid" title="Permalink to this definition">¶</a></dt>
+<dd>Return the centroid of the polygon</dd></dl>
+
+<dl class="method">
+<dt id="supreme.geometry.Polygon.inside">
+<tt class="descname">inside</tt><big>(</big><em>xp</em>, <em>yp</em><big>)</big><a class="headerlink" href="#supreme.geometry.Polygon.inside" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether the given points are inside the polygon.</p>
+<dl class="docutils">
+<dt>Input:</dt>
+<dd>xp &#8211; 1D array of x coordinates for points
+yp &#8211; 1D array of y coordinates for points</dd>
+<dt>Output:</dt>
+<dd>inside &#8211; boolean array</dd>
+</dl>
+<p>See <a class="reference external" href="http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html">http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html</a></p>
+</dd></dl>
+
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+</tbody>
+</table>
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">geometry</span></tt></a><ul>
+<li><a class="reference external" href="#grid"><tt class="docutils literal"><span class="pre">Grid</span></tt></a></li>
+<li><a class="reference external" href="#polygon"><tt class="docutils literal"><span class="pre">Polygon</span></tt></a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.feature.SIFT.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">feature.SIFT</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.geometry.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.feature.SIFT.html" title="feature.SIFT"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>

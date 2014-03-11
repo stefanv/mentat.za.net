@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ext &mdash; SupReMe v0.9 reference</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="SupReMe v0.9 reference" href="../index.html" />
+    <link rel="up" title="API Reference" href="api.html" />
+    <link rel="next" title="feature" href="supreme.feature.html" />
+    <link rel="prev" title="config" href="supreme.config.html" /> 
+  </head>
+
+  <body>
+
+<div id="wrap">
+<div id="header">
+<h1 id="logo-text"><span class="gray">sup</span>re<span class="gray">me</span></h1>
+
+<h2 id="slogan">Super-resolution methods</h2>
+</div>
+
+<div id="menu">
+<ul>
+				<li><a href="../index.shtml">Home</a></li>
+				<li><a href="./">Documentation</a></li>
+				<li><a href="../download.shtml">Download</a></li>
+				<li><a href="http://www.mendeley.com/collections/528961/PhD/">Bibliography</a></li>
+			        <li><a href="http://mentat.za.net">Author</a></li>
+
+</ul>
+</div>
+
+<div id="content-wrap">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <div id="main">
+            
+  <div class="section" id="module-supreme.ext">
+<h1><tt class="xref docutils literal"><span class="pre">ext</span></tt><a class="headerlink" href="#module-supreme.ext" title="Permalink to this headline">¶</a></h1>
+<p>C extensions and external libraries.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a title="supreme.ext.correlate" class="reference internal" href="#supreme.ext.correlate"><tt class="xref docutils literal"><span class="pre">supreme.ext.correlate</span></tt></a>(A,&nbsp;B[,&nbsp;rows,&nbsp;columns,&nbsp;...])</td>
+<td>Correlate A and B.</td>
+</tr>
+<tr><td><a title="supreme.ext.interp_bilinear" class="reference internal" href="#supreme.ext.interp_bilinear"><tt class="xref docutils literal"><span class="pre">supreme.ext.interp_bilinear</span></tt></a>(grey_image[,&nbsp;...])</td>
+<td>Calculate values at given coordinates using bi-linear interpolation.</td>
+</tr>
+<tr><td><a title="supreme.ext.interp_transf_polygon" class="reference internal" href="#supreme.ext.interp_transf_polygon"><tt class="xref docutils literal"><span class="pre">supreme.ext.interp_transf_polygon</span></tt></a>(...[,&nbsp;oshape])</td>
+<td></td>
+</tr>
+<tr><td><a title="supreme.ext.line_intersect" class="reference internal" href="#supreme.ext.line_intersect"><tt class="xref docutils literal"><span class="pre">supreme.ext.line_intersect</span></tt></a>(x0,&nbsp;y0,&nbsp;x1,&nbsp;y1,&nbsp;...)</td>
+<td>Calculate the intersection between two lines.</td>
+</tr>
+<tr><td><a title="supreme.ext.npnpoly" class="reference internal" href="#supreme.ext.npnpoly"><tt class="xref docutils literal"><span class="pre">supreme.ext.npnpoly</span></tt></a>(x_vertices,&nbsp;y_vertices,&nbsp;...)</td>
+<td>Calculate whether points are in a given polygon.</td>
+</tr>
+<tr><td><a title="supreme.ext.poly_clip" class="reference internal" href="#supreme.ext.poly_clip"><tt class="xref docutils literal"><span class="pre">supreme.ext.poly_clip</span></tt></a>(x,&nbsp;y,&nbsp;xleft,&nbsp;xright,&nbsp;...)</td>
+<td>Clip a polygon to the given bounding box.</td>
+</tr>
+<tr><td><a title="supreme.ext.poly_interp_op" class="reference internal" href="#supreme.ext.poly_interp_op"><tt class="xref docutils literal"><span class="pre">supreme.ext.poly_interp_op</span></tt></a></td>
+<td>Construct a linear interpolation operator based on polygon overlap.</td>
+</tr>
+<tr><td><a title="supreme.ext.variance_map" class="reference internal" href="#supreme.ext.variance_map"><tt class="xref docutils literal"><span class="pre">supreme.ext.variance_map</span></tt></a>(image[,&nbsp;shape])</td>
+<td>Calculate the variance map of a 2D image.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="correlate">
+<h2>correlate<a class="headerlink" href="#correlate" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.ext.correlate">
+<tt class="descclassname">supreme.ext.</tt><tt class="descname">correlate</tt><big>(</big><em>A</em>, <em>B</em>, <em>rows=None</em>, <em>columns=None</em>, <em>mode_row='zero'</em>, <em>mode_column='zero'</em><big>)</big><a class="headerlink" href="#supreme.ext.correlate" title="Permalink to this definition">¶</a></dt>
+<dd>Correlate A and B.</dd></dl>
+
+</div>
+<div class="section" id="interp-bilinear">
+<h2>interp_bilinear<a class="headerlink" href="#interp-bilinear" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.ext.interp_bilinear">
+<tt class="descclassname">supreme.ext.</tt><tt class="descname">interp_bilinear</tt><big>(</big><em>grey_image</em>, <em>transform_coords_r=None</em>, <em>transform_coords_c=None</em>, <em>mode='N'</em>, <em>cval=0</em>, <em>output=None</em><big>)</big><a class="headerlink" href="#supreme.ext.interp_bilinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate values at given coordinates using bi-linear interpolation.</p>
+<p>The output is of shape transform_coords_*.  For each pair of
+values (transform_coords_r,transform_coords_c) the input image is
+interpolated to give the output value at that point.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="interp-transf-polygon">
+<h2>interp_transf_polygon<a class="headerlink" href="#interp-transf-polygon" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.ext.interp_transf_polygon">
+<tt class="descclassname">supreme.ext.</tt><tt class="descname">interp_transf_polygon</tt><big>(</big><em>grey_image</em>, <em>transform</em>, <em>oshape=None</em><big>)</big><a class="headerlink" href="#supreme.ext.interp_transf_polygon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="line-intersect">
+<h2>line_intersect<a class="headerlink" href="#line-intersect" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.ext.line_intersect">
+<tt class="descclassname">supreme.ext.</tt><tt class="descname">line_intersect</tt><big>(</big><em>x0</em>, <em>y0</em>, <em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>x3</em>, <em>y3</em><big>)</big><a class="headerlink" href="#supreme.ext.line_intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the intersection between two lines.</p>
+<p>The first line runs from (x0,y0) to (x1,y1) and the second from
+(x2,y2) to (x3,y3).</p>
+<dl class="docutils">
+<dt>Return the point of intersection, (x,y), and its type:</dt>
+<dd>0 &#8211; Normal intersection
+1 &#8211; Intersects outside given segments
+2 &#8211; Parallel
+3 &#8211; Co-incident</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="npnpoly">
+<h2>npnpoly<a class="headerlink" href="#npnpoly" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.ext.npnpoly">
+<tt class="descclassname">supreme.ext.</tt><tt class="descname">npnpoly</tt><big>(</big><em>x_vertices</em>, <em>y_vertices</em>, <em>x_points</em>, <em>y_points</em><big>)</big><a class="headerlink" href="#supreme.ext.npnpoly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate whether points are in a given polygon.</p>
+<p>Returns a boolean array of length len(x_points).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="poly-clip">
+<h2>poly_clip<a class="headerlink" href="#poly-clip" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.ext.poly_clip">
+<tt class="descclassname">supreme.ext.</tt><tt class="descname">poly_clip</tt><big>(</big><em>x</em>, <em>y</em>, <em>xleft</em>, <em>xright</em>, <em>ytop</em>, <em>ybottom</em><big>)</big><a class="headerlink" href="#supreme.ext.poly_clip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clip a polygon to the given bounding box.</p>
+<p>x and y are 1D arrays describing the coordinates of the vertices.
+xleft, xright, ytop and ybottom specify the borders of the
+bounding box.  Note that a cartesian axis system is used such that
+the following must hold true:</p>
+<p>x_left &lt; x_right
+y_bottom &lt; y_top</p>
+<p>The x and y coordinates of the vertices of the resulting polygon
+are returned.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="poly-interp-op">
+<h2>poly_interp_op<a class="headerlink" href="#poly-interp-op" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.ext.poly_interp_op">
+<tt class="descclassname">supreme.ext.</tt><tt class="descname">poly_interp_op</tt><big>(</big><big>)</big><a class="headerlink" href="#supreme.ext.poly_interp_op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a linear interpolation operator based on polygon overlap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>MM, NN</strong> : int</p>
+<blockquote>
+<p>Shape of the high-resolution source frame.</p>
+</blockquote>
+<p><strong>M, N</strong> : int</p>
+<blockquote>
+<p>Shape of the low-resolution target frame.</p>
+</blockquote>
+<p><strong>H</strong> : (3, 3) ndarray</p>
+<blockquote>
+<p>Transformation matrix that warps the high-resolution image to
+the low-resolution image.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>op</strong> : (M*N, MM*NN) sparse array</p>
+<blockquote class="last">
+<p>Interpolation operator.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="variance-map">
+<h2>variance_map<a class="headerlink" href="#variance-map" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="supreme.ext.variance_map">
+<tt class="descclassname">supreme.ext.</tt><tt class="descname">variance_map</tt><big>(</big><em>image</em>, <em>shape=(3</em>, <em>3)</em><big>)</big><a class="headerlink" href="#supreme.ext.variance_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the variance map of a 2D image.</p>
+<p>image &#8211; of shape MxN
+shape &#8211; shape of window over which variance is calculated</p>
+<p>A window of given shape is moved over the image, and at each point
+the variance of all the pixels in the window is stored.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="sidebar">
+          <div id="left-box">
+          <div id="sidemenu">
+
+
+
+            <ul>
+<li><a class="reference external" href=""><tt class="docutils literal"><span class="pre">ext</span></tt></a><ul>
+<li><a class="reference external" href="#correlate">correlate</a></li>
+<li><a class="reference external" href="#interp-bilinear">interp_bilinear</a></li>
+<li><a class="reference external" href="#interp-transf-polygon">interp_transf_polygon</a></li>
+<li><a class="reference external" href="#line-intersect">line_intersect</a></li>
+<li><a class="reference external" href="#npnpoly">npnpoly</a></li>
+<li><a class="reference external" href="#poly-clip">poly_clip</a></li>
+<li><a class="reference external" href="#poly-interp-op">poly_interp_op</a></li>
+<li><a class="reference external" href="#variance-map">variance_map</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="supreme.config.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">config</span></tt></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="supreme.feature.html"
+                                  title="next chapter"><tt class="docutils literal"><span class="pre">feature</span></tt></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/supreme.ext.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+  </div>
+      <div class="clearer"></div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="supreme.feature.html" title="feature"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="supreme.config.html" title="config"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../contents.html">SupReMe v0.9 reference</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+    <div id="footer">
+        &copy; Copyright 2009, Stefan van der Walt.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+    </div>
+
+  </body>
+</html>
