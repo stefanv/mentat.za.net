@@ -6,10 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <title>Stefan's Homepage</title>
 <link rel="shortcut icon" href="/favicon.ico"/>
-<style type="text/css" media="screen">@import "bluerobot.css";</style>
+<style type="text/css" media="screen">@import "css/bluerobot.css";</style>
+<style type="text/css" media="screen">@import "css/colorbox.css";</style>
 <!-- This is a modified version of the stylesheet from http://www.bluerobot.com -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="google_plus.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.colorbox-min.js"></script>
 </head>
 
 <body>
@@ -31,10 +32,13 @@ function toggle_display(d) {
 
 <a href="http://mentat.za.net">STEFAN VAN DER WALT</a>
 &nbsp; :: &nbsp;
-<div onclick="toggle_display('latin_english');"
-      style="text-decoration: underline; float: none; display: inline;">
+<!--onclick="toggle_display('latin_english');"-->
+
+<a id="learning" 
+   style="text-decoration: underline; float: none; display: inline;"
+   href="#learning-text">
   alenda lux ubi orta liberta
-</div> &nbsp; :: &nbsp; <div style="vertical-align: -40%; display: inline;"><a href="https://twitter.com/stefanvdwalt"
+</a> &nbsp; :: &nbsp; <div style="vertical-align: -40%; display: inline;"><a href="https://twitter.com/stefanvdwalt"
               class="twitter-follow-button" data-show-count="false"
               data-size="large" data-dnt="true">Follow @stefanvdwalt</a>
 <script>!function(d,s,id){var
@@ -42,6 +46,12 @@ function toggle_display(d) {
   'script', 'twitter-wjs');</script></div>&nbsp; :: &nbsp; <div style="display: inline; vertical-align: -40%;"><iframe src="http://ghbtns.com/github-btn.html?user=stefanv&type=follow&size=large"
   allowtransparency="true" frameborder="0" scrolling="0" width="200"
   height="30px"></iframe></div>
+
+<script>
+$('#learning').colorbox({inline: true,
+                         title: "Let learning be cherished where liberty has arisen",
+                         width: "50%"})
+</script>
 
 <!--applied sciences and the big beyond-->
 <a style="position: absolute;
@@ -179,9 +189,28 @@ sjvdwalt on gmail<br/>
 
 <div id="Content">
 
-<p id="latin_english"
-      style="display: none;"><em>Let learning be cherished where liberty has
-  arisen.</em></p>
+<div style="display: none;">
+<div id="learning-text">
+<p>
+Bertrand Russel's 10 commandments of teaching:
+
+<ul>
+<li>Do not feel absolutely certain of anything.</li>
+<li>Do not think it worth while to proceed by concealing evidence, for the evidence is sure to come to light.</li>
+<li>Never try to discourage thinking for you are sure to succeed.</li>
+<li>When you meet with opposition, even if it should be from your husband or your children, endeavor to overcome it by argument and not by authority, for a victory dependent upon authority is unreal and illusory.</li>
+<li>Have no respect for the authority of others, for there are always contrary authorities to be found.</li>
+<li>Do not use power to suppress opinions you think pernicious, for if you do the opinions will suppress you.</li>
+<li>Do not fear to be eccentric in opinion, for every opinion now accepted was once eccentric.</li>
+<li>Find more pleasure in intelligent dissent than in passive agreement, for, if you value intelligence as you should, the former implies a deeper agreement than the latter.</li>
+<li>Be scrupulously truthful, even if the truth is inconvenient, for it is more inconvenient when you try to conceal it.</li>
+<li>Do not feel envious of the happiness of those who live in a fool’s
+  paradise, for only a fool will think that it is happiness.</li>
+</ul>
+
+</p>
+</div>
+</div>
 
 
 <!--
