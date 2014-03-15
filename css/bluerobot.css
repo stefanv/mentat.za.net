@@ -44,15 +44,15 @@
 body {
 	margin:0px;
 	padding:0px;
-	font-family:verdana, arial, helvetica, sans-serif;
 	color:#333;
 	background-color:white;
+        line-height: 1.5em;
+        font-family:"Droid Serif","Georgia","Helvetica Neue",Arial,sans-serif;
 	}
 h1 {
 	margin:0px 0px 0.2em 0px;
 	padding:0px;
-	font-size:1.5em;
-	line-height:1.2em;
+	font-size:1.2em;
 	font-weight:900;
 	/*color:#aaa;*/
 	color:#444;
@@ -61,7 +61,6 @@ h1 {
 	background-repeat:repeat-x;*/
 	}
 p {
-	font: verdana, arial, helvetica, sans-serif;
 	margin:0px 0px 0.8em 0px;
 	padding-top:5px;
 	}
@@ -80,12 +79,11 @@ a:visited {color:#038;}
 a:hover {background-color:#eee;}
 
 #Header {
-	margin:0em 0px 1em 0px;
+	margin:0em 0px 0.5em 0px;
 	padding:0.6em 0px 1.5em 1em;
 	border-style:solid;
 	border-color:black;
 	border-width:0px 0px 1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
-	line-height:1em;
        	background-color:#eee;
 	}
 /* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct 
@@ -119,7 +117,7 @@ body>#Header {height:1em;}
 	padding:0.6em;
 	background-color:#eee;
 	border:1px dashed #999;
-	line-height:1em;
+	line-height:1.4em;
 /* Again, the ugly brilliant hack. */
 	voice-family: "\"}\"";
 	voice-family:inherit;
