@@ -80,11 +80,11 @@ a:visited {color:#038;}
 a:hover {background-color:#eee;}
 
 #Header {
-	margin:0em 0px 0.5em 0px;
-	padding:0.6em 1em 1.5em 1em;
+	margin:0em 0px 1em 0px;
+	padding:1.3em 1em 1em 1em;
 	border-style:solid;
 	border-color: #CCC;
-	border-width:0px 0px 3px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
+	border-width:0px 0px 1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
        	background-color:#eee;
 	}
 /* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct 
@@ -99,11 +99,11 @@ body>#Header {height:1em;}
 }
 
 #outer-container {
+    width: 940px;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
     background-color: #F5F5F5;
-
 }
 
 #Content {
