@@ -40,15 +40,17 @@
     font-size: 0.9em;
     font-variant: small-caps;
 }
-
+html {
+    background: #e7e9eb;
+}
 body {
 	margin:0px;
 	padding:0px;
 	color:#333;
-        line-height: 1.5em;
-        font-family:"Droid Serif","Georgia","Helvetica Neue",Arial,sans-serif;
-        font-size: 12pt;
-	}
+    line-height: 1.5em;
+    font-family:"Droid Serif","Georgia","Helvetica Neue",Arial,sans-serif;
+    font-size: 12pt;
+}
 h1 {
         font-family: verdana, arial, helvetica, sans-serif;
 	margin:0px 0px 0.2em 0px;
@@ -104,14 +106,19 @@ body>#Header {height:1em;}
     margin-right: auto;
     overflow: hidden;
     background-color: #F5F5F5;
+    -moz-box-shadow: 0 0 10px 10px #b9bcbf;
+    -webkit-box-shadow: 0 0 10px 10px #b9bcbf;
+    -icab-box-shadow: 0 0 10px 10px #b9bcbf;
+    -o-box-shadow: 0 0 10px 10px #b9bcbf;
+    box-shadow: 0 0 10px 10px #b9bcbf;
 }
 
 #Content {
-        float: left;
-        width: 580px;
-	margin: 1em auto auto 1em;
-	padding:0.3em;
-	}
+    float: left;
+    width: 580px;
+    margin: 1em auto auto 1em;
+    padding:0.3em;
+}
 
 .Note {
 	border-style:solid;
