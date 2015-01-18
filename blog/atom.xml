@@ -209,7 +209,7 @@ as a linear operator and using it for super-resolution was not.&lt;/p&gt;
 &lt;p&gt;But the proof of the pudding is in the eating! Have a look at the
 &lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; -- you can download it all (including a
 sample data-set) and play with the different reconstruction parameters.  Quite
-a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</summary><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-07/" rel="alternate"></link><updated>2012-09-30T16:18:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:blog/2012/09/30/scikits-image-07/</id><summary type="html">&lt;p&gt;We're happy to announce the 7th version of scikits-image!&lt;/p&gt;
+a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</summary><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><updated>2012-09-30T16:18:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We're happy to announce the 7th version of scikits-image!&lt;/p&gt;
 &lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
 analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
@@ -233,7 +233,7 @@ time, we've managed to add plenty of new features and enhancements, including&lt
 &lt;/ul&gt;
 &lt;p&gt;Plus, this release adds a number of bug fixes, new examples, and performance
 enhancements.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comparison of pupular segmentation algorithms" src="/images/lena_superpixels.jpg" title="Comparison of pupular segmentation algorithms"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Comparison of pupular segmentation algorithms" src="/blog/images/lena_superpixels.jpg" title="Comparison of pupular segmentation algorithms"&gt;&lt;/p&gt;
 &lt;h2&gt;Contributors to this release&lt;/h2&gt;
 &lt;p&gt;This release was only possible due to the efforts of many contributors, both
 new and old.&lt;/p&gt;
@@ -264,7 +264,7 @@ new and old.&lt;/p&gt;
 &lt;li&gt;Tomas Kazmar&lt;/li&gt;
 &lt;li&gt;Tony S Yu&lt;/li&gt;
 &lt;li&gt;Wei Li&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Adobe's new free font: Source Code Pro</title><link href="http://mentat.za.net/blog/2012/09/26/adobes-new-free-font-source-code-pro/" rel="alternate"></link><updated>2012-09-26T11:49:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-26:blog/2012/09/26/adobes-new-free-font-source-code-pro/</id><summary type="html">&lt;p&gt;Adobe yesterday
+&lt;/ul&gt;</summary><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Adobe's new free font: Source Code Pro</title><link href="http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/" rel="alternate"></link><updated>2012-09-26T11:49:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-26:blog/2012/09/26/consolas-vs-source-code-pro/</id><summary type="html">&lt;p&gt;Adobe yesterday
 &lt;a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html"&gt;released its free and open source Type family, Source Code Pro&lt;/a&gt;,
 which includes an eye-pleasing monospace font  ideally suited for coding.
 In the past, and at the recommendation of &lt;a href="http://blog.fperez.org/"&gt;Fernando Perez&lt;/a&gt;, I've
@@ -283,7 +283,7 @@ Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
 
 
 &lt;p&gt;Here's a comparison of Consolas (left) and Source Code Pro (right):&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/consolas_vs_source_code_pro.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/images/consolas_vs_source_code_pro.png"&gt;&lt;/p&gt;
 &lt;p&gt;Comments also on &lt;a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik"&gt;Google+&lt;/a&gt;.&lt;/p&gt;</summary><category term="coding"></category><category term="emacs"></category><category term="linux"></category></entry><entry><title>Emacs package management</title><link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><updated>2012-09-25T17:14:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
 Arakaki's &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
 webpage were as clear as mud and aimed primarily at Windows users.  Enters
