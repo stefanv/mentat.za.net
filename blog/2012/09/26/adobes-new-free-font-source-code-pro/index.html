@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Replicable super-resolution paper &mdash; Stéfan van der Walt</title>
+  <title>Adobe's new free font: Source Code Pro &mdash; Stéfan van der Walt</title>
   <meta name="author" content="Stefan van der Walt">
 
 
@@ -45,28 +45,32 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Replicable super-resolution paper</h1>
+      <h1 class="entry-title">Adobe's new free font: Source Code Pro</h1>
     <p class="meta">
-<time datetime="2012-10-15T00:04:00+02:00" pubdate>Mon 15 October 2012</time>    </p>
+<time datetime="2012-09-26T11:49:00+02:00" pubdate>Wed 26 September 2012</time>    </p>
 </header>
 
-  <div class="entry-content"><p>While I loved the topic of my PhD, I had to take a break after staring at that
-problem for several years.  Thereafter, I was side-tracked by
-<a href="http://github.com/scipy">several</a> <a href="http://scikit-image.org">other</a>
-<a href="http://dipy.org">projects</a>, and never got around to publishing a paper on
-<a href="http://mentat.za.net/phd_dissertation.html">my dissertation</a>.</p>
-<p>Here, then, is a summary of the simple but effective super-resolution algorithm
-described therein:</p>
-<p><a href="http://arxiv.org/abs/1210.3404">http://arxiv.org/abs/1210.3404</a></p>
-<p>I also submitted this work to NIPS: the reviewers liked the paper, but they
-were not convinced of its novelty.  Having spent a lot of time studying the
-existing literature, all I can say in response is that, while solving the
-problem as a sparse linear system was well known at the time, phrasing Drizzle
-as a linear operator and using it for super-resolution was not.</p>
-<p>But the proof of the pudding is in the eating! Have a look at the
-<a href="http://mentat.za.net/supreme">results and published code</a> -- you can download it all (including a
-sample data-set) and play with the different reconstruction parameters.  Quite
-a bit of the code has since graduated into <a href="http://scikit-image.org">scikit-image</a>.</p></div>
+  <div class="entry-content"><p>Adobe yesterday
+<a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html">released its free and open source Type family, Source Code Pro</a>,
+which includes an eye-pleasing monospace font  ideally suited for coding.
+In the past, and at the recommendation of <a href="http://blog.fperez.org/">Fernando Perez</a>, I've
+used the beautiful (but non-free) <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879">Consolas by Microsoft</a>; now,
+which is best?</p>
+<p>To install on Linux:</p>
+<ol>
+<li><a href="https://sourceforge.net/projects/sourcecodepro.adobe/">Grab the font</a>.</li>
+<li>Copy the files to <code>~/.fonts</code>.</li>
+<li>Run <code>fc-cache -f -v</code>.</li>
+</ol>
+<p>The font should now be available for selection in apps such as Firefox, Gnome
+Terminal, etc.  To make it the default font in Emacs::</p>
+<div class="highlight"><pre>    <span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Source Code Pro&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Here's a comparison of Consolas (left) and Source Code Pro (right):</p>
+<p><img src="/images/consolas_vs_source_code_pro.png"></p>
+<p>Comments also on <a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik">Google+</a>.</p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -74,11 +78,11 @@ a bit of the code has since graduated into <a href="http://scikit-image.org">sci
         Stefan van der Walt
     </span>
   </span>
-<time datetime="2012-10-15T00:04:00+02:00" pubdate>Mon 15 October 2012</time>  <span class="categories">
+<time datetime="2012-09-26T11:49:00+02:00" pubdate>Wed 26 September 2012</time>  <span class="categories">
     <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
   </span>
   <span class="categories">
-    <a class="category" href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a class="category" href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a class="category" href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a class="category" href="http://mentat.za.net/blog/tag/science.html">science</a>  </span>
+    <a class="category" href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a class="category" href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a class="category" href="http://mentat.za.net/blog/tag/linux.html">linux</a>  </span>
 </p><div class="sharing">
 </div>    </footer>
   </article>
@@ -142,9 +146,9 @@ a bit of the code has since graduated into <a href="http://scikit-image.org">sci
   <script src="http://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	  var disqus_shortname = 'stefanvdwalt';
-          var disqus_identifier = '/2012/10/15/replicable-super-resolution-paper/';
-          var disqus_url = 'http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/';
-          var disqus_title = 'Replicable super-resolution paper';
+          var disqus_identifier = '/2012/09/26/adobes-new-free-font-source-code-pro/';
+          var disqus_url = 'http://mentat.za.net/blog/2012/09/26/adobes-new-free-font-source-code-pro/';
+          var disqus_title = 'Adobe's new free font: Source Code Pro';
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';

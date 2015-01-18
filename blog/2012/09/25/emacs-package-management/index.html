@@ -1,422 +1,200 @@
-
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Emacs package management - Stefan van der Walt</title>
+  <title>Emacs package management &mdash; Stéfan van der Walt</title>
   <meta name="author" content="Stefan van der Walt">
 
-  
-  <meta name="description" content="I recently tried to install MuMaMo as one of the dependencies for Takafumi
-Arakaki&#8217;s Emacs-based IPython notebook. The instructions on the &hellip;">
-  
+
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
-  <link rel="canonical" href="http://stefanv.github.com/blog/2012/09/25/emacs-package-management/">
-  <link href="/blog/favicon.png" rel="icon">
-  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/blog/javascripts/modernizr-2.0.js"></script>
-  <script src="/blog/javascripts/ender.js"></script>
-  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="Stefan van der Walt" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 
+    <link href="http://mentat.za.net/blog/favicon.png" rel="icon">
 
-<!-- Enable mathjax support -->
-<script type="text/x-mathjax-config">
-<!--
-MathJax.Hub.Config({
-    jax: ["input/TeX", "output/HTML-CSS"],
-    tex2jax: {
-        inlineMath: [['$', '$']],
-        displayMath: [['\\[', '\\]'], ['$$', '$$']],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    messageStyle: "none",
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX", "TeX"]
-    }
-});
--->
-</script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <link href="http://mentat.za.net/blog/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-35089033-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
 </head>
 
-<body   >
+<body>
   <header role="banner"><hgroup>
-  <h1><a href="/blog/">Stefan van der Walt</a></h1>
-  
-    <h2>Programming / science / education / life</h2>
-  
-</hgroup>
-
-</header>
+  <h1><a href="http://mentat.za.net/blog/">Stéfan van der Walt</a></h1>
+</hgroup></header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:stefanv.github.com/blog" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/blog/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
-</nav>
+
+
+<ul class="main-navigation">
+    <li class="active">
+    <a href="http://mentat.za.net/blog/category/misc.html">Misc</a>
+    </li>
+</ul></nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">Emacs Package Management</h1>
-    
-    
-      <p class="meta">
-        
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Emacs package management</h1>
+    <p class="meta">
+<time datetime="2012-09-25T17:14:00+02:00" pubdate>Tue 25 September 2012</time>    </p>
+</header>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-25T17:14:00-05:00" pubdate data-updated="true">Sep 25<span>th</span>, 2012</time>
-        
-         | <a href="#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>I recently tried to install MuMaMo as one of the dependencies for Takafumi
-Arakaki&#8217;s <a href="https://github.com/tkf/emacs-ipython-notebook">Emacs-based IPython notebook</a>.  The instructions on the MuMaMo
+  <div class="entry-content"><p>I recently tried to install MuMaMo as one of the dependencies for Takafumi
+Arakaki's <a href="https://github.com/tkf/emacs-ipython-notebook">Emacs-based IPython notebook</a>.  The instructions on the MuMaMo
 webpage were as clear as mud and aimed primarily at Windows users.  Enters
 <a href="https://github.com/dimitri/el-get">apt-get for Emacs</a>!</p>
-
 <p>My Emacs setup is shared across multiple machines: a synchronized <code>elisp</code>
 folder, containing <code>*.el</code> files, along with my <code>.emacs</code> configuration.
 <code>el-get</code> allows you to share your package installation folder in a similar
 fashion.  Here are some relevant configuration snippets:</p>
+<div class="highlight"><pre><span class="c1">; Everything gets installed into ~/elisp, a folder</span>
+<span class="c1">; I sync across all my machines</span>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="c1">; Everything gets installed into ~/elisp, a folder</span>
-</span><span class='line'><span class="c1">; I sync across all my machines</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-dir</span> <span class="s">&quot;~/elisp/el-get&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-install-dir</span> <span class="s">&quot;~/elisp/el-get/el-get&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="nv">el-get-install-dir</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">; If el-get is missing, install it automatically</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;el-get</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nv">url-retrieve</span>
-</span><span class='line'>   <span class="s">&quot;https://raw.github.com/dimitri/el-get/master/el-get-install.el&quot;</span>
-</span><span class='line'>   <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">s</span><span class="p">)</span>
-</span><span class='line'>     <span class="p">(</span><span class="nv">goto-char</span> <span class="p">(</span><span class="nv">point-max</span><span class="p">))</span>
-</span><span class='line'>     <span class="p">(</span><span class="nv">eval-print-last-sexp</span><span class="p">))))</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">; Install these packages, and call the specified configuration snippets</span>
-</span><span class='line'><span class="c1">; after each load</span>
-</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-sources</span>
-</span><span class='line'>      <span class="o">&#39;</span><span class="p">(</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="p">(</span><span class="ss">:name</span> <span class="nv">ethan-wspace</span>
-</span><span class='line'>         <span class="ss">:after</span> <span class="p">(</span><span class="k">progn</span>
-</span><span class='line'>                  <span class="p">(</span><span class="nv">global-ethan-wspace-mode</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>                  <span class="p">(</span><span class="nv">set-face-background</span> <span class="ss">&#39;ethan-wspace-face</span> <span class="s">&quot;gray95&quot;</span><span class="p">)))</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="p">(</span><span class="ss">:name</span> <span class="nv">column-marker</span>
-</span><span class='line'>         <span class="ss">:after</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;font-lock-mode-hook</span>
-</span><span class='line'>                          <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span> <span class="p">(</span><span class="nv">column-marker-1</span> <span class="mi">80</span><span class="p">))))</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">; Also install these packages, no configuration required</span>
-</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">my-packages</span>
-</span><span class='line'>      <span class="p">(</span><span class="nb">append</span>
-</span><span class='line'>       <span class="o">&#39;</span><span class="p">(</span><span class="nv">el-get</span> <span class="nv">maxframe</span> <span class="nv">markdown-mode</span> <span class="nv">ein</span> <span class="nv">python</span><span class="p">)</span>
-</span><span class='line'>       <span class="p">(</span><span class="nb">mapcar</span> <span class="ss">&#39;el-get-source-name</span> <span class="nv">el-get-sources</span><span class="p">)</span>
-</span><span class='line'>       <span class="p">)</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">; Check packages and install any that are missing</span>
-</span><span class='line'><span class="p">(</span><span class="nv">el-get</span> <span class="ss">&#39;sync</span> <span class="nv">my-packages</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-dir</span> <span class="s">&quot;~/elisp/el-get&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-install-dir</span> <span class="s">&quot;~/elisp/el-get/el-get&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="nv">el-get-install-dir</span><span class="p">)</span>
+
+<span class="c1">; If el-get is missing, install it automatically</span>
+
+<span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;el-get</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">url-retrieve</span>
+   <span class="s">&quot;https://raw.github.com/dimitri/el-get/master/el-get-install.el&quot;</span>
+   <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">s</span><span class="p">)</span>
+     <span class="p">(</span><span class="nv">goto-char</span> <span class="p">(</span><span class="nv">point-max</span><span class="p">))</span>
+     <span class="p">(</span><span class="nv">eval-print-last-sexp</span><span class="p">))))</span>
+
+<span class="c1">; Install these packages, and call the specified configuration snippets</span>
+<span class="c1">; after each load</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-sources</span>
+      <span class="o">&#39;</span><span class="p">(</span>
+
+        <span class="p">(</span><span class="ss">:name</span> <span class="nv">ethan-wspace</span>
+         <span class="ss">:after</span> <span class="p">(</span><span class="k">progn</span>
+                  <span class="p">(</span><span class="nv">global-ethan-wspace-mode</span> <span class="mi">1</span><span class="p">)</span>
+                  <span class="p">(</span><span class="nv">set-face-background</span> <span class="ss">&#39;ethan-wspace-face</span> <span class="s">&quot;gray95&quot;</span><span class="p">)))</span>
+
+        <span class="p">(</span><span class="ss">:name</span> <span class="nv">column-marker</span>
+         <span class="ss">:after</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;font-lock-mode-hook</span>
+                          <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span> <span class="p">(</span><span class="nv">column-marker-1</span> <span class="mi">80</span><span class="p">))))</span>
+
+<span class="c1">; Also install these packages, no configuration required</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">my-packages</span>
+      <span class="p">(</span><span class="nb">append</span>
+       <span class="o">&#39;</span><span class="p">(</span><span class="nv">el-get</span> <span class="nv">maxframe</span> <span class="nv">markdown-mode</span> <span class="nv">ein</span> <span class="nv">python</span><span class="p">)</span>
+       <span class="p">(</span><span class="nb">mapcar</span> <span class="ss">&#39;el-get-source-name</span> <span class="nv">el-get-sources</span><span class="p">)</span>
+       <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">; Check packages and install any that are missing</span>
+<span class="p">(</span><span class="nv">el-get</span> <span class="ss">&#39;sync</span> <span class="nv">my-packages</span><span class="p">)</span>
+</pre></div>
 
 
 <p>There are two ways to specify packages to be installed: either include them in
 the <code>my-packages</code> list, or add them to <code>el-get-sources</code>, which in addition
 allows further customization upon successful loading of the package.</p>
-
-<p><a href="http://software-carpentry.org/2012/09/whats-in-your-stack/">What&#8217;s in your stack?</a> Here&#8217;s my list of Emacs packages:</p>
-
-<pre><code>Org Mode, Ethan's wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
+<p><a href="http://software-carpentry.org/2012/09/whats-in-your-stack/">What's in your stack?</a> Here's my list of Emacs packages:</p>
+<div class="highlight"><pre>Org Mode, Ethan&#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
 JS2
-</code></pre>
+</pre></div>
+
 
 <p>Do you know of any other useful packages?  Let me know!</p>
-
-<!-- References -->
-
-
-
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Stefan van der Walt</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-25T17:14:00-05:00" pubdate data-updated="true">Sep 25<span>th</span>, 2012</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/emacs/'>emacs</a>, <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/scipy/'>scipy</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://stefanv.github.com/blog/2012/09/25/emacs-package-management/" data-via="stefanvdwalt" data-counturl="http://stefanv.github.com/blog/2012/09/25/emacs-package-management/" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/09/26/consolas-vs-source-code-pro/" title="Next Post: Adobe's new free font: Source Code Pro">Adobe's new free font: Source Code Pro &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
+<!-- References --></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Stefan van der Walt
+    </span>
+  </span>
+<time datetime="2012-09-25T17:14:00+02:00" pubdate>Tue 25 September 2012</time>  <span class="categories">
+    <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a class="category" href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a class="category" href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
 
   <section>
     <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
   </section>
-
 </div>
-
 <aside class="sidebar">
-  
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2015/01/18/visualizing-and-pruning-the-docker-image-tree/">Visualizing and pruning the docker image tree</a>
+      </li>
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/">SciPy2013 Proceedings</a>
+      </li>
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/">Replicable super-resolution paper</a>
+      </li>
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2012/09/30/scikits-image-07/">scikits-image 0.7</a>
+      </li>
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2012/09/26/adobes-new-free-font-source-code-pro/">Adobe's new free font: Source Code Pro</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://mentat.za.net/blog/category/misc.html">misc</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>  </section>
+
+
     <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/06/27/scipy2013-proceedings/">SciPy2013 Proceedings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/15/replicable-super-resolution-paper/">Replicable super-resolution paper</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/30/scikits-image-0-dot-7/">scikits-image 0.7</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/26/consolas-vs-source-code-pro/">Adobe's new free font: Source Code Pro</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/25/emacs-package-management/">Emacs package management</a>
-      </li>
-    
-  </ul>
-</section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="http://mentat.za.net/" target="_blank">Homepage</a></li>
+            <li><a href="https://scikit-image.org/" target="_blank">scikit-image</a></li>
+        </ul>
+    </section>
 
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/sjvdwalt?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-
-<section>
-  <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating...</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("stefanvdwalt", 4, false);
-    });
-  </script>
-  <script src="/blog/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/stefanvdwalt" class="twitter-follow-button" data-show-count="false">Follow @stefanvdwalt</a>
-  
-</section>
-
-
-
-  
-</aside>
-
-
-    </div>
+</aside>    </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Stefan van der Walt -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'stefanvdwalt';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://stefanv.github.com/blog/2012/09/25/emacs-package-management/';
-        var disqus_url = 'http://stefanv.github.com/blog/2012/09/25/emacs-package-management/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+    Copyright &copy;  2012&ndash;2015  Stefan van der Walt &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+  <script src="http://mentat.za.net/blog/theme/js/modernizr-2.0.js"></script>
+  <script src="http://mentat.za.net/blog/theme/js/ender.js"></script>
+  <script src="http://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	  var disqus_shortname = 'stefanvdwalt';
+          var disqus_identifier = '/2012/09/25/emacs-package-management/';
+          var disqus_url = 'http://mentat.za.net/blog/2012/09/25/emacs-package-management/';
+          var disqus_title = 'Emacs package management';
+	  (function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	   })();
+	</script>
 </body>
 </html>
