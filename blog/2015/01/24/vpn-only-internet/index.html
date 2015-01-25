@@ -123,48 +123,6 @@ without the VPN, simply raze the firewall:</p>
 </pre></div>
 
 
-<!--
-# Create a new zone
-
-**Direct rules not supported for zones yet**
-
-
-
-``sgs3``
-
-
-wzxhzdk:3
-
-
-In NetworkManager, go to the wifi connection and set its zone to
-``vpn_only``.
-
-(Alternatively, directly edit
-``/etc/NetworkManager/system-connections/<ssid>``)
-
-
-Restart NetworkManager:
-
-
-wzxhzdk:4
-
-
-When your connection comes back up, you should see it in the new zone:
-
-
-wzxhzdk:5
-
-
-Firewalld has a *direct* mode which gives us access to the inner
-workings of the firewall, among other things allowing us to manipulate
-outgoing and IP-based rules.
-
-sudo firewall-cmd --zone=vpn_only --permanent --add-rich-rule='rule family="ipv4" destination address="136.152.0.0/16" invert="True" port port="1-65535" protocol="tcp" reject'
-
-rule family="ipv4" destination NOT address="136.152.0.0/16" port
-port="1-65535" protocol="tcp" reject
--->
-
 <div class="footnote">
 <hr />
 <ol>
@@ -235,7 +193,7 @@ should be possible soon, and is on the firewalld
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>  </section>
 
 <!--  
 
