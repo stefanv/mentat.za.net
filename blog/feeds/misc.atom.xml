@@ -1,5 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/misc.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2015-01-18T00:00:00+01:00</updated><entry><title>Visualizing and pruning the docker image tree</title><link href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/" rel="alternate"></link><updated>2015-01-18T00:00:00+01:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-18:blog/2015/01/18/docker-image-tree/</id><summary type="html">&lt;p&gt;Visualizing the Docker image dependency tree is a useful way of
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/misc.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2015-01-24T00:00:00+01:00</updated><entry><title>VPN-only access to the internet</title><link href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/" rel="alternate"></link><updated>2015-01-24T00:00:00+01:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-24:blog/2015/01/24/vpn-only-internet/</id><summary type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN&lt;/p&gt;
+&lt;p&gt;A few days ago, I noticed that my outbound email wasn&amp;rsquo;t being
+delivered&amp;mdash;it seems as if my ISP blocks access to some outbound ports.
+An easy workaround is to route traffic through the work VPN, but
+knowing myself I&amp;rsquo;d forget to switch it on, leaving my outbound mail
+stranded.&lt;/p&gt;
+&lt;p&gt;I needed a way of blocking &lt;em&gt;any&lt;/em&gt; access to the internet, unless it was
+leaving through the VPN (since I was sure I&amp;rsquo;d notice &lt;em&gt;that&lt;/em&gt; pretty
+quickly).&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d have preferred to use firewalld, which is neatly integrated into
+Ubuntu, but as of 01/24/2015 it &lt;a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html"&gt;doesn&amp;rsquo;t allow filtering outbound traffic&lt;/a&gt;&lt;sup id="fnref:firewalld_direct_zones"&gt;&lt;a class="footnote-ref" href="#fn:firewalld_direct_zones" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. What
+follows, then, is a simple approach implementing the following rule:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Block wifi traffic unless it goes to either the local
+network or the VPN.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Create a script (I called it &lt;code&gt;~/scripts/fw-up&lt;/code&gt;) that sets up the
+firewall:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="c"&gt;# Clear any existing rules&lt;/span&gt;
+iptables -F
+
+&lt;span class="c"&gt;# Allow outbound DNS&lt;/span&gt;
+iptables -A OUTPUT -p udp --dport &lt;span class="m"&gt;53&lt;/span&gt; -j ACCEPT
+iptables -A INPUT -p udp --sport &lt;span class="m"&gt;53&lt;/span&gt; -j ACCEPT
+
+&lt;span class="c"&gt;# Allow TCP access to the work VPN&lt;/span&gt;
+&lt;span class="c"&gt;# Replace X.Y below with your VPN address range&lt;/span&gt;
+iptables -A OUTPUT -p tcp -d X.Y.0.0/16 -o wlan1 -j ACCEPT
+
+&lt;span class="c"&gt;# Allow any traffic destined for the vpn to go out&lt;/span&gt;
+iptables -A OUTPUT -o vpn0 -j ACCEPT
+
+&lt;span class="c"&gt;# Allow local traffic&lt;/span&gt;
+iptables -A OUTPUT -p tcp -o wlan1 -d 10.0.0.0/8 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d 172.16.0.0/12 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d 192.168.0.0/16 -j ACCEPT
+
+&lt;span class="c"&gt;# Drop everything else on the wifi&lt;/span&gt;
+iptables -A OUTPUT -p tcp -o wlan1 -j DROP
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Make sure the script is set to executable (&lt;code&gt;chmod +x fw-up&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Add a symlink to &lt;code&gt;if-up.d&lt;/code&gt; to ensure that the firewall gets built
+whenever the network is reconfigured:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, whenever you connect to a wifi hotspot, internet traffic will be
+blocked until you fire up your VPN.  If, on occasion, you need to work
+without the VPN, simply raze the firewall:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo iptables -F
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--
+# Create a new zone
+
+**Direct rules not supported for zones yet**
+
+
+
+``sgs3``
+
+
+wzxhzdk:3
+
+
+In NetworkManager, go to the wifi connection and set its zone to
+``vpn_only``.
+
+(Alternatively, directly edit
+``/etc/NetworkManager/system-connections/&lt;ssid&gt;``)
+
+
+Restart NetworkManager:
+
+
+wzxhzdk:4
+
+
+When your connection comes back up, you should see it in the new zone:
+
+
+wzxhzdk:5
+
+
+Firewalld has a *direct* mode which gives us access to the inner
+workings of the firewall, among other things allowing us to manipulate
+outgoing and IP-based rules.
+
+sudo firewall-cmd --zone=vpn_only --permanent --add-rich-rule='rule family="ipv4" destination address="136.152.0.0/16" invert="True" port port="1-65535" protocol="tcp" reject'
+
+rule family="ipv4" destination NOT address="136.152.0.0/16" port
+port="1-65535" protocol="tcp" reject
+--&gt;
+
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:firewalld_direct_zones"&gt;
+&lt;p&gt;The idea would be to set up a zone, say
+&lt;code&gt;vpn_only&lt;/code&gt;, and to assign your home wifi SSID to it.  A direct rule that
+blocks any non-VPN traffic can then be added to the new zone (this
+should be possible soon, and is on the firewalld
+&lt;a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO"&gt;TODO list&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:firewalld_direct_zones" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</summary><category term="linux"></category></entry><entry><title>Visualizing and pruning the docker image tree</title><link href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/" rel="alternate"></link><updated>2015-01-18T00:00:00+01:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-18:blog/2015/01/18/docker-image-tree/</id><summary type="html">&lt;p&gt;Visualizing the Docker image dependency tree is a useful way of
 checking image sizes and inter-image dependencies.  Since images
 occupy a lot of disk space, we may also want to prune unused images.&lt;/p&gt;
 &lt;h2&gt;Visualizing image dependencies&lt;/h2&gt;
