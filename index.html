@@ -300,9 +300,57 @@ Until May 2014, I lectured at
   provide a good excuse to visit us!
   </p>
 
-<h1>Blog posts</h2>
+<h1>Latest blog posts</h2>
 
-<script type='text/javascript' charset='utf-8' src='http://scripts.hashemian.com/jss/feed.js?print=yes&numlinks=5&summarylen=100&seedate=yes&popwin=no&url=http:%2F%2Fstefanv.github.io%2Fblog%2Fatom.xml'></script>
+<div id="feed">
+</div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load("feeds", "1");</script>
+
+<script type="text/javascript">
+var feed = new google.feeds.Feed('http://mentat.za.net/blog/atom.xml');
+feed.load(function (data) {
+    "use strict;"
+
+    var i, j;
+    var entries = data.feed.entries;
+    var entry;
+    var html;
+
+    var div = $("#feed");
+    div.append('<ul id="feed_list"/></ul>');
+    div = $("#feed_list");
+
+    // Parse data depending on the specified response format, default is JSON.
+    for (i=0; i < entries.length && i < 10; i++) {
+      entry = entries[i];
+
+      html = '\n<li class="feed_entry">' +
+             '<span class="feed_title">' +
+             '<a href="' + entry.link + '">' + entry.title + '</a>' +
+             '</span><br/><span class="feed_date">' +
+             entry.publishedDate.split(" ").slice(0, 4).join(" ") +
+             '</span> in <span class="feed_tags">';
+
+       for (j=0; j < entry.categories.length; j++) {
+         html += '<span class="feed_tag">' +
+                 entry.categories[j] +
+                 '</span>';
+         if (j < entry.categories.length - 1) {
+           html += ', ';
+         };
+       };
+
+       html += '</span><br/><span class="feed_content">';
+       html += entry.contentSnippet;
+       html += '</li>\n';
+
+       div.append(html);
+    }
+
+});
+</script>
 
 <!--
 

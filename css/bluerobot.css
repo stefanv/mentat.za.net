@@ -89,8 +89,8 @@ a:hover {background-color:#eee;}
 	border-width:0px 0px 1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
        	background-color:#eee;
 	}
-/* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct 
-length values to user agents that exhibit the parsing error exploited above yet get 
+/* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct
+length values to user agents that exhibit the parsing error exploited above yet get
 the CSS box model right and understand the CSS2 parent-child selector. ALWAYS include
 a "be nice to Opera 5" rule every time you use the Tantek Celik hack (above). */
 body>#Header {height:1em;}
@@ -122,7 +122,7 @@ body>#Header {height:1em;}
 
 .Note {
 	border-style:solid;
-	border-width: 1px 1px 1px 1px;	
+	border-width: 1px 1px 1px 1px;
 	background-color:#fbffc3;
 	padding:0.5em;
 	margin: 0em 0em 0.5em 0em;
@@ -151,3 +151,26 @@ iframe { padding: 0;
 img { padding: 0.3em;
       margin: 0.5em;
     }
+
+#feed_list {
+  list-style-type: lower-greek;
+}
+
+.feed_entry {
+  margin-bottom: 0.5em;
+}
+
+.feed_title {
+}
+
+.feed_tags {
+}
+
+.feed_tag {
+  font-weight: bold;
+  font-size: small;
+}
+
+.feed_content {
+  font-style: italic;
+}
