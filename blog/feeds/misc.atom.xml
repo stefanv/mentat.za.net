@@ -57,6 +57,18 @@ without the VPN, simply raze the firewall:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Typically, you wouldn&amp;rsquo;t want the firewall to go up when
+  connecting to the wireless at work, so I added the following conditional
+  in the &lt;code&gt;fw-up&lt;/code&gt; script:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;iptables -F
+
+if [[ `iwgetid -r` != &amp;#39;WorkSSID&amp;#39; ]]; then
+   # Firewall rules go here
+   ...
+fi
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;div class="footnote"&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
