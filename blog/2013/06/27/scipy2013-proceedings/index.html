@@ -37,12 +37,32 @@
 </ul>
 
 
-<form action="https://google.com/search" method="get">
+<!-- <form action="//google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:mentat.za.net/blog" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
+-->
+
+<script>
+  (function() {
+    var cx = '001734058120475597871:piammqv2npu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<style type="text/css">
+  form.gsc-search-box { width: 20em; }
+</style>
+
+<div style="inline: block;"><gcse:searchbox-only></gcse:searchbox-only></div>
 
 <ul class="main-navigation">
     <li><a href="http://mentat.za.net/blog">Home</a></li>
@@ -82,7 +102,8 @@ becomes an ally to the author, helping them to get their paper signed off on.</p
 who regularly collaborate to open source projects.  Most such projects nowadays
 follow a similar methodology for discussing and integrating patches.</p>
 <h2 id="tools">Tools</h2>
-<p>Since we can&rsquo;t expect reviewers to check out and build the papers themselves, a<a href="http://stefan.pythonanywhere.com">paper build bot</a> is provided to generate
+<p>Since we can&rsquo;t expect reviewers to check out and build the papers themselves, a
+<a href="http://stefan.pythonanywhere.com">paper build bot</a> is provided to generate
 PDFs from pull-requests, which contain papers in plain-text ReStructuredText
 format (see the
 <a href="https://github.com/scipy/scipy_proceedings/tree/2013">proceedings repository</a> for
@@ -127,6 +148,9 @@ Python community, of which I am proud to be part of.</p></div>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/">Python & Matplotlib on OSX</a>
+      </li>
+      <li class="post">
           <a href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/">VPN-only access to the internet</a>
       </li>
       <li class="post">
@@ -137,9 +161,6 @@ Python community, of which I am proud to be part of.</p></div>
       </li>
       <li class="post">
           <a href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/">Replicable super-resolution paper</a>
-      </li>
-      <li class="post">
-          <a href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/">scikits-image 0.7</a>
       </li>
     </ul>
   </section>
@@ -155,7 +176,7 @@ Python community, of which I am proud to be part of.</p></div>
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>  </section>
 
 <!--  
 
@@ -208,7 +229,7 @@ Python community, of which I am proud to be part of.</p></div>
 </aside>    </div>
   </div>
   <footer role="contentinfo"><p>
-    Copyright &copy;  2012&ndash;2015  Stefan van der Walt &mdash;
+    Copyright &copy;  2012&ndash;2016  Stefan van der Walt &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p></footer>
   <script src="http://mentat.za.net/blog/theme/js/modernizr-2.0.js"></script>

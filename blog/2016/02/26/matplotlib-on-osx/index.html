@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tags &mdash; Stéfan van der Walt</title>
+  <title>Python & Matplotlib on OSX &mdash; Stéfan van der Walt</title>
   <meta name="author" content="Stefan van der Walt">
 
   <link href="http://mentat.za.net/blog/atom.xml" type="application/atom+xml" rel="alternate"
@@ -72,23 +72,84 @@
   <div id="main">
     <div id="content">
 <div>
-	<article role="article">
-    	<header>
-    		<h1 class="entry-title">Blog Tags</h1>
-    	</header>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Python & Matplotlib on OSX</h1>
+    <p class="meta">
+<time datetime="2016-02-26T00:00:00+01:00" pubdate>Fri 26 February 2016</time>      &middot;
+      <span class="categories" style="text-transform: lowercase;">
+        <a class="category"
+           style="text-decoration: none;"
+           href="http://mentat.za.net/blog/tag/python.html">python</a>      </span>
 
-	<p>
-		<a href="http://mentat.za.net/blog/tag/coding.html">coding</a> (1)<br>
-		<a href="http://mentat.za.net/blog/tag/docker.html">docker</a> (1)<br>
-		<a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a> (2)<br>
-		<a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a> (2)<br>
-		<a href="http://mentat.za.net/blog/tag/linux.html">linux</a> (2)<br>
-		<a href="http://mentat.za.net/blog/tag/python.html">python</a> (5)<br>
-		<a href="http://mentat.za.net/blog/tag/science.html">science</a> (2)<br>
-		<a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a> (3)<br>
-		<a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a> (1)<br>
-	</p>
-	</article>
+    </p>
+</header>
+
+  <div class="entry-content"><p>One day, we will hopefully have a grand unified build and package management
+system for Python where everything is free &amp; open and Just Works (TM).  Until
+then, you have two options:</p>
+<h1 id="brew-python-pip">brew Python + pip</h1>
+<ol>
+<li><code>brew install python3</code></li>
+<li><code>pyvenv -v ~/envs/py3</code></li>
+<li><code>source ~/envs/py3/bin/activate</code></li>
+<li><code>pip install matplotlib</code></li>
+</ol>
+<p>Pros/cons:</p>
+<ul>
+<li>Uses the standard Python way of installing packages.</li>
+<li>Can install wheels built by package authors themselves from PyPi.</li>
+<li>Binary wheels may not be available for all packages.</li>
+<li>Pip is not the best of package management tools.</li>
+</ul>
+<h1 id="conda">Conda</h1>
+<ol>
+<li>Download and install miniconda</li>
+<li><code>conda create -n py3 python=3.5 matplotlib</code></li>
+<li><code>source activate py3</code></li>
+</ol>
+<p>Pros/cons:</p>
+<ul>
+<li>Conda is a great package management tool.</li>
+<li>Many of the conda build recipes are closed and binary wheels may not be
+    available for all packages<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</li>
+<li>Conda and pip do not always play well together.</li>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Some members of the community maintain <a href="https://conda-forge.github.io">their own
+channels</a>, but there are still some issues to
+be aware of when <a href="https://github.com/conda-forge/conda-forge.github.io/issues/22">mixing those channels and the official
+ones</a>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Stefan van der Walt
+    </span>
+  </span>
+<time datetime="2016-02-26T00:00:00+01:00" pubdate>Fri 26 February 2016</time>
+<!--
+  <span class="categories">
+    <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
+  </span>
+-->
+
+  <span class="categories">
+    <a class="category" href="http://mentat.za.net/blog/tag/python.html">python</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
 </div>
 <aside class="sidebar">
   <section>
@@ -184,6 +245,9 @@
   <script src="http://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	  var disqus_shortname = 'stefanvdwalt';
+          var disqus_identifier = 'http://stefanv.github.com/blog/2016/02/26/matplotlib-on-osx/';
+          var disqus_url = 'http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/';
+          var disqus_title = "Python & Matplotlib on OSX";
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
