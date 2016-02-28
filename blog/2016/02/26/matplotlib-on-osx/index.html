@@ -88,7 +88,7 @@
   <div class="entry-content"><p>One day, we will hopefully have a grand unified build and package management
 system for Python where everything is free &amp; open and Just Works (TM).  Until
 then, you have two options:</p>
-<h1 id="brew-python-pip">brew Python + pip</h1>
+<h2 id="brew-python-pip">brew Python + pip</h2>
 <ol>
 <li><code>brew install python3</code></li>
 <li><code>pyvenv -v ~/envs/py3</code></li>
@@ -97,12 +97,13 @@ then, you have two options:</p>
 </ol>
 <p>Pros/cons:</p>
 <ul>
-<li>Uses the standard Python way of installing packages.</li>
-<li>Can install wheels built by package authors themselves from PyPi.</li>
+<li>Pip is the standard Python package management tool, and uses the official
+   Python Package Index (PyPi) repository.</li>
+<li>Wheels on PyPi are built by authors themselves from open recipes.</li>
 <li>Binary wheels may not be available for all packages.</li>
 <li>Pip is not the best of package management tools.</li>
 </ul>
-<h1 id="conda">Conda</h1>
+<h2 id="conda">Conda</h2>
 <ol>
 <li>Download and install miniconda</li>
 <li><code>conda create -n py3 python=3.5 matplotlib</code></li>
@@ -111,18 +112,19 @@ then, you have two options:</p>
 <p>Pros/cons:</p>
 <ul>
 <li>Conda is a great package management tool.</li>
-<li>Many of the conda build recipes are closed and binary wheels may not be
+<li>Conda environments are well tested; almost everything works out of the
+    box.  This includes fast linear algebra using MKL.</li>
+<li>Some of the conda build recipes are closed and binary wheels may not be
     available for all packages<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</li>
 <li>Conda and pip do not always play well together.</li>
+<li>Conda packages are supported almost exclusively by a single company.</li>
 </ul>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p>Some members of the community maintain <a href="https://conda-forge.github.io">their own
-channels</a>, but there are still some issues to
-be aware of when <a href="https://github.com/conda-forge/conda-forge.github.io/issues/22">mixing those channels and the official
-ones</a>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Some members of the community maintain <a href="https://conda-forge.github.io">their own channels</a>, but there are still some issues to
+be aware of when <a href="https://github.com/conda-forge/conda-forge.github.io/issues/22">mixing those channels and the official ones</a>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div>
@@ -184,7 +186,7 @@ ones</a>.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title=
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>  </section>
 
 <!--  
 
