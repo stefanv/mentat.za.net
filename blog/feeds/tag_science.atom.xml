@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_science.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2012-10-15T00:04:00+02:00</updated><entry><title>Replicable super-resolution paper</title><link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/" rel="alternate"></link><updated>2012-10-15T00:04:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-10-15:blog/2012/10/15/replicable-super-resolution-paper/</id><summary type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
+problem for several years.  Thereafter, I was side-tracked by
+&lt;a href="http://github.com/scipy"&gt;several&lt;/a&gt; &lt;a href="http://scikit-image.org"&gt;other&lt;/a&gt;
+&lt;a href="http://dipy.org"&gt;projects&lt;/a&gt;, and never got around to publishing a paper on
+&lt;a href="http://mentat.za.net/phd_dissertation.html"&gt;my dissertation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here, then, is a summary of the simple but effective super-resolution algorithm
+described therein:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://arxiv.org/abs/1210.3404"&gt;http://arxiv.org/abs/1210.3404&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I also submitted this work to NIPS: the reviewers liked the paper, but they
+were not convinced of its novelty.  Having spent a lot of time studying the
+existing literature, all I can say in response is that, while solving the
+problem as a sparse linear system was well known at the time, phrasing Drizzle
+as a linear operator and using it for super-resolution was not.&lt;/p&gt;
+&lt;p&gt;But the proof of the pudding is in the eating! Have a look at the
+&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; &amp;ndash; you can download it all (including a
+sample data-set) and play with the different reconstruction parameters.  Quite
+a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</summary><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><updated>2012-09-30T16:18:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
+&lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
+for segmentation, geometric transformations, color space manipulation,
+analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
+&lt;p&gt;For more information, examples, and documentation, please visit &lt;a href="http://skimage.org"&gt;our website&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="new-features"&gt;New Features&lt;/h2&gt;
+&lt;p&gt;It&amp;rsquo;s been only 3 months since scikits-image 0.6 was released, but in that short
+time, we&amp;rsquo;ve managed to add plenty of new features and enhancements, including&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Geometric image transforms&lt;/li&gt;
+&lt;li&gt;3 new image segmentation routines (Felsenzwalb, Quickshift, SLIC)&lt;/li&gt;
+&lt;li&gt;Local binary patterns for texture characterization&lt;/li&gt;
+&lt;li&gt;Morphological reconstruction&lt;/li&gt;
+&lt;li&gt;Polygon approximation&lt;/li&gt;
+&lt;li&gt;CIE Lab color space conversion&lt;/li&gt;
+&lt;li&gt;Image pyramids&lt;/li&gt;
+&lt;li&gt;Multispectral support in random walker segmentation&lt;/li&gt;
+&lt;li&gt;Slicing, concatenation, and natural sorting of image collections&lt;/li&gt;
+&lt;li&gt;Perimeter and coordinates measurements in regionprops&lt;/li&gt;
+&lt;li&gt;An extensible image viewer based on Qt and Matplotlib, with plugins for edge
+  detection, line-profiling, and viewing image collections&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plus, this release adds a number of bug fixes, new examples, and performance
+enhancements.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/images/lena_superpixels.jpg" alt="Comparison of pupular segmentation algorithms" title="Comparison of pupular segmentation algorithms"&gt;&lt;/p&gt;
+&lt;h2 id="contributors-to-this-release"&gt;Contributors to this release&lt;/h2&gt;
+&lt;p&gt;This release was only possible due to the efforts of many contributors, both
+new and old.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Andreas Mueller&lt;/li&gt;
+&lt;li&gt;Andreas Wuerl&lt;/li&gt;
+&lt;li&gt;Andy Wilson&lt;/li&gt;
+&lt;li&gt;Brian Holt&lt;/li&gt;
+&lt;li&gt;Christoph Gohlke&lt;/li&gt;
+&lt;li&gt;Dharhas Pothina&lt;/li&gt;
+&lt;li&gt;Emmanuelle Gouillart&lt;/li&gt;
+&lt;li&gt;Guillaume Gay&lt;/li&gt;
+&lt;li&gt;Josh Warner&lt;/li&gt;
+&lt;li&gt;James Bergstra&lt;/li&gt;
+&lt;li&gt;Johannes Schönberger&lt;/li&gt;
+&lt;li&gt;Jonathan J. Helmus&lt;/li&gt;
+&lt;li&gt;Juan Nunez-Iglesias&lt;/li&gt;
+&lt;li&gt;Leon Tietz&lt;/li&gt;
+&lt;li&gt;Marianne Corvellec&lt;/li&gt;
+&lt;li&gt;Matt McCormick&lt;/li&gt;
+&lt;li&gt;Neil Yager&lt;/li&gt;
+&lt;li&gt;Nicolas Pinto&lt;/li&gt;
+&lt;li&gt;Nicolas Poilvert&lt;/li&gt;
+&lt;li&gt;Pavel Campr&lt;/li&gt;
+&lt;li&gt;Petter Strandmark&lt;/li&gt;
+&lt;li&gt;Stéfan van der Walt&lt;/li&gt;
+&lt;li&gt;Tim Sheerman-Chase&lt;/li&gt;
+&lt;li&gt;Tomas Kazmar&lt;/li&gt;
+&lt;li&gt;Tony S Yu&lt;/li&gt;
+&lt;li&gt;Wei Li&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry></feed>

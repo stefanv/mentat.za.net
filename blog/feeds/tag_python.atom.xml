@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_python.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-02-26T00:00:00+01:00</updated><entry><title>Python &amp; Matplotlib on OSX</title><link href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/" rel="alternate"></link><updated>2016-02-26T00:00:00+01:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-02-26:blog/2016/02/26/matplotlib-on-osx/</id><summary type="html">&lt;p&gt;One day, we will hopefully have a grand unified build and package management
+system for Python where everything is free &amp;amp; open and Just Works (TM).  Until
+then, you have two options:&lt;/p&gt;
+&lt;h2 id="brew-python-pip"&gt;brew Python + pip&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;brew install python3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pyvenv -v ~/envs/py3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;source ~/envs/py3/bin/activate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip install matplotlib&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pros/cons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pip is the standard Python package management tool, and uses the official
+   Python Package Index (PyPi) repository.&lt;/li&gt;
+&lt;li&gt;Wheels on PyPi are built by authors themselves from open recipes.&lt;/li&gt;
+&lt;li&gt;Binary wheels may not be available for all packages.&lt;/li&gt;
+&lt;li&gt;Pip is not the best of package management tools.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="conda"&gt;Conda&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Download and install miniconda&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;conda create -n py3 python=3.5 matplotlib&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;source activate py3&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pros/cons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Conda is a great package management tool.&lt;/li&gt;
+&lt;li&gt;Conda environments are well tested; almost everything works out of the
+    box.  This includes fast linear algebra using MKL.&lt;/li&gt;
+&lt;li&gt;Some of the conda build recipes are closed and binary wheels may not be
+    available for all packages&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
+&lt;li&gt;Conda and pip do not always play well together.&lt;/li&gt;
+&lt;li&gt;Conda packages are supported almost exclusively by a single company.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;Some members of the community maintain &lt;a href="https://conda-forge.github.io"&gt;their own channels&lt;/a&gt;, but there are still some issues to
+be aware of when &lt;a href="https://github.com/conda-forge/conda-forge.github.io/issues/22"&gt;mixing those channels and the official ones&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</summary><category term="python"></category></entry><entry><title>SciPy2013 Proceedings</title><link href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/" rel="alternate"></link><updated>2013-06-27T17:20:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2013-06-27:blog/2013/06/27/scipy2013-proceedings/</id><summary type="html">&lt;p&gt;The talks for the 12th (fantastic) Python in Science conference just concluded,
+and I am happy to announce the
+&lt;a href="https://dl.dropboxusercontent.com/u/380268/scipy_2013_proceedings_draft.pdf"&gt;conference proceedings&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This may come as a surprize to some, since in the past we have been unable to
+publish the proceedings in a timely manner.  So, what changed?&lt;/p&gt;
+&lt;h2 id="review-process"&gt;Review process&lt;/h2&gt;
+&lt;p&gt;For 2013 we followed a &lt;strong&gt;very light-weight review process, via comments on
+GitHub pull-requests&lt;/strong&gt;.  This change has an important consequence: in contrast
+to the traditional review process, where reviewers critically pull apart
+papers, the process now changes into a constructive conversation&amp;ndash;the reviewer
+becomes an ally to the author, helping them to get their paper signed off on.&lt;/p&gt;
+&lt;p&gt;In addition, this is a very familiar process to most members of our community
+who regularly collaborate to open source projects.  Most such projects nowadays
+follow a similar methodology for discussing and integrating patches.&lt;/p&gt;
+&lt;h2 id="tools"&gt;Tools&lt;/h2&gt;
+&lt;p&gt;Since we can&amp;rsquo;t expect reviewers to check out and build the papers themselves, a
+&lt;a href="http://stefan.pythonanywhere.com"&gt;paper build bot&lt;/a&gt; is provided to generate
+PDFs from pull-requests, which contain papers in plain-text ReStructuredText
+format (see the
+&lt;a href="https://github.com/scipy/scipy_proceedings/tree/2013"&gt;proceedings repository&lt;/a&gt; for
+examples, and all papers starting 2010).&lt;/p&gt;
+&lt;p&gt;For authors, tools are provided to convert the ReStructuredText papers to
+PDFs in IEEE Computer Society paper style.&lt;/p&gt;
+&lt;h2 id="help-us-with-the-final-review"&gt;Help us with the final review&lt;/h2&gt;
+&lt;p&gt;We welcome your feedback on the proceedings!  If you spot a mistake, please
+submit a pull request on
+&lt;a href="https://github.com/scipy/scipy_proceedings/tree/2013"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="thanks"&gt;Thanks&lt;/h2&gt;
+&lt;p&gt;Finally, a big shout-out to the amazing team of people who organized this
+year&amp;rsquo;s conference, and to the wonderfully inclusive and talented Scientific
+Python community, of which I am proud to be part of.&lt;/p&gt;</summary><category term="scipy"></category><category term="python"></category></entry><entry><title>Replicable super-resolution paper</title><link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/" rel="alternate"></link><updated>2012-10-15T00:04:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-10-15:blog/2012/10/15/replicable-super-resolution-paper/</id><summary type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
+problem for several years.  Thereafter, I was side-tracked by
+&lt;a href="http://github.com/scipy"&gt;several&lt;/a&gt; &lt;a href="http://scikit-image.org"&gt;other&lt;/a&gt;
+&lt;a href="http://dipy.org"&gt;projects&lt;/a&gt;, and never got around to publishing a paper on
+&lt;a href="http://mentat.za.net/phd_dissertation.html"&gt;my dissertation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here, then, is a summary of the simple but effective super-resolution algorithm
+described therein:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://arxiv.org/abs/1210.3404"&gt;http://arxiv.org/abs/1210.3404&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I also submitted this work to NIPS: the reviewers liked the paper, but they
+were not convinced of its novelty.  Having spent a lot of time studying the
+existing literature, all I can say in response is that, while solving the
+problem as a sparse linear system was well known at the time, phrasing Drizzle
+as a linear operator and using it for super-resolution was not.&lt;/p&gt;
+&lt;p&gt;But the proof of the pudding is in the eating! Have a look at the
+&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; &amp;ndash; you can download it all (including a
+sample data-set) and play with the different reconstruction parameters.  Quite
+a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</summary><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><updated>2012-09-30T16:18:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
+&lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
+for segmentation, geometric transformations, color space manipulation,
+analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
+&lt;p&gt;For more information, examples, and documentation, please visit &lt;a href="http://skimage.org"&gt;our website&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="new-features"&gt;New Features&lt;/h2&gt;
+&lt;p&gt;It&amp;rsquo;s been only 3 months since scikits-image 0.6 was released, but in that short
+time, we&amp;rsquo;ve managed to add plenty of new features and enhancements, including&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Geometric image transforms&lt;/li&gt;
+&lt;li&gt;3 new image segmentation routines (Felsenzwalb, Quickshift, SLIC)&lt;/li&gt;
+&lt;li&gt;Local binary patterns for texture characterization&lt;/li&gt;
+&lt;li&gt;Morphological reconstruction&lt;/li&gt;
+&lt;li&gt;Polygon approximation&lt;/li&gt;
+&lt;li&gt;CIE Lab color space conversion&lt;/li&gt;
+&lt;li&gt;Image pyramids&lt;/li&gt;
+&lt;li&gt;Multispectral support in random walker segmentation&lt;/li&gt;
+&lt;li&gt;Slicing, concatenation, and natural sorting of image collections&lt;/li&gt;
+&lt;li&gt;Perimeter and coordinates measurements in regionprops&lt;/li&gt;
+&lt;li&gt;An extensible image viewer based on Qt and Matplotlib, with plugins for edge
+  detection, line-profiling, and viewing image collections&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plus, this release adds a number of bug fixes, new examples, and performance
+enhancements.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/images/lena_superpixels.jpg" alt="Comparison of pupular segmentation algorithms" title="Comparison of pupular segmentation algorithms"&gt;&lt;/p&gt;
+&lt;h2 id="contributors-to-this-release"&gt;Contributors to this release&lt;/h2&gt;
+&lt;p&gt;This release was only possible due to the efforts of many contributors, both
+new and old.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Andreas Mueller&lt;/li&gt;
+&lt;li&gt;Andreas Wuerl&lt;/li&gt;
+&lt;li&gt;Andy Wilson&lt;/li&gt;
+&lt;li&gt;Brian Holt&lt;/li&gt;
+&lt;li&gt;Christoph Gohlke&lt;/li&gt;
+&lt;li&gt;Dharhas Pothina&lt;/li&gt;
+&lt;li&gt;Emmanuelle Gouillart&lt;/li&gt;
+&lt;li&gt;Guillaume Gay&lt;/li&gt;
+&lt;li&gt;Josh Warner&lt;/li&gt;
+&lt;li&gt;James Bergstra&lt;/li&gt;
+&lt;li&gt;Johannes Schönberger&lt;/li&gt;
+&lt;li&gt;Jonathan J. Helmus&lt;/li&gt;
+&lt;li&gt;Juan Nunez-Iglesias&lt;/li&gt;
+&lt;li&gt;Leon Tietz&lt;/li&gt;
+&lt;li&gt;Marianne Corvellec&lt;/li&gt;
+&lt;li&gt;Matt McCormick&lt;/li&gt;
+&lt;li&gt;Neil Yager&lt;/li&gt;
+&lt;li&gt;Nicolas Pinto&lt;/li&gt;
+&lt;li&gt;Nicolas Poilvert&lt;/li&gt;
+&lt;li&gt;Pavel Campr&lt;/li&gt;
+&lt;li&gt;Petter Strandmark&lt;/li&gt;
+&lt;li&gt;Stéfan van der Walt&lt;/li&gt;
+&lt;li&gt;Tim Sheerman-Chase&lt;/li&gt;
+&lt;li&gt;Tomas Kazmar&lt;/li&gt;
+&lt;li&gt;Tony S Yu&lt;/li&gt;
+&lt;li&gt;Wei Li&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Emacs package management</title><link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><updated>2012-09-25T17:14:00+02:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
+Arakaki&amp;rsquo;s &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
+webpage were as clear as mud and aimed primarily at Windows users.  Enters
+&lt;a href="https://github.com/dimitri/el-get"&gt;apt-get for Emacs&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;My Emacs setup is shared across multiple machines: a synchronized &lt;code&gt;elisp&lt;/code&gt;
+folder, containing &lt;code&gt;*.el&lt;/code&gt; files, along with my &lt;code&gt;.emacs&lt;/code&gt; configuration.
+&lt;code&gt;el-get&lt;/code&gt; allows you to share your package installation folder in a similar
+fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
+&lt;span class="c1"&gt;; I sync across all my machines&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-install-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;load-path&lt;/span&gt; &lt;span class="nv"&gt;el-get-install-dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;; If el-get is missing, install it automatically&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;el-get&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-retrieve&lt;/span&gt;
+   &lt;span class="s"&gt;&amp;quot;https://raw.github.com/dimitri/el-get/master/el-get-install.el&amp;quot;&lt;/span&gt;
+   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;goto-char&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;point-max&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;eval-print-last-sexp&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+
+&lt;span class="c1"&gt;; Install these packages, and call the specified configuration snippets&lt;/span&gt;
+&lt;span class="c1"&gt;; after each load&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-sources&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="nv"&gt;ethan-wspace&lt;/span&gt;
+         &lt;span class="ss"&gt;:after&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;progn&lt;/span&gt;
+                  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;global-ethan-wspace-mode&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-face-background&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;ethan-wspace-face&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;gray95&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="nv"&gt;column-marker&lt;/span&gt;
+         &lt;span class="ss"&gt;:after&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;font-lock-mode-hook&lt;/span&gt;
+                          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;column-marker-1&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+
+&lt;span class="c1"&gt;; Also install these packages, no configuration required&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;my-packages&lt;/span&gt;
+      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;append&lt;/span&gt;
+       &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;el-get&lt;/span&gt; &lt;span class="nv"&gt;maxframe&lt;/span&gt; &lt;span class="nv"&gt;markdown-mode&lt;/span&gt; &lt;span class="nv"&gt;ein&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;mapcar&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;el-get-source-name&lt;/span&gt; &lt;span class="nv"&gt;el-get-sources&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+       &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;; Check packages and install any that are missing&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;el-get&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;sync&lt;/span&gt; &lt;span class="nv"&gt;my-packages&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There are two ways to specify packages to be installed: either include them in
+the &lt;code&gt;my-packages&lt;/code&gt; list, or add them to &lt;code&gt;el-get-sources&lt;/code&gt;, which in addition
+allows further customization upon successful loading of the package.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://software-carpentry.org/2012/09/whats-in-your-stack/"&gt;What&amp;rsquo;s in your stack?&lt;/a&gt; Here&amp;rsquo;s my list of Emacs packages:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
+JS2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Do you know of any other useful packages?  Let me know!&lt;/p&gt;
+&lt;!-- References --&gt;</summary><category term="emacs"></category><category term="python"></category><category term="scipy"></category></entry></feed>
