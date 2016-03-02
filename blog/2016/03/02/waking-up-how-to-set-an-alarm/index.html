@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>VPN-only access to the internet &mdash; Stéfan van der Walt</title>
+  <title>Waking Up: The Art of Setting An Alarm &mdash; Stéfan van der Walt</title>
   <meta name="author" content="Stefan van der Walt">
 
   <link href="http://mentat.za.net/blog/atom.xml" type="application/atom+xml" rel="alternate"
@@ -74,97 +74,68 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">VPN-only access to the internet</h1>
+      <h1 class="entry-title">Waking Up: The Art of Setting An Alarm</h1>
     <p class="meta">
-<time datetime="2015-01-24T00:00:00+01:00" pubdate>Sat 24 January 2015</time>      &middot;
+<time datetime="2016-03-02T00:00:00+01:00" pubdate>Wed 02 March 2016</time>      &middot;
       <span class="categories" style="text-transform: lowercase;">
         <a class="category"
            style="text-decoration: none;"
-           href="http://mentat.za.net/blog/tag/linux.html">linux</a>      </span>
+           href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>      </span>
 
     </p>
 </header>
 
-  <div class="entry-content"><p>tl;dr A firewall setup that allows traffic to leave <em>only</em> via the VPN</p>
-<p>A few days ago, I noticed that my outbound email wasn&rsquo;t being
-delivered&mdash;it seems as if my ISP blocks access to some outbound ports.
-An easy workaround is to route traffic through the work VPN, but
-knowing myself I&rsquo;d forget to switch it on, leaving my outbound mail
-stranded.</p>
-<p>I needed a way of blocking <em>any</em> access to the internet, unless it was
-leaving through the VPN (since I was sure I&rsquo;d notice <em>that</em> pretty
-quickly).</p>
-<p>I&rsquo;d have preferred to use firewalld, which is neatly integrated into
-Ubuntu, but as of 01/24/2015 it 
-<a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html">doesn&rsquo;t allow filtering outbound traffic</a><sup id="fnref:firewalld_direct_zones"><a class="footnote-ref" href="#fn:firewalld_direct_zones" rel="footnote">1</a></sup>. What
-follows, then, is a simple approach implementing the following rule:</p>
-<blockquote>
-<p>Block wifi traffic unless it goes to either the local
-network or the VPN.</p>
-</blockquote>
-<p>Create a script (I called it <code>~/scripts/fw-up</code>) that sets up the
-firewall:</p>
-<div class="highlight"><pre><span class="c">#!/bin/bash</span>
-
-<span class="c"># Clear any existing rules</span>
-iptables -F
-
-<span class="c"># Allow outbound DNS</span>
-iptables -A OUTPUT -p udp --dport <span class="m">53</span> -j ACCEPT
-iptables -A INPUT -p udp --sport <span class="m">53</span> -j ACCEPT
-
-<span class="c"># Allow TCP access to the work VPN</span>
-<span class="c"># Replace X.Y below with your VPN address range</span>
-iptables -A OUTPUT -p tcp -d X.Y.0.0/16 -o wlan1 -j ACCEPT
-
-<span class="c"># Allow any traffic destined for the vpn to go out</span>
-iptables -A OUTPUT -o vpn0 -j ACCEPT
-
-<span class="c"># Allow local traffic</span>
-iptables -A OUTPUT -p tcp -o wlan1 -d 10.0.0.0/8 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d 172.16.0.0/12 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d 192.168.0.0/16 -j ACCEPT
-
-<span class="c"># Drop everything else on the wifi</span>
-iptables -A OUTPUT -p tcp -o wlan1 -j DROP
-</pre></div>
-
-
-<p>Make sure the script is set to executable (<code>chmod +x fw-up</code>).</p>
-<p>Add a symlink to <code>if-up.d</code> to ensure that the firewall gets built
-whenever the network is reconfigured:</p>
-<div class="highlight"><pre>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
-</pre></div>
-
-
-<p>Now, whenever you connect to a wifi hotspot, internet traffic will be
-blocked until you fire up your VPN.  If, on occasion, you need to work
-without the VPN, simply raze the firewall:</p>
-<div class="highlight"><pre>sudo iptables -F
-</pre></div>
-
-
-<p><strong>Update:</strong> Typically, you wouldn&rsquo;t want the firewall to go up when
-  connecting to the wireless at work, so I added the following conditional
-  in the <code>fw-up</code> script:</p>
-<div class="highlight"><pre>iptables -F
-
-if [[ `iwgetid -r` != &#39;WorkSSID&#39; ]]; then
-   # Firewall rules go here
-   ...
-fi
-</pre></div>
-
-
+  <div class="entry-content"><p>For me, waking up is and always has been hard.  That, together with an
+intolerance for coffee and a natural late-night tendency, brews up the
+perfect storm for a poor start to the day.</p>
+<p>During my PhD&mdash;especially the last six months, when I desperately
+needed every single minute of every day&mdash;I tried everything.  I logged
+my sleeping habits, setting my alarm for 6am every morning and
+watching my sleep duration oscillate and converge to 6 hours 40
+minutes.  But even then, I would sometimes simply sleep through
+alarms, my brain resisting departure from the world of inception with
+all its might.</p>
+<p>Eventually, out of desperation, I tried an experiment in conditioning:
+practicing the motions of getting up (taking a deep breath, sitting
+up, jumping out of bed) several times before going to sleep.  It
+sounds pretty wacky, saying it now, but to my surprise it worked well
+enough.  Perhaps only because I was watching the outcome of the
+experiment so keenly.</p>
+<p>Either way, as effective as that was, it was not a particularly
+<em>pleasant</em> way to wake up, and I started searching for a way to make my
+brain really <em>notice</em> the early morning alarm<sup id="fnref:sleep_tracker"><a class="footnote-ref" href="#fn:sleep_tracker" rel="footnote">1</a></sup>.</p>
+<p>One glaring problem with alarms is <strong>the snooze button</strong>.  Yes, you
+want to turn that darn thing off the moment it starts blaring in your
+ears.  And once your brain has learnt how to make it stop, you&rsquo;re not
+getting up.  After slapping the snooze button five times, chances are
+you will accidentally turn off the alarm: bye-bye work, hello
+dreamland.</p>
+<p>After sleeping restlessly on this problem for many nights, I finally
+came up with a straightforward solution that does the trick:</p>
+<ul>
+<li>Set an alarm for 10 minutes before you want to get up.</li>
+<li>Set a <em>radio alarm</em> (such as
+  <a href="https://play.google.com/store/apps/details?id=tunein.player&amp;hl=en">TuneIn Radio</a>)
+  for 10 minutes after the first.</li>
+</ul>
+<p>Why is this such a good solution?  When the first alarm goes off, you
+are <em>allowed to snooze it</em>.  That&rsquo;s right, make it quiet, go back to
+sleep.  Your body is aware that wake up time is near, but you still
+get your snooze in.  Then, the radio goes off, but because it is a
+radio it is <em>different</em> every morning.  This is key: there is no
+pattern matching your brain can do to say &ldquo;hey, that&rsquo;s just the alarm,
+ignore it&rdquo;.  By the time it has figured out that there isn&rsquo;t a serious
+British person suffering from a disturbing pre-occupation with world
+news standing next to you in the room&mdash;it&rsquo;s just BBC World
+Radio&mdash;you are wide awake.</p>
+<p>So, if you also struggle to wake up, give this method a try and let me
+know whether it works for you!</p>
 <div class="footnote">
 <hr />
 <ol>
-<li id="fn:firewalld_direct_zones">
-<p>The idea would be to set up a zone, say
-<code>vpn_only</code>, and to assign your home wifi SSID to it.  A direct rule that
-blocks any non-VPN traffic can then be added to the new zone (this
-should be possible soon, and is on the firewalld
-<a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO">TODO list</a>).&#160;<a class="footnote-backref" href="#fnref:firewalld_direct_zones" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:sleep_tracker">
+<p>I know some people have good success with cell phone
+applications such as Sleep Like Android; YMMV.&#160;<a class="footnote-backref" href="#fnref:sleep_tracker" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div>
@@ -175,7 +146,7 @@ should be possible soon, and is on the firewalld
         Stefan van der Walt
     </span>
   </span>
-<time datetime="2015-01-24T00:00:00+01:00" pubdate>Sat 24 January 2015</time>
+<time datetime="2016-03-02T00:00:00+01:00" pubdate>Wed 02 March 2016</time>
 <!--
   <span class="categories">
     <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
@@ -183,7 +154,7 @@ should be possible soon, and is on the firewalld
 -->
 
   <span class="categories">
-    <a class="category" href="http://mentat.za.net/blog/tag/linux.html">linux</a>  </span>
+    <a class="category" href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>  </span>
 </p><div class="sharing">
 </div>    </footer>
   </article>
@@ -287,9 +258,9 @@ should be possible soon, and is on the firewalld
   <script src="http://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	  var disqus_shortname = 'stefanvdwalt';
-          var disqus_identifier = 'http://stefanv.github.com/blog/2015/01/24/vpn-only-internet/';
-          var disqus_url = 'http://mentat.za.net/blog/2015/01/24/vpn-only-internet/';
-          var disqus_title = "VPN-only access to the internet";
+          var disqus_identifier = 'http://stefanv.github.com/blog/2016/03/02/waking-up-how-to-set-an-alarm/';
+          var disqus_url = 'http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/';
+          var disqus_title = "Waking Up: The Art of Setting An Alarm";
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
