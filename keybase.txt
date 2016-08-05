@@ -1,0 +1,51 @@
+https://keybase.io/stefanvdwalt
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://mentat.za.net
+  * I am stefanvdwalt (https://keybase.io/stefanvdwalt) on keybase.
+  * I have a public key ASC8V4gwDKya01cwidOkc0fDWe6HGA24sAo1cyUdOLe2lAo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120bc5788300cac9ad3573089d3a47347c359ee87180db8b00a3573251d38b7b6940a",
+            "host": "keybase.io",
+            "kid": "0120bc5788300cac9ad3573089d3a47347c359ee87180db8b00a3573251d38b7b6940a",
+            "uid": "56aac36e8545be97f0c0b6721441d719",
+            "username": "stefanvdwalt"
+        },
+        "service": {
+            "hostname": "mentat.za.net",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.16"
+    },
+    "ctime": 1470425115,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1470425075,
+        "hash": "32114794c325d6fcda5b4e929caabbd8c625e2abf0688184106fced2537c3c64058ec4eed77733c9f04a682bd85505333063c37ad4e1f054c80376bdde99e351",
+        "seqno": 561508
+    },
+    "prev": "6f2dba501d6c14e1a7b2687676a6f216700fe4dbfd39fc517bb98f454255543f",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgvFeIMAysmtNXMInTpHNHw1nuhxgNuLAKNXMlHTi3tpQKp3BheWxvYWTFAvh7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwYmM1Nzg4MzAwY2FjOWFkMzU3MzA4OWQzYTQ3MzQ3YzM1OWVlODcxODBkYjhiMDBhMzU3MzI1MWQzOGI3YjY5NDBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYmM1Nzg4MzAwY2FjOWFkMzU3MzA4OWQzYTQ3MzQ3YzM1OWVlODcxODBkYjhiMDBhMzU3MzI1MWQzOGI3YjY5NDBhIiwidWlkIjoiNTZhYWMzNmU4NTQ1YmU5N2YwYzBiNjcyMTQ0MWQ3MTkiLCJ1c2VybmFtZSI6InN0ZWZhbnZkd2FsdCJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoibWVudGF0LnphLm5ldCIsInByb3RvY29sIjoiaHR0cDoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMTYifSwiY3RpbWUiOjE0NzA0MjUxMTUsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ3MDQyNTA3NSwiaGFzaCI6IjMyMTE0Nzk0YzMyNWQ2ZmNkYTViNGU5MjljYWFiYmQ4YzYyNWUyYWJmMDY4ODE4NDEwNmZjZWQyNTM3YzNjNjQwNThlYzRlZWQ3NzczM2M5ZjA0YTY4MmJkODU1MDUzMzMwNjNjMzdhZDRlMWYwNTRjODAzNzZiZGRlOTllMzUxIiwic2Vxbm8iOjU2MTUwOH0sInByZXYiOiI2ZjJkYmE1MDFkNmMxNGUxYTdiMjY4NzY3NmE2ZjIxNjcwMGZlNGRiZmQzOWZjNTE3YmI5OGY0NTQyNTU1NDNmIiwic2Vxbm8iOjgsInRhZyI6InNpZ25hdHVyZSJ9o3NpZ8RAPNOQckm4PKjt6ZQeywZv11/+c6rg4m86ntkxIDbeQfOFf7+6+YzdVhtDnDXxoxRkwH0KSIM6gpufU5sXhDmvBqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPyto9KTyIo5wgA832MoIt7Op8PtTSduTVRWFGKsH2coo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/stefanvdwalt
