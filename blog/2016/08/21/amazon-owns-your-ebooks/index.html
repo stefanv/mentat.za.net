@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>scikits-image 0.7 &mdash; Stéfan van der Walt</title>
+  <title>Amazon owns your ebooks &mdash; Stéfan van der Walt</title>
   <meta name="author" content="Stefan van der Walt">
 
   <link href="http://mentat.za.net/blog/atom.xml" type="application/atom+xml" rel="alternate"
@@ -74,79 +74,109 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">scikits-image 0.7</h1>
+      <h1 class="entry-title">Amazon owns your ebooks</h1>
     <p class="meta">
-<time datetime="2012-09-30T16:18:00+02:00" pubdate>Sun 30 September 2012</time>      &middot;
+<time datetime="2016-08-21T00:00:00+02:00" pubdate>Sun 21 August 2016</time>      &middot;
       <span class="categories" style="text-transform: lowercase;">
         <a class="category"
            style="text-decoration: none;"
-           href="http://mentat.za.net/blog/tag/image-processing.html">image processing</a>,        <a class="category"
-           style="text-decoration: none;"
-           href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,        <a class="category"
-           style="text-decoration: none;"
-           href="http://mentat.za.net/blog/tag/python.html">python</a>,        <a class="category"
-           style="text-decoration: none;"
-           href="http://mentat.za.net/blog/tag/science.html">science</a>      </span>
+           href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>      </span>
 
     </p>
 </header>
 
-  <div class="entry-content"><p>We&rsquo;re happy to announce the 7th version of scikits-image!</p>
-<p>Scikits-image is an image processing toolbox for SciPy that includes algorithms
-for segmentation, geometric transformations, color space manipulation,
-analysis, filtering, morphology, feature detection, and more.</p>
-<p>For more information, examples, and documentation, please visit <a href="http://skimage.org">our website</a>.</p>
-<h2 id="new-features">New Features</h2>
-<p>It&rsquo;s been only 3 months since scikits-image 0.6 was released, but in that short
-time, we&rsquo;ve managed to add plenty of new features and enhancements, including</p>
-<ul>
-<li>Geometric image transforms</li>
-<li>3 new image segmentation routines (Felsenzwalb, Quickshift, SLIC)</li>
-<li>Local binary patterns for texture characterization</li>
-<li>Morphological reconstruction</li>
-<li>Polygon approximation</li>
-<li>CIE Lab color space conversion</li>
-<li>Image pyramids</li>
-<li>Multispectral support in random walker segmentation</li>
-<li>Slicing, concatenation, and natural sorting of image collections</li>
-<li>Perimeter and coordinates measurements in regionprops</li>
-<li>An extensible image viewer based on Qt and Matplotlib, with plugins for edge
-  detection, line-profiling, and viewing image collections</li>
-</ul>
-<p>Plus, this release adds a number of bug fixes, new examples, and performance
-enhancements.</p>
-<p><img alt="Comparison of pupular segmentation algorithms" src="/blog/images/lena_superpixels.jpg" title="Comparison of pupular segmentation algorithms"></p>
-<h2 id="contributors-to-this-release">Contributors to this release</h2>
-<p>This release was only possible due to the efforts of many contributors, both
-new and old.</p>
-<ul>
-<li>Andreas Mueller</li>
-<li>Andreas Wuerl</li>
-<li>Andy Wilson</li>
-<li>Brian Holt</li>
-<li>Christoph Gohlke</li>
-<li>Dharhas Pothina</li>
-<li>Emmanuelle Gouillart</li>
-<li>Guillaume Gay</li>
-<li>Josh Warner</li>
-<li>James Bergstra</li>
-<li>Johannes Schönberger</li>
-<li>Jonathan J. Helmus</li>
-<li>Juan Nunez-Iglesias</li>
-<li>Leon Tietz</li>
-<li>Marianne Corvellec</li>
-<li>Matt McCormick</li>
-<li>Neil Yager</li>
-<li>Nicolas Pinto</li>
-<li>Nicolas Poilvert</li>
-<li>Pavel Campr</li>
-<li>Petter Strandmark</li>
-<li>Stéfan van der Walt</li>
-<li>Tim Sheerman-Chase</li>
-<li>Tomas Kazmar</li>
-<li>Tony S Yu</li>
-<li>Wei Li</li>
-</ul></div>
+  <div class="entry-content"><p>Did you know that Amazon does not sell ebooks?  But, wait, you say, I
+have bought ebooks from them myself!  Sadly, that is not the case.  I
+will summarize part of the
+<a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201014950">Kindle Store Terms of Use</a>
+quoted at the bottom of this post:</p>
+<ol>
+<li>You do not own any Kindle book that you have &ldquo;bought&rdquo;, even if it
+   said &ldquo;buy with one click&rdquo; in the store (the book still belongs to
+   Amazon, you&rsquo;re just leasing it).</li>
+<li>You may only read Kindle content through sofware approved by
+   Amazon.</li>
+<li>You may not copy ebooks &ldquo;bought&rdquo; from Amazon to other devices (such
+   as a Kobo or Nook reader).  In fact, you may not engage in any
+   activity that bypasses their Digital Rights Management (or DRM).</li>
+</ol>
+<p>I <s>bought</s> lease more than 120 Kindle books, and to my shame
+only realized the invasive nature of these terms now.</p>
+<p>Since your agreement with Amazon is simply a license to view material,
+they have the ability to withdraw that right whenever they choose.
+<a href="http://www.nytimes.com/2009/07/18/technology/companies/18amazon.html">Which they have done, in an ironic twist, with George Orwell&rsquo;s 1984</a>.</p>
+<p>As you may imagine, this whole situation riles me up quite badly, and
+spoils many a dinner-time conversation (sorry, friends).  I am
+particularly irate because I just bought myself a beautiful
+<a href="http://www.cnet.com/products/kobo-glo-hd/">Kobo Glo HD</a>, in a slow
+but measured move to lessen my dependence on Amazon.  Now, lo and
+behold, I cannot access any of the 120 books which, if I gave my money
+to other ebook stores, I would have owned!</p>
+<p>So, <em>caveat emptor</em>, dear reader.  <strong>Do not support Amazon&rsquo;s great
+<a href="https://www.defectivebydesign.org/amazon-kindle-swindle">Kindle Swindle</a></strong>.</p>
+<p>If you buy books from Kobo, you will be able to export your books to
+your Kindle devices, albeit encumbered by Digital Rights Management (DRM).</p>
+<h2 id="the-deal-with-digital-rights-management-drm">The deal with Digital Rights Management (DRM)</h2>
+<p>While this post is about Amazon Kindle, it is worth mentioning Digital
+Rights Management (DRM).  DRM is a mechanism that distributers use to
+lock their books so that you may not easily copy it illegally.  Of
+course, and very predictably, the DRM is not difficult to circumvent,
+and those who want to steal electronic books do so with impunity.
+Still, it is
+<a href="https://en.wikipedia.org/wiki/Anti-circumvention#Fair_Use_and_Circumvention">probably illegal to remove DRM in the United States</a>,
+and if you&rsquo;re a law abiding citizen, you cannot convert a protected
+ebook to another format such as PDF, even if a PDF would be more
+convenient for you.</p>
+<p>Some distributors are worse than others, though, and unsurprisingly
+Amazon is one of the worst.  Not only do they lock their books (making
+it difficult to copy to other devices), but they use a proprietary
+format (.mobi) that only works on <em>their</em> readers.  If you want to
+copy their books to another device, you <em>have</em> to first remove the DRM
+which, as their terms state, is not allowed.  You would be forgiven
+for thinking that such business practices are anti-competitive and
+perhaps illegal.</p>
+<p>There is a perfectly usable format for ebooks already in existence
+(.epub), that is also supported by many different models of readers.
+So, while locking books with some kind of DRM is far from ideal, it is
+still preferable to using a proprietary format to boot.</p>
+<p>For those buying from the Kobo store, some of the books on their
+shelves are available DRM-free, and is indicated as follows:</p>
+<p><img alt="Kobo DRM information" src="http://mentat.za.net/blog/images/kobo_drm_comparison.png" /></p>
+<p>Defective by Design maintains a
+<a href="https://www.defectivebydesign.org/guide/ebooks">list of DRM-free publishers and stores</a>.</p>
+<p>Please <a href="https://www.defectivebydesign.org/action">support</a> the
+<a href="http://eff.org">Electronic Frontier Foundation</a>, who is currently
+<a href="https://www.theguardian.com/technology/2016/jul/21/digital-millennium-copyright-act-eff-supreme-court">challenging DMCA Section 1201</a>
+(which makes it illegal to circumvent DRM).  There is no good reason
+why you should not be allowed to read material you bought on any
+device of your choosing.  For more on the DRM, refer to author
+<a href="https://www.theguardian.com/technology/blog/2014/feb/05/digital-rights-management">Cory Doctorow&rsquo;s articles in the Guardian</a>.</p>
+<p>Below follows an excerpt, mentioned above, from the Amazon Kindle
+Store&rsquo;s Terms of Use.</p>
+<blockquote>
+<p><strong>1. Kindle Content</strong></p>
+<p><strong>Use of Kindle Content.</strong> Upon your download of Kindle Content and
+payment of any applicable fees (including applicable taxes), the
+Content Provider grants you a non-exclusive right to view, use, and
+display such Kindle Content an unlimited number of times, solely
+through a Reading Application or as otherwise permitted as part of
+the Service, solely on the number of Supported Devices specified in
+the Kindle Store, and solely for your personal, non-commercial
+use. Kindle Content is licensed, not sold, to you by the Content
+Provider. The Content Provider may include additional terms for use
+within its Kindle Content. Those terms will also apply, but this
+Agreement will govern in the event of a conflict. Some Kindle
+Content, such as interactive or highly formatted content, may not be
+available to you on all Reading Applications.</p>
+<p><strong>Limitations.</strong> Unless specifically indicated otherwise, you may
+not sell, rent, lease, distribute, broadcast, sublicense, or
+otherwise assign any rights to the Kindle Content or any portion of
+it to any third party, and you may not remove or modify any
+proprietary notices or labels on the Kindle Content. In addition,
+you may not attempt to bypass, modify, defeat, or otherwise
+circumvent any digital rights management system or other content
+protection or features used as part of the Service.</p>
+</blockquote></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -154,7 +184,7 @@ new and old.</p>
         Stefan van der Walt
     </span>
   </span>
-<time datetime="2012-09-30T16:18:00+02:00" pubdate>Sun 30 September 2012</time>
+<time datetime="2016-08-21T00:00:00+02:00" pubdate>Sun 21 August 2016</time>
 <!--
   <span class="categories">
     <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
@@ -162,7 +192,7 @@ new and old.</p>
 -->
 
   <span class="categories">
-    <a class="category" href="http://mentat.za.net/blog/tag/image-processing.html">image processing</a>,    <a class="category" href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a class="category" href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a class="category" href="http://mentat.za.net/blog/tag/science.html">science</a>  </span>
+    <a class="category" href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>  </span>
 </p><div class="sharing">
 </div>    </footer>
   </article>
@@ -266,9 +296,9 @@ new and old.</p>
   <script src="http://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	  var disqus_shortname = 'stefanvdwalt';
-          var disqus_identifier = 'http://stefanv.github.com/blog/2012/09/30/scikits-image-0-dot-7/';
-          var disqus_url = 'http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/';
-          var disqus_title = "scikits-image 0.7";
+          var disqus_identifier = 'http://stefanv.github.com/blog/2016/08/21/amazon-owns-your-ebooks/';
+          var disqus_url = 'http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/';
+          var disqus_title = "Amazon owns your ebooks";
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';

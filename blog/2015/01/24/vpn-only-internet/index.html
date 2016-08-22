@@ -104,28 +104,28 @@ network or the VPN.</p>
 </blockquote>
 <p>Create a script (I called it <code>~/scripts/fw-up</code>) that sets up the
 firewall:</p>
-<div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="c"># Clear any existing rules</span>
+<span class="c1"># Clear any existing rules</span>
 iptables -F
 
-<span class="c"># Allow outbound DNS</span>
+<span class="c1"># Allow outbound DNS</span>
 iptables -A OUTPUT -p udp --dport <span class="m">53</span> -j ACCEPT
 iptables -A INPUT -p udp --sport <span class="m">53</span> -j ACCEPT
 
-<span class="c"># Allow TCP access to the work VPN</span>
-<span class="c"># Replace X.Y below with your VPN address range</span>
+<span class="c1"># Allow TCP access to the work VPN</span>
+<span class="c1"># Replace X.Y below with your VPN address range</span>
 iptables -A OUTPUT -p tcp -d X.Y.0.0/16 -o wlan1 -j ACCEPT
 
-<span class="c"># Allow any traffic destined for the vpn to go out</span>
+<span class="c1"># Allow any traffic destined for the vpn to go out</span>
 iptables -A OUTPUT -o vpn0 -j ACCEPT
 
-<span class="c"># Allow local traffic</span>
+<span class="c1"># Allow local traffic</span>
 iptables -A OUTPUT -p tcp -o wlan1 -d 10.0.0.0/8 -j ACCEPT
 iptables -A OUTPUT -p tcp -o wlan1 -d 172.16.0.0/12 -j ACCEPT
 iptables -A OUTPUT -p tcp -o wlan1 -d 192.168.0.0/16 -j ACCEPT
 
-<span class="c"># Drop everything else on the wifi</span>
+<span class="c1"># Drop everything else on the wifi</span>
 iptables -A OUTPUT -p tcp -o wlan1 -j DROP
 </pre></div>
 
@@ -133,21 +133,21 @@ iptables -A OUTPUT -p tcp -o wlan1 -j DROP
 <p>Make sure the script is set to executable (<code>chmod +x fw-up</code>).</p>
 <p>Add a symlink to <code>if-up.d</code> to ensure that the firewall gets built
 whenever the network is reconfigured:</p>
-<div class="highlight"><pre>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+<div class="highlight"><pre><span></span>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
 </pre></div>
 
 
 <p>Now, whenever you connect to a wifi hotspot, internet traffic will be
 blocked until you fire up your VPN.  If, on occasion, you need to work
 without the VPN, simply raze the firewall:</p>
-<div class="highlight"><pre>sudo iptables -F
+<div class="highlight"><pre><span></span>sudo iptables -F
 </pre></div>
 
 
 <p><strong>Update:</strong> Typically, you wouldn&rsquo;t want the firewall to go up when
   connecting to the wireless at work, so I added the following conditional
   in the <code>fw-up</code> script:</p>
-<div class="highlight"><pre>iptables -F
+<div class="highlight"><pre><span></span>iptables -F
 
 if [[ `iwgetid -r` != &#39;WorkSSID&#39; ]]; then
    # Firewall rules go here
@@ -198,6 +198,9 @@ should be possible soon, and is on the firewalld
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
+      </li>
+      <li class="post">
           <a href="http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/">Waking Up: The Art of Setting An Alarm</a>
       </li>
       <li class="post">
@@ -208,9 +211,6 @@ should be possible soon, and is on the firewalld
       </li>
       <li class="post">
           <a href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/">Visualizing and pruning the docker image tree</a>
-      </li>
-      <li class="post">
-          <a href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/">SciPy2013 Proceedings</a>
       </li>
     </ul>
   </section>
@@ -226,7 +226,7 @@ should be possible soon, and is on the firewalld
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>  </section>
 
 <!--  
 

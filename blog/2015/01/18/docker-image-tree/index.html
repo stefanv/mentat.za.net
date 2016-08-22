@@ -91,7 +91,7 @@ occupy a lot of disk space, we may also want to prune unused images.</p>
 <h2 id="visualizing-image-dependencies">Visualizing image dependencies</h2>
 <p>In version 1.2.0 of Docker, the image dependency tree is available via
 the <code>docker images --tree</code> command:</p>
-<div class="highlight"><pre><span class="nv">$ </span>docker images --tree
+<div class="highlight"><pre><span></span>$ docker images --tree
 Warning: <span class="s1">&#39;--tree&#39;</span> is deprecated, it will be removed soon. See usage.
 ├─511136ea3c5a Virtual Size: <span class="m">0</span> B
 │ ├─5bc37dc2dfba Virtual Size: 192.5 MB
@@ -129,13 +129,13 @@ It is typically available either on <code>http://localhost:4243</code> or
 <code>/var/run/docker.sock</code>.</p>
 <p>One of the following two calls should therefore extract the image
 status:</p>
-<div class="highlight"><pre>curl -s http://localhost:4243/images/json?all=1
+<div class="highlight"><pre><span></span>curl -s http://localhost:4243/images/json?all=1
 echo -e &quot;GET /images/json?all=1 HTTP/1.0\r\n&quot; | nc -U /var/run/docker.sock
 </pre></div>
 
 
 <p>On my machine, the second query returns:</p>
-<div class="highlight"><pre>HTTP/1.0 200 OK
+<div class="highlight"><pre><span></span>HTTP/1.0 200 OK
 Content-Type: application/json
 Date: Sun, 18 Jan 2015 17:41:34 GMT
 
@@ -146,9 +146,9 @@ Date: Sun, 18 Jan 2015 17:41:34 GMT
 
 
 <p>DockViz parses this JSON and outputs a formatted tree:</p>
-<div class="highlight"><pre><span class="nv">$ </span>cat ~/scripts/docktree 
+<div class="highlight"><pre><span></span>$ cat ~/scripts/docktree 
 <span class="nb">echo</span> -e <span class="s2">&quot;GET /images/json?all=1 HTTP/1.0\r\n&quot;</span> <span class="p">|</span> nc -U /var/run/docker.sock <span class="p">|</span> tail -n +5 <span class="p">|</span> dockviz images --tree
-<span class="nv">$ </span>docktree
+$ docktree
 ├─511136ea3c5a Virtual Size: 0.0 B
 │ ├─5bc37dc2dfba Virtual Size: 192.5 MB
 │ │ └─61cb619d86bc Virtual Size: 192.7 MB
@@ -176,7 +176,7 @@ i.e. not associated with a tagged image&ndash;I must have removed a tagged
 image earlier, and these are its remaining dependencies.</p>
 <h2 id="pruning-unusued-images">Pruning unusued images</h2>
 <p>Built and downloaded Docker images quickly gobble up a lot of space:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo du -hcs /var/lib/docker/
+<div class="highlight"><pre><span></span>$ sudo du -hcs /var/lib/docker/
 10G /var/lib/docker/
 10G total
 </pre></div>
@@ -184,20 +184,20 @@ image earlier, and these are its remaining dependencies.</p>
 
 <p>The <code>docker images</code> command allows us to
 <a href="https://docs.docker.com/reference/commandline/cli/#images">list dangling images</a>:</p>
-<div class="highlight"><pre>docker images --filter dangling=true --quiet
+<div class="highlight"><pre><span></span>docker images --filter dangling=true --quiet
 </pre></div>
 
 
 <p>And we obtain a list of containers (images that were fired up and
 modified) using:</p>
-<div class="highlight"><pre>docker ps -aq
+<div class="highlight"><pre><span></span>docker ps -aq
 </pre></div>
 
 
 <p>I remove both of these with the following script (WARNING: This
 will delete ALL containers and any unused, downloaded images, so use
 with caution!):</p>
-<div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nv">CONTAINERS</span><span class="o">=</span><span class="k">$(</span>docker ps -aq<span class="k">)</span>
 <span class="nv">IMAGES</span><span class="o">=</span><span class="k">$(</span>docker images --filter <span class="nv">dangling</span><span class="o">=</span><span class="nb">true</span> --quiet<span class="k">)</span>
 <span class="k">if</span> <span class="o">[[</span> <span class="nv">$CONTAINERS</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
@@ -215,11 +215,11 @@ with caution!):</p>
 
 
 <p>Then:</p>
-<div class="highlight"><pre><span class="nv">$ </span>docker-clean
-<span class="nv">$ </span>sudo du -hcs /var/lib/docker/
+<div class="highlight"><pre><span></span>$ docker-clean
+$ sudo du -hcs /var/lib/docker/
 6.6G    /var/lib/docker/
 6.6G    total
-<span class="nv">$ </span>docktree
+$ docktree
 └─511136ea3c5a Virtual Size: 0.0 B
   ├─e12c576ad8a1 Virtual Size: 198.9 MB
   │ └─102eb2a101b8 Virtual Size: 199.1 MB
@@ -267,6 +267,9 @@ process to get rid of its left-over dependencies.</p></div>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
+      </li>
+      <li class="post">
           <a href="http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/">Waking Up: The Art of Setting An Alarm</a>
       </li>
       <li class="post">
@@ -277,9 +280,6 @@ process to get rid of its left-over dependencies.</p></div>
       </li>
       <li class="post">
           <a href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/">Visualizing and pruning the docker image tree</a>
-      </li>
-      <li class="post">
-          <a href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/">SciPy2013 Proceedings</a>
       </li>
     </ul>
   </section>
@@ -295,7 +295,7 @@ process to get rid of its left-over dependencies.</p></div>
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>  </section>
 
 <!--  
 
