@@ -75,6 +75,33 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Compile TensorFlow from source with gcc6.1</a>
+      </h1>
+    <p class="meta">
+<time datetime="2016-09-14T00:00:00-07:00" pubdate>Wed 14 September 2016</time>      &middot;
+      <span class="categories" style="text-transform: lowercase;">
+        <a class="category"
+           style="text-decoration: none;"
+           href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>      </span>
+
+    </p>
+</header>
+
+  <div class="entry-content"><p>Due to two bugs in gcc 6.1
+<a href="https://github.com/google/re2/issues/102">affecting the re2 library</a>
+(one of which has been fixed in 6.2)),
+<a href="https://www.tensorflow.org/">TensorFlow</a> cannot be
+<a href="https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html">compiled from source</a>
+one some systems (including my Debian Testing install).</p>
+<p>To work around the issue, modify <code>tensorflow/workspace.bzl</code> and
+change the re2 description to ...</p></div>
+  <footer>
+    <a rel="full-article" href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
       </h1>
     <p class="meta">
@@ -319,35 +346,8 @@ which is best?</p>
     <a rel="full-article" href="http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/">Emacs package management</a>
-      </h1>
-    <p class="meta">
-<time datetime="2012-09-25T17:14:00-07:00" pubdate>Tue 25 September 2012</time>      &middot;
-      <span class="categories" style="text-transform: lowercase;">
-        <a class="category"
-           style="text-decoration: none;"
-           href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,        <a class="category"
-           style="text-decoration: none;"
-           href="http://mentat.za.net/blog/tag/python.html">python</a>,        <a class="category"
-           style="text-decoration: none;"
-           href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>      </span>
-
-    </p>
-</header>
-
-  <div class="entry-content"><p>I recently tried to install MuMaMo as one of the dependencies for Takafumi
-Arakaki&rsquo;s <a href="https://github.com/tkf/emacs-ipython-notebook">Emacs-based IPython notebook</a>.  The instructions on the MuMaMo
-webpage were as clear as mud and aimed primarily at Windows users.  Enters
-<a href="https://github.com/dimitri/el-get">apt-get for Emacs</a>!</p>
-<p>My Emacs setup is shared across multiple machines: a synchronized <code>elisp ...</code></p></div>
-  <footer>
-    <a rel="full-article" href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
+    <a class="prev" href="http://mentat.za.net/blog/index2.html">&larr; Older</a>
 
   <br />
 </div></div>
@@ -355,6 +355,9 @@ webpage were as clear as mud and aimed primarily at Windows users.  Enters
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Compile TensorFlow from source with gcc6.1</a>
+      </li>
       <li class="post">
           <a href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
       </li>
@@ -366,9 +369,6 @@ webpage were as clear as mud and aimed primarily at Windows users.  Enters
       </li>
       <li class="post">
           <a href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/">VPN-only access to the internet</a>
-      </li>
-      <li class="post">
-          <a href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/">Visualizing and pruning the docker image tree</a>
       </li>
     </ul>
   </section>
@@ -384,7 +384,7 @@ webpage were as clear as mud and aimed primarily at Windows users.  Enters
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>  </section>
 
 <!--  
 
