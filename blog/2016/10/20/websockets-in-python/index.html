@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Categories &mdash; Stéfan van der Walt</title>
+  <title>WebSockets in Python (and some Redux) &mdash; Stéfan van der Walt</title>
   <meta name="author" content="Stefan van der Walt">
 
   <link href="http://mentat.za.net/blog/atom.xml" type="application/atom+xml" rel="alternate"
@@ -72,15 +72,110 @@
   <div id="main">
     <div id="content">
 <div>
-	<article role="article">
-    	<header>
-    		<h1 class="entry-title">Blog Categories</h1>
-    	</header>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">WebSockets in Python (and some Redux)</h1>
+    <p class="meta">
+<time datetime="2016-10-20T00:00:00-07:00" pubdate>Thu 20 October 2016</time>      &middot;
+      <span class="categories" style="text-transform: lowercase;">
+        <a class="category"
+           style="text-decoration: none;"
+           href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>      </span>
 
-	<p>
-		<a href="http://mentat.za.net/blog/category/misc.html">misc</a> (12)<br>
-	</p>
-	</article>
+    </p>
+</header>
+
+  <div class="entry-content"><p>As part of our work on <a href="http://cesium.ml">Cesium</a> and its
+<a href="https://github.com/cesium-ml/cesium_web">web frontend</a>,
+we&rsquo;ve developed an easy
+mechanism for Python web developers to
+<a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/">push messages from their Python backends to the browser</a>.</p>
+<p>There are plenty of potential use cases, but consider, e.g., that you you want
+to verify a credit card number submitted by your user.  Traditionally, you&rsquo;d
+submit the number, and then poll the backend repeatedly from the browser.  Not
+very elegant :/</p>
+<p>But with a WebSocket connection, you submit the credit card number and then
+forget about it.  The <em>server</em> will let you know when it&rsquo;s done by pushing a
+message to the frontend.</p>
+<p>Not only does this solve the annoying polling problem, but it opens up the
+door to an entirely new universe of tools, such as Dan Abramov&rsquo;s fantastic
+<a href="http://redux.js.org/">Redux</a>.  Many of these Javascript libraries rely on the server
+being able to notify the frontend when it needs to update itself.</p>
+<p>Let&rsquo;s talk a bit about Redux.  The
+<a href="http://redux.js.org/docs/introduction/ThreePrinciples.html">principles</a>
+behind it is simple and elegant:</p>
+<ol>
+<li>The entire state of your app is centrally
+stored (in the equivalent of a Python dictionary);</li>
+<li>the state is immutable, and</li>
+<li>can only be updated through a central function call.</li>
+</ol>
+<p>That centralization in turn enables other features such as logging, hot
+reloading, time travel, etc.</p>
+<p>One of the great joys of Redux lies in moving away from the traditional
+Model-View-Controller pattern.  With MVC, you are never quite sure how changes
+propagate through the system.  With Redux, it is highly predictable.  Say
+your app has a toggle button, and associated state <code>{toggle: true}</code>.  An
+action (e.g. &ldquo;the red button was clicked&rdquo;) is submitted to the central
+dispatcher which then calculates the new state of the app:</p>
+<div class="highlight"><pre><span></span><span class="nx">new_state</span> <span class="o">=</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">current_state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The implementation could look something like this:</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">current_state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s1">&#39;toggle_button&#39;</span><span class="o">:</span>
+      <span class="k">return</span> <span class="p">{</span><span class="nx">toggle</span><span class="o">:</span> <span class="o">!</span><span class="nx">current_state</span><span class="p">.</span><span class="nx">toggle</span><span class="p">}</span>
+    <span class="k">default</span><span class="o">:</span>
+      <span class="k">return</span> <span class="nx">current_state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The toggle button monitors the app state, and when <code>state['toggle']</code> is
+updated, re-renders itself.</p>
+<p>By vastly simplifying flow of information, by
+<a href="http://redux.js.org/docs/introduction/Motivation.html">disentangling mutation and asynchronicity</a>, and by
+getting rid of JQuery &amp; hidden state stored somewhere in the bowels of the DOM,
+Redux has, for me, returned the joy of web development.</p>
+<p>But, I&rsquo;m getting distracted.  WebSockets&mdash;in Python!</p>
+<p>Pushing messages from your Python web server to the user&rsquo;s browser can now be
+<a href="https://github.com/cesium-ml/cesium_web/blob/e19e5543e193905da9555ce15fc71a52859c9fb0/cesium_app/handlers/base.py#L59">as simple as this</a>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Flow</span> <span class="kn">import</span> <span class="n">flow</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">flow</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;my_user@domain.com&#39;</span><span class="p">,</span> <span class="s1">&#39;message to the user&#39;</span><span class="p">,</span>
+               <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;to ship along&#39;</span><span class="p">})</span>
+</pre></div>
+
+
+<p>Please take a look at the more detailed technical description (with code!)
+<a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/">on the Cesium blog</a>.</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Stefan van der Walt
+    </span>
+  </span>
+<time datetime="2016-10-20T00:00:00-07:00" pubdate>Thu 20 October 2016</time>
+<!--
+  <span class="categories">
+    <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
+  </span>
+-->
+
+  <span class="categories">
+    <a class="category" href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
 </div>
 <aside class="sidebar">
   <section>
@@ -176,6 +271,9 @@
   <script src="http://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	  var disqus_shortname = 'stefanvdwalt';
+          var disqus_identifier = 'http://stefanv.github.com/blog/2016/10/20/websockets-in-python/';
+          var disqus_url = 'http://mentat.za.net/blog/2016/10/20/websockets-in-python/';
+          var disqus_title = "WebSockets in Python (and some Redux)";
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';

@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/misc.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-09-14T00:00:00-07:00</updated><entry><title>Compile TensorFlow from source with gcc6.1</title><link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/" rel="alternate"></link><published>2016-09-14T00:00:00-07:00</published><updated>2016-09-14T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-09-14:blog/2016/09/14/tensorflow-gcc6-1/</id><summary type="html">&lt;p&gt;Due to two bugs in gcc 6.1
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/misc.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-10-20T00:00:00-07:00</updated><entry><title>WebSockets in Python (and some Redux)</title><link href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><updated>2016-10-20T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
+&lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
+we&amp;rsquo;ve developed an easy
+mechanism for Python web developers to
+&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you you want
+to verify a credit card number submitted by your user.  Traditionally, you&amp;rsquo;d
+submit the number, and then poll the backend repeatedly from the browser.  Not
+very elegant :/&lt;/p&gt;
+&lt;p&gt;But with a WebSocket connection, you submit the credit card number and then
+forget about it.  The &lt;em&gt;server&lt;/em&gt; will let you know when it&amp;rsquo;s done by pushing a
+message to the frontend.&lt;/p&gt;
+&lt;p&gt;Not only does this solve the annoying polling problem, but it opens up the
+door to an entirely new universe of tools, such as Dan Abramov&amp;rsquo;s fantastic
+&lt;a href="http://redux.js.org/"&gt;Redux&lt;/a&gt;.  Many of these Javascript libraries rely on the server
+being able to notify the frontend when it needs to update itself.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s talk a bit about Redux.  The
+&lt;a href="http://redux.js.org/docs/introduction/ThreePrinciples.html"&gt;principles&lt;/a&gt;
+behind it is simple and elegant:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The entire state of your app is centrally
+stored (in the equivalent of a Python dictionary);&lt;/li&gt;
+&lt;li&gt;the state is immutable, and&lt;/li&gt;
+&lt;li&gt;can only be updated through a central function call.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That centralization in turn enables other features such as logging, hot
+reloading, time travel, etc.&lt;/p&gt;
+&lt;p&gt;One of the great joys of Redux lies in moving away from the traditional
+Model-View-Controller pattern.  With MVC, you are never quite sure how changes
+propagate through the system.  With Redux, it is highly predictable.  Say
+your app has a toggle button, and associated state &lt;code&gt;{toggle: true}&lt;/code&gt;.  An
+action (e.g. &amp;ldquo;the red button was clicked&amp;rdquo;) is submitted to the central
+dispatcher which then calculates the new state of the app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;new_state&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The implementation could look something like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;toggle_button&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;toggle&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toggle&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The toggle button monitors the app state, and when &lt;code&gt;state['toggle']&lt;/code&gt; is
+updated, re-renders itself.&lt;/p&gt;
+&lt;p&gt;By vastly simplifying flow of information, by
+&lt;a href="http://redux.js.org/docs/introduction/Motivation.html"&gt;disentangling mutation and asynchronicity&lt;/a&gt;, and by
+getting rid of JQuery &amp;amp; hidden state stored somewhere in the bowels of the DOM,
+Redux has, for me, returned the joy of web development.&lt;/p&gt;
+&lt;p&gt;But, I&amp;rsquo;m getting distracted.  WebSockets&amp;mdash;in Python!&lt;/p&gt;
+&lt;p&gt;Pushing messages from your Python web server to the user&amp;rsquo;s browser can now be
+&lt;a href="https://github.com/cesium-ml/cesium_web/blob/e19e5543e193905da9555ce15fc71a52859c9fb0/cesium_app/handlers/base.py#L59"&gt;as simple as this&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Flow&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;flow&lt;/span&gt;
+
+&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flow&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;my_user@domain.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;message to the user&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+               &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;to ship along&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Please take a look at the more detailed technical description (with code!)
+&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;on the Cesium blog&lt;/a&gt;.&lt;/p&gt;</summary><category term="web python javascript websocket redux react"></category></entry><entry><title>Compile TensorFlow from source with gcc6.1</title><link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/" rel="alternate"></link><updated>2016-09-14T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-09-14:blog/2016/09/14/tensorflow-gcc6-1/</id><summary type="html">&lt;p&gt;Due to two bugs in gcc 6.1
 &lt;a href="https://github.com/google/re2/issues/102"&gt;affecting the re2 library&lt;/a&gt;
 (one of which has been fixed in 6.2)),
 &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt; cannot be
@@ -33,7 +99,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;switch out of the TensorFlow source directory and try again.&lt;/p&gt;</summary><category term="tensorflow python"></category></entry><entry><title>Amazon owns your ebooks</title><link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/" rel="alternate"></link><published>2016-08-21T00:00:00-07:00</published><updated>2016-08-21T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-08-21:blog/2016/08/21/amazon-owns-your-ebooks/</id><summary type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
+&lt;p&gt;switch out of the TensorFlow source directory and try again.&lt;/p&gt;</summary><category term="tensorflow python"></category></entry><entry><title>Amazon owns your ebooks</title><link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/" rel="alternate"></link><updated>2016-08-21T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-08-21:blog/2016/08/21/amazon-owns-your-ebooks/</id><summary type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
 have bought ebooks from them myself!  Sadly, that is not the case.  I
 will summarize part of the
 &lt;a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201014950"&gt;Kindle Store Terms of Use&lt;/a&gt;
@@ -124,7 +190,7 @@ proprietary notices or labels on the Kindle Content. In addition,
 you may not attempt to bypass, modify, defeat, or otherwise
 circumvent any digital rights management system or other content
 protection or features used as part of the Service.&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="drm amazon kindle ebooks"></category></entry><entry><title>Waking Up: The Art of Setting An Alarm</title><link href="http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/" rel="alternate"></link><published>2016-03-02T00:00:00-08:00</published><updated>2016-03-02T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-03-02:blog/2016/03/02/waking-up-how-to-set-an-alarm/</id><summary type="html">&lt;p&gt;For me, waking up is and always has been hard.  That, together with an
+&lt;/blockquote&gt;</summary><category term="drm amazon kindle ebooks"></category></entry><entry><title>Waking Up: The Art of Setting An Alarm</title><link href="http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/" rel="alternate"></link><updated>2016-03-02T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-03-02:blog/2016/03/02/waking-up-how-to-set-an-alarm/</id><summary type="html">&lt;p&gt;For me, waking up is and always has been hard.  That, together with an
 intolerance for coffee and a natural late-night tendency, brews up the
 perfect storm for a poor start to the day.&lt;/p&gt;
 &lt;p&gt;During my PhD&amp;mdash;especially the last six months, when I desperately
@@ -177,7 +243,7 @@ know whether it works for you!&lt;/p&gt;
 applications such as Sleep Like Android; YMMV.&amp;#160;&lt;a class="footnote-backref" href="#fnref:sleep_tracker" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="lifehack"></category></entry><entry><title>Python &amp; Matplotlib on OSX</title><link href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/" rel="alternate"></link><published>2016-02-26T00:00:00-08:00</published><updated>2016-02-26T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-02-26:blog/2016/02/26/matplotlib-on-osx/</id><summary type="html">&lt;p&gt;One day, we will hopefully have a grand unified build and package management
+&lt;/div&gt;</summary><category term="lifehack"></category></entry><entry><title>Python &amp; Matplotlib on OSX</title><link href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/" rel="alternate"></link><updated>2016-02-26T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-02-26:blog/2016/02/26/matplotlib-on-osx/</id><summary type="html">&lt;p&gt;One day, we will hopefully have a grand unified build and package management
 system for Python where everything is free &amp;amp; open and Just Works (TM).  Until
 then, you have two options:&lt;/p&gt;
 &lt;h2 id="brew-python-pip"&gt;brew Python + pip&lt;/h2&gt;
@@ -219,7 +285,7 @@ then, you have two options:&lt;/p&gt;
 be aware of when &lt;a href="https://github.com/conda-forge/conda-forge.github.io/issues/22"&gt;mixing those channels and the official ones&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="python"></category></entry><entry><title>VPN-only access to the internet</title><link href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/" rel="alternate"></link><published>2015-01-24T00:00:00-08:00</published><updated>2015-01-24T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-24:blog/2015/01/24/vpn-only-internet/</id><summary type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN&lt;/p&gt;
+&lt;/div&gt;</summary><category term="python"></category></entry><entry><title>VPN-only access to the internet</title><link href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/" rel="alternate"></link><updated>2015-01-24T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-24:blog/2015/01/24/vpn-only-internet/</id><summary type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN&lt;/p&gt;
 &lt;p&gt;A few days ago, I noticed that my outbound email wasn&amp;rsquo;t being
 delivered&amp;mdash;it seems as if my ISP blocks access to some outbound ports.
 An easy workaround is to route traffic through the work VPN, but
@@ -301,7 +367,7 @@ should be possible soon, and is on the firewalld
 &lt;a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO"&gt;TODO list&lt;/a&gt;).&amp;#160;&lt;a class="footnote-backref" href="#fnref:firewalld_direct_zones" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="linux"></category></entry><entry><title>Visualizing and pruning the docker image tree</title><link href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/" rel="alternate"></link><published>2015-01-18T00:00:00-08:00</published><updated>2015-01-18T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-18:blog/2015/01/18/docker-image-tree/</id><summary type="html">&lt;p&gt;Visualizing the Docker image dependency tree is a useful way of
+&lt;/div&gt;</summary><category term="linux"></category></entry><entry><title>Visualizing and pruning the docker image tree</title><link href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/" rel="alternate"></link><updated>2015-01-18T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-18:blog/2015/01/18/docker-image-tree/</id><summary type="html">&lt;p&gt;Visualizing the Docker image dependency tree is a useful way of
 checking image sizes and inter-image dependencies.  Since images
 occupy a lot of disk space, we may also want to prune unused images.&lt;/p&gt;
 &lt;h2 id="visualizing-image-dependencies"&gt;Visualizing image dependencies&lt;/h2&gt;
@@ -452,7 +518,7 @@ $ docktree
 
 &lt;p&gt;Note that, now, all branches of the tree are associated with tagged
 images.  If I remove &lt;code&gt;ubuntu:utopic&lt;/code&gt;, I can again run the pruning
-process to get rid of its left-over dependencies.&lt;/p&gt;</summary><category term="docker"></category></entry><entry><title>SciPy2013 Proceedings</title><link href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/" rel="alternate"></link><published>2013-06-27T17:20:00-07:00</published><updated>2013-06-27T17:20:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2013-06-27:blog/2013/06/27/scipy2013-proceedings/</id><summary type="html">&lt;p&gt;The talks for the 12th (fantastic) Python in Science conference just concluded,
+process to get rid of its left-over dependencies.&lt;/p&gt;</summary><category term="docker"></category></entry><entry><title>SciPy2013 Proceedings</title><link href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/" rel="alternate"></link><updated>2013-06-27T17:20:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2013-06-27:blog/2013/06/27/scipy2013-proceedings/</id><summary type="html">&lt;p&gt;The talks for the 12th (fantastic) Python in Science conference just concluded,
 and I am happy to announce the
 &lt;a href="https://dl.dropboxusercontent.com/u/380268/scipy_2013_proceedings_draft.pdf"&gt;conference proceedings&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This may come as a surprize to some, since in the past we have been unable to
@@ -482,7 +548,7 @@ submit a pull request on
 &lt;h2 id="thanks"&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;Finally, a big shout-out to the amazing team of people who organized this
 year&amp;rsquo;s conference, and to the wonderfully inclusive and talented Scientific
-Python community, of which I am proud to be part of.&lt;/p&gt;</summary><category term="scipy"></category><category term="python"></category></entry><entry><title>Replicable super-resolution paper</title><link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/" rel="alternate"></link><published>2012-10-15T00:04:00-07:00</published><updated>2012-10-15T00:04:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-10-15:blog/2012/10/15/replicable-super-resolution-paper/</id><summary type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
+Python community, of which I am proud to be part of.&lt;/p&gt;</summary><category term="scipy"></category><category term="python"></category></entry><entry><title>Replicable super-resolution paper</title><link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/" rel="alternate"></link><updated>2012-10-15T00:04:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-10-15:blog/2012/10/15/replicable-super-resolution-paper/</id><summary type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
 problem for several years.  Thereafter, I was side-tracked by
 &lt;a href="http://github.com/scipy"&gt;several&lt;/a&gt; &lt;a href="http://scikit-image.org"&gt;other&lt;/a&gt;
 &lt;a href="http://dipy.org"&gt;projects&lt;/a&gt;, and never got around to publishing a paper on
@@ -498,7 +564,7 @@ as a linear operator and using it for super-resolution was not.&lt;/p&gt;
 &lt;p&gt;But the proof of the pudding is in the eating! Have a look at the
 &lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; &amp;ndash; you can download it all (including a
 sample data-set) and play with the different reconstruction parameters.  Quite
-a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</summary><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><published>2012-09-30T16:18:00-07:00</published><updated>2012-09-30T16:18:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
+a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</summary><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><updated>2012-09-30T16:18:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
 &lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
 analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
@@ -553,7 +619,7 @@ new and old.&lt;/p&gt;
 &lt;li&gt;Tomas Kazmar&lt;/li&gt;
 &lt;li&gt;Tony S Yu&lt;/li&gt;
 &lt;li&gt;Wei Li&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Adobe's new free font: Source Code Pro</title><link href="http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/" rel="alternate"></link><published>2012-09-26T11:49:00-07:00</published><updated>2012-09-26T11:49:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-26:blog/2012/09/26/consolas-vs-source-code-pro/</id><summary type="html">&lt;p&gt;Adobe yesterday
+&lt;/ul&gt;</summary><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Adobe's new free font: Source Code Pro</title><link href="http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/" rel="alternate"></link><updated>2012-09-26T11:49:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-26:blog/2012/09/26/consolas-vs-source-code-pro/</id><summary type="html">&lt;p&gt;Adobe yesterday
 &lt;a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html"&gt;released its free and open source Type family, Source Code Pro&lt;/a&gt;,
 which includes an eye-pleasing monospace font  ideally suited for coding.
 In the past, and at the recommendation of &lt;a href="http://blog.fperez.org/"&gt;Fernando Perez&lt;/a&gt;, I&amp;rsquo;ve
@@ -573,7 +639,7 @@ Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
 
 &lt;p&gt;Here&amp;rsquo;s a comparison of Consolas (left) and Source Code Pro (right):&lt;/p&gt;
 &lt;p&gt;&lt;img src="/blog/images/consolas_vs_source_code_pro.png"&gt;&lt;/p&gt;
-&lt;p&gt;Comments also on &lt;a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik"&gt;Google+&lt;/a&gt;.&lt;/p&gt;</summary><category term="coding"></category><category term="emacs"></category><category term="linux"></category></entry><entry><title>Emacs package management</title><link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><published>2012-09-25T17:14:00-07:00</published><updated>2012-09-25T17:14:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
+&lt;p&gt;Comments also on &lt;a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik"&gt;Google+&lt;/a&gt;.&lt;/p&gt;</summary><category term="coding"></category><category term="emacs"></category><category term="linux"></category></entry><entry><title>Emacs package management</title><link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><updated>2012-09-25T17:14:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
 Arakaki&amp;rsquo;s &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
 webpage were as clear as mud and aimed primarily at Windows users.  Enters
 &lt;a href="https://github.com/dimitri/el-get"&gt;apt-get for Emacs&lt;/a&gt;!&lt;/p&gt;
