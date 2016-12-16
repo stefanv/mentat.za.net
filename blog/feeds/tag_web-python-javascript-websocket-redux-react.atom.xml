@@ -4,7 +4,7 @@
 we&amp;rsquo;ve developed an easy
 mechanism for Python web developers to
 &lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you you want
+&lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you want
 to verify a credit card number submitted by your user.  Traditionally, you&amp;rsquo;d
 submit the number, and then poll the backend repeatedly from the browser.  Not
 very elegant :/&lt;/p&gt;
@@ -17,7 +17,7 @@ door to an entirely new universe of tools, such as Dan Abramov&amp;rsquo;s fanta
 being able to notify the frontend when it needs to update itself.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s talk a bit about Redux.  The
 &lt;a href="http://redux.js.org/docs/introduction/ThreePrinciples.html"&gt;principles&lt;/a&gt;
-behind it is simple and elegant:&lt;/p&gt;
+behind it are simple and elegant:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;The entire state of your app is centrally
 stored (in the equivalent of a Python dictionary);&lt;/li&gt;

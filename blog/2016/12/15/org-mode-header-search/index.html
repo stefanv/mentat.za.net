@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: image-processing &mdash; Stéfan van der Walt</title>
+  <title>Search headers in org-mode &mdash; Stéfan van der Walt</title>
   <meta name="author" content="Stefan van der Walt">
 
   <link href="http://mentat.za.net/blog/atom.xml" type="application/atom+xml" rel="alternate"
@@ -72,51 +72,98 @@
   <div id="main">
     <div id="content">
 <div>
-	<article role="article">
-    	<header>
-    		<h1 class="entry-title">Tag: image-processing</h1>
-    	</header>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Search headers in org-mode</h1>
+    <p class="meta">
+<time datetime="2016-12-15T00:00:00-08:00" pubdate>Thu 15 December 2016</time>      &middot;
+      <span class="categories" style="text-transform: lowercase;">
+        <a class="category"
+           style="text-decoration: none;"
+           href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>      </span>
 
-    	<div id="blog-archives">
-            <h2>2012</h2>
-                    <article>
-                        <h1><a href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/">Replicable super-resolution paper</a></h1>
-                        <time datetime="2012-10-15 00:04:00-07:00" pubdate>
-                            <span class="month">Oct</span>
-                            <span class="day">15</span>
-                            <span class="year">2012</span>
-                        </time>
-                        <footer>
-                            <span class="categories">posted in
-                                <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
-                            </span>
-                        </footer>
-                    </article>
-                    <article>
-                        <h1><a href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/">scikits-image 0.7</a></h1>
-                        <time datetime="2012-09-30 16:18:00-07:00" pubdate>
-                            <span class="month">Sep</span>
-                            <span class="day">30</span>
-                            <span class="year">2012</span>
-                        </time>
-                        <footer>
-                            <span class="categories">posted in
-                                <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
-                            </span>
-                        </footer>
-                    </article>
-	    </div>
-    </article>
+    </p>
+</header>
+
+  <div class="entry-content"><p>In org-mode, I often have the need to jump to a top-level heading
+matching some word.</p>
+<p>Since an org-mode buffer can be searched just like any other, I can
+simply invoke forward search with <code>C-S</code>, but this will match <em>all</em>
+occurrences of the text, instead of limiting the search to headings only.</p>
+<p>This makes it hard to search for a phrase like &ldquo;Travel&rdquo;, for which I
+have a top-level heading, but also often occurs elsewhere in my notes.</p>
+<p>I have a solution of the following form:</p>
+<ol>
+<li>Launch a regular expression search</li>
+<li>Pre-fill the text input with <code>^*</code> so that only headings are
+   matched.</li>
+</ol>
+<p>First, define a custom search function.  It puts the keys &ldquo;^* &rdquo; in the
+&ldquo;unread command events&rdquo; list (i.e, a list of events waiting to be seen
+by emacs), and then launches interactive forward regular expression search.</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">stefan/isearch-heading</span> <span class="p">()</span>
+  <span class="p">(</span><span class="k">interactive</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">unread-command-events</span> <span class="p">(</span><span class="nv">listify-key-sequence</span> <span class="s">&quot;^* &quot;</span><span class="p">))</span>
+  <span class="p">(</span><span class="nv">isearch-mode</span> <span class="no">t</span> <span class="no">t</span> <span class="no">nil</span> <span class="no">t</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Next, we add a keybinding for org-mode:</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-mode-keys</span> <span class="p">()</span>
+  <span class="p">(</span><span class="k">interactive</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c g&quot;</span><span class="p">)</span> <span class="ss">&#39;stefan/isearch-heading</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-mode-hook</span> <span class="ss">&#39;org-mode-keys</span><span class="p">)</span>
+</pre></div>
+
+
+<p>And that&rsquo;s it!  Pressing <code>C-c g</code> (for &ldquo;go&rdquo;) in org-mode will
+now present you with a search prompt.  Typing a heading name will take you
+there directly, at which point you can choose to expand it with the
+TAB key.</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Stefan van der Walt
+    </span>
+  </span>
+<time datetime="2016-12-15T00:00:00-08:00" pubdate>Thu 15 December 2016</time>
+<!--
+  <span class="categories">
+    <a class='category' href='http://mentat.za.net/blog/category/misc.html'>misc</a>
+  </span>
+-->
+
+  <span class="categories">
+    <a class="category" href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+  </section>
 </div>
 <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/">Replicable super-resolution paper</a>
+          <a href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/">Search headers in org-mode</a>
       </li>
       <li class="post">
-          <a href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/">scikits-image 0.7</a>
+          <a href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/">WebSockets in Python (and some Redux)</a>
+      </li>
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Compile TensorFlow from source with gcc6.1</a>
+      </li>
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
+      </li>
+      <li class="post">
+          <a href="http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/">Waking Up: The Art of Setting An Alarm</a>
       </li>
     </ul>
   </section>
@@ -185,7 +232,7 @@
 </aside>    </div>
   </div>
   <footer role="contentinfo"><p>
-    Copyright &copy;  2012  Stefan van der Walt &mdash;
+    Copyright &copy;  2012&ndash;2016  Stefan van der Walt &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p></footer>
   <script src="http://mentat.za.net/blog/theme/js/modernizr-2.0.js"></script>
@@ -193,6 +240,9 @@
   <script src="http://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	  var disqus_shortname = 'stefanvdwalt';
+          var disqus_identifier = 'http://stefanv.github.com/blog/2016/12/15/org-mode-header-search/';
+          var disqus_url = 'http://mentat.za.net/blog/2016/12/15/org-mode-header-search/';
+          var disqus_title = "Search headers in org-mode";
 	  (function() {
 	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';

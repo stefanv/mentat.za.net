@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-10-20T00:00:00-07:00</updated><entry><title>WebSockets in Python (and some Redux)</title><link href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><updated>2016-10-20T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-12-15T00:00:00-08:00</updated><entry><title>Search headers in org-mode</title><link href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/" rel="alternate"></link><updated>2016-12-15T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-12-15:blog/2016/12/15/org-mode-header-search/</id><summary type="html">&lt;p&gt;In org-mode, I often have the need to jump to a top-level heading
+matching some word.&lt;/p&gt;
+&lt;p&gt;Since an org-mode buffer can be searched just like any other, I can
+simply invoke forward search with &lt;code&gt;C-S&lt;/code&gt;, but this will match &lt;em&gt;all&lt;/em&gt;
+occurrences of the text, instead of limiting the search to headings only.&lt;/p&gt;
+&lt;p&gt;This makes it hard to search for a phrase like &amp;ldquo;Travel&amp;rdquo;, for which I
+have a top-level heading, but also often occurs elsewhere in my notes.&lt;/p&gt;
+&lt;p&gt;I have a solution of the following form:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Launch a regular expression search&lt;/li&gt;
+&lt;li&gt;Pre-fill the text input with &lt;code&gt;^*&lt;/code&gt; so that only headings are
+   matched.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;First, define a custom search function.  It puts the keys &amp;ldquo;^* &amp;rdquo; in the
+&amp;ldquo;unread command events&amp;rdquo; list (i.e, a list of events waiting to be seen
+by emacs), and then launches interactive forward regular expression search.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefan/isearch-heading&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;unread-command-events&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;listify-key-sequence&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;^* &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;isearch-mode&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, we add a keybinding for org-mode:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;org-mode-keys&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;local-set-key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;C-c g&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;stefan/isearch-heading&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;org-mode-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;org-mode-keys&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And that&amp;rsquo;s it!  Pressing &lt;code&gt;C-c g&lt;/code&gt; (for &amp;ldquo;go&amp;rdquo;) in org-mode will
+now present you with a search prompt.  Typing a heading name will take you
+there directly, at which point you can choose to expand it with the
+TAB key.&lt;/p&gt;</summary><category term="emacs orgmode"></category></entry><entry><title>WebSockets in Python (and some Redux)</title><link href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><updated>2016-10-20T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
 &lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
 we&amp;rsquo;ve developed an easy
 mechanism for Python web developers to
 &lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you you want
+&lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you want
 to verify a credit card number submitted by your user.  Traditionally, you&amp;rsquo;d
 submit the number, and then poll the backend repeatedly from the browser.  Not
 very elegant :/&lt;/p&gt;
@@ -17,7 +52,7 @@ door to an entirely new universe of tools, such as Dan Abramov&amp;rsquo;s fanta
 being able to notify the frontend when it needs to update itself.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s talk a bit about Redux.  The
 &lt;a href="http://redux.js.org/docs/introduction/ThreePrinciples.html"&gt;principles&lt;/a&gt;
-behind it is simple and elegant:&lt;/p&gt;
+behind it are simple and elegant:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;The entire state of your app is centrally
 stored (in the equivalent of a Python dictionary);&lt;/li&gt;
@@ -588,7 +623,7 @@ time, we&amp;rsquo;ve managed to add plenty of new features and enhancements, in
 &lt;/ul&gt;
 &lt;p&gt;Plus, this release adds a number of bug fixes, new examples, and performance
 enhancements.&lt;/p&gt;
-&lt;p&gt;&lt;img title="Comparison of pupular segmentation algorithms" alt="Comparison of pupular segmentation algorithms" src="/blog/images/lena_superpixels.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img title="Comparison of pupular segmentation algorithms" src="/blog/images/lena_superpixels.jpg" alt="Comparison of pupular segmentation algorithms"&gt;&lt;/p&gt;
 &lt;h2 id="contributors-to-this-release"&gt;Contributors to this release&lt;/h2&gt;
 &lt;p&gt;This release was only possible due to the efforts of many contributors, both
 new and old.&lt;/p&gt;
