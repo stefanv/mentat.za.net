@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_emacs-orgmode.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-12-15T00:00:00-08:00</updated><entry><title>Search headers in org-mode</title><link href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/" rel="alternate"></link><updated>2016-12-15T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-12-15:blog/2016/12/15/org-mode-header-search/</id><summary type="html">&lt;p&gt;In org-mode, I often have the need to jump to a top-level heading
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_emacs-orgmode.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-12-15T00:00:00-08:00</updated><entry><title>Search headers in org-mode</title><link href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/" rel="alternate"></link><published>2016-12-15T00:00:00-08:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-12-15:blog/2016/12/15/org-mode-header-search/</id><summary type="html">&lt;p&gt;In org-mode, I often have the need to jump to a top-level heading
 matching some word.&lt;/p&gt;
 &lt;p&gt;Since an org-mode buffer can be searched just like any other, I can
-simply invoke forward search with &lt;code&gt;C-S&lt;/code&gt;, but this will match &lt;em&gt;all&lt;/em&gt;
+simply invoke forward search with &lt;code&gt;C-s&lt;/code&gt;, but this will match &lt;em&gt;all&lt;/em&gt;
 occurrences of the text, instead of limiting the search to headings only.&lt;/p&gt;
 &lt;p&gt;This makes it hard to search for a phrase like &amp;ldquo;Travel&amp;rdquo;, for which I
 have a top-level heading, but also often occurs elsewhere in my notes.&lt;/p&gt;
@@ -12,7 +12,7 @@ have a top-level heading, but also often occurs elsewhere in my notes.&lt;/p&gt;
 &lt;li&gt;Pre-fill the text input with &lt;code&gt;^*&lt;/code&gt; so that only headings are
    matched.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;First, define a custom search function.  It puts the keys &amp;ldquo;^* &amp;rdquo; in the
+&lt;p&gt;First, define a custom search function.  It puts the keys &lt;code&gt;^*&lt;/code&gt; in the
 &amp;ldquo;unread command events&amp;rdquo; list (i.e, a list of events waiting to be seen
 by emacs), and then launches interactive forward regular expression search.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefan/isearch-heading&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
