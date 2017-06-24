@@ -79,21 +79,26 @@ a {
 	color:#09c;
 	font-size:1em;
 	text-decoration:none;
-	font-weight:600;
-	font-family:verdana, arial, helvetica, sans-serif;
+	font-weight:300;
+	/*font-family:verdana, arial, helvetica, sans-serif;*/
 	}
 a:link {color:#05a;}
 a:visited {color:#038;}
 a:hover {background-color:#eee;}
 
 #Header {
+	font-family:verdana, arial, helvetica, sans-serif;
 	margin:0em 0px 1em 0px;
 	padding:1.3em 1em 1em 1em;
 	border-style:solid;
 	border-color: #CCC;
 	border-width:0px 0px 1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
-       	background-color:#eee;
-	}
+    background-color:#eee;
+}
+
+#Header a {
+    font-weight: 600;
+}
 /* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct
 length values to user agents that exhibit the parsing error exploited above yet get
 the CSS box model right and understand the CSS2 parent-child selector. ALWAYS include
