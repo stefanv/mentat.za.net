@@ -314,72 +314,54 @@ Until May 2014, I lectured at
 <h1>Latest blog posts</h2>
 
 <div id="feed">
+  <ul id="feed_list">
+  </ul>
 </div>
 
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">google.load("feeds", "1");</script>
-
 <script type="text/javascript">
-var feed = new google.feeds.Feed('http://mentat.za.net/blog/atom.xml');
-feed.load(function (data) {
-    "use strict;"
 
-    var i, j;
-    var entries = data.feed.entries;
-    var entry;
-    var html;
+  /* Enter the following query at https://developer.yahoo.com/yql/
+  select * from rss where url="http://mentat.za.net/blog/atom.xml";
+  and enter the URL below */
 
-    var div = $("#feed");
-    div.append('<ul id="feed_list"/></ul>');
+  var url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Fmentat.za.net%2Fblog%2Fatom.xml'%3B&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+
+  function update_posts(response) {
+    console.log(response);
     div = $("#feed_list");
-
-    // Parse data depending on the specified response format, default is JSON.
-    for (i=0; i < entries.length && i < 10; i++) {
-      entry = entries[i];
+    for (var i = 0; i < 5; i++) {
+      var entry = response.query.results.feed.entry[i];
 
       html = '\n<li class="feed_entry">' +
              '<span class="feed_title">' +
-             '<a href="' + entry.link + '">' + entry.title + '</a>' +
+             '<a href="' + entry.link.href + '">' + entry.title + '</a>' +
              '</span><br/><span class="feed_date">' +
-             entry.publishedDate.split(" ").slice(0, 4).join(" ") +
+             entry.published.split(" ").slice(0, 4).join(" ") +
              '</span> in <span class="feed_tags">';
 
-       for (j=0; j < entry.categories.length; j++) {
-         html += '<span class="feed_tag">' +
-                 entry.categories[j] +
-                 '</span>';
-         if (j < entry.categories.length - 1) {
-           html += ', ';
-         };
-       };
+      var categories = entry.category.term.split(" ");
+      for (j=0; j < categories.length; j++) {
+        html += '<span class="feed_tag">' + categories[j] + '</span>';
+        if (j < categories.length - 1) {
+          html += ', ';
+        };
+      };
 
-       html += '</span><br/><span class="feed_content">';
-       html += entry.contentSnippet;
-       html += '</li>\n';
+      html += '</span><br/><span class="feed_content">';
+      html += $(entry.summary.content).first().html();
+      html += '</li>\n';
 
-       div.append(html);
+      div.append(html);
     }
+  }
 
-});
+  $.ajax({url: url,
+          dataType: "jsonp",
+          success: update_posts
+  });
+
 </script>
 
-<!--
-
-Our local <a href="http://members.iinet.com.au/~bofh/index.html">b0fh</a> named my <a href="http://en.wikipedia.org/wiki/Linux">Linux</a>
-box "Strongbad" - it took me a while to
-figure out that he is the strange little character on the left.
-<a href="http://www.hrwiki.org/index.php/Main_Page">Strong Bad</a> likes to <a
-href="http://www.homestarrunner.com/sbemail.html">read his
-e-mail</a>, just like some <a
-href="http://www.dsp.sun.ac.za/index.php3#people">other people in the
-lab</a>. Here, some believe that a
-         a strong <a href="http://www.gardfoods.com/coffee/coffee.names.htm">Cup of Joe</a>
-is <a href="http://playgo.to/interactive/">the way to go</a> (the addiction comes a <a href="originsofgo.pdf">long way</a>).
-         With the aroma of <a href="http://en.wikipedia.org/wiki/Caffeine">freshly ground coffee</a>
-drifting down the corridor, the DSP-Lab is also fondly known as the
-  <a href="http://www.energyfiend.com/death-by-caffeine">espresso lab</a>.
-
--->
 
 <h1>Research and projects</h1>
 
