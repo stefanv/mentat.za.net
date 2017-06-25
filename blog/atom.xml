@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-12-15T00:00:00-08:00</updated><entry><title>Search headers in org-mode</title><link href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/" rel="alternate"></link><published>2016-12-15T00:00:00-08:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-12-15:blog/2016/12/15/org-mode-header-search/</id><summary type="html">&lt;p&gt;In org-mode, I often have the need to jump to a top-level heading
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-12-15T00:00:00-08:00</updated><entry><title>Search headers in org-mode</title><link href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/" rel="alternate"></link><published>2016-12-15T00:00:00-08:00</published><updated>2016-12-15T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-12-15:/blog/2016/12/15/org-mode-header-search/</id><summary type="html">&lt;p&gt;In org-mode, I often have the need to jump to a top-level heading
+matching some word.&lt;/p&gt;
+&lt;p&gt;Since an org-mode buffer can be searched just like any other, I can
+simply invoke forward search with &lt;code&gt;C-s&lt;/code&gt;, but this will match &lt;em&gt;all&lt;/em&gt;
+occurrences of the text, instead of limiting the search to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In org-mode, I often have the need to jump to a top-level heading
 matching some word.&lt;/p&gt;
 &lt;p&gt;Since an org-mode buffer can be searched just like any other, I can
 simply invoke forward search with &lt;code&gt;C-s&lt;/code&gt;, but this will match &lt;em&gt;all&lt;/em&gt;
 occurrences of the text, instead of limiting the search to headings only.&lt;/p&gt;
-&lt;p&gt;This makes it hard to search for a phrase like &amp;ldquo;Travel&amp;rdquo;, for which I
+&lt;p&gt;This makes it hard to search for a phrase like "Travel", for which I
 have a top-level heading, but also often occurs elsewhere in my notes.&lt;/p&gt;
 &lt;p&gt;I have a solution of the following form:&lt;/p&gt;
 &lt;ol&gt;
@@ -13,9 +17,9 @@ have a top-level heading, but also often occurs elsewhere in my notes.&lt;/p&gt;
    matched.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;First, define a custom search function.  It puts the keys &lt;code&gt;^*&lt;/code&gt; in the
-&amp;ldquo;unread command events&amp;rdquo; list (i.e, a list of events waiting to be seen
+"unread command events" list (i.e, a list of events waiting to be seen
 by emacs), and then launches interactive forward regular expression search.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefan/isearch-heading&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefan/isearch-heading&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;unread-command-events&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;listify-key-sequence&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;^* &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;isearch-mode&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -23,7 +27,7 @@ by emacs), and then launches interactive forward regular expression search.&lt;/
 
 
 &lt;p&gt;Next, we add a keybinding for org-mode:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;org-mode-keys&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;org-mode-keys&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;local-set-key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;C-c g&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;stefan/isearch-heading&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
@@ -31,26 +35,32 @@ by emacs), and then launches interactive forward regular expression search.&lt;/
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;And that&amp;rsquo;s it!  Pressing &lt;code&gt;C-c g&lt;/code&gt; (for &amp;ldquo;go&amp;rdquo;) in org-mode will
+&lt;p&gt;And that's it!  Pressing &lt;code&gt;C-c g&lt;/code&gt; (for "go") in org-mode will
 now present you with a search prompt.  Typing a heading name will take you
 there directly, at which point you can choose to expand it with the
-TAB key.&lt;/p&gt;</summary><category term="emacs orgmode"></category></entry><entry><title>WebSockets in Python (and some Redux)</title><link href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><published>2016-10-20T00:00:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
+TAB key.&lt;/p&gt;</content><category term="emacs orgmode"></category></entry><entry><title>WebSockets in Python (and some Redux)</title><link href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><published>2016-10-20T00:00:00-07:00</published><updated>2016-10-20T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:/blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
 &lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
-we&amp;rsquo;ve developed an easy
+we've developed an easy
 mechanism for Python web developers to
 &lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you want
-to verify a credit card number submitted by your user.  Traditionally, you&amp;rsquo;d
+to verify a credit card number …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
+&lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
+we've developed an easy
+mechanism for Python web developers to
+&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you want
+to verify a credit card number submitted by your user.  Traditionally, you'd
 submit the number, and then poll the backend repeatedly from the browser.  Not
 very elegant :/&lt;/p&gt;
 &lt;p&gt;But with a WebSocket connection, you submit the credit card number and then
-forget about it.  The &lt;em&gt;server&lt;/em&gt; will let you know when it&amp;rsquo;s done by pushing a
+forget about it.  The &lt;em&gt;server&lt;/em&gt; will let you know when it's done by pushing a
 message to the frontend.&lt;/p&gt;
 &lt;p&gt;Not only does this solve the annoying polling problem, but it opens up the
-door to an entirely new universe of tools, such as Dan Abramov&amp;rsquo;s fantastic
+door to an entirely new universe of tools, such as Dan Abramov's fantastic
 &lt;a href="http://redux.js.org/"&gt;Redux&lt;/a&gt;.  Many of these Javascript libraries rely on the server
 being able to notify the frontend when it needs to update itself.&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s talk a bit about Redux.  The
+&lt;p&gt;Let's talk a bit about Redux.  The
 &lt;a href="http://redux.js.org/docs/introduction/ThreePrinciples.html"&gt;principles&lt;/a&gt;
 behind it are simple and elegant:&lt;/p&gt;
 &lt;ol&gt;
@@ -65,14 +75,14 @@ reloading, time travel, etc.&lt;/p&gt;
 Model-View-Controller pattern.  With MVC, you are never quite sure how changes
 propagate through the system.  With Redux, it is highly predictable.  Say
 your app has a toggle button, and associated state &lt;code&gt;{toggle: true}&lt;/code&gt;.  An
-action (e.g. &amp;ldquo;the red button was clicked&amp;rdquo;) is submitted to the central
+action (e.g. "the red button was clicked") is submitted to the central
 dispatcher which then calculates the new state of the app:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;new_state&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;new_state&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The implementation could look something like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;toggle_button&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
       &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;toggle&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toggle&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
@@ -89,10 +99,10 @@ updated, re-renders itself.&lt;/p&gt;
 &lt;a href="http://redux.js.org/docs/introduction/Motivation.html"&gt;disentangling mutation and asynchronicity&lt;/a&gt;, and by
 getting rid of JQuery &amp;amp; hidden state stored somewhere in the bowels of the DOM,
 Redux has, for me, returned the joy of web development.&lt;/p&gt;
-&lt;p&gt;But, I&amp;rsquo;m getting distracted.  WebSockets&amp;mdash;in Python!&lt;/p&gt;
-&lt;p&gt;Pushing messages from your Python web server to the user&amp;rsquo;s browser can now be
+&lt;p&gt;But, I'm getting distracted.  WebSockets---in Python!&lt;/p&gt;
+&lt;p&gt;Pushing messages from your Python web server to the user's browser can now be
 &lt;a href="https://github.com/cesium-ml/cesium_web/blob/e19e5543e193905da9555ce15fc71a52859c9fb0/cesium_app/handlers/base.py#L59"&gt;as simple as this&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Flow&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;flow&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Flow&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;flow&lt;/span&gt;
 
 &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flow&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;my_user@domain.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;message to the user&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;to ship along&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
@@ -100,7 +110,14 @@ Redux has, for me, returned the joy of web development.&lt;/p&gt;
 
 
 &lt;p&gt;Please take a look at the more detailed technical description (with code!)
-&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;on the Cesium blog&lt;/a&gt;.&lt;/p&gt;</summary><category term="web python javascript websocket redux react"></category></entry><entry><title>Compile TensorFlow from source with gcc6.1</title><link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/" rel="alternate"></link><published>2016-09-14T00:00:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-09-14:blog/2016/09/14/tensorflow-gcc6-1/</id><summary type="html">&lt;p&gt;Due to two bugs in gcc 6.1
+&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;on the Cesium blog&lt;/a&gt;.&lt;/p&gt;</content><category term="web python javascript websocket redux react"></category></entry><entry><title>Compile TensorFlow from source with gcc6.1</title><link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/" rel="alternate"></link><published>2016-09-14T00:00:00-07:00</published><updated>2016-09-14T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-09-14:/blog/2016/09/14/tensorflow-gcc6-1/</id><summary type="html">&lt;p&gt;Due to two bugs in gcc 6.1
+&lt;a href="https://github.com/google/re2/issues/102"&gt;affecting the re2 library&lt;/a&gt;
+(one of which has been fixed in 6.2)),
+&lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt; cannot be
+&lt;a href="https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html"&gt;compiled from source&lt;/a&gt;
+one some systems (including my Debian Testing install).&lt;/p&gt;
+&lt;p&gt;To work around the issue, modify &lt;code&gt;tensorflow/workspace.bzl&lt;/code&gt; and
+change the re2 description to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Due to two bugs in gcc 6.1
 &lt;a href="https://github.com/google/re2/issues/102"&gt;affecting the re2 library&lt;/a&gt;
 (one of which has been fixed in 6.2)),
 &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt; cannot be
@@ -108,7 +125,7 @@ Redux has, for me, returned the joy of web development.&lt;/p&gt;
 one some systems (including my Debian Testing install).&lt;/p&gt;
 &lt;p&gt;To work around the issue, modify &lt;code&gt;tensorflow/workspace.bzl&lt;/code&gt; and
 change the re2 description to:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;native.git_repository(
+&lt;div class="highlight"&gt;&lt;pre&gt;native.git_repository(
   name = &amp;quot;com_googlesource_code_re2&amp;quot;,
   remote = &amp;quot;https://github.com/stefanv/re2.git&amp;quot;,
   commit = &amp;quot;86503cb89d82b723ae0bce35e1e09524910cd319&amp;quot;,
@@ -119,33 +136,39 @@ change the re2 description to:&lt;/p&gt;
 &lt;p&gt;The re2 library is now downloaded from my fork, which applies a
 &lt;a href="https://github.com/stefanv/re2/commit/86503cb89d82b723ae0bce35e1e09524910cd319"&gt;one line patch&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Compile the TensorFlow Python package as usual with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
+&lt;div class="highlight"&gt;&lt;pre&gt;bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After installing the pip wheel using&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install /tmp/tensorflow_pkg/*.whl
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install /tmp/tensorflow_pkg/*.whl
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;you should have a working installation.  If importing fails with&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ImportError: cannot import name &amp;#39;pywrap_tensorflow&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;ImportError: cannot import name &amp;#39;pywrap_tensorflow&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;switch out of the TensorFlow source directory and try again.&lt;/p&gt;</summary><category term="tensorflow python"></category></entry><entry><title>Amazon owns your ebooks</title><link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/" rel="alternate"></link><published>2016-08-21T00:00:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-08-21:blog/2016/08/21/amazon-owns-your-ebooks/</id><summary type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
+&lt;p&gt;switch out of the TensorFlow source directory and try again.&lt;/p&gt;</content><category term="tensorflow python"></category></entry><entry><title>Amazon owns your ebooks</title><link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/" rel="alternate"></link><published>2016-08-21T00:00:00-07:00</published><updated>2016-08-21T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-08-21:/blog/2016/08/21/amazon-owns-your-ebooks/</id><summary type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
 have bought ebooks from them myself!  Sadly, that is not the case.  I
 will summarize part of the
 &lt;a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201014950"&gt;Kindle Store Terms of Use&lt;/a&gt;
 quoted at the bottom of this post:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;You do not own any Kindle book that you have &amp;ldquo;bought&amp;rdquo;, even if it
-   said &amp;ldquo;buy with one click&amp;rdquo; in the store (the book still belongs to
-   Amazon, you&amp;rsquo;re just leasing it).&lt;/li&gt;
+&lt;li&gt;You do not own any Kindle …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
+have bought ebooks from them myself!  Sadly, that is not the case.  I
+will summarize part of the
+&lt;a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201014950"&gt;Kindle Store Terms of Use&lt;/a&gt;
+quoted at the bottom of this post:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;You do not own any Kindle book that you have "bought", even if it
+   said "buy with one click" in the store (the book still belongs to
+   Amazon, you're just leasing it).&lt;/li&gt;
 &lt;li&gt;You may only read Kindle content through sofware approved by
    Amazon.&lt;/li&gt;
-&lt;li&gt;You may not copy ebooks &amp;ldquo;bought&amp;rdquo; from Amazon to other devices (such
+&lt;li&gt;You may not copy ebooks "bought" from Amazon to other devices (such
    as a Kobo or Nook reader).  In fact, you may not engage in any
    activity that bypasses their Digital Rights Management (or DRM).&lt;/li&gt;
 &lt;/ol&gt;
@@ -153,7 +176,7 @@ quoted at the bottom of this post:&lt;/p&gt;
 only realized the invasive nature of these terms now.&lt;/p&gt;
 &lt;p&gt;Since your agreement with Amazon is simply a license to view material,
 they have the ability to withdraw that right whenever they choose.
-&lt;a href="http://www.nytimes.com/2009/07/18/technology/companies/18amazon.html"&gt;Which they have done, in an ironic twist, with George Orwell&amp;rsquo;s 1984&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="http://www.nytimes.com/2009/07/18/technology/companies/18amazon.html"&gt;Which they have done, in an ironic twist, with George Orwell's 1984&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As you may imagine, this whole situation riles me up quite badly, and
 spoils many a dinner-time conversation (sorry, friends).  I am
 particularly irate because I just bought myself a beautiful
@@ -161,11 +184,11 @@ particularly irate because I just bought myself a beautiful
 but measured move to lessen my dependence on Amazon.  Now, lo and
 behold, I cannot access any of the 120 books which, if I gave my money
 to other ebook stores, I would have owned!&lt;/p&gt;
-&lt;p&gt;So, &lt;em&gt;caveat emptor&lt;/em&gt;, dear reader.  &lt;strong&gt;Do not support Amazon&amp;rsquo;s great
+&lt;p&gt;So, &lt;em&gt;caveat emptor&lt;/em&gt;, dear reader.  &lt;strong&gt;Do not support Amazon's great
 &lt;a href="https://www.defectivebydesign.org/amazon-kindle-swindle"&gt;Kindle Swindle&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If you buy books from Kobo, you will be able to export your books to
 your Kindle devices, albeit encumbered by Digital Rights Management (DRM).&lt;/p&gt;
-&lt;h2 id="the-deal-with-digital-rights-management-drm"&gt;The deal with Digital Rights Management (DRM)&lt;/h2&gt;
+&lt;h2&gt;The deal with Digital Rights Management (DRM)&lt;/h2&gt;
 &lt;p&gt;While this post is about Amazon Kindle, it is worth mentioning Digital
 Rights Management (DRM).  DRM is a mechanism that distributers use to
 lock their books so that you may not easily copy it illegally.  Of
@@ -173,7 +196,7 @@ course, and very predictably, the DRM is not difficult to circumvent,
 and those who want to steal electronic books do so with impunity.
 Still, it is
 &lt;a href="https://en.wikipedia.org/wiki/Anti-circumvention#Fair_Use_and_Circumvention"&gt;probably illegal to remove DRM in the United States&lt;/a&gt;,
-and if you&amp;rsquo;re a law abiding citizen, you cannot convert a protected
+and if you're a law abiding citizen, you cannot convert a protected
 ebook to another format such as PDF, even if a PDF would be more
 convenient for you.&lt;/p&gt;
 &lt;p&gt;Some distributors are worse than others, though, and unsurprisingly
@@ -182,7 +205,7 @@ it difficult to copy to other devices), but they use a proprietary
 format (.mobi) that only works on &lt;em&gt;their&lt;/em&gt; readers.  If you want to
 copy their books to another device, you &lt;em&gt;have&lt;/em&gt; to first remove the DRM
 which, as their terms state, is not allowed.  You might start to
-wonder whether such business practices aren&amp;rsquo;t anti-competitive and
+wonder whether such business practices aren't anti-competitive and
 perhaps even illegal.&lt;/p&gt;
 &lt;p&gt;There is a perfectly usable format for ebooks already in existence
 (.epub), that is also supported by many different models of readers.
@@ -190,7 +213,7 @@ So, while locking books with some kind of DRM is far from ideal, it is
 still preferable to using a proprietary format to boot.&lt;/p&gt;
 &lt;p&gt;For those buying from the Kobo store, some of the books on their
 shelves are available DRM-free, and is indicated as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Kobo DRM information" src="http://mentat.za.net/blog/images/kobo_drm_comparison.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Kobo DRM information" src="http://mentat.za.net/blog/images/kobo_drm_comparison.png"&gt;&lt;/p&gt;
 &lt;p&gt;Defective by Design maintains a
 &lt;a href="https://www.defectivebydesign.org/guide/ebooks"&gt;list of DRM-free publishers and stores&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Please &lt;a href="https://www.defectivebydesign.org/action"&gt;support&lt;/a&gt; the
@@ -199,9 +222,9 @@ shelves are available DRM-free, and is indicated as follows:&lt;/p&gt;
 (which makes it illegal to circumvent DRM).  There is no good reason
 why you should not be allowed to read material you bought on any
 device of your choosing.  For more on the DRM, refer to author
-&lt;a href="https://www.theguardian.com/technology/blog/2014/feb/05/digital-rights-management"&gt;Cory Doctorow&amp;rsquo;s articles in the Guardian&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="https://www.theguardian.com/technology/blog/2014/feb/05/digital-rights-management"&gt;Cory Doctorow's articles in the Guardian&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Below follows an excerpt, mentioned above, from the Amazon Kindle
-Store&amp;rsquo;s Terms of Use.&lt;/p&gt;
+Store's Terms of Use.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;1. Kindle Content&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Use of Kindle Content.&lt;/strong&gt; Upon your download of Kindle Content and
@@ -225,63 +248,20 @@ proprietary notices or labels on the Kindle Content. In addition,
 you may not attempt to bypass, modify, defeat, or otherwise
 circumvent any digital rights management system or other content
 protection or features used as part of the Service.&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="drm amazon kindle ebooks"></category></entry><entry><title>Waking Up: The Art of Setting An Alarm</title><link href="http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/" rel="alternate"></link><published>2016-03-02T00:00:00-08:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-03-02:blog/2016/03/02/waking-up-how-to-set-an-alarm/</id><summary type="html">&lt;p&gt;For me, waking up is and always has been hard.  That, together with an
-intolerance for coffee and a natural late-night tendency, brews up the
-perfect storm for a poor start to the day.&lt;/p&gt;
-&lt;p&gt;During my PhD&amp;mdash;especially the last six months, when I desperately
-needed every single minute of every day&amp;mdash;I tried everything.  I logged
-my sleeping habits, setting my alarm for 6am every morning and
-watching my sleep duration oscillate and converge to 6 hours 40
-minutes.  But even then, I would sometimes simply sleep through
-alarms, my brain resisting departure from the world of inception with
-all its might.&lt;/p&gt;
-&lt;p&gt;Eventually, out of desperation, I tried an experiment in conditioning:
-practicing the motions of getting up (taking a deep breath, sitting
-up, jumping out of bed) several times before going to sleep.  It
-sounds pretty wacky, saying it now, but to my surprise it worked well
-enough.  Perhaps only because I was watching the outcome of the
-experiment so keenly.&lt;/p&gt;
-&lt;p&gt;Either way, as effective as that was, it was not a particularly
-&lt;em&gt;pleasant&lt;/em&gt; way to wake up, and I started searching for a way to make my
-brain really &lt;em&gt;notice&lt;/em&gt; the early morning alarm&lt;sup id="fnref:sleep_tracker"&gt;&lt;a class="footnote-ref" href="#fn:sleep_tracker" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;One glaring problem with alarms is &lt;strong&gt;the snooze button&lt;/strong&gt;.  Yes, you
-want to turn that darn thing off the moment it starts blaring in your
-ears.  And once your brain has learnt how to make it stop, you&amp;rsquo;re not
-getting up.  After slapping the snooze button five times, chances are
-you will accidentally turn off the alarm: bye-bye work, hello
-dreamland.&lt;/p&gt;
-&lt;p&gt;After sleeping restlessly on this problem for many nights, I finally
-came up with a straightforward solution that does the trick:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Set an alarm for 10 minutes before you want to get up.&lt;/li&gt;
-&lt;li&gt;Set a &lt;em&gt;radio alarm&lt;/em&gt; (such as
-  &lt;a href="https://play.google.com/store/apps/details?id=tunein.player&amp;amp;hl=en"&gt;TuneIn Radio&lt;/a&gt;)
-  for 10 minutes after the first.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Why is this such a good solution?  When the first alarm goes off, you
-are &lt;em&gt;allowed to snooze it&lt;/em&gt;.  That&amp;rsquo;s right, make it quiet, go back to
-sleep.  Your body is aware that wake up time is near, but you still
-get your snooze in.  Then, the radio goes off, but because it is a
-radio it is &lt;em&gt;different&lt;/em&gt; every morning.  This is key: there is no
-pattern matching your brain can do to say &amp;ldquo;hey, that&amp;rsquo;s just the alarm,
-ignore it&amp;rdquo;.  By the time it has figured out that there isn&amp;rsquo;t a serious
-British person suffering from a disturbing pre-occupation with world
-news standing next to you in the room&amp;mdash;it&amp;rsquo;s just BBC World
-Radio&amp;mdash;you are wide awake.&lt;/p&gt;
-&lt;p&gt;So, if you also struggle to wake up, give this method a try and let me
-know whether it works for you!&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:sleep_tracker"&gt;
-&lt;p&gt;I know some people have good success with cell phone
-applications such as Sleep Like Android; YMMV.&amp;#160;&lt;a class="footnote-backref" href="#fnref:sleep_tracker" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</summary><category term="lifehack"></category></entry><entry><title>Python &amp; Matplotlib on OSX</title><link href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/" rel="alternate"></link><published>2016-02-26T00:00:00-08:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-02-26:blog/2016/02/26/matplotlib-on-osx/</id><summary type="html">&lt;p&gt;One day, we will hopefully have a grand unified build and package management
+&lt;/blockquote&gt;</content><category term="drm amazon kindle ebooks"></category></entry><entry><title>Python &amp; Matplotlib on OSX</title><link href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/" rel="alternate"></link><published>2016-02-26T00:00:00-08:00</published><updated>2016-02-26T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-02-26:/blog/2016/02/26/matplotlib-on-osx/</id><summary type="html">&lt;p&gt;One day, we will hopefully have a grand unified build and package management
 system for Python where everything is free &amp;amp; open and Just Works (TM).  Until
 then, you have two options:&lt;/p&gt;
-&lt;h2 id="brew-python-pip"&gt;brew Python + pip&lt;/h2&gt;
+&lt;h2&gt;brew Python + pip&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;brew install python3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pyvenv -v ~/envs/py3&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;source ~/envs/py3/bin/activate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip install matplotlib&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pros …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One day, we will hopefully have a grand unified build and package management
+system for Python where everything is free &amp;amp; open and Just Works (TM).  Until
+then, you have two options:&lt;/p&gt;
+&lt;h2&gt;brew Python + pip&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;brew install python3&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;pyvenv -v ~/envs/py3&lt;/code&gt;&lt;/li&gt;
@@ -296,7 +276,7 @@ then, you have two options:&lt;/p&gt;
 &lt;li&gt;Binary wheels may not be available for all packages.&lt;/li&gt;
 &lt;li&gt;Pip is not the best of package management tools.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="conda"&gt;Conda&lt;/h2&gt;
+&lt;h2&gt;Conda&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Download and install miniconda&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;conda create -n py3 python=3.5 matplotlib&lt;/code&gt;&lt;/li&gt;
@@ -308,30 +288,33 @@ then, you have two options:&lt;/p&gt;
 &lt;li&gt;Conda environments are well tested; almost everything works out of the
     box.  This includes fast linear algebra using MKL.&lt;/li&gt;
 &lt;li&gt;Some of the conda build recipes are closed and binary wheels may not be
-    available for all packages&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
+    available for all packages&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
 &lt;li&gt;Conda and pip do not always play well together.&lt;/li&gt;
 &lt;li&gt;Conda packages are supported almost exclusively by a single company.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="footnote"&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-&lt;li id="fn:1"&gt;
+&lt;li id="fn-1"&gt;
 &lt;p&gt;Some members of the community maintain &lt;a href="https://conda-forge.github.io"&gt;their own channels&lt;/a&gt;, but there are still some issues to
-be aware of when &lt;a href="https://github.com/conda-forge/conda-forge.github.io/issues/22"&gt;mixing those channels and the official ones&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+be aware of when &lt;a href="https://github.com/conda-forge/conda-forge.github.io/issues/22"&gt;mixing those channels and the official ones&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="python"></category></entry><entry><title>VPN-only access to the internet</title><link href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/" rel="alternate"></link><published>2015-01-24T00:00:00-08:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-24:blog/2015/01/24/vpn-only-internet/</id><summary type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN&lt;/p&gt;
-&lt;p&gt;A few days ago, I noticed that my outbound email wasn&amp;rsquo;t being
-delivered&amp;mdash;it seems as if my ISP blocks access to some outbound ports.
+&lt;/div&gt;</content><category term="python"></category></entry><entry><title>VPN-only access to the internet</title><link href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/" rel="alternate"></link><published>2015-01-24T00:00:00-08:00</published><updated>2015-01-24T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-24:/blog/2015/01/24/vpn-only-internet/</id><summary type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN&lt;/p&gt;
+&lt;p&gt;A few days ago, I noticed that my outbound email wasn't being
+delivered---it seems as if my ISP blocks access to some outbound ports.
+An easy workaround is to route traffic through the work VPN, but …&lt;/p&gt;</summary><content type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN&lt;/p&gt;
+&lt;p&gt;A few days ago, I noticed that my outbound email wasn't being
+delivered---it seems as if my ISP blocks access to some outbound ports.
 An easy workaround is to route traffic through the work VPN, but
-knowing myself I&amp;rsquo;d forget to switch it on, leaving my outbound mail
+knowing myself I'd forget to switch it on, leaving my outbound mail
 stranded.&lt;/p&gt;
 &lt;p&gt;I needed a way of blocking &lt;em&gt;any&lt;/em&gt; access to the internet, unless it was
-leaving through the VPN (since I was sure I&amp;rsquo;d notice &lt;em&gt;that&lt;/em&gt; pretty
+leaving through the VPN (since I was sure I'd notice &lt;em&gt;that&lt;/em&gt; pretty
 quickly).&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;d have preferred to use firewalld, which is neatly integrated into
+&lt;p&gt;I'd have preferred to use firewalld, which is neatly integrated into
 Ubuntu, but as of 01/24/2015 it 
-&lt;a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html"&gt;doesn&amp;rsquo;t allow filtering outbound traffic&lt;/a&gt;&lt;sup id="fnref:firewalld_direct_zones"&gt;&lt;a class="footnote-ref" href="#fn:firewalld_direct_zones" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. What
+&lt;a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html"&gt;doesn't allow filtering outbound traffic&lt;/a&gt;&lt;sup id="fnref-firewalld_direct_zones"&gt;&lt;a class="footnote-ref" href="#fn-firewalld_direct_zones"&gt;1&lt;/a&gt;&lt;/sup&gt;. What
 follows, then, is a simple approach implementing the following rule:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Block wifi traffic unless it goes to either the local
@@ -339,7 +322,7 @@ network or the VPN.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Create a script (I called it &lt;code&gt;~/scripts/fw-up&lt;/code&gt;) that sets up the
 firewall:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Clear any existing rules&lt;/span&gt;
 iptables -F
@@ -368,21 +351,21 @@ iptables -A OUTPUT -p tcp -o wlan1 -j DROP
 &lt;p&gt;Make sure the script is set to executable (&lt;code&gt;chmod +x fw-up&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Add a symlink to &lt;code&gt;if-up.d&lt;/code&gt; to ensure that the firewall gets built
 whenever the network is reconfigured:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now, whenever you connect to a wifi hotspot, internet traffic will be
 blocked until you fire up your VPN.  If, on occasion, you need to work
 without the VPN, simply raze the firewall:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo iptables -F
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo iptables -F
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Typically, you wouldn&amp;rsquo;t want the firewall to go up when
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Typically, you wouldn't want the firewall to go up when
   connecting to the wireless at work, so I added the following conditional
   in the &lt;code&gt;fw-up&lt;/code&gt; script:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;iptables -F
+&lt;div class="highlight"&gt;&lt;pre&gt;iptables -F
 
 if [[ `iwgetid -r` != &amp;#39;WorkSSID&amp;#39; ]]; then
    # Firewall rules go here
@@ -391,24 +374,70 @@ fi
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;!---
+# Create a new zone
+
+**Direct rules not supported for zones yet**
+
+
+
+``sgs3``
+
+
+wzxhzdk:4
+
+
+In NetworkManager, go to the wifi connection and set its zone to
+``vpn_only``.
+
+(Alternatively, directly edit
+``/etc/NetworkManager/system-connections/&lt;ssid&gt;``)
+
+
+Restart NetworkManager:
+
+
+wzxhzdk:5
+
+
+When your connection comes back up, you should see it in the new zone:
+
+
+wzxhzdk:6
+
+
+Firewalld has a *direct* mode which gives us access to the inner
+workings of the firewall, among other things allowing us to manipulate
+outgoing and IP-based rules.
+
+sudo firewall-cmd --zone=vpn_only --permanent --add-rich-rule='rule family="ipv4" destination address="136.152.0.0/16" invert="True" port port="1-65535" protocol="tcp" reject'
+
+rule family="ipv4" destination NOT address="136.152.0.0/16" port
+port="1-65535" protocol="tcp" reject
+--&gt;
+
 &lt;div class="footnote"&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-&lt;li id="fn:firewalld_direct_zones"&gt;
+&lt;li id="fn-firewalld_direct_zones"&gt;
 &lt;p&gt;The idea would be to set up a zone, say
 &lt;code&gt;vpn_only&lt;/code&gt;, and to assign your home wifi SSID to it.  A direct rule that
 blocks any non-VPN traffic can then be added to the new zone (this
 should be possible soon, and is on the firewalld
-&lt;a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO"&gt;TODO list&lt;/a&gt;).&amp;#160;&lt;a class="footnote-backref" href="#fnref:firewalld_direct_zones" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO"&gt;TODO list&lt;/a&gt;).&amp;#160;&lt;a class="footnote-backref" href="#fnref-firewalld_direct_zones" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="linux"></category></entry><entry><title>Visualizing and pruning the docker image tree</title><link href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/" rel="alternate"></link><published>2015-01-18T00:00:00-08:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-18:blog/2015/01/18/docker-image-tree/</id><summary type="html">&lt;p&gt;Visualizing the Docker image dependency tree is a useful way of
+&lt;/div&gt;</content><category term="linux"></category></entry><entry><title>Visualizing and pruning the docker image tree</title><link href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/" rel="alternate"></link><published>2015-01-18T00:00:00-08:00</published><updated>2015-01-18T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-18:/blog/2015/01/18/docker-image-tree/</id><summary type="html">&lt;p&gt;Visualizing the Docker image dependency tree is a useful way of
 checking image sizes and inter-image dependencies.  Since images
 occupy a lot of disk space, we may also want to prune unused images.&lt;/p&gt;
-&lt;h2 id="visualizing-image-dependencies"&gt;Visualizing image dependencies&lt;/h2&gt;
+&lt;h2&gt;Visualizing image dependencies&lt;/h2&gt;
+&lt;p&gt;In version 1.2.0 of Docker, the image dependency tree is available via …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Visualizing the Docker image dependency tree is a useful way of
+checking image sizes and inter-image dependencies.  Since images
+occupy a lot of disk space, we may also want to prune unused images.&lt;/p&gt;
+&lt;h2&gt;Visualizing image dependencies&lt;/h2&gt;
 &lt;p&gt;In version 1.2.0 of Docker, the image dependency tree is available via
 the &lt;code&gt;docker images --tree&lt;/code&gt; command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker images --tree
+&lt;div class="highlight"&gt;&lt;pre&gt;$ docker images --tree
 Warning: &lt;span class="s1"&gt;&amp;#39;--tree&amp;#39;&lt;/span&gt; is deprecated, it will be removed soon. See usage.
 ├─511136ea3c5a Virtual Size: &lt;span class="m"&gt;0&lt;/span&gt; B
 │ ├─5bc37dc2dfba Virtual Size: 192.5 MB
@@ -439,20 +468,20 @@ its behavior?&lt;/p&gt;
 &lt;p&gt;Enter &lt;a href="https://github.com/justone/dockviz"&gt;DockerViz&lt;/a&gt;.  Grab a binary
 from &lt;a href="http://gobuild.io/github.com/justone/dockviz"&gt;gobuild.io&lt;/a&gt; and
 place it somewhere on your path.&lt;/p&gt;
-&lt;h3 id="querying-the-docker-image-status"&gt;Querying the Docker image status&lt;/h3&gt;
+&lt;h3&gt;Querying the Docker image status&lt;/h3&gt;
 &lt;p&gt;The Docker server can be queried via its
 &lt;a href="https://docs.docker.com/reference/api/docker_remote_api/"&gt;public API&lt;/a&gt;.
 It is typically available either on &lt;code&gt;http://localhost:4243&lt;/code&gt; or
 &lt;code&gt;/var/run/docker.sock&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;One of the following two calls should therefore extract the image
 status:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -s http://localhost:4243/images/json?all=1
+&lt;div class="highlight"&gt;&lt;pre&gt;curl -s http://localhost:4243/images/json?all=1
 echo -e &amp;quot;GET /images/json?all=1 HTTP/1.0\r\n&amp;quot; | nc -U /var/run/docker.sock
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;On my machine, the second query returns:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;HTTP/1.0 200 OK
+&lt;div class="highlight"&gt;&lt;pre&gt;HTTP/1.0 200 OK
 Content-Type: application/json
 Date: Sun, 18 Jan 2015 17:41:34 GMT
 
@@ -463,7 +492,7 @@ Date: Sun, 18 Jan 2015 17:41:34 GMT
 
 
 &lt;p&gt;DockViz parses this JSON and outputs a formatted tree:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat ~/scripts/docktree 
+&lt;div class="highlight"&gt;&lt;pre&gt;$ cat ~/scripts/docktree 
 &lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;GET /images/json?all=1 HTTP/1.0\r\n&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; nc -U /var/run/docker.sock &lt;span class="p"&gt;|&lt;/span&gt; tail -n +5 &lt;span class="p"&gt;|&lt;/span&gt; dockviz images --tree
 $ docktree
 ├─511136ea3c5a Virtual Size: 0.0 B
@@ -489,11 +518,11 @@ $ docktree
 
 
 &lt;p&gt;Note that, on my system, the first branch of the tree is dangling,
-i.e. not associated with a tagged image&amp;ndash;I must have removed a tagged
+i.e. not associated with a tagged image--I must have removed a tagged
 image earlier, and these are its remaining dependencies.&lt;/p&gt;
-&lt;h2 id="pruning-unusued-images"&gt;Pruning unusued images&lt;/h2&gt;
+&lt;h2&gt;Pruning unusued images&lt;/h2&gt;
 &lt;p&gt;Built and downloaded Docker images quickly gobble up a lot of space:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo du -hcs /var/lib/docker/
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo du -hcs /var/lib/docker/
 10G /var/lib/docker/
 10G total
 &lt;/pre&gt;&lt;/div&gt;
@@ -501,38 +530,51 @@ image earlier, and these are its remaining dependencies.&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;docker images&lt;/code&gt; command allows us to
 &lt;a href="https://docs.docker.com/reference/commandline/cli/#images"&gt;list dangling images&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker images --filter dangling=true --quiet
+&lt;div class="highlight"&gt;&lt;pre&gt;docker images --filter dangling=true --quiet
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And we obtain a list of containers (images that were fired up and
 modified) using:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker ps -aq
+&lt;div class="highlight"&gt;&lt;pre&gt;docker ps -aq
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;I remove both of these with the following script (WARNING: This
 will delete ALL containers and any unused, downloaded images, so use
 with caution!):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="nv"&gt;CONTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker ps -aq&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="nv"&gt;IMAGES&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker images --filter &lt;span class="nv"&gt;dangling&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt; --quiet&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$CONTAINERS&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    docker rm &lt;span class="nv"&gt;$CONTAINERS&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$C&lt;/span&gt;ONTAINERS &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    docker rm &lt;span class="nv"&gt;$C&lt;/span&gt;ONTAINERS
 &lt;span class="k"&gt;else&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;No containers to remove&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$IMAGES&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    docker rmi &lt;span class="nv"&gt;$IMAGES&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; $IMAGES &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    docker rmi $IMAGES
 &lt;span class="k"&gt;else&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;No dangling images to remove&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Then:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker-clean
+&lt;div class="highlight"&gt;&lt;pre&gt;$ docker-clean
 $ sudo du -hcs /var/lib/docker/
 6.6G    /var/lib/docker/
 6.6G    total
@@ -553,22 +595,27 @@ $ docktree
 
 &lt;p&gt;Note that, now, all branches of the tree are associated with tagged
 images.  If I remove &lt;code&gt;ubuntu:utopic&lt;/code&gt;, I can again run the pruning
-process to get rid of its left-over dependencies.&lt;/p&gt;</summary><category term="docker"></category></entry><entry><title>SciPy2013 Proceedings</title><link href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/" rel="alternate"></link><published>2013-06-27T17:20:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2013-06-27:blog/2013/06/27/scipy2013-proceedings/</id><summary type="html">&lt;p&gt;The talks for the 12th (fantastic) Python in Science conference just concluded,
+process to get rid of its left-over dependencies.&lt;/p&gt;</content><category term="docker"></category></entry><entry><title>SciPy2013 Proceedings</title><link href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/" rel="alternate"></link><published>2013-06-27T17:20:00-07:00</published><updated>2013-06-27T17:20:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2013-06-27:/blog/2013/06/27/scipy2013-proceedings/</id><summary type="html">&lt;p&gt;The talks for the 12th (fantastic) Python in Science conference just concluded,
 and I am happy to announce the
 &lt;a href="https://dl.dropboxusercontent.com/u/380268/scipy_2013_proceedings_draft.pdf"&gt;conference proceedings&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This may come as a surprize to some, since in the past we have been unable to
 publish the proceedings in a timely manner.  So, what changed?&lt;/p&gt;
-&lt;h2 id="review-process"&gt;Review process&lt;/h2&gt;
+&lt;h2&gt;Review process …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;The talks for the 12th (fantastic) Python in Science conference just concluded,
+and I am happy to announce the
+&lt;a href="https://dl.dropboxusercontent.com/u/380268/scipy_2013_proceedings_draft.pdf"&gt;conference proceedings&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This may come as a surprize to some, since in the past we have been unable to
+publish the proceedings in a timely manner.  So, what changed?&lt;/p&gt;
+&lt;h2&gt;Review process&lt;/h2&gt;
 &lt;p&gt;For 2013 we followed a &lt;strong&gt;very light-weight review process, via comments on
 GitHub pull-requests&lt;/strong&gt;.  This change has an important consequence: in contrast
 to the traditional review process, where reviewers critically pull apart
-papers, the process now changes into a constructive conversation&amp;ndash;the reviewer
+papers, the process now changes into a constructive conversation--the reviewer
 becomes an ally to the author, helping them to get their paper signed off on.&lt;/p&gt;
 &lt;p&gt;In addition, this is a very familiar process to most members of our community
 who regularly collaborate to open source projects.  Most such projects nowadays
 follow a similar methodology for discussing and integrating patches.&lt;/p&gt;
-&lt;h2 id="tools"&gt;Tools&lt;/h2&gt;
-&lt;p&gt;Since we can&amp;rsquo;t expect reviewers to check out and build the papers themselves, a
+&lt;h2&gt;Tools&lt;/h2&gt;
+&lt;p&gt;Since we can't expect reviewers to check out and build the papers themselves, a
 &lt;a href="http://stefan.pythonanywhere.com"&gt;paper build bot&lt;/a&gt; is provided to generate
 PDFs from pull-requests, which contain papers in plain-text ReStructuredText
 format (see the
@@ -576,14 +623,19 @@ format (see the
 examples, and all papers starting 2010).&lt;/p&gt;
 &lt;p&gt;For authors, tools are provided to convert the ReStructuredText papers to
 PDFs in IEEE Computer Society paper style.&lt;/p&gt;
-&lt;h2 id="help-us-with-the-final-review"&gt;Help us with the final review&lt;/h2&gt;
+&lt;h2&gt;Help us with the final review&lt;/h2&gt;
 &lt;p&gt;We welcome your feedback on the proceedings!  If you spot a mistake, please
 submit a pull request on
 &lt;a href="https://github.com/scipy/scipy_proceedings/tree/2013"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="thanks"&gt;Thanks&lt;/h2&gt;
+&lt;h2&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;Finally, a big shout-out to the amazing team of people who organized this
-year&amp;rsquo;s conference, and to the wonderfully inclusive and talented Scientific
-Python community, of which I am proud to be part of.&lt;/p&gt;</summary><category term="scipy"></category><category term="python"></category></entry><entry><title>Replicable super-resolution paper</title><link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/" rel="alternate"></link><published>2012-10-15T00:04:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-10-15:blog/2012/10/15/replicable-super-resolution-paper/</id><summary type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
+year's conference, and to the wonderfully inclusive and talented Scientific
+Python community, of which I am proud to be part of.&lt;/p&gt;</content><category term="scipy"></category><category term="python"></category></entry><entry><title>Replicable super-resolution paper</title><link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/" rel="alternate"></link><published>2012-10-15T00:04:00-07:00</published><updated>2012-10-15T00:04:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-10-15:/blog/2012/10/15/replicable-super-resolution-paper/</id><summary type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
+problem for several years.  Thereafter, I was side-tracked by
+&lt;a href="http://github.com/scipy"&gt;several&lt;/a&gt; &lt;a href="http://scikit-image.org"&gt;other&lt;/a&gt;
+&lt;a href="http://dipy.org"&gt;projects&lt;/a&gt;, and never got around to publishing a paper on
+&lt;a href="http://mentat.za.net/phd_dissertation.html"&gt;my dissertation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here, then, is a summary of the simple but …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
 problem for several years.  Thereafter, I was side-tracked by
 &lt;a href="http://github.com/scipy"&gt;several&lt;/a&gt; &lt;a href="http://scikit-image.org"&gt;other&lt;/a&gt;
 &lt;a href="http://dipy.org"&gt;projects&lt;/a&gt;, and never got around to publishing a paper on
@@ -597,16 +649,22 @@ existing literature, all I can say in response is that, while solving the
 problem as a sparse linear system was well known at the time, phrasing Drizzle
 as a linear operator and using it for super-resolution was not.&lt;/p&gt;
 &lt;p&gt;But the proof of the pudding is in the eating! Have a look at the
-&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; &amp;ndash; you can download it all (including a
+&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; -- you can download it all (including a
 sample data-set) and play with the different reconstruction parameters.  Quite
-a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</summary><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><published>2012-09-30T16:18:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
+a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</content><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><published>2012-09-30T16:18:00-07:00</published><updated>2012-09-30T16:18:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:/blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We're happy to announce the 7th version of scikits-image!&lt;/p&gt;
 &lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
 analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
 &lt;p&gt;For more information, examples, and documentation, please visit &lt;a href="http://skimage.org"&gt;our website&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="new-features"&gt;New Features&lt;/h2&gt;
-&lt;p&gt;It&amp;rsquo;s been only 3 months since scikits-image 0.6 was released, but in that short
-time, we&amp;rsquo;ve managed to add plenty of new features and enhancements, including&lt;/p&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+&lt;p&gt;It's been only 3 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We're happy to announce the 7th version of scikits-image!&lt;/p&gt;
+&lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
+for segmentation, geometric transformations, color space manipulation,
+analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
+&lt;p&gt;For more information, examples, and documentation, please visit &lt;a href="http://skimage.org"&gt;our website&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+&lt;p&gt;It's been only 3 months since scikits-image 0.6 was released, but in that short
+time, we've managed to add plenty of new features and enhancements, including&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Geometric image transforms&lt;/li&gt;
 &lt;li&gt;3 new image segmentation routines (Felsenzwalb, Quickshift, SLIC)&lt;/li&gt;
@@ -623,8 +681,8 @@ time, we&amp;rsquo;ve managed to add plenty of new features and enhancements, in
 &lt;/ul&gt;
 &lt;p&gt;Plus, this release adds a number of bug fixes, new examples, and performance
 enhancements.&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/images/lena_superpixels.jpg" alt="Comparison of pupular segmentation algorithms" title="Comparison of pupular segmentation algorithms"&gt;&lt;/p&gt;
-&lt;h2 id="contributors-to-this-release"&gt;Contributors to this release&lt;/h2&gt;
+&lt;p&gt;{% img /blog/images/lena_superpixels.jpg Comparison of pupular segmentation algorithms %}&lt;/p&gt;
+&lt;h2&gt;Contributors to this release&lt;/h2&gt;
 &lt;p&gt;This release was only possible due to the efforts of many contributors, both
 new and old.&lt;/p&gt;
 &lt;ul&gt;
@@ -654,10 +712,16 @@ new and old.&lt;/p&gt;
 &lt;li&gt;Tomas Kazmar&lt;/li&gt;
 &lt;li&gt;Tony S Yu&lt;/li&gt;
 &lt;li&gt;Wei Li&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Adobe's new free font: Source Code Pro</title><link href="http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/" rel="alternate"></link><published>2012-09-26T11:49:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-26:blog/2012/09/26/consolas-vs-source-code-pro/</id><summary type="html">&lt;p&gt;Adobe yesterday
+&lt;/ul&gt;</content><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Adobe's new free font: Source Code Pro</title><link href="http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/" rel="alternate"></link><published>2012-09-26T11:49:00-07:00</published><updated>2012-09-26T11:49:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-26:/blog/2012/09/26/consolas-vs-source-code-pro/</id><summary type="html">&lt;p&gt;Adobe yesterday
 &lt;a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html"&gt;released its free and open source Type family, Source Code Pro&lt;/a&gt;,
 which includes an eye-pleasing monospace font  ideally suited for coding.
-In the past, and at the recommendation of &lt;a href="http://blog.fperez.org/"&gt;Fernando Perez&lt;/a&gt;, I&amp;rsquo;ve
+In the past, and at the recommendation of &lt;a href="http://blog.fperez.org/"&gt;Fernando Perez&lt;/a&gt;, I've
+used the beautiful (but non-free) &lt;a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879"&gt;Consolas by Microsoft&lt;/a&gt;; now,
+which is best?&lt;/p&gt;
+&lt;p&gt;To install on Linux …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Adobe yesterday
+&lt;a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html"&gt;released its free and open source Type family, Source Code Pro&lt;/a&gt;,
+which includes an eye-pleasing monospace font  ideally suited for coding.
+In the past, and at the recommendation of &lt;a href="http://blog.fperez.org/"&gt;Fernando Perez&lt;/a&gt;, I've
 used the beautiful (but non-free) &lt;a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879"&gt;Consolas by Microsoft&lt;/a&gt;; now,
 which is best?&lt;/p&gt;
 &lt;p&gt;To install on Linux:&lt;/p&gt;
@@ -668,21 +732,26 @@ which is best?&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;The font should now be available for selection in apps such as Firefox, Gnome
 Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Here&amp;rsquo;s a comparison of Consolas (left) and Source Code Pro (right):&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/images/consolas_vs_source_code_pro.png"&gt;&lt;/p&gt;
-&lt;p&gt;Comments also on &lt;a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik"&gt;Google+&lt;/a&gt;.&lt;/p&gt;</summary><category term="coding"></category><category term="emacs"></category><category term="linux"></category></entry><entry><title>Emacs package management</title><link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><published>2012-09-25T17:14:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
-Arakaki&amp;rsquo;s &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
+&lt;p&gt;Here's a comparison of Consolas (left) and Source Code Pro (right):&lt;/p&gt;
+&lt;p&gt;{% img /blog/images/consolas_vs_source_code_pro.png %}&lt;/p&gt;
+&lt;p&gt;Comments also on &lt;a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik"&gt;Google+&lt;/a&gt;.&lt;/p&gt;</content><category term="coding"></category><category term="emacs"></category><category term="linux"></category></entry><entry><title>Emacs package management</title><link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><published>2012-09-25T17:14:00-07:00</published><updated>2012-09-25T17:14:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:/blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
+Arakaki's &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
+webpage were as clear as mud and aimed primarily at Windows users.  Enters
+&lt;a href="https://github.com/dimitri/el-get"&gt;apt-get for Emacs&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;My Emacs setup is shared across multiple machines: a synchronized &lt;code&gt;elisp&lt;/code&gt;
+folder …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
+Arakaki's &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
 webpage were as clear as mud and aimed primarily at Windows users.  Enters
 &lt;a href="https://github.com/dimitri/el-get"&gt;apt-get for Emacs&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;My Emacs setup is shared across multiple machines: a synchronized &lt;code&gt;elisp&lt;/code&gt;
 folder, containing &lt;code&gt;*.el&lt;/code&gt; files, along with my &lt;code&gt;.emacs&lt;/code&gt; configuration.
 &lt;code&gt;el-get&lt;/code&gt; allows you to share your package installation folder in a similar
 fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
 &lt;span class="c1"&gt;; I sync across all my machines&lt;/span&gt;
 
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -728,11 +797,11 @@ fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
 &lt;p&gt;There are two ways to specify packages to be installed: either include them in
 the &lt;code&gt;my-packages&lt;/code&gt; list, or add them to &lt;code&gt;el-get-sources&lt;/code&gt;, which in addition
 allows further customization upon successful loading of the package.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://software-carpentry.org/2012/09/whats-in-your-stack/"&gt;What&amp;rsquo;s in your stack?&lt;/a&gt; Here&amp;rsquo;s my list of Emacs packages:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
+&lt;p&gt;&lt;a href="http://software-carpentry.org/2012/09/whats-in-your-stack/"&gt;What's in your stack?&lt;/a&gt; Here's my list of Emacs packages:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
 JS2
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Do you know of any other useful packages?  Let me know!&lt;/p&gt;
-&lt;!-- References --&gt;</summary><category term="emacs"></category><category term="python"></category><category term="scipy"></category></entry></feed>
+&lt;!-- References --&gt;</content><category term="emacs"></category><category term="python"></category><category term="scipy"></category></entry></feed>

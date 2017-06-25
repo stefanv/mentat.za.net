@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_tensorflow-python.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-09-14T00:00:00-07:00</updated><entry><title>Compile TensorFlow from source with gcc6.1</title><link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/" rel="alternate"></link><published>2016-09-14T00:00:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-09-14:blog/2016/09/14/tensorflow-gcc6-1/</id><summary type="html">&lt;p&gt;Due to two bugs in gcc 6.1
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - tensorflow python</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_tensorflow-python.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-09-14T00:00:00-07:00</updated><entry><title>Compile TensorFlow from source with gcc6.1</title><link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/" rel="alternate"></link><published>2016-09-14T00:00:00-07:00</published><updated>2016-09-14T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-09-14:/blog/2016/09/14/tensorflow-gcc6-1/</id><summary type="html">&lt;p&gt;Due to two bugs in gcc 6.1
+&lt;a href="https://github.com/google/re2/issues/102"&gt;affecting the re2 library&lt;/a&gt;
+(one of which has been fixed in 6.2)),
+&lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt; cannot be
+&lt;a href="https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html"&gt;compiled from source&lt;/a&gt;
+one some systems (including my Debian Testing install).&lt;/p&gt;
+&lt;p&gt;To work around the issue, modify &lt;code&gt;tensorflow/workspace.bzl&lt;/code&gt; and
+change the re2 description to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Due to two bugs in gcc 6.1
 &lt;a href="https://github.com/google/re2/issues/102"&gt;affecting the re2 library&lt;/a&gt;
 (one of which has been fixed in 6.2)),
 &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt; cannot be
@@ -7,7 +14,7 @@
 one some systems (including my Debian Testing install).&lt;/p&gt;
 &lt;p&gt;To work around the issue, modify &lt;code&gt;tensorflow/workspace.bzl&lt;/code&gt; and
 change the re2 description to:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;native.git_repository(
+&lt;div class="highlight"&gt;&lt;pre&gt;native.git_repository(
   name = &amp;quot;com_googlesource_code_re2&amp;quot;,
   remote = &amp;quot;https://github.com/stefanv/re2.git&amp;quot;,
   commit = &amp;quot;86503cb89d82b723ae0bce35e1e09524910cd319&amp;quot;,
@@ -18,19 +25,19 @@ change the re2 description to:&lt;/p&gt;
 &lt;p&gt;The re2 library is now downloaded from my fork, which applies a
 &lt;a href="https://github.com/stefanv/re2/commit/86503cb89d82b723ae0bce35e1e09524910cd319"&gt;one line patch&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Compile the TensorFlow Python package as usual with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
+&lt;div class="highlight"&gt;&lt;pre&gt;bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After installing the pip wheel using&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install /tmp/tensorflow_pkg/*.whl
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install /tmp/tensorflow_pkg/*.whl
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;you should have a working installation.  If importing fails with&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ImportError: cannot import name &amp;#39;pywrap_tensorflow&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;ImportError: cannot import name &amp;#39;pywrap_tensorflow&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;switch out of the TensorFlow source directory and try again.&lt;/p&gt;</summary><category term="tensorflow python"></category></entry></feed>
+&lt;p&gt;switch out of the TensorFlow source directory and try again.&lt;/p&gt;</content><category term="tensorflow python"></category></entry></feed>

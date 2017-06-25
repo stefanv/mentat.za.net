@@ -86,17 +86,17 @@
 </header>
 
   <div class="entry-content"><p>tl;dr A firewall setup that allows traffic to leave <em>only</em> via the VPN</p>
-<p>A few days ago, I noticed that my outbound email wasn&rsquo;t being
-delivered&mdash;it seems as if my ISP blocks access to some outbound ports.
+<p>A few days ago, I noticed that my outbound email wasn't being
+delivered---it seems as if my ISP blocks access to some outbound ports.
 An easy workaround is to route traffic through the work VPN, but
-knowing myself I&rsquo;d forget to switch it on, leaving my outbound mail
+knowing myself I'd forget to switch it on, leaving my outbound mail
 stranded.</p>
 <p>I needed a way of blocking <em>any</em> access to the internet, unless it was
-leaving through the VPN (since I was sure I&rsquo;d notice <em>that</em> pretty
+leaving through the VPN (since I was sure I'd notice <em>that</em> pretty
 quickly).</p>
-<p>I&rsquo;d have preferred to use firewalld, which is neatly integrated into
+<p>I'd have preferred to use firewalld, which is neatly integrated into
 Ubuntu, but as of 01/24/2015 it 
-<a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html">doesn&rsquo;t allow filtering outbound traffic</a><sup id="fnref:firewalld_direct_zones"><a class="footnote-ref" href="#fn:firewalld_direct_zones" rel="footnote">1</a></sup>. What
+<a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html">doesn't allow filtering outbound traffic</a><sup id="fnref-firewalld_direct_zones"><a class="footnote-ref" href="#fn-firewalld_direct_zones">1</a></sup>. What
 follows, then, is a simple approach implementing the following rule:</p>
 <blockquote>
 <p>Block wifi traffic unless it goes to either the local
@@ -104,7 +104,7 @@ network or the VPN.</p>
 </blockquote>
 <p>Create a script (I called it <code>~/scripts/fw-up</code>) that sets up the
 firewall:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Clear any existing rules</span>
 iptables -F
@@ -133,21 +133,21 @@ iptables -A OUTPUT -p tcp -o wlan1 -j DROP
 <p>Make sure the script is set to executable (<code>chmod +x fw-up</code>).</p>
 <p>Add a symlink to <code>if-up.d</code> to ensure that the firewall gets built
 whenever the network is reconfigured:</p>
-<div class="highlight"><pre><span></span>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+<div class="highlight"><pre>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
 </pre></div>
 
 
 <p>Now, whenever you connect to a wifi hotspot, internet traffic will be
 blocked until you fire up your VPN.  If, on occasion, you need to work
 without the VPN, simply raze the firewall:</p>
-<div class="highlight"><pre><span></span>sudo iptables -F
+<div class="highlight"><pre>sudo iptables -F
 </pre></div>
 
 
-<p><strong>Update:</strong> Typically, you wouldn&rsquo;t want the firewall to go up when
+<p><strong>Update:</strong> Typically, you wouldn't want the firewall to go up when
   connecting to the wireless at work, so I added the following conditional
   in the <code>fw-up</code> script:</p>
-<div class="highlight"><pre><span></span>iptables -F
+<div class="highlight"><pre>iptables -F
 
 if [[ `iwgetid -r` != &#39;WorkSSID&#39; ]]; then
    # Firewall rules go here
@@ -156,15 +156,57 @@ fi
 </pre></div>
 
 
+<!---
+# Create a new zone
+
+**Direct rules not supported for zones yet**
+
+
+
+``sgs3``
+
+
+wzxhzdk:4
+
+
+In NetworkManager, go to the wifi connection and set its zone to
+``vpn_only``.
+
+(Alternatively, directly edit
+``/etc/NetworkManager/system-connections/<ssid>``)
+
+
+Restart NetworkManager:
+
+
+wzxhzdk:5
+
+
+When your connection comes back up, you should see it in the new zone:
+
+
+wzxhzdk:6
+
+
+Firewalld has a *direct* mode which gives us access to the inner
+workings of the firewall, among other things allowing us to manipulate
+outgoing and IP-based rules.
+
+sudo firewall-cmd --zone=vpn_only --permanent --add-rich-rule='rule family="ipv4" destination address="136.152.0.0/16" invert="True" port port="1-65535" protocol="tcp" reject'
+
+rule family="ipv4" destination NOT address="136.152.0.0/16" port
+port="1-65535" protocol="tcp" reject
+-->
+
 <div class="footnote">
-<hr />
+<hr>
 <ol>
-<li id="fn:firewalld_direct_zones">
+<li id="fn-firewalld_direct_zones">
 <p>The idea would be to set up a zone, say
 <code>vpn_only</code>, and to assign your home wifi SSID to it.  A direct rule that
 blocks any non-VPN traffic can then be added to the new zone (this
 should be possible soon, and is on the firewalld
-<a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO">TODO list</a>).&#160;<a class="footnote-backref" href="#fnref:firewalld_direct_zones" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO">TODO list</a>).&#160;<a class="footnote-backref" href="#fnref-firewalld_direct_zones" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div>
@@ -210,7 +252,7 @@ should be possible soon, and is on the firewalld
           <a href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
       </li>
       <li class="post">
-          <a href="http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/">Waking Up: The Art of Setting An Alarm</a>
+          <a href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/">Python & Matplotlib on OSX</a>
       </li>
     </ul>
   </section>
@@ -226,7 +268,7 @@ should be possible soon, and is on the firewalld
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>  </section>
 
 <!--  
 

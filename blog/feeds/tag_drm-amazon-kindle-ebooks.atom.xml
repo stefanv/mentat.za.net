@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_drm-amazon-kindle-ebooks.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-08-21T00:00:00-07:00</updated><entry><title>Amazon owns your ebooks</title><link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/" rel="alternate"></link><published>2016-08-21T00:00:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-08-21:blog/2016/08/21/amazon-owns-your-ebooks/</id><summary type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - drm amazon kindle ebooks</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_drm-amazon-kindle-ebooks.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-08-21T00:00:00-07:00</updated><entry><title>Amazon owns your ebooks</title><link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/" rel="alternate"></link><published>2016-08-21T00:00:00-07:00</published><updated>2016-08-21T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-08-21:/blog/2016/08/21/amazon-owns-your-ebooks/</id><summary type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
 have bought ebooks from them myself!  Sadly, that is not the case.  I
 will summarize part of the
 &lt;a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201014950"&gt;Kindle Store Terms of Use&lt;/a&gt;
 quoted at the bottom of this post:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;You do not own any Kindle book that you have &amp;ldquo;bought&amp;rdquo;, even if it
-   said &amp;ldquo;buy with one click&amp;rdquo; in the store (the book still belongs to
-   Amazon, you&amp;rsquo;re just leasing it).&lt;/li&gt;
+&lt;li&gt;You do not own any Kindle …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
+have bought ebooks from them myself!  Sadly, that is not the case.  I
+will summarize part of the
+&lt;a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201014950"&gt;Kindle Store Terms of Use&lt;/a&gt;
+quoted at the bottom of this post:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;You do not own any Kindle book that you have "bought", even if it
+   said "buy with one click" in the store (the book still belongs to
+   Amazon, you're just leasing it).&lt;/li&gt;
 &lt;li&gt;You may only read Kindle content through sofware approved by
    Amazon.&lt;/li&gt;
-&lt;li&gt;You may not copy ebooks &amp;ldquo;bought&amp;rdquo; from Amazon to other devices (such
+&lt;li&gt;You may not copy ebooks "bought" from Amazon to other devices (such
    as a Kobo or Nook reader).  In fact, you may not engage in any
    activity that bypasses their Digital Rights Management (or DRM).&lt;/li&gt;
 &lt;/ol&gt;
@@ -18,7 +24,7 @@ quoted at the bottom of this post:&lt;/p&gt;
 only realized the invasive nature of these terms now.&lt;/p&gt;
 &lt;p&gt;Since your agreement with Amazon is simply a license to view material,
 they have the ability to withdraw that right whenever they choose.
-&lt;a href="http://www.nytimes.com/2009/07/18/technology/companies/18amazon.html"&gt;Which they have done, in an ironic twist, with George Orwell&amp;rsquo;s 1984&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="http://www.nytimes.com/2009/07/18/technology/companies/18amazon.html"&gt;Which they have done, in an ironic twist, with George Orwell's 1984&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As you may imagine, this whole situation riles me up quite badly, and
 spoils many a dinner-time conversation (sorry, friends).  I am
 particularly irate because I just bought myself a beautiful
@@ -26,11 +32,11 @@ particularly irate because I just bought myself a beautiful
 but measured move to lessen my dependence on Amazon.  Now, lo and
 behold, I cannot access any of the 120 books which, if I gave my money
 to other ebook stores, I would have owned!&lt;/p&gt;
-&lt;p&gt;So, &lt;em&gt;caveat emptor&lt;/em&gt;, dear reader.  &lt;strong&gt;Do not support Amazon&amp;rsquo;s great
+&lt;p&gt;So, &lt;em&gt;caveat emptor&lt;/em&gt;, dear reader.  &lt;strong&gt;Do not support Amazon's great
 &lt;a href="https://www.defectivebydesign.org/amazon-kindle-swindle"&gt;Kindle Swindle&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If you buy books from Kobo, you will be able to export your books to
 your Kindle devices, albeit encumbered by Digital Rights Management (DRM).&lt;/p&gt;
-&lt;h2 id="the-deal-with-digital-rights-management-drm"&gt;The deal with Digital Rights Management (DRM)&lt;/h2&gt;
+&lt;h2&gt;The deal with Digital Rights Management (DRM)&lt;/h2&gt;
 &lt;p&gt;While this post is about Amazon Kindle, it is worth mentioning Digital
 Rights Management (DRM).  DRM is a mechanism that distributers use to
 lock their books so that you may not easily copy it illegally.  Of
@@ -38,7 +44,7 @@ course, and very predictably, the DRM is not difficult to circumvent,
 and those who want to steal electronic books do so with impunity.
 Still, it is
 &lt;a href="https://en.wikipedia.org/wiki/Anti-circumvention#Fair_Use_and_Circumvention"&gt;probably illegal to remove DRM in the United States&lt;/a&gt;,
-and if you&amp;rsquo;re a law abiding citizen, you cannot convert a protected
+and if you're a law abiding citizen, you cannot convert a protected
 ebook to another format such as PDF, even if a PDF would be more
 convenient for you.&lt;/p&gt;
 &lt;p&gt;Some distributors are worse than others, though, and unsurprisingly
@@ -47,7 +53,7 @@ it difficult to copy to other devices), but they use a proprietary
 format (.mobi) that only works on &lt;em&gt;their&lt;/em&gt; readers.  If you want to
 copy their books to another device, you &lt;em&gt;have&lt;/em&gt; to first remove the DRM
 which, as their terms state, is not allowed.  You might start to
-wonder whether such business practices aren&amp;rsquo;t anti-competitive and
+wonder whether such business practices aren't anti-competitive and
 perhaps even illegal.&lt;/p&gt;
 &lt;p&gt;There is a perfectly usable format for ebooks already in existence
 (.epub), that is also supported by many different models of readers.
@@ -55,7 +61,7 @@ So, while locking books with some kind of DRM is far from ideal, it is
 still preferable to using a proprietary format to boot.&lt;/p&gt;
 &lt;p&gt;For those buying from the Kobo store, some of the books on their
 shelves are available DRM-free, and is indicated as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Kobo DRM information" src="http://mentat.za.net/blog/images/kobo_drm_comparison.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Kobo DRM information" src="http://mentat.za.net/blog/images/kobo_drm_comparison.png"&gt;&lt;/p&gt;
 &lt;p&gt;Defective by Design maintains a
 &lt;a href="https://www.defectivebydesign.org/guide/ebooks"&gt;list of DRM-free publishers and stores&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Please &lt;a href="https://www.defectivebydesign.org/action"&gt;support&lt;/a&gt; the
@@ -64,9 +70,9 @@ shelves are available DRM-free, and is indicated as follows:&lt;/p&gt;
 (which makes it illegal to circumvent DRM).  There is no good reason
 why you should not be allowed to read material you bought on any
 device of your choosing.  For more on the DRM, refer to author
-&lt;a href="https://www.theguardian.com/technology/blog/2014/feb/05/digital-rights-management"&gt;Cory Doctorow&amp;rsquo;s articles in the Guardian&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="https://www.theguardian.com/technology/blog/2014/feb/05/digital-rights-management"&gt;Cory Doctorow's articles in the Guardian&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Below follows an excerpt, mentioned above, from the Amazon Kindle
-Store&amp;rsquo;s Terms of Use.&lt;/p&gt;
+Store's Terms of Use.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;1. Kindle Content&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Use of Kindle Content.&lt;/strong&gt; Upon your download of Kindle Content and
@@ -90,4 +96,4 @@ proprietary notices or labels on the Kindle Content. In addition,
 you may not attempt to bypass, modify, defeat, or otherwise
 circumvent any digital rights management system or other content
 protection or features used as part of the Service.&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="drm amazon kindle ebooks"></category></entry></feed>
+&lt;/blockquote&gt;</content><category term="drm amazon kindle ebooks"></category></entry></feed>

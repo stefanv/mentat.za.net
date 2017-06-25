@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_super-resolution.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2012-10-15T00:04:00-07:00</updated><entry><title>Replicable super-resolution paper</title><link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/" rel="alternate"></link><published>2012-10-15T00:04:00-07:00</published><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-10-15:blog/2012/10/15/replicable-super-resolution-paper/</id><summary type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - super-resolution</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_super-resolution.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2012-10-15T00:04:00-07:00</updated><entry><title>Replicable super-resolution paper</title><link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/" rel="alternate"></link><published>2012-10-15T00:04:00-07:00</published><updated>2012-10-15T00:04:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-10-15:/blog/2012/10/15/replicable-super-resolution-paper/</id><summary type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
+problem for several years.  Thereafter, I was side-tracked by
+&lt;a href="http://github.com/scipy"&gt;several&lt;/a&gt; &lt;a href="http://scikit-image.org"&gt;other&lt;/a&gt;
+&lt;a href="http://dipy.org"&gt;projects&lt;/a&gt;, and never got around to publishing a paper on
+&lt;a href="http://mentat.za.net/phd_dissertation.html"&gt;my dissertation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here, then, is a summary of the simple but …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While I loved the topic of my PhD, I had to take a break after staring at that
 problem for several years.  Thereafter, I was side-tracked by
 &lt;a href="http://github.com/scipy"&gt;several&lt;/a&gt; &lt;a href="http://scikit-image.org"&gt;other&lt;/a&gt;
 &lt;a href="http://dipy.org"&gt;projects&lt;/a&gt;, and never got around to publishing a paper on
@@ -13,6 +18,6 @@ existing literature, all I can say in response is that, while solving the
 problem as a sparse linear system was well known at the time, phrasing Drizzle
 as a linear operator and using it for super-resolution was not.&lt;/p&gt;
 &lt;p&gt;But the proof of the pudding is in the eating! Have a look at the
-&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; &amp;ndash; you can download it all (including a
+&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; -- you can download it all (including a
 sample data-set) and play with the different reconstruction parameters.  Quite
-a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</summary><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry></feed>
+a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</content><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry></feed>

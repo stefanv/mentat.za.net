@@ -88,10 +88,10 @@
   <div class="entry-content"><p>Visualizing the Docker image dependency tree is a useful way of
 checking image sizes and inter-image dependencies.  Since images
 occupy a lot of disk space, we may also want to prune unused images.</p>
-<h2 id="visualizing-image-dependencies">Visualizing image dependencies</h2>
+<h2>Visualizing image dependencies</h2>
 <p>In version 1.2.0 of Docker, the image dependency tree is available via
 the <code>docker images --tree</code> command:</p>
-<div class="highlight"><pre><span></span>$ docker images --tree
+<div class="highlight"><pre>$ docker images --tree
 Warning: <span class="s1">&#39;--tree&#39;</span> is deprecated, it will be removed soon. See usage.
 ├─511136ea3c5a Virtual Size: <span class="m">0</span> B
 │ ├─5bc37dc2dfba Virtual Size: 192.5 MB
@@ -122,20 +122,20 @@ its behavior?</p>
 <p>Enter <a href="https://github.com/justone/dockviz">DockerViz</a>.  Grab a binary
 from <a href="http://gobuild.io/github.com/justone/dockviz">gobuild.io</a> and
 place it somewhere on your path.</p>
-<h3 id="querying-the-docker-image-status">Querying the Docker image status</h3>
+<h3>Querying the Docker image status</h3>
 <p>The Docker server can be queried via its
 <a href="https://docs.docker.com/reference/api/docker_remote_api/">public API</a>.
 It is typically available either on <code>http://localhost:4243</code> or
 <code>/var/run/docker.sock</code>.</p>
 <p>One of the following two calls should therefore extract the image
 status:</p>
-<div class="highlight"><pre><span></span>curl -s http://localhost:4243/images/json?all=1
+<div class="highlight"><pre>curl -s http://localhost:4243/images/json?all=1
 echo -e &quot;GET /images/json?all=1 HTTP/1.0\r\n&quot; | nc -U /var/run/docker.sock
 </pre></div>
 
 
 <p>On my machine, the second query returns:</p>
-<div class="highlight"><pre><span></span>HTTP/1.0 200 OK
+<div class="highlight"><pre>HTTP/1.0 200 OK
 Content-Type: application/json
 Date: Sun, 18 Jan 2015 17:41:34 GMT
 
@@ -146,7 +146,7 @@ Date: Sun, 18 Jan 2015 17:41:34 GMT
 
 
 <p>DockViz parses this JSON and outputs a formatted tree:</p>
-<div class="highlight"><pre><span></span>$ cat ~/scripts/docktree 
+<div class="highlight"><pre>$ cat ~/scripts/docktree 
 <span class="nb">echo</span> -e <span class="s2">&quot;GET /images/json?all=1 HTTP/1.0\r\n&quot;</span> <span class="p">|</span> nc -U /var/run/docker.sock <span class="p">|</span> tail -n +5 <span class="p">|</span> dockviz images --tree
 $ docktree
 ├─511136ea3c5a Virtual Size: 0.0 B
@@ -172,11 +172,11 @@ $ docktree
 
 
 <p>Note that, on my system, the first branch of the tree is dangling,
-i.e. not associated with a tagged image&ndash;I must have removed a tagged
+i.e. not associated with a tagged image--I must have removed a tagged
 image earlier, and these are its remaining dependencies.</p>
-<h2 id="pruning-unusued-images">Pruning unusued images</h2>
+<h2>Pruning unusued images</h2>
 <p>Built and downloaded Docker images quickly gobble up a lot of space:</p>
-<div class="highlight"><pre><span></span>$ sudo du -hcs /var/lib/docker/
+<div class="highlight"><pre>$ sudo du -hcs /var/lib/docker/
 10G /var/lib/docker/
 10G total
 </pre></div>
@@ -184,38 +184,51 @@ image earlier, and these are its remaining dependencies.</p>
 
 <p>The <code>docker images</code> command allows us to
 <a href="https://docs.docker.com/reference/commandline/cli/#images">list dangling images</a>:</p>
-<div class="highlight"><pre><span></span>docker images --filter dangling=true --quiet
+<div class="highlight"><pre>docker images --filter dangling=true --quiet
 </pre></div>
 
 
 <p>And we obtain a list of containers (images that were fired up and
 modified) using:</p>
-<div class="highlight"><pre><span></span>docker ps -aq
+<div class="highlight"><pre>docker ps -aq
 </pre></div>
 
 
 <p>I remove both of these with the following script (WARNING: This
 will delete ALL containers and any unused, downloaded images, so use
 with caution!):</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
 <span class="nv">CONTAINERS</span><span class="o">=</span><span class="k">$(</span>docker ps -aq<span class="k">)</span>
 <span class="nv">IMAGES</span><span class="o">=</span><span class="k">$(</span>docker images --filter <span class="nv">dangling</span><span class="o">=</span><span class="nb">true</span> --quiet<span class="k">)</span>
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$CONTAINERS</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    docker rm <span class="nv">$CONTAINERS</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$C</span>ONTAINERS <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    docker rm <span class="nv">$C</span>ONTAINERS
 <span class="k">else</span>
     <span class="nb">echo</span> <span class="s2">&quot;No containers to remove&quot;</span>
 <span class="k">fi</span>
 
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$IMAGES</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    docker rmi <span class="nv">$IMAGES</span>
+<span class="k">if</span> <span class="o">[[</span> $IMAGES <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    docker rmi $IMAGES
 <span class="k">else</span>
     <span class="nb">echo</span> <span class="s2">&quot;No dangling images to remove&quot;</span>
 <span class="k">fi</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>Then:</p>
-<div class="highlight"><pre><span></span>$ docker-clean
+<div class="highlight"><pre>$ docker-clean
 $ sudo du -hcs /var/lib/docker/
 6.6G    /var/lib/docker/
 6.6G    total
@@ -279,7 +292,7 @@ process to get rid of its left-over dependencies.</p></div>
           <a href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
       </li>
       <li class="post">
-          <a href="http://mentat.za.net/blog/2016/03/02/waking-up-how-to-set-an-alarm/">Waking Up: The Art of Setting An Alarm</a>
+          <a href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/">Python & Matplotlib on OSX</a>
       </li>
     </ul>
   </section>
@@ -295,7 +308,7 @@ process to get rid of its left-over dependencies.</p></div>
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/lifehack.html">lifehack</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>  </section>
 
 <!--  
 
