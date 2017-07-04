@@ -9,31 +9,28 @@ occupy a lot of disk space, we may also want to prune unused images.&lt;/p&gt;
 &lt;h2&gt;Visualizing image dependencies&lt;/h2&gt;
 &lt;p&gt;In version 1.2.0 of Docker, the image dependency tree is available via
 the &lt;code&gt;docker images --tree&lt;/code&gt; command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker images --tree
-Warning: &lt;span class="s1"&gt;&amp;#39;--tree&amp;#39;&lt;/span&gt; is deprecated, it will be removed soon. See usage.
-├─511136ea3c5a Virtual Size: &lt;span class="m"&gt;0&lt;/span&gt; B
-│ ├─5bc37dc2dfba Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.5 MB
-│ │ └─61cb619d86bc Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │   └─3f45ca85fedc Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │     └─78e82ee876a2 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │       └─dc07507cef42 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │         └─86ce37374f40 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │           └─d76983dc2ebd Virtual Size: &lt;span class="m"&gt;213&lt;/span&gt;.3 MB
-│ │             └─04a01662a6a8 Virtual Size: &lt;span class="m"&gt;214&lt;/span&gt;.5 MB
-│ │               └─7769c00dfefe Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
-│ │                 └─6ac8d6e449b1 Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
-│ │                   └─e3a84ca24205 Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
-│ │                     └─26f10d07659d Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
-│ ├─e12c576ad8a1 Virtual Size: &lt;span class="m"&gt;198&lt;/span&gt;.9 MB
-│ │ └─102eb2a101b8 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-│ │   └─530dbbae98a0 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-│ │     └─37dde56c3a42 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-│ │       └─8f118367086c Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB
-│ │         └─277eb4304907 Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB Tags: ubuntu:utopic, ubuntu:14.10
-...
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;$ docker images --tree
+Warning: '--tree' is deprecated, it will be removed soon. See usage.
+├─511136ea3c5a Virtual Size: 0 B
+│ ├─5bc37dc2dfba Virtual Size: 192.5 MB
+│ │ └─61cb619d86bc Virtual Size: 192.7 MB
+│ │   └─3f45ca85fedc Virtual Size: 192.7 MB
+│ │     └─78e82ee876a2 Virtual Size: 192.7 MB
+│ │       └─dc07507cef42 Virtual Size: 192.7 MB
+│ │         └─86ce37374f40 Virtual Size: 192.7 MB
+│ │           └─d76983dc2ebd Virtual Size: 213.3 MB
+│ │             └─04a01662a6a8 Virtual Size: 214.5 MB
+│ │               └─7769c00dfefe Virtual Size: 525.9 MB
+│ │                 └─6ac8d6e449b1 Virtual Size: 525.9 MB
+│ │                   └─e3a84ca24205 Virtual Size: 525.9 MB
+│ │                     └─26f10d07659d Virtual Size: 525.9 MB
+│ ├─e12c576ad8a1 Virtual Size: 198.9 MB
+│ │ └─102eb2a101b8 Virtual Size: 199.1 MB
+│ │   └─530dbbae98a0 Virtual Size: 199.1 MB
+│ │     └─37dde56c3a42 Virtual Size: 199.1 MB
+│ │       └─8f118367086c Virtual Size: 228.5 MB
+│ │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:utopic, ubuntu:14.10
+...&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;However, the Docker team is trying to streamline its client, and has
 scheduled this feature for deprecation.  How, then, do we replicate
 its behavior?&lt;/p&gt;
@@ -47,124 +44,89 @@ It is typically available either on &lt;code&gt;http://localhost:4243&lt;/code&g
 &lt;code&gt;/var/run/docker.sock&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;One of the following two calls should therefore extract the image
 status:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -s http://localhost:4243/images/json?all=1
-echo -e &amp;quot;GET /images/json?all=1 HTTP/1.0\r\n&amp;quot; | nc -U /var/run/docker.sock
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;curl -s http://localhost:4243/images/json?all=1
+echo -e "GET /images/json?all=1 HTTP/1.0\r\n" | nc -U /var/run/docker.sock&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;On my machine, the second query returns:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;HTTP/1.0 200 OK
+&lt;p&gt;```
+HTTP/1.0 200 OK
 Content-Type: application/json
-Date: Sun, 18 Jan 2015 17:41:34 GMT
-
-[{&amp;quot;Created&amp;quot;:1421528518,&amp;quot;Id&amp;quot;:&amp;quot;d6244a9e8b5ff885579c8c7d203e4da703e3e80621449dbbd58c365dba5c83b1&amp;quot;,&amp;quot;ParentId&amp;quot;:&amp;quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&amp;quot;,&amp;quot;RepoTags&amp;quot;:[&amp;quot;datascience-base:latest&amp;quot;],&amp;quot;Size&amp;quot;:0,&amp;quot;VirtualSize&amp;quot;:2041562468}
-,{&amp;quot;Created&amp;quot;:1421528517,&amp;quot;Id&amp;quot;:&amp;quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&amp;quot;,&amp;quot;ParentId&amp;quot;:&amp;quot;d3cb571e5e16fce16a59c16c87e01ea4051d7cae016dba90688c9e4a53a921c4&amp;quot;,&amp;quot;RepoTags&amp;quot;:[&amp;quot;\u003cnone\u003e:\u003cnone\u003e&amp;quot;],&amp;quot;Size&amp;quot;:0,&amp;quot;VirtualSize&amp;quot;:2041562468}
+Date: Sun, 18 Jan 2015 17:41:34 GMT&lt;/p&gt;
+&lt;p&gt;[{"Created":1421528518,"Id":"d6244a9e8b5ff885579c8c7d203e4da703e3e80621449dbbd58c365dba5c83b1","ParentId":"b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c","RepoTags":["datascience-base:latest"],"Size":0,"VirtualSize":2041562468}
+,{"Created":1421528517,"Id":"b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c","ParentId":"d3cb571e5e16fce16a59c16c87e01ea4051d7cae016dba90688c9e4a53a921c4","RepoTags":["\u003cnone\u003e:\u003cnone\u003e"],"Size":0,"VirtualSize":2041562468}
 ...
-&lt;/pre&gt;&lt;/div&gt;
-
-
+```&lt;/p&gt;
 &lt;p&gt;DockViz parses this JSON and outputs a formatted tree:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat ~/scripts/docktree 
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;GET /images/json?all=1 HTTP/1.0\r\n&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; nc -U /var/run/docker.sock &lt;span class="p"&gt;|&lt;/span&gt; tail -n +5 &lt;span class="p"&gt;|&lt;/span&gt; dockviz images --tree
+&lt;p&gt;&lt;code&gt;$ cat ~/scripts/docktree 
+echo -e "GET /images/json?all=1 HTTP/1.0\r\n" | nc -U /var/run/docker.sock | tail -n +5 | dockviz images --tree
 $ docktree
-├─511136ea3c5a Virtual Size: &lt;span class="m"&gt;0&lt;/span&gt;.0 B
-│ ├─5bc37dc2dfba Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.5 MB
-│ │ └─61cb619d86bc Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │   └─3f45ca85fedc Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │     └─78e82ee876a2 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │       └─dc07507cef42 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │         └─86ce37374f40 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-│ │           └─d76983dc2ebd Virtual Size: &lt;span class="m"&gt;213&lt;/span&gt;.3 MB
-│ │             └─04a01662a6a8 Virtual Size: &lt;span class="m"&gt;214&lt;/span&gt;.5 MB
-│ │               └─7769c00dfefe Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
-│ │                 └─6ac8d6e449b1 Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
-│ │                   └─e3a84ca24205 Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
-│ │                     └─26f10d07659d Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
-│ ├─e12c576ad8a1 Virtual Size: &lt;span class="m"&gt;198&lt;/span&gt;.9 MB
-│ │ └─102eb2a101b8 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-│ │   └─530dbbae98a0 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-│ │     └─37dde56c3a42 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-│ │       └─8f118367086c Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB
-│ │         └─277eb4304907 Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB Tags: ubuntu:14.10, ubuntu:utopic
-&lt;/pre&gt;&lt;/div&gt;
-
-
+├─511136ea3c5a Virtual Size: 0.0 B
+│ ├─5bc37dc2dfba Virtual Size: 192.5 MB
+│ │ └─61cb619d86bc Virtual Size: 192.7 MB
+│ │   └─3f45ca85fedc Virtual Size: 192.7 MB
+│ │     └─78e82ee876a2 Virtual Size: 192.7 MB
+│ │       └─dc07507cef42 Virtual Size: 192.7 MB
+│ │         └─86ce37374f40 Virtual Size: 192.7 MB
+│ │           └─d76983dc2ebd Virtual Size: 213.3 MB
+│ │             └─04a01662a6a8 Virtual Size: 214.5 MB
+│ │               └─7769c00dfefe Virtual Size: 525.9 MB
+│ │                 └─6ac8d6e449b1 Virtual Size: 525.9 MB
+│ │                   └─e3a84ca24205 Virtual Size: 525.9 MB
+│ │                     └─26f10d07659d Virtual Size: 525.9 MB
+│ ├─e12c576ad8a1 Virtual Size: 198.9 MB
+│ │ └─102eb2a101b8 Virtual Size: 199.1 MB
+│ │   └─530dbbae98a0 Virtual Size: 199.1 MB
+│ │     └─37dde56c3a42 Virtual Size: 199.1 MB
+│ │       └─8f118367086c Virtual Size: 228.5 MB
+│ │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:14.10, ubuntu:utopic&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Note that, on my system, the first branch of the tree is dangling,
 i.e. not associated with a tagged image--I must have removed a tagged
 image earlier, and these are its remaining dependencies.&lt;/p&gt;
 &lt;h2&gt;Pruning unusued images&lt;/h2&gt;
 &lt;p&gt;Built and downloaded Docker images quickly gobble up a lot of space:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo du -hcs /var/lib/docker/
+&lt;p&gt;&lt;code&gt;$ sudo du -hcs /var/lib/docker/
 10G /var/lib/docker/
-10G total
-&lt;/pre&gt;&lt;/div&gt;
-
-
+10G total&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;docker images&lt;/code&gt; command allows us to
 &lt;a href="https://docs.docker.com/reference/commandline/cli/#images"&gt;list dangling images&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker images --filter dangling=true --quiet
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;docker images --filter dangling=true --quiet&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;And we obtain a list of containers (images that were fired up and
 modified) using:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker ps -aq
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;docker ps -aq&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;I remove both of these with the following script (WARNING: This
 will delete ALL containers and any unused, downloaded images, so use
 with caution!):&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class="nv"&gt;CONTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker ps -aq&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;span class="nv"&gt;IMAGES&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker images --filter &lt;span class="nv"&gt;dangling&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt; --quiet&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$CONTAINERS&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    docker rm &lt;span class="nv"&gt;$CONTAINERS&lt;/span&gt;
-&lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;No containers to remove&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;fi&lt;/span&gt;
-
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$IMAGES&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    docker rmi &lt;span class="nv"&gt;$IMAGES&lt;/span&gt;
-&lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;No dangling images to remove&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
+&lt;p&gt;```&lt;/p&gt;
+&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+&lt;p&gt;CONTAINERS=$(docker ps -aq)
+IMAGES=$(docker images --filter dangling=true --quiet)
+if [[ $CONTAINERS ]]; then
+    docker rm $CONTAINERS
+else
+    echo "No containers to remove"
+fi&lt;/p&gt;
+&lt;p&gt;if [[ $IMAGES ]]; then
+    docker rmi $IMAGES
+else
+    echo "No dangling images to remove"
+fi
+```&lt;/p&gt;
 &lt;p&gt;Then:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker-clean
+&lt;p&gt;&lt;code&gt;$ docker-clean
 $ sudo du -hcs /var/lib/docker/
-&lt;span class="m"&gt;6&lt;/span&gt;.6G    /var/lib/docker/
-&lt;span class="m"&gt;6&lt;/span&gt;.6G    total
+6.6G    /var/lib/docker/
+6.6G    total
 $ docktree
-└─511136ea3c5a Virtual Size: &lt;span class="m"&gt;0&lt;/span&gt;.0 B
-  ├─e12c576ad8a1 Virtual Size: &lt;span class="m"&gt;198&lt;/span&gt;.9 MB
-  │ └─102eb2a101b8 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-  │   └─530dbbae98a0 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-  │     └─37dde56c3a42 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
-  │       └─8f118367086c Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB
-  │         └─277eb4304907 Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB Tags: ubuntu:utopic, ubuntu:14.10
-  ├─d497ad3926c8 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.5 MB
-  │ └─ccb62158e970 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-  │   └─e791be0477f2 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
-...
-&lt;/pre&gt;&lt;/div&gt;
-
-
+└─511136ea3c5a Virtual Size: 0.0 B
+  ├─e12c576ad8a1 Virtual Size: 198.9 MB
+  │ └─102eb2a101b8 Virtual Size: 199.1 MB
+  │   └─530dbbae98a0 Virtual Size: 199.1 MB
+  │     └─37dde56c3a42 Virtual Size: 199.1 MB
+  │       └─8f118367086c Virtual Size: 228.5 MB
+  │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:utopic, ubuntu:14.10
+  ├─d497ad3926c8 Virtual Size: 192.5 MB
+  │ └─ccb62158e970 Virtual Size: 192.7 MB
+  │   └─e791be0477f2 Virtual Size: 192.7 MB
+...&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Note that, now, all branches of the tree are associated with tagged
 images.  If I remove &lt;code&gt;ubuntu:utopic&lt;/code&gt;, I can again run the pruning
 process to get rid of its left-over dependencies.&lt;/p&gt;</content><category term="docker"></category></entry></feed>

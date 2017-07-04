@@ -38,22 +38,18 @@ propagate through the system.  With Redux, it is highly predictable.  Say
 your app has a toggle button, and associated state &lt;code&gt;{toggle: true}&lt;/code&gt;.  An
 action (e.g. "the red button was clicked") is submitted to the central
 dispatcher which then calculates the new state of the app:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;new_state&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;javascript
+new_state = reduce(current_state, action)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The implementation could look something like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;toggle_button&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;toggle&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toggle&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;javascript
+function reduce(current_state, action) {
+  switch (action.type) {
+    case 'toggle_button':
+      return {toggle: !current_state.toggle}
+    default:
+      return current_state;
+  }
+}&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The toggle button monitors the app state, and when &lt;code&gt;state['toggle']&lt;/code&gt; is
 updated, re-renders itself.&lt;/p&gt;
 &lt;p&gt;By vastly simplifying flow of information, by
@@ -63,12 +59,10 @@ Redux has, for me, returned the joy of web development.&lt;/p&gt;
 &lt;p&gt;But, I'm getting distracted.  WebSockets---in Python!&lt;/p&gt;
 &lt;p&gt;Pushing messages from your Python web server to the user's browser can now be
 &lt;a href="https://github.com/cesium-ml/cesium_web/blob/e19e5543e193905da9555ce15fc71a52859c9fb0/cesium_app/handlers/base.py#L59"&gt;as simple as this&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Flow&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;flow&lt;/span&gt;
-
-&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flow&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;my_user@domain.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;message to the user&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-               &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;to ship along&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;```python
+from Flow import flow&lt;/p&gt;
+&lt;p&gt;self.flow.push('my_user@domain.com', 'message to the user',
+               {'data': 'to ship along'})
+```&lt;/p&gt;
 &lt;p&gt;Please take a look at the more detailed technical description (with code!)
 &lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;on the Cesium blog&lt;/a&gt;.&lt;/p&gt;</content><category term="web python javascript websocket redux react"></category></entry></feed>

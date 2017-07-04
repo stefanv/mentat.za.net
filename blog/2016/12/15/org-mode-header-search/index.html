@@ -101,22 +101,18 @@ have a top-level heading, but also often occurs elsewhere in my notes.</p>
 <p>First, define a custom search function.  It puts the keys <code>^*</code> in the
 "unread command events" list (i.e, a list of events waiting to be seen
 by emacs), and then launches interactive forward regular expression search.</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">stefan/isearch-heading</span> <span class="p">()</span>
-  <span class="p">(</span><span class="k">interactive</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">setq</span> <span class="nv">unread-command-events</span> <span class="p">(</span><span class="nv">listify-key-sequence</span> <span class="s">&quot;^* &quot;</span><span class="p">))</span>
-  <span class="p">(</span><span class="nv">isearch-mode</span> <span class="no">t</span> <span class="no">t</span> <span class="no">nil</span> <span class="no">t</span><span class="p">))</span>
-</pre></div>
-
-
+<p><code>elisp
+(defun stefan/isearch-heading ()
+  (interactive)
+  (setq unread-command-events (listify-key-sequence "^* "))
+  (isearch-mode t t nil t))</code></p>
 <p>Next, we add a keybinding for org-mode:</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-mode-keys</span> <span class="p">()</span>
-  <span class="p">(</span><span class="k">interactive</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c g&quot;</span><span class="p">)</span> <span class="ss">&#39;stefan/isearch-heading</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-mode-hook</span> <span class="ss">&#39;org-mode-keys</span><span class="p">)</span>
-</pre></div>
-
-
+<p><code>elisp
+(defun org-mode-keys ()
+  (interactive)
+  (local-set-key (kbd "C-c g") 'stefan/isearch-heading)
+)
+(add-hook 'org-mode-hook 'org-mode-keys)</code></p>
 <p>And that's it!  Pressing <code>C-c g</code> (for "go") in org-mode will
 now present you with a search prompt.  Typing a heading name will take you
 there directly, at which point you can choose to expand it with the

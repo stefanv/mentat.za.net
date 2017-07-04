@@ -19,22 +19,18 @@ have a top-level heading, but also often occurs elsewhere in my notes.&lt;/p&gt;
 &lt;p&gt;First, define a custom search function.  It puts the keys &lt;code&gt;^*&lt;/code&gt; in the
 "unread command events" list (i.e, a list of events waiting to be seen
 by emacs), and then launches interactive forward regular expression search.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefan/isearch-heading&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;unread-command-events&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;listify-key-sequence&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;^* &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;isearch-mode&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;elisp
+(defun stefan/isearch-heading ()
+  (interactive)
+  (setq unread-command-events (listify-key-sequence "^* "))
+  (isearch-mode t t nil t))&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Next, we add a keybinding for org-mode:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;org-mode-keys&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;local-set-key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;C-c g&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;stefan/isearch-heading&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;org-mode-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;org-mode-keys&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;elisp
+(defun org-mode-keys ()
+  (interactive)
+  (local-set-key (kbd "C-c g") 'stefan/isearch-heading)
+)
+(add-hook 'org-mode-hook 'org-mode-keys)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;And that's it!  Pressing &lt;code&gt;C-c g&lt;/code&gt; (for "go") in org-mode will
 now present you with a search prompt.  Typing a heading name will take you
 there directly, at which point you can choose to expand it with the

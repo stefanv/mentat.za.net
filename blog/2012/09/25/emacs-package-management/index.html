@@ -97,49 +97,44 @@ webpage were as clear as mud and aimed primarily at Windows users.  Enters
 folder, containing <code>*.el</code> files, along with my <code>.emacs</code> configuration.
 <code>el-get</code> allows you to share your package installation folder in a similar
 fashion.  Here are some relevant configuration snippets:</p>
-<div class="highlight"><pre><span></span><span class="c1">; Everything gets installed into ~/elisp, a folder</span>
-<span class="c1">; I sync across all my machines</span>
+<p>```common-lisp</p>
+<p>; Everything gets installed into ~/elisp, a folder
+; I sync across all my machines</p>
+<p>(setq el-get-dir "~/elisp/el-get")
+(setq el-get-install-dir "~/elisp/el-get/el-get")
+(add-to-list 'load-path el-get-install-dir)</p>
+<p>; If el-get is missing, install it automatically</p>
+<p>(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (goto-char (point-max))
+     (eval-print-last-sexp))))</p>
+<p>; Install these packages, and call the specified configuration snippets
+; after each load
+(setq el-get-sources
+      '(</p>
+<div class="highlight"><pre><span></span>    (:name ethan-wspace
+     :after (progn
+              (global-ethan-wspace-mode 1)
+              (set-face-background &#39;ethan-wspace-face &quot;gray95&quot;)))
 
-<span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-dir</span> <span class="s">&quot;~/elisp/el-get&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-install-dir</span> <span class="s">&quot;~/elisp/el-get/el-get&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="nv">el-get-install-dir</span><span class="p">)</span>
-
-<span class="c1">; If el-get is missing, install it automatically</span>
-
-<span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;el-get</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">url-retrieve</span>
-   <span class="s">&quot;https://raw.github.com/dimitri/el-get/master/el-get-install.el&quot;</span>
-   <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">s</span><span class="p">)</span>
-     <span class="p">(</span><span class="nv">goto-char</span> <span class="p">(</span><span class="nv">point-max</span><span class="p">))</span>
-     <span class="p">(</span><span class="nv">eval-print-last-sexp</span><span class="p">))))</span>
-
-<span class="c1">; Install these packages, and call the specified configuration snippets</span>
-<span class="c1">; after each load</span>
-<span class="p">(</span><span class="k">setq</span> <span class="nv">el-get-sources</span>
-      <span class="o">&#39;</span><span class="p">(</span>
-
-        <span class="p">(</span><span class="ss">:name</span> <span class="nv">ethan-wspace</span>
-         <span class="ss">:after</span> <span class="p">(</span><span class="k">progn</span>
-                  <span class="p">(</span><span class="nv">global-ethan-wspace-mode</span> <span class="mi">1</span><span class="p">)</span>
-                  <span class="p">(</span><span class="nv">set-face-background</span> <span class="ss">&#39;ethan-wspace-face</span> <span class="s">&quot;gray95&quot;</span><span class="p">)))</span>
-
-        <span class="p">(</span><span class="ss">:name</span> <span class="nv">column-marker</span>
-         <span class="ss">:after</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;font-lock-mode-hook</span>
-                          <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span> <span class="p">(</span><span class="nv">column-marker-1</span> <span class="mi">80</span><span class="p">))))</span>
-
-<span class="c1">; Also install these packages, no configuration required</span>
-<span class="p">(</span><span class="k">setq</span> <span class="nv">my-packages</span>
-      <span class="p">(</span><span class="nb">append</span>
-       <span class="o">&#39;</span><span class="p">(</span><span class="nv">el-get</span> <span class="nv">maxframe</span> <span class="nv">markdown-mode</span> <span class="nv">ein</span> <span class="nv">python</span><span class="p">)</span>
-       <span class="p">(</span><span class="nb">mapcar</span> <span class="ss">&#39;el-get-source-name</span> <span class="nv">el-get-sources</span><span class="p">)</span>
-       <span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1">; Check packages and install any that are missing</span>
-<span class="p">(</span><span class="nv">el-get</span> <span class="ss">&#39;sync</span> <span class="nv">my-packages</span><span class="p">)</span>
+    (:name column-marker
+     :after (add-hook &#39;font-lock-mode-hook
+                      (lambda () (interactive) (column-marker-1 80))))
 </pre></div>
 
 
+<p>; Also install these packages, no configuration required
+(setq my-packages
+      (append
+       '(el-get maxframe markdown-mode ein python)
+       (mapcar 'el-get-source-name el-get-sources)
+       )
+)</p>
+<p>; Check packages and install any that are missing
+(el-get 'sync my-packages)
+```</p>
 <p>There are two ways to specify packages to be installed: either include them in
 the <code>my-packages</code> list, or add them to <code>el-get-sources</code>, which in addition
 allows further customization upon successful loading of the package.</p>

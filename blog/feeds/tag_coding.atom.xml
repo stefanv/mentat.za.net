@@ -19,10 +19,8 @@ which is best?&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;The font should now be available for selection in apps such as Firefox, Gnome
 Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;code&gt;common-lisp
+    (set-default-font "Source Code Pro")&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Here's a comparison of Consolas (left) and Source Code Pro (right):&lt;/p&gt;
-&lt;p&gt;{% img /blog/images/consolas_vs_source_code_pro.png %}&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/images/consolas_vs_source_code_pro.png"&gt;&lt;/p&gt;
 &lt;p&gt;Comments also on &lt;a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik"&gt;Google+&lt;/a&gt;.&lt;/p&gt;</content><category term="coding"></category><category term="emacs"></category><category term="linux"></category></entry></feed>

@@ -64,7 +64,7 @@ time, we've managed to add plenty of new features and enhancements, including&lt
 &lt;/ul&gt;
 &lt;p&gt;Plus, this release adds a number of bug fixes, new examples, and performance
 enhancements.&lt;/p&gt;
-&lt;p&gt;{% img /blog/images/lena_superpixels.jpg Comparison of pupular segmentation algorithms %}&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/images/lena_superpixels.jpg" title="Comparison of pupular segmentation algorithms" alt="Comparison of pupular segmentation algorithms"&gt;&lt;/p&gt;
 &lt;h2&gt;Contributors to this release&lt;/h2&gt;
 &lt;p&gt;This release was only possible due to the efforts of many contributors, both
 new and old.&lt;/p&gt;
@@ -108,49 +108,44 @@ webpage were as clear as mud and aimed primarily at Windows users.  Enters
 folder, containing &lt;code&gt;*.el&lt;/code&gt; files, along with my &lt;code&gt;.emacs&lt;/code&gt; configuration.
 &lt;code&gt;el-get&lt;/code&gt; allows you to share your package installation folder in a similar
 fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
-&lt;span class="c1"&gt;; I sync across all my machines&lt;/span&gt;
+&lt;p&gt;```common-lisp&lt;/p&gt;
+&lt;p&gt;; Everything gets installed into ~/elisp, a folder
+; I sync across all my machines&lt;/p&gt;
+&lt;p&gt;(setq el-get-dir "~/elisp/el-get")
+(setq el-get-install-dir "~/elisp/el-get/el-get")
+(add-to-list 'load-path el-get-install-dir)&lt;/p&gt;
+&lt;p&gt;; If el-get is missing, install it automatically&lt;/p&gt;
+&lt;p&gt;(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (goto-char (point-max))
+     (eval-print-last-sexp))))&lt;/p&gt;
+&lt;p&gt;; Install these packages, and call the specified configuration snippets
+; after each load
+(setq el-get-sources
+      '(&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    (:name ethan-wspace
+     :after (progn
+              (global-ethan-wspace-mode 1)
+              (set-face-background &amp;#39;ethan-wspace-face &amp;quot;gray95&amp;quot;)))
 
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-install-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;load-path&lt;/span&gt; &lt;span class="nv"&gt;el-get-install-dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;; If el-get is missing, install it automatically&lt;/span&gt;
-
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;el-get&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-retrieve&lt;/span&gt;
-   &lt;span class="s"&gt;&amp;quot;https://raw.github.com/dimitri/el-get/master/el-get-install.el&amp;quot;&lt;/span&gt;
-   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;goto-char&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;point-max&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;eval-print-last-sexp&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
-
-&lt;span class="c1"&gt;; Install these packages, and call the specified configuration snippets&lt;/span&gt;
-&lt;span class="c1"&gt;; after each load&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-sources&lt;/span&gt;
-      &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-
-        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="nv"&gt;ethan-wspace&lt;/span&gt;
-         &lt;span class="ss"&gt;:after&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;progn&lt;/span&gt;
-                  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;global-ethan-wspace-mode&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-face-background&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;ethan-wspace-face&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;gray95&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-
-        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="nv"&gt;column-marker&lt;/span&gt;
-         &lt;span class="ss"&gt;:after&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;font-lock-mode-hook&lt;/span&gt;
-                          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;column-marker-1&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
-
-&lt;span class="c1"&gt;; Also install these packages, no configuration required&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;my-packages&lt;/span&gt;
-      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;append&lt;/span&gt;
-       &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;el-get&lt;/span&gt; &lt;span class="nv"&gt;maxframe&lt;/span&gt; &lt;span class="nv"&gt;markdown-mode&lt;/span&gt; &lt;span class="nv"&gt;ein&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;mapcar&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;el-get-source-name&lt;/span&gt; &lt;span class="nv"&gt;el-get-sources&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-       &lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;; Check packages and install any that are missing&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;el-get&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;sync&lt;/span&gt; &lt;span class="nv"&gt;my-packages&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    (:name column-marker
+     :after (add-hook &amp;#39;font-lock-mode-hook
+                      (lambda () (interactive) (column-marker-1 80))))
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;; Also install these packages, no configuration required
+(setq my-packages
+      (append
+       '(el-get maxframe markdown-mode ein python)
+       (mapcar 'el-get-source-name el-get-sources)
+       )
+)&lt;/p&gt;
+&lt;p&gt;; Check packages and install any that are missing
+(el-get 'sync my-packages)
+```&lt;/p&gt;
 &lt;p&gt;There are two ways to specify packages to be installed: either include them in
 the &lt;code&gt;my-packages&lt;/code&gt; list, or add them to &lt;code&gt;el-get-sources&lt;/code&gt;, which in addition
 allows further customization upon successful loading of the package.&lt;/p&gt;
