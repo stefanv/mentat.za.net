@@ -104,7 +104,7 @@ network or the VPN.</p>
 </blockquote>
 <p>Create a script (I called it <code>~/scripts/fw-up</code>) that sets up the
 firewall:</p>
-<div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Clear any existing rules</span>
 iptables -F
@@ -121,9 +121,9 @@ iptables -A OUTPUT -p tcp -d X.Y.0.0/16 -o wlan1 -j ACCEPT
 iptables -A OUTPUT -o vpn0 -j ACCEPT
 
 <span class="c1"># Allow local traffic</span>
-iptables -A OUTPUT -p tcp -o wlan1 -d 10.0.0.0/8 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d 172.16.0.0/12 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d 192.168.0.0/16 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d <span class="m">10</span>.0.0.0/8 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d <span class="m">172</span>.16.0.0/12 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d <span class="m">192</span>.168.0.0/16 -j ACCEPT
 
 <span class="c1"># Drop everything else on the wifi</span>
 iptables -A OUTPUT -p tcp -o wlan1 -j DROP
@@ -133,21 +133,21 @@ iptables -A OUTPUT -p tcp -o wlan1 -j DROP
 <p>Make sure the script is set to executable (<code>chmod +x fw-up</code>).</p>
 <p>Add a symlink to <code>if-up.d</code> to ensure that the firewall gets built
 whenever the network is reconfigured:</p>
-<div class="highlight"><pre>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+<div class="highlight"><pre><span></span>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
 </pre></div>
 
 
 <p>Now, whenever you connect to a wifi hotspot, internet traffic will be
 blocked until you fire up your VPN.  If, on occasion, you need to work
 without the VPN, simply raze the firewall:</p>
-<div class="highlight"><pre>sudo iptables -F
+<div class="highlight"><pre><span></span>sudo iptables -F
 </pre></div>
 
 
 <p><strong>Update:</strong> Typically, you wouldn't want the firewall to go up when
   connecting to the wireless at work, so I added the following conditional
   in the <code>fw-up</code> script:</p>
-<div class="highlight"><pre>iptables -F
+<div class="highlight"><pre><span></span>iptables -F
 
 if [[ `iwgetid -r` != &#39;WorkSSID&#39; ]]; then
    # Firewall rules go here
@@ -268,7 +268,7 @@ should be possible soon, and is on the firewalld
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>  </section>
 
 <!--  
 

@@ -101,7 +101,7 @@ have a top-level heading, but also often occurs elsewhere in my notes.</p>
 <p>First, define a custom search function.  It puts the keys <code>^*</code> in the
 "unread command events" list (i.e, a list of events waiting to be seen
 by emacs), and then launches interactive forward regular expression search.</p>
-<div class="highlight"><pre><span class="p">(</span><span class="nb">defun</span> <span class="nv">stefan/isearch-heading</span> <span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">stefan/isearch-heading</span> <span class="p">()</span>
   <span class="p">(</span><span class="k">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="k">setq</span> <span class="nv">unread-command-events</span> <span class="p">(</span><span class="nv">listify-key-sequence</span> <span class="s">&quot;^* &quot;</span><span class="p">))</span>
   <span class="p">(</span><span class="nv">isearch-mode</span> <span class="no">t</span> <span class="no">t</span> <span class="no">nil</span> <span class="no">t</span><span class="p">))</span>
@@ -109,7 +109,7 @@ by emacs), and then launches interactive forward regular expression search.</p>
 
 
 <p>Next, we add a keybinding for org-mode:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-mode-keys</span> <span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-mode-keys</span> <span class="p">()</span>
   <span class="p">(</span><span class="k">interactive</span><span class="p">)</span>
   <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c g&quot;</span><span class="p">)</span> <span class="ss">&#39;stefan/isearch-heading</span><span class="p">)</span>
 <span class="p">)</span>
@@ -179,7 +179,7 @@ TAB key.</p></div>
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>  </section>
 
 <!--  
 

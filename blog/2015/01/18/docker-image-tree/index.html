@@ -91,27 +91,27 @@ occupy a lot of disk space, we may also want to prune unused images.</p>
 <h2>Visualizing image dependencies</h2>
 <p>In version 1.2.0 of Docker, the image dependency tree is available via
 the <code>docker images --tree</code> command:</p>
-<div class="highlight"><pre>$ docker images --tree
+<div class="highlight"><pre><span></span>$ docker images --tree
 Warning: <span class="s1">&#39;--tree&#39;</span> is deprecated, it will be removed soon. See usage.
 ├─511136ea3c5a Virtual Size: <span class="m">0</span> B
-│ ├─5bc37dc2dfba Virtual Size: 192.5 MB
-│ │ └─61cb619d86bc Virtual Size: 192.7 MB
-│ │   └─3f45ca85fedc Virtual Size: 192.7 MB
-│ │     └─78e82ee876a2 Virtual Size: 192.7 MB
-│ │       └─dc07507cef42 Virtual Size: 192.7 MB
-│ │         └─86ce37374f40 Virtual Size: 192.7 MB
-│ │           └─d76983dc2ebd Virtual Size: 213.3 MB
-│ │             └─04a01662a6a8 Virtual Size: 214.5 MB
-│ │               └─7769c00dfefe Virtual Size: 525.9 MB
-│ │                 └─6ac8d6e449b1 Virtual Size: 525.9 MB
-│ │                   └─e3a84ca24205 Virtual Size: 525.9 MB
-│ │                     └─26f10d07659d Virtual Size: 525.9 MB
-│ ├─e12c576ad8a1 Virtual Size: 198.9 MB
-│ │ └─102eb2a101b8 Virtual Size: 199.1 MB
-│ │   └─530dbbae98a0 Virtual Size: 199.1 MB
-│ │     └─37dde56c3a42 Virtual Size: 199.1 MB
-│ │       └─8f118367086c Virtual Size: 228.5 MB
-│ │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:utopic, ubuntu:14.10
+│ ├─5bc37dc2dfba Virtual Size: <span class="m">192</span>.5 MB
+│ │ └─61cb619d86bc Virtual Size: <span class="m">192</span>.7 MB
+│ │   └─3f45ca85fedc Virtual Size: <span class="m">192</span>.7 MB
+│ │     └─78e82ee876a2 Virtual Size: <span class="m">192</span>.7 MB
+│ │       └─dc07507cef42 Virtual Size: <span class="m">192</span>.7 MB
+│ │         └─86ce37374f40 Virtual Size: <span class="m">192</span>.7 MB
+│ │           └─d76983dc2ebd Virtual Size: <span class="m">213</span>.3 MB
+│ │             └─04a01662a6a8 Virtual Size: <span class="m">214</span>.5 MB
+│ │               └─7769c00dfefe Virtual Size: <span class="m">525</span>.9 MB
+│ │                 └─6ac8d6e449b1 Virtual Size: <span class="m">525</span>.9 MB
+│ │                   └─e3a84ca24205 Virtual Size: <span class="m">525</span>.9 MB
+│ │                     └─26f10d07659d Virtual Size: <span class="m">525</span>.9 MB
+│ ├─e12c576ad8a1 Virtual Size: <span class="m">198</span>.9 MB
+│ │ └─102eb2a101b8 Virtual Size: <span class="m">199</span>.1 MB
+│ │   └─530dbbae98a0 Virtual Size: <span class="m">199</span>.1 MB
+│ │     └─37dde56c3a42 Virtual Size: <span class="m">199</span>.1 MB
+│ │       └─8f118367086c Virtual Size: <span class="m">228</span>.5 MB
+│ │         └─277eb4304907 Virtual Size: <span class="m">228</span>.5 MB Tags: ubuntu:utopic, ubuntu:14.10
 ...
 </pre></div>
 
@@ -129,13 +129,13 @@ It is typically available either on <code>http://localhost:4243</code> or
 <code>/var/run/docker.sock</code>.</p>
 <p>One of the following two calls should therefore extract the image
 status:</p>
-<div class="highlight"><pre>curl -s http://localhost:4243/images/json?all=1
+<div class="highlight"><pre><span></span>curl -s http://localhost:4243/images/json?all=1
 echo -e &quot;GET /images/json?all=1 HTTP/1.0\r\n&quot; | nc -U /var/run/docker.sock
 </pre></div>
 
 
 <p>On my machine, the second query returns:</p>
-<div class="highlight"><pre>HTTP/1.0 200 OK
+<div class="highlight"><pre><span></span>HTTP/1.0 200 OK
 Content-Type: application/json
 Date: Sun, 18 Jan 2015 17:41:34 GMT
 
@@ -146,28 +146,28 @@ Date: Sun, 18 Jan 2015 17:41:34 GMT
 
 
 <p>DockViz parses this JSON and outputs a formatted tree:</p>
-<div class="highlight"><pre>$ cat ~/scripts/docktree 
+<div class="highlight"><pre><span></span>$ cat ~/scripts/docktree 
 <span class="nb">echo</span> -e <span class="s2">&quot;GET /images/json?all=1 HTTP/1.0\r\n&quot;</span> <span class="p">|</span> nc -U /var/run/docker.sock <span class="p">|</span> tail -n +5 <span class="p">|</span> dockviz images --tree
 $ docktree
-├─511136ea3c5a Virtual Size: 0.0 B
-│ ├─5bc37dc2dfba Virtual Size: 192.5 MB
-│ │ └─61cb619d86bc Virtual Size: 192.7 MB
-│ │   └─3f45ca85fedc Virtual Size: 192.7 MB
-│ │     └─78e82ee876a2 Virtual Size: 192.7 MB
-│ │       └─dc07507cef42 Virtual Size: 192.7 MB
-│ │         └─86ce37374f40 Virtual Size: 192.7 MB
-│ │           └─d76983dc2ebd Virtual Size: 213.3 MB
-│ │             └─04a01662a6a8 Virtual Size: 214.5 MB
-│ │               └─7769c00dfefe Virtual Size: 525.9 MB
-│ │                 └─6ac8d6e449b1 Virtual Size: 525.9 MB
-│ │                   └─e3a84ca24205 Virtual Size: 525.9 MB
-│ │                     └─26f10d07659d Virtual Size: 525.9 MB
-│ ├─e12c576ad8a1 Virtual Size: 198.9 MB
-│ │ └─102eb2a101b8 Virtual Size: 199.1 MB
-│ │   └─530dbbae98a0 Virtual Size: 199.1 MB
-│ │     └─37dde56c3a42 Virtual Size: 199.1 MB
-│ │       └─8f118367086c Virtual Size: 228.5 MB
-│ │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:14.10, ubuntu:utopic
+├─511136ea3c5a Virtual Size: <span class="m">0</span>.0 B
+│ ├─5bc37dc2dfba Virtual Size: <span class="m">192</span>.5 MB
+│ │ └─61cb619d86bc Virtual Size: <span class="m">192</span>.7 MB
+│ │   └─3f45ca85fedc Virtual Size: <span class="m">192</span>.7 MB
+│ │     └─78e82ee876a2 Virtual Size: <span class="m">192</span>.7 MB
+│ │       └─dc07507cef42 Virtual Size: <span class="m">192</span>.7 MB
+│ │         └─86ce37374f40 Virtual Size: <span class="m">192</span>.7 MB
+│ │           └─d76983dc2ebd Virtual Size: <span class="m">213</span>.3 MB
+│ │             └─04a01662a6a8 Virtual Size: <span class="m">214</span>.5 MB
+│ │               └─7769c00dfefe Virtual Size: <span class="m">525</span>.9 MB
+│ │                 └─6ac8d6e449b1 Virtual Size: <span class="m">525</span>.9 MB
+│ │                   └─e3a84ca24205 Virtual Size: <span class="m">525</span>.9 MB
+│ │                     └─26f10d07659d Virtual Size: <span class="m">525</span>.9 MB
+│ ├─e12c576ad8a1 Virtual Size: <span class="m">198</span>.9 MB
+│ │ └─102eb2a101b8 Virtual Size: <span class="m">199</span>.1 MB
+│ │   └─530dbbae98a0 Virtual Size: <span class="m">199</span>.1 MB
+│ │     └─37dde56c3a42 Virtual Size: <span class="m">199</span>.1 MB
+│ │       └─8f118367086c Virtual Size: <span class="m">228</span>.5 MB
+│ │         └─277eb4304907 Virtual Size: <span class="m">228</span>.5 MB Tags: ubuntu:14.10, ubuntu:utopic
 </pre></div>
 
 
@@ -176,7 +176,7 @@ i.e. not associated with a tagged image--I must have removed a tagged
 image earlier, and these are its remaining dependencies.</p>
 <h2>Pruning unusued images</h2>
 <p>Built and downloaded Docker images quickly gobble up a lot of space:</p>
-<div class="highlight"><pre>$ sudo du -hcs /var/lib/docker/
+<div class="highlight"><pre><span></span>$ sudo du -hcs /var/lib/docker/
 10G /var/lib/docker/
 10G total
 </pre></div>
@@ -184,13 +184,13 @@ image earlier, and these are its remaining dependencies.</p>
 
 <p>The <code>docker images</code> command allows us to
 <a href="https://docs.docker.com/reference/commandline/cli/#images">list dangling images</a>:</p>
-<div class="highlight"><pre>docker images --filter dangling=true --quiet
+<div class="highlight"><pre><span></span>docker images --filter dangling=true --quiet
 </pre></div>
 
 
 <p>And we obtain a list of containers (images that were fired up and
 modified) using:</p>
-<div class="highlight"><pre>docker ps -aq
+<div class="highlight"><pre><span></span>docker ps -aq
 </pre></div>
 
 
@@ -210,17 +210,17 @@ with caution!):</p>
 11
 12
 13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nv">CONTAINERS</span><span class="o">=</span><span class="k">$(</span>docker ps -aq<span class="k">)</span>
 <span class="nv">IMAGES</span><span class="o">=</span><span class="k">$(</span>docker images --filter <span class="nv">dangling</span><span class="o">=</span><span class="nb">true</span> --quiet<span class="k">)</span>
-<span class="k">if</span> <span class="o">[[</span> <span class="nv">$C</span>ONTAINERS <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    docker rm <span class="nv">$C</span>ONTAINERS
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$CONTAINERS</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    docker rm <span class="nv">$CONTAINERS</span>
 <span class="k">else</span>
     <span class="nb">echo</span> <span class="s2">&quot;No containers to remove&quot;</span>
 <span class="k">fi</span>
 
-<span class="k">if</span> <span class="o">[[</span> $IMAGES <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-    docker rmi $IMAGES
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$IMAGES</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    docker rmi <span class="nv">$IMAGES</span>
 <span class="k">else</span>
     <span class="nb">echo</span> <span class="s2">&quot;No dangling images to remove&quot;</span>
 <span class="k">fi</span>
@@ -228,21 +228,21 @@ with caution!):</p>
 </td></tr></table>
 
 <p>Then:</p>
-<div class="highlight"><pre>$ docker-clean
+<div class="highlight"><pre><span></span>$ docker-clean
 $ sudo du -hcs /var/lib/docker/
-6.6G    /var/lib/docker/
-6.6G    total
+<span class="m">6</span>.6G    /var/lib/docker/
+<span class="m">6</span>.6G    total
 $ docktree
-└─511136ea3c5a Virtual Size: 0.0 B
-  ├─e12c576ad8a1 Virtual Size: 198.9 MB
-  │ └─102eb2a101b8 Virtual Size: 199.1 MB
-  │   └─530dbbae98a0 Virtual Size: 199.1 MB
-  │     └─37dde56c3a42 Virtual Size: 199.1 MB
-  │       └─8f118367086c Virtual Size: 228.5 MB
-  │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:utopic, ubuntu:14.10
-  ├─d497ad3926c8 Virtual Size: 192.5 MB
-  │ └─ccb62158e970 Virtual Size: 192.7 MB
-  │   └─e791be0477f2 Virtual Size: 192.7 MB
+└─511136ea3c5a Virtual Size: <span class="m">0</span>.0 B
+  ├─e12c576ad8a1 Virtual Size: <span class="m">198</span>.9 MB
+  │ └─102eb2a101b8 Virtual Size: <span class="m">199</span>.1 MB
+  │   └─530dbbae98a0 Virtual Size: <span class="m">199</span>.1 MB
+  │     └─37dde56c3a42 Virtual Size: <span class="m">199</span>.1 MB
+  │       └─8f118367086c Virtual Size: <span class="m">228</span>.5 MB
+  │         └─277eb4304907 Virtual Size: <span class="m">228</span>.5 MB Tags: ubuntu:utopic, ubuntu:14.10
+  ├─d497ad3926c8 Virtual Size: <span class="m">192</span>.5 MB
+  │ └─ccb62158e970 Virtual Size: <span class="m">192</span>.7 MB
+  │   └─e791be0477f2 Virtual Size: <span class="m">192</span>.7 MB
 ...
 </pre></div>
 
@@ -308,7 +308,7 @@ process to get rid of its left-over dependencies.</p></div>
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>  </section>
 
 <!--  
 

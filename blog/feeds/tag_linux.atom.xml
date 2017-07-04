@@ -21,7 +21,7 @@ network or the VPN.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Create a script (I called it &lt;code&gt;~/scripts/fw-up&lt;/code&gt;) that sets up the
 firewall:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Clear any existing rules&lt;/span&gt;
 iptables -F
@@ -38,9 +38,9 @@ iptables -A OUTPUT -p tcp -d X.Y.0.0/16 -o wlan1 -j ACCEPT
 iptables -A OUTPUT -o vpn0 -j ACCEPT
 
 &lt;span class="c1"&gt;# Allow local traffic&lt;/span&gt;
-iptables -A OUTPUT -p tcp -o wlan1 -d 10.0.0.0/8 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d 172.16.0.0/12 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d 192.168.0.0/16 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d &lt;span class="m"&gt;10&lt;/span&gt;.0.0.0/8 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d &lt;span class="m"&gt;172&lt;/span&gt;.16.0.0/12 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d &lt;span class="m"&gt;192&lt;/span&gt;.168.0.0/16 -j ACCEPT
 
 &lt;span class="c1"&gt;# Drop everything else on the wifi&lt;/span&gt;
 iptables -A OUTPUT -p tcp -o wlan1 -j DROP
@@ -50,21 +50,21 @@ iptables -A OUTPUT -p tcp -o wlan1 -j DROP
 &lt;p&gt;Make sure the script is set to executable (&lt;code&gt;chmod +x fw-up&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Add a symlink to &lt;code&gt;if-up.d&lt;/code&gt; to ensure that the firewall gets built
 whenever the network is reconfigured:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now, whenever you connect to a wifi hotspot, internet traffic will be
 blocked until you fire up your VPN.  If, on occasion, you need to work
 without the VPN, simply raze the firewall:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo iptables -F
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo iptables -F
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Typically, you wouldn't want the firewall to go up when
   connecting to the wireless at work, so I added the following conditional
   in the &lt;code&gt;fw-up&lt;/code&gt; script:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;iptables -F
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;iptables -F
 
 if [[ `iwgetid -r` != &amp;#39;WorkSSID&amp;#39; ]]; then
    # Firewall rules go here
@@ -146,7 +146,7 @@ which is best?&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;The font should now be available for selection in apps such as Firefox, Gnome
 Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

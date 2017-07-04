@@ -19,7 +19,7 @@ have a top-level heading, but also often occurs elsewhere in my notes.&lt;/p&gt;
 &lt;p&gt;First, define a custom search function.  It puts the keys &lt;code&gt;^*&lt;/code&gt; in the
 "unread command events" list (i.e, a list of events waiting to be seen
 by emacs), and then launches interactive forward regular expression search.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefan/isearch-heading&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefan/isearch-heading&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;unread-command-events&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;listify-key-sequence&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;^* &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;isearch-mode&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -27,7 +27,7 @@ by emacs), and then launches interactive forward regular expression search.&lt;/
 
 
 &lt;p&gt;Next, we add a keybinding for org-mode:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;org-mode-keys&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;org-mode-keys&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;local-set-key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;C-c g&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;stefan/isearch-heading&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
@@ -77,12 +77,12 @@ propagate through the system.  With Redux, it is highly predictable.  Say
 your app has a toggle button, and associated state &lt;code&gt;{toggle: true}&lt;/code&gt;.  An
 action (e.g. "the red button was clicked") is submitted to the central
 dispatcher which then calculates the new state of the app:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;new_state&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;new_state&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The implementation could look something like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;toggle_button&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
       &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;toggle&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;current_state&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toggle&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
@@ -102,7 +102,7 @@ Redux has, for me, returned the joy of web development.&lt;/p&gt;
 &lt;p&gt;But, I'm getting distracted.  WebSockets---in Python!&lt;/p&gt;
 &lt;p&gt;Pushing messages from your Python web server to the user's browser can now be
 &lt;a href="https://github.com/cesium-ml/cesium_web/blob/e19e5543e193905da9555ce15fc71a52859c9fb0/cesium_app/handlers/base.py#L59"&gt;as simple as this&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Flow&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;flow&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Flow&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;flow&lt;/span&gt;
 
 &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flow&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;my_user@domain.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;message to the user&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;to ship along&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
@@ -125,7 +125,7 @@ change the re2 description to …&lt;/p&gt;</summary><content type="html">&lt;p&
 one some systems (including my Debian Testing install).&lt;/p&gt;
 &lt;p&gt;To work around the issue, modify &lt;code&gt;tensorflow/workspace.bzl&lt;/code&gt; and
 change the re2 description to:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;native.git_repository(
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;native.git_repository(
   name = &amp;quot;com_googlesource_code_re2&amp;quot;,
   remote = &amp;quot;https://github.com/stefanv/re2.git&amp;quot;,
   commit = &amp;quot;86503cb89d82b723ae0bce35e1e09524910cd319&amp;quot;,
@@ -136,18 +136,18 @@ change the re2 description to:&lt;/p&gt;
 &lt;p&gt;The re2 library is now downloaded from my fork, which applies a
 &lt;a href="https://github.com/stefanv/re2/commit/86503cb89d82b723ae0bce35e1e09524910cd319"&gt;one line patch&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Compile the TensorFlow Python package as usual with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After installing the pip wheel using&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pip install /tmp/tensorflow_pkg/*.whl
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install /tmp/tensorflow_pkg/*.whl
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;you should have a working installation.  If importing fails with&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;ImportError: cannot import name &amp;#39;pywrap_tensorflow&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ImportError: cannot import name &amp;#39;pywrap_tensorflow&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -322,7 +322,7 @@ network or the VPN.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Create a script (I called it &lt;code&gt;~/scripts/fw-up&lt;/code&gt;) that sets up the
 firewall:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Clear any existing rules&lt;/span&gt;
 iptables -F
@@ -339,9 +339,9 @@ iptables -A OUTPUT -p tcp -d X.Y.0.0/16 -o wlan1 -j ACCEPT
 iptables -A OUTPUT -o vpn0 -j ACCEPT
 
 &lt;span class="c1"&gt;# Allow local traffic&lt;/span&gt;
-iptables -A OUTPUT -p tcp -o wlan1 -d 10.0.0.0/8 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d 172.16.0.0/12 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d 192.168.0.0/16 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d &lt;span class="m"&gt;10&lt;/span&gt;.0.0.0/8 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d &lt;span class="m"&gt;172&lt;/span&gt;.16.0.0/12 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d &lt;span class="m"&gt;192&lt;/span&gt;.168.0.0/16 -j ACCEPT
 
 &lt;span class="c1"&gt;# Drop everything else on the wifi&lt;/span&gt;
 iptables -A OUTPUT -p tcp -o wlan1 -j DROP
@@ -351,21 +351,21 @@ iptables -A OUTPUT -p tcp -o wlan1 -j DROP
 &lt;p&gt;Make sure the script is set to executable (&lt;code&gt;chmod +x fw-up&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Add a symlink to &lt;code&gt;if-up.d&lt;/code&gt; to ensure that the firewall gets built
 whenever the network is reconfigured:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now, whenever you connect to a wifi hotspot, internet traffic will be
 blocked until you fire up your VPN.  If, on occasion, you need to work
 without the VPN, simply raze the firewall:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo iptables -F
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo iptables -F
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Typically, you wouldn't want the firewall to go up when
   connecting to the wireless at work, so I added the following conditional
   in the &lt;code&gt;fw-up&lt;/code&gt; script:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;iptables -F
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;iptables -F
 
 if [[ `iwgetid -r` != &amp;#39;WorkSSID&amp;#39; ]]; then
    # Firewall rules go here
@@ -437,27 +437,27 @@ occupy a lot of disk space, we may also want to prune unused images.&lt;/p&gt;
 &lt;h2&gt;Visualizing image dependencies&lt;/h2&gt;
 &lt;p&gt;In version 1.2.0 of Docker, the image dependency tree is available via
 the &lt;code&gt;docker images --tree&lt;/code&gt; command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ docker images --tree
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker images --tree
 Warning: &lt;span class="s1"&gt;&amp;#39;--tree&amp;#39;&lt;/span&gt; is deprecated, it will be removed soon. See usage.
 ├─511136ea3c5a Virtual Size: &lt;span class="m"&gt;0&lt;/span&gt; B
-│ ├─5bc37dc2dfba Virtual Size: 192.5 MB
-│ │ └─61cb619d86bc Virtual Size: 192.7 MB
-│ │   └─3f45ca85fedc Virtual Size: 192.7 MB
-│ │     └─78e82ee876a2 Virtual Size: 192.7 MB
-│ │       └─dc07507cef42 Virtual Size: 192.7 MB
-│ │         └─86ce37374f40 Virtual Size: 192.7 MB
-│ │           └─d76983dc2ebd Virtual Size: 213.3 MB
-│ │             └─04a01662a6a8 Virtual Size: 214.5 MB
-│ │               └─7769c00dfefe Virtual Size: 525.9 MB
-│ │                 └─6ac8d6e449b1 Virtual Size: 525.9 MB
-│ │                   └─e3a84ca24205 Virtual Size: 525.9 MB
-│ │                     └─26f10d07659d Virtual Size: 525.9 MB
-│ ├─e12c576ad8a1 Virtual Size: 198.9 MB
-│ │ └─102eb2a101b8 Virtual Size: 199.1 MB
-│ │   └─530dbbae98a0 Virtual Size: 199.1 MB
-│ │     └─37dde56c3a42 Virtual Size: 199.1 MB
-│ │       └─8f118367086c Virtual Size: 228.5 MB
-│ │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:utopic, ubuntu:14.10
+│ ├─5bc37dc2dfba Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.5 MB
+│ │ └─61cb619d86bc Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │   └─3f45ca85fedc Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │     └─78e82ee876a2 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │       └─dc07507cef42 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │         └─86ce37374f40 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │           └─d76983dc2ebd Virtual Size: &lt;span class="m"&gt;213&lt;/span&gt;.3 MB
+│ │             └─04a01662a6a8 Virtual Size: &lt;span class="m"&gt;214&lt;/span&gt;.5 MB
+│ │               └─7769c00dfefe Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
+│ │                 └─6ac8d6e449b1 Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
+│ │                   └─e3a84ca24205 Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
+│ │                     └─26f10d07659d Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
+│ ├─e12c576ad8a1 Virtual Size: &lt;span class="m"&gt;198&lt;/span&gt;.9 MB
+│ │ └─102eb2a101b8 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+│ │   └─530dbbae98a0 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+│ │     └─37dde56c3a42 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+│ │       └─8f118367086c Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB
+│ │         └─277eb4304907 Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB Tags: ubuntu:utopic, ubuntu:14.10
 ...
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -475,13 +475,13 @@ It is typically available either on &lt;code&gt;http://localhost:4243&lt;/code&g
 &lt;code&gt;/var/run/docker.sock&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;One of the following two calls should therefore extract the image
 status:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;curl -s http://localhost:4243/images/json?all=1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -s http://localhost:4243/images/json?all=1
 echo -e &amp;quot;GET /images/json?all=1 HTTP/1.0\r\n&amp;quot; | nc -U /var/run/docker.sock
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;On my machine, the second query returns:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;HTTP/1.0 200 OK
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;HTTP/1.0 200 OK
 Content-Type: application/json
 Date: Sun, 18 Jan 2015 17:41:34 GMT
 
@@ -492,28 +492,28 @@ Date: Sun, 18 Jan 2015 17:41:34 GMT
 
 
 &lt;p&gt;DockViz parses this JSON and outputs a formatted tree:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ cat ~/scripts/docktree 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat ~/scripts/docktree 
 &lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;GET /images/json?all=1 HTTP/1.0\r\n&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; nc -U /var/run/docker.sock &lt;span class="p"&gt;|&lt;/span&gt; tail -n +5 &lt;span class="p"&gt;|&lt;/span&gt; dockviz images --tree
 $ docktree
-├─511136ea3c5a Virtual Size: 0.0 B
-│ ├─5bc37dc2dfba Virtual Size: 192.5 MB
-│ │ └─61cb619d86bc Virtual Size: 192.7 MB
-│ │   └─3f45ca85fedc Virtual Size: 192.7 MB
-│ │     └─78e82ee876a2 Virtual Size: 192.7 MB
-│ │       └─dc07507cef42 Virtual Size: 192.7 MB
-│ │         └─86ce37374f40 Virtual Size: 192.7 MB
-│ │           └─d76983dc2ebd Virtual Size: 213.3 MB
-│ │             └─04a01662a6a8 Virtual Size: 214.5 MB
-│ │               └─7769c00dfefe Virtual Size: 525.9 MB
-│ │                 └─6ac8d6e449b1 Virtual Size: 525.9 MB
-│ │                   └─e3a84ca24205 Virtual Size: 525.9 MB
-│ │                     └─26f10d07659d Virtual Size: 525.9 MB
-│ ├─e12c576ad8a1 Virtual Size: 198.9 MB
-│ │ └─102eb2a101b8 Virtual Size: 199.1 MB
-│ │   └─530dbbae98a0 Virtual Size: 199.1 MB
-│ │     └─37dde56c3a42 Virtual Size: 199.1 MB
-│ │       └─8f118367086c Virtual Size: 228.5 MB
-│ │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:14.10, ubuntu:utopic
+├─511136ea3c5a Virtual Size: &lt;span class="m"&gt;0&lt;/span&gt;.0 B
+│ ├─5bc37dc2dfba Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.5 MB
+│ │ └─61cb619d86bc Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │   └─3f45ca85fedc Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │     └─78e82ee876a2 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │       └─dc07507cef42 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │         └─86ce37374f40 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+│ │           └─d76983dc2ebd Virtual Size: &lt;span class="m"&gt;213&lt;/span&gt;.3 MB
+│ │             └─04a01662a6a8 Virtual Size: &lt;span class="m"&gt;214&lt;/span&gt;.5 MB
+│ │               └─7769c00dfefe Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
+│ │                 └─6ac8d6e449b1 Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
+│ │                   └─e3a84ca24205 Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
+│ │                     └─26f10d07659d Virtual Size: &lt;span class="m"&gt;525&lt;/span&gt;.9 MB
+│ ├─e12c576ad8a1 Virtual Size: &lt;span class="m"&gt;198&lt;/span&gt;.9 MB
+│ │ └─102eb2a101b8 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+│ │   └─530dbbae98a0 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+│ │     └─37dde56c3a42 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+│ │       └─8f118367086c Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB
+│ │         └─277eb4304907 Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB Tags: ubuntu:14.10, ubuntu:utopic
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -522,7 +522,7 @@ i.e. not associated with a tagged image--I must have removed a tagged
 image earlier, and these are its remaining dependencies.&lt;/p&gt;
 &lt;h2&gt;Pruning unusued images&lt;/h2&gt;
 &lt;p&gt;Built and downloaded Docker images quickly gobble up a lot of space:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ sudo du -hcs /var/lib/docker/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo du -hcs /var/lib/docker/
 10G /var/lib/docker/
 10G total
 &lt;/pre&gt;&lt;/div&gt;
@@ -530,13 +530,13 @@ image earlier, and these are its remaining dependencies.&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;docker images&lt;/code&gt; command allows us to
 &lt;a href="https://docs.docker.com/reference/commandline/cli/#images"&gt;list dangling images&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;docker images --filter dangling=true --quiet
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker images --filter dangling=true --quiet
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And we obtain a list of containers (images that were fired up and
 modified) using:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;docker ps -aq
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker ps -aq
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -556,17 +556,17 @@ with caution!):&lt;/p&gt;
 11
 12
 13
-14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="nv"&gt;CONTAINERS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker ps -aq&lt;span class="k"&gt;)&lt;/span&gt;
 &lt;span class="nv"&gt;IMAGES&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;docker images --filter &lt;span class="nv"&gt;dangling&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt; --quiet&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$C&lt;/span&gt;ONTAINERS &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    docker rm &lt;span class="nv"&gt;$C&lt;/span&gt;ONTAINERS
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$CONTAINERS&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    docker rm &lt;span class="nv"&gt;$CONTAINERS&lt;/span&gt;
 &lt;span class="k"&gt;else&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;No containers to remove&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; $IMAGES &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    docker rmi $IMAGES
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$IMAGES&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    docker rmi &lt;span class="nv"&gt;$IMAGES&lt;/span&gt;
 &lt;span class="k"&gt;else&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;No dangling images to remove&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
@@ -574,21 +574,21 @@ with caution!):&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Then:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ docker-clean
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker-clean
 $ sudo du -hcs /var/lib/docker/
-6.6G    /var/lib/docker/
-6.6G    total
+&lt;span class="m"&gt;6&lt;/span&gt;.6G    /var/lib/docker/
+&lt;span class="m"&gt;6&lt;/span&gt;.6G    total
 $ docktree
-└─511136ea3c5a Virtual Size: 0.0 B
-  ├─e12c576ad8a1 Virtual Size: 198.9 MB
-  │ └─102eb2a101b8 Virtual Size: 199.1 MB
-  │   └─530dbbae98a0 Virtual Size: 199.1 MB
-  │     └─37dde56c3a42 Virtual Size: 199.1 MB
-  │       └─8f118367086c Virtual Size: 228.5 MB
-  │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:utopic, ubuntu:14.10
-  ├─d497ad3926c8 Virtual Size: 192.5 MB
-  │ └─ccb62158e970 Virtual Size: 192.7 MB
-  │   └─e791be0477f2 Virtual Size: 192.7 MB
+└─511136ea3c5a Virtual Size: &lt;span class="m"&gt;0&lt;/span&gt;.0 B
+  ├─e12c576ad8a1 Virtual Size: &lt;span class="m"&gt;198&lt;/span&gt;.9 MB
+  │ └─102eb2a101b8 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+  │   └─530dbbae98a0 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+  │     └─37dde56c3a42 Virtual Size: &lt;span class="m"&gt;199&lt;/span&gt;.1 MB
+  │       └─8f118367086c Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB
+  │         └─277eb4304907 Virtual Size: &lt;span class="m"&gt;228&lt;/span&gt;.5 MB Tags: ubuntu:utopic, ubuntu:14.10
+  ├─d497ad3926c8 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.5 MB
+  │ └─ccb62158e970 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
+  │   └─e791be0477f2 Virtual Size: &lt;span class="m"&gt;192&lt;/span&gt;.7 MB
 ...
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -732,7 +732,7 @@ which is best?&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;The font should now be available for selection in apps such as Firefox, Gnome
 Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -751,7 +751,7 @@ webpage were as clear as mud and aimed primarily at Windows users.  Enters
 folder, containing &lt;code&gt;*.el&lt;/code&gt; files, along with my &lt;code&gt;.emacs&lt;/code&gt; configuration.
 &lt;code&gt;el-get&lt;/code&gt; allows you to share your package installation folder in a similar
 fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
 &lt;span class="c1"&gt;; I sync across all my machines&lt;/span&gt;
 
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -798,7 +798,7 @@ fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
 the &lt;code&gt;my-packages&lt;/code&gt; list, or add them to &lt;code&gt;el-get-sources&lt;/code&gt;, which in addition
 allows further customization upon successful loading of the package.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://software-carpentry.org/2012/09/whats-in-your-stack/"&gt;What's in your stack?&lt;/a&gt; Here's my list of Emacs packages:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
 JS2
 &lt;/pre&gt;&lt;/div&gt;
 

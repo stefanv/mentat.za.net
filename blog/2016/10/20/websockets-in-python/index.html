@@ -118,12 +118,12 @@ propagate through the system.  With Redux, it is highly predictable.  Say
 your app has a toggle button, and associated state <code>{toggle: true}</code>.  An
 action (e.g. "the red button was clicked") is submitted to the central
 dispatcher which then calculates the new state of the app:</p>
-<div class="highlight"><pre><span class="nx">new_state</span> <span class="o">=</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">current_state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nx">new_state</span> <span class="o">=</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">current_state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span>
 </pre></div>
 
 
 <p>The implementation could look something like this:</p>
-<div class="highlight"><pre><span class="kd">function</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">current_state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">current_state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">case</span> <span class="s1">&#39;toggle_button&#39;</span><span class="o">:</span>
       <span class="k">return</span> <span class="p">{</span><span class="nx">toggle</span><span class="o">:</span> <span class="o">!</span><span class="nx">current_state</span><span class="p">.</span><span class="nx">toggle</span><span class="p">}</span>
@@ -143,7 +143,7 @@ Redux has, for me, returned the joy of web development.</p>
 <p>But, I'm getting distracted.  WebSockets---in Python!</p>
 <p>Pushing messages from your Python web server to the user's browser can now be
 <a href="https://github.com/cesium-ml/cesium_web/blob/e19e5543e193905da9555ce15fc71a52859c9fb0/cesium_app/handlers/base.py#L59">as simple as this</a>:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">Flow</span> <span class="kn">import</span> <span class="n">flow</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Flow</span> <span class="kn">import</span> <span class="n">flow</span>
 
 <span class="bp">self</span><span class="o">.</span><span class="n">flow</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;my_user@domain.com&#39;</span><span class="p">,</span> <span class="s1">&#39;message to the user&#39;</span><span class="p">,</span>
                <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;to ship along&#39;</span><span class="p">})</span>
@@ -210,7 +210,7 @@ Redux has, for me, returned the joy of web development.</p>
 -->
   <section>
   <h1>Tags</h1>
-    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>  </section>
+    <a href="http://mentat.za.net/blog/tag/emacs-orgmode.html">emacs orgmode</a>,    <a href="http://mentat.za.net/blog/tag/web-python-javascript-websocket-redux-react.html">web python javascript websocket redux react</a>,    <a href="http://mentat.za.net/blog/tag/tensorflow-python.html">tensorflow python</a>,    <a href="http://mentat.za.net/blog/tag/drm-amazon-kindle-ebooks.html">drm amazon kindle ebooks</a>,    <a href="http://mentat.za.net/blog/tag/python.html">python</a>,    <a href="http://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="http://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="http://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="http://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="http://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="http://mentat.za.net/blog/tag/science.html">science</a>,    <a href="http://mentat.za.net/blog/tag/coding.html">coding</a>,    <a href="http://mentat.za.net/blog/tag/emacs.html">emacs</a>  </section>
 
 <!--  
 

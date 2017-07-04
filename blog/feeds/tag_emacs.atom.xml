@@ -19,7 +19,7 @@ which is best?&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;The font should now be available for selection in apps such as Firefox, Gnome
 Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -38,7 +38,7 @@ webpage were as clear as mud and aimed primarily at Windows users.  Enters
 folder, containing &lt;code&gt;*.el&lt;/code&gt; files, along with my &lt;code&gt;.emacs&lt;/code&gt; configuration.
 &lt;code&gt;el-get&lt;/code&gt; allows you to share your package installation folder in a similar
 fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
 &lt;span class="c1"&gt;; I sync across all my machines&lt;/span&gt;
 
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -85,7 +85,7 @@ fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
 the &lt;code&gt;my-packages&lt;/code&gt; list, or add them to &lt;code&gt;el-get-sources&lt;/code&gt;, which in addition
 allows further customization upon successful loading of the package.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://software-carpentry.org/2012/09/whats-in-your-stack/"&gt;What's in your stack?&lt;/a&gt; Here's my list of Emacs packages:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
 JS2
 &lt;/pre&gt;&lt;/div&gt;
 

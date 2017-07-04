@@ -19,7 +19,7 @@ which is best?&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;The font should now be available for selection in apps such as Firefox, Gnome
 Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
