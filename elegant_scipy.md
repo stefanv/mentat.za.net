@@ -1,6 +1,6 @@
 ---
 redirect_to:
-  - http://github.com/elegant-scipy/elegant-scipy
+  - https://github.com/elegant-scipy/elegant-scipy/issues/308
 ---
 
 Please proceed to the
