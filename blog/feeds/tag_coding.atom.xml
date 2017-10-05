@@ -13,7 +13,7 @@ used the beautiful (but non-free) &lt;a href="http://www.microsoft.com/en-us/dow
 which is best?&lt;/p&gt;
 &lt;p&gt;To install on Linux:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="https://github.com/adobe-fonts/source-code-pro/releases/tag/variable-fonts"&gt;Grab the font&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/adobe-fonts/source-sans-pro/releases/tag/variable-fonts"&gt;Grab the font&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Copy the files to &lt;code&gt;~/.fonts&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Run &lt;code&gt;fc-cache -f -v&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
