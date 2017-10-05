@@ -18,6 +18,6 @@ existing literature, all I can say in response is that, while solving the
 problem as a sparse linear system was well known at the time, phrasing Drizzle
 as a linear operator and using it for super-resolution was not.&lt;/p&gt;
 &lt;p&gt;But the proof of the pudding is in the eating! Have a look at the
-&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; -- you can download it all (including a
+&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; &amp;ndash; you can download it all (including a
 sample data-set) and play with the different reconstruction parameters.  Quite
 a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</content><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry></feed>

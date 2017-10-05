@@ -18,22 +18,22 @@ existing literature, all I can say in response is that, while solving the
 problem as a sparse linear system was well known at the time, phrasing Drizzle
 as a linear operator and using it for super-resolution was not.&lt;/p&gt;
 &lt;p&gt;But the proof of the pudding is in the eating! Have a look at the
-&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; -- you can download it all (including a
+&lt;a href="http://mentat.za.net/supreme"&gt;results and published code&lt;/a&gt; &amp;ndash; you can download it all (including a
 sample data-set) and play with the different reconstruction parameters.  Quite
-a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</content><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><published>2012-09-30T16:18:00-07:00</published><updated>2012-09-30T16:18:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:/blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We're happy to announce the 7th version of scikits-image!&lt;/p&gt;
+a bit of the code has since graduated into &lt;a href="http://scikit-image.org"&gt;scikit-image&lt;/a&gt;.&lt;/p&gt;</content><category term="super-resolution"></category><category term="image-processing"></category><category term="python"></category><category term="science"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><published>2012-09-30T16:18:00-07:00</published><updated>2012-09-30T16:18:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:/blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
 &lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
 analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
 &lt;p&gt;For more information, examples, and documentation, please visit &lt;a href="http://skimage.org"&gt;our website&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;New Features&lt;/h2&gt;
-&lt;p&gt;It's been only 3 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We're happy to announce the 7th version of scikits-image!&lt;/p&gt;
+&lt;h2 id="new-features"&gt;New Features&lt;/h2&gt;
+&lt;p&gt;It&amp;rsquo;s been …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
 &lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
 analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
 &lt;p&gt;For more information, examples, and documentation, please visit &lt;a href="http://skimage.org"&gt;our website&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;New Features&lt;/h2&gt;
-&lt;p&gt;It's been only 3 months since scikits-image 0.6 was released, but in that short
-time, we've managed to add plenty of new features and enhancements, including&lt;/p&gt;
+&lt;h2 id="new-features"&gt;New Features&lt;/h2&gt;
+&lt;p&gt;It&amp;rsquo;s been only 3 months since scikits-image 0.6 was released, but in that short
+time, we&amp;rsquo;ve managed to add plenty of new features and enhancements, including&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Geometric image transforms&lt;/li&gt;
 &lt;li&gt;3 new image segmentation routines (Felsenzwalb, Quickshift, SLIC)&lt;/li&gt;
@@ -50,8 +50,8 @@ time, we've managed to add plenty of new features and enhancements, including&lt
 &lt;/ul&gt;
 &lt;p&gt;Plus, this release adds a number of bug fixes, new examples, and performance
 enhancements.&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/images/lena_superpixels.jpg" title="Comparison of pupular segmentation algorithms" alt="Comparison of pupular segmentation algorithms"&gt;&lt;/p&gt;
-&lt;h2&gt;Contributors to this release&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Comparison of pupular segmentation algorithms" src="http://mentat.za.net/blog/images/lena_superpixels.jpg" /&gt;&lt;/p&gt;
+&lt;h2 id="contributors-to-this-release"&gt;Contributors to this release&lt;/h2&gt;
 &lt;p&gt;This release was only possible due to the efforts of many contributors, both
 new and old.&lt;/p&gt;
 &lt;ul&gt;
