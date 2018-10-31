@@ -1,5 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - misc</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/misc.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2016-12-15T00:00:00-08:00</updated><entry><title>Search headers in org-mode</title><link href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/" rel="alternate"></link><published>2016-12-15T00:00:00-08:00</published><updated>2016-12-15T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-12-15:/blog/2016/12/15/org-mode-header-search/</id><summary type="html">&lt;p&gt;In org-mode, I often have the need to jump to a top-level heading
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - misc</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/misc.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2018-10-31T00:00:00-07:00</updated><entry><title>Using org-mode with neomutt</title><link href="http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/" rel="alternate"></link><published>2018-10-31T00:00:00-07:00</published><updated>2018-10-31T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2018-10-31:/blog/2018/10/31/using-org-mode-with-neomutt/</id><summary type="html">&lt;p&gt;&lt;a href="https://orgmode.org"&gt;org-mode&lt;/a&gt; is, to me, is one of the most valuable
+parts of the emacs ecosystem.  I use it to take notes, plan projects,
+manage tasks, and write &amp;amp; publish documents.&lt;/p&gt;
+&lt;p&gt;Nowadays, a lot of work arrives via email, and so it is helpful to be
+able to refer to messages directly …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://orgmode.org"&gt;org-mode&lt;/a&gt; is, to me, is one of the most valuable
+parts of the emacs ecosystem.  I use it to take notes, plan projects,
+manage tasks, and write &amp;amp; publish documents.&lt;/p&gt;
+&lt;p&gt;Nowadays, a lot of work arrives via email, and so it is helpful to be
+able to refer to messages directly from my notes or lists of
+tasks.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;simplest&lt;/em&gt; option might be to store URLs pointing to an online
+inbox such as &lt;a href="https://fastmail.com"&gt;Fastmail&lt;/a&gt; or GMail, but I wanted
+a solution that was both future proof (i.e., what if I moved my emails
+to a different provider?) and worked with my terminal-based mail
+client of choice, &lt;a href="https://neomutt.org/"&gt;neomutt&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I started with
+a
+&lt;a href="https://upsilon.cc/~zack/blog/posts/2010/02/integrating_Mutt_with_Org-mode/"&gt;solution provided by Stefano Zacchiroli&lt;/a&gt;,
+and simplified it for my specific use-case.&lt;/p&gt;
+&lt;h2 id="overview"&gt;Overview&lt;/h2&gt;
+&lt;p&gt;The solution has two parts: sending email links from neomutt to Emacs,
+and later opening those links from Emacs by invoking neomutt.  The
+first achieved via &lt;code&gt;org-protocol&lt;/code&gt;, the latter via launching neomutt
+and then simulating keypresses.&lt;/p&gt;
+&lt;p&gt;When launching neomutt, we have to tell it in which directory the
+message lives.  We therefore use &lt;code&gt;notmuch&lt;/code&gt; to find the message file
+first, based on its Message-ID.  &lt;code&gt;maildir-utils&lt;/code&gt; would be another way
+of doing so.  &lt;strong&gt;Please note that you have to have notmuch or
+maildir-utils set up already for this scheme to work.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I initially avoided the &lt;code&gt;org-protocol&lt;/code&gt; package, because installation
+looked complicated.  That, it turns out, is only the case if you care
+about web browser integration, which we don&amp;rsquo;t.&lt;/p&gt;
+&lt;h2 id="neomutt-configuration"&gt;Neomutt configuration&lt;/h2&gt;
+&lt;p&gt;First, we have a Python script that can parse an e-mail and share the
+Message-ID and Subject with emacs.  I call it &lt;code&gt;mutt-save-org-link.py&lt;/code&gt;,
+and make it executable using &lt;code&gt;chmod +x mutt-save-org-link.py&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python3&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;email&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;subprocess&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Parse the email from standard input&lt;/span&gt;
+&lt;span class="n"&gt;message_bytes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stdin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;message&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;message_from_bytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;message_bytes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Grab the relevant message headers&lt;/span&gt;
+&lt;span class="n"&gt;message_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;message-id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;subject&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;subject&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Ask emacsclient to save a link to the message&lt;/span&gt;
+&lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Popen&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;emacsclient&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;org-protocol://store-link?url=mutt:{message_id}&amp;amp;title={subject}&amp;#39;&lt;/span&gt;
+&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We then configure neomutt (typically in &lt;code&gt;~/.muttrc&lt;/code&gt;) to call the
+script with a shortcut.  I chose Esc-L (the same as Alt-L).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;macro index,pager \el &amp;quot;|~/scripts/mutt-save-org-link.py\n&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="emacs-configuration"&gt;Emacs configuration&lt;/h2&gt;
+&lt;p&gt;Using &lt;code&gt;org-protocol&lt;/code&gt;, we instruct emacsclient to intercept URLs with
+the &lt;code&gt;org-protocol://&lt;/code&gt; scheme, as used by our &lt;code&gt;mutt-save-org-link.py&lt;/code&gt;
+script.  We also tell org-mode how to handle special URLs of the form
+&lt;code&gt;mutt:message-id+goes_here@mail.gmail.com&lt;/code&gt;.  Neomutt needs to know
+which Maildir folder to open, so we ask &lt;code&gt;notmuch&lt;/code&gt; to tell us where the
+message is located.&lt;/p&gt;
+&lt;p&gt;In my &lt;code&gt;~/.emacs&lt;/code&gt; file I have:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;; Make sure org-protocol is loaded&lt;/span&gt;
+&lt;span class="c1"&gt;; Now, org-protocol:// schemas are intercepted.&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="nv"&gt;org-protocol&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;; Call this function, which spawns neomutt, whenever org-mode&lt;/span&gt;
+&lt;span class="c1"&gt;; tries to open a link of the form mutt:message-id+goes_here@mail.gmail.com&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefanv/mutt-open-message&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;message-id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;quot;In neomutt, open the email with the the given Message-ID&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt;
+      &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;mail-file&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
+         &lt;span class="s"&gt;&amp;quot;\n$&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;shell-command-to-string&lt;/span&gt;
+                   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;notmuch search --output=files id:%s&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;message-id&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;mail-dir&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/\\(cur\\|new\\|tmp\\)/$&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+                                           &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;file-name-directory&lt;/span&gt; &lt;span class="nv"&gt;mail-file&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;process-id&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;neomutt-&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;message-id&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;message-id-escaped&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;regexp-quote&lt;/span&gt; &lt;span class="nv"&gt;message-id&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;mutt-keystrokes&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;l~i %s\n\n&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;shell-quote-argument&lt;/span&gt; &lt;span class="nv"&gt;message-id-escaped&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;mutt-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;neomutt&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-R&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-f&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;mail-dir&lt;/span&gt;
+                           &lt;span class="s"&gt;&amp;quot;-e&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;push &amp;#39;%s&amp;#39;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;mutt-keystrokes&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Launching neomutt for message %s&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;message-id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;call-process&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;setsid&amp;quot;&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;quot;-f&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;gnome-terminal&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;--window&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;--&amp;quot;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;quot;neomutt&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-R&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-f&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;mail-dir&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;quot;-e&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;push &amp;#39;%s&amp;#39;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;mutt-keystrokes&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+
+&lt;span class="c1"&gt;; Whenever org-mode sees a link starting with `mutt:...`, it&lt;/span&gt;
+&lt;span class="c1"&gt;; calls our `mutt-open-message` function&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;org-add-link-type&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;mutt&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;stefanv/mutt-open-message&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There are a few caveats: if you use &lt;code&gt;maildir-utils&lt;/code&gt;, the search
+command is &lt;code&gt;mu find -f l i:%s&lt;/code&gt; instead of notmuch; and if you are not
+on Linux, then &lt;code&gt;setsid&lt;/code&gt; (which we use to launch a detached background
+process) is not going to work, and you will want to use a different
+terminal emulator.&lt;/p&gt;
+&lt;h2 id="wrap-up"&gt;Wrap-up&lt;/h2&gt;
+&lt;p&gt;That&amp;rsquo;s it!  I&amp;rsquo;ve added the code
+to
+&lt;a href="https://github.com/stefanv/org-neomutt"&gt;https://github.com/stefanv/org-neomutt&lt;/a&gt;.
+Please file issues and PRs there, or tell me about your use cases
+in the comments below.&lt;/p&gt;</content><category term="org-mode"></category><category term="emacs"></category><category term="python"></category><category term="mutt"></category></entry><entry><title>Search headers in org-mode</title><link href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/" rel="alternate"></link><published>2016-12-15T00:00:00-08:00</published><updated>2016-12-15T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-12-15:/blog/2016/12/15/org-mode-header-search/</id><summary type="html">&lt;p&gt;In org-mode, I often have the need to jump to a top-level heading
 matching some word.&lt;/p&gt;
 &lt;p&gt;Since an org-mode buffer can be searched just like any other, I can
 simply invoke forward search with &lt;code&gt;C-s&lt;/code&gt;, but this will match &lt;em&gt;all&lt;/em&gt;

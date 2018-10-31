@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - emacs</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_emacs.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2018-10-31T00:00:00-07:00</updated><entry><title>Using org-mode with neomutt</title><link href="http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/" rel="alternate"></link><published>2018-10-31T00:00:00-07:00</published><updated>2018-10-31T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2018-10-31:/blog/2018/10/31/using-org-mode-with-neomutt/</id><summary type="html">&lt;p&gt;&lt;a href="https://orgmode.org"&gt;org-mode&lt;/a&gt; is, to me, is one of the most valuable
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - org-mode</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_org-mode.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2018-10-31T00:00:00-07:00</updated><entry><title>Using org-mode with neomutt</title><link href="http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/" rel="alternate"></link><published>2018-10-31T00:00:00-07:00</published><updated>2018-10-31T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2018-10-31:/blog/2018/10/31/using-org-mode-with-neomutt/</id><summary type="html">&lt;p&gt;&lt;a href="https://orgmode.org"&gt;org-mode&lt;/a&gt; is, to me, is one of the most valuable
 parts of the emacs ecosystem.  I use it to take notes, plan projects,
 manage tasks, and write &amp;amp; publish documents.&lt;/p&gt;
 &lt;p&gt;Nowadays, a lot of work arrives via email, and so it is helpful to be
@@ -116,95 +116,4 @@ terminal emulator.&lt;/p&gt;
 to
 &lt;a href="https://github.com/stefanv/org-neomutt"&gt;https://github.com/stefanv/org-neomutt&lt;/a&gt;.
 Please file issues and PRs there, or tell me about your use cases
-in the comments below.&lt;/p&gt;</content><category term="org-mode"></category><category term="emacs"></category><category term="python"></category><category term="mutt"></category></entry><entry><title>Adobe's new free font: Source Code Pro</title><link href="http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/" rel="alternate"></link><published>2012-09-26T11:49:00-07:00</published><updated>2012-09-26T11:49:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-26:/blog/2012/09/26/consolas-vs-source-code-pro/</id><summary type="html">&lt;p&gt;Adobe yesterday
-&lt;a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html"&gt;released its free and open source Type family, Source Code Pro&lt;/a&gt;,
-which includes an eye-pleasing monospace font  ideally suited for coding.
-In the past, and at the recommendation of &lt;a href="http://blog.fperez.org/"&gt;Fernando Perez&lt;/a&gt;, I&amp;rsquo;ve
-used the beautiful (but non-free) &lt;a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879"&gt;Consolas by Microsoft&lt;/a&gt;; now,
-which is best?&lt;/p&gt;
-&lt;p&gt;To install on …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Adobe yesterday
-&lt;a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html"&gt;released its free and open source Type family, Source Code Pro&lt;/a&gt;,
-which includes an eye-pleasing monospace font  ideally suited for coding.
-In the past, and at the recommendation of &lt;a href="http://blog.fperez.org/"&gt;Fernando Perez&lt;/a&gt;, I&amp;rsquo;ve
-used the beautiful (but non-free) &lt;a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879"&gt;Consolas by Microsoft&lt;/a&gt;; now,
-which is best?&lt;/p&gt;
-&lt;p&gt;To install on Linux:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://github.com/adobe-fonts/source-sans-pro/releases/tag/variable-fonts"&gt;Grab the font&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Copy the files to &lt;code&gt;~/.fonts&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Run &lt;code&gt;fc-cache -f -v&lt;/code&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The font should now be available for selection in apps such as Firefox, Gnome
-Terminal, etc.  To make it the default font in Emacs::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-default-font&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Source Code Pro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Here&amp;rsquo;s a comparison of Consolas (left) and Source Code Pro (right):&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comparison: Consolas vs Source Code Pro" src="http://mentat.za.net/blog/images/consolas_vs_source_code_pro.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Comments also on &lt;a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik"&gt;Google+&lt;/a&gt;.&lt;/p&gt;</content><category term="coding"></category><category term="emacs"></category><category term="linux"></category></entry><entry><title>Emacs package management</title><link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><published>2012-09-25T17:14:00-07:00</published><updated>2012-09-25T17:14:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:/blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
-Arakaki&amp;rsquo;s &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
-webpage were as clear as mud and aimed primarily at Windows users.  Enters
-&lt;a href="https://github.com/dimitri/el-get"&gt;apt-get for Emacs&lt;/a&gt;!&lt;/p&gt;
-&lt;p&gt;My Emacs setup is shared across multiple machines: a synchronized &lt;code&gt;elisp …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
-Arakaki&amp;rsquo;s &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
-webpage were as clear as mud and aimed primarily at Windows users.  Enters
-&lt;a href="https://github.com/dimitri/el-get"&gt;apt-get for Emacs&lt;/a&gt;!&lt;/p&gt;
-&lt;p&gt;My Emacs setup is shared across multiple machines: a synchronized &lt;code&gt;elisp&lt;/code&gt;
-folder, containing &lt;code&gt;*.el&lt;/code&gt; files, along with my &lt;code&gt;.emacs&lt;/code&gt; configuration.
-&lt;code&gt;el-get&lt;/code&gt; allows you to share your package installation folder in a similar
-fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;; Everything gets installed into ~/elisp, a folder&lt;/span&gt;
-&lt;span class="c1"&gt;; I sync across all my machines&lt;/span&gt;
-
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-install-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/elisp/el-get/el-get&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;load-path&lt;/span&gt; &lt;span class="nv"&gt;el-get-install-dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;; If el-get is missing, install it automatically&lt;/span&gt;
-
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;el-get&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;url-retrieve&lt;/span&gt;
-   &lt;span class="s"&gt;&amp;quot;https://raw.github.com/dimitri/el-get/master/el-get-install.el&amp;quot;&lt;/span&gt;
-   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;goto-char&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;point-max&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;eval-print-last-sexp&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
-
-&lt;span class="c1"&gt;; Install these packages, and call the specified configuration snippets&lt;/span&gt;
-&lt;span class="c1"&gt;; after each load&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;el-get-sources&lt;/span&gt;
-      &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-
-        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="nv"&gt;ethan-wspace&lt;/span&gt;
-         &lt;span class="ss"&gt;:after&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;progn&lt;/span&gt;
-                  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;global-ethan-wspace-mode&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;set-face-background&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;ethan-wspace-face&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;gray95&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-
-        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:name&lt;/span&gt; &lt;span class="nv"&gt;column-marker&lt;/span&gt;
-         &lt;span class="ss"&gt;:after&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;font-lock-mode-hook&lt;/span&gt;
-                          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;column-marker-1&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
-
-&lt;span class="c1"&gt;; Also install these packages, no configuration required&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;my-packages&lt;/span&gt;
-      &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;append&lt;/span&gt;
-       &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;el-get&lt;/span&gt; &lt;span class="nv"&gt;maxframe&lt;/span&gt; &lt;span class="nv"&gt;markdown-mode&lt;/span&gt; &lt;span class="nv"&gt;ein&lt;/span&gt; &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;mapcar&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;el-get-source-name&lt;/span&gt; &lt;span class="nv"&gt;el-get-sources&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-       &lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;; Check packages and install any that are missing&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;el-get&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;sync&lt;/span&gt; &lt;span class="nv"&gt;my-packages&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;There are two ways to specify packages to be installed: either include them in
-the &lt;code&gt;my-packages&lt;/code&gt; list, or add them to &lt;code&gt;el-get-sources&lt;/code&gt;, which in addition
-allows further customization upon successful loading of the package.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://software-carpentry.org/2012/09/whats-in-your-stack/"&gt;What&amp;rsquo;s in your stack?&lt;/a&gt; Here&amp;rsquo;s my list of Emacs packages:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
-JS2
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Do you know of any other useful packages?  Let me know!&lt;/p&gt;
-&lt;!-- References --&gt;</content><category term="emacs"></category><category term="python"></category><category term="scipy"></category></entry></feed>
+in the comments below.&lt;/p&gt;</content><category term="org-mode"></category><category term="emacs"></category><category term="python"></category><category term="mutt"></category></entry></feed>
