@@ -155,7 +155,7 @@ by emacs), and then launches interactive forward regular expression search.&lt;/
 &lt;p&gt;And that&amp;rsquo;s it!  Pressing &lt;code&gt;C-c g&lt;/code&gt; (for &amp;ldquo;go&amp;rdquo;) in org-mode will
 now present you with a search prompt.  Typing a heading name will take you
 there directly, at which point you can choose to expand it with the
-TAB key.&lt;/p&gt;</content><category term="emacs orgmode"></category></entry><entry><title>WebSockets in Python (and some Redux)</title><link href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><published>2016-10-20T00:00:00-07:00</published><updated>2016-10-20T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:/blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
+TAB key.&lt;/p&gt;</content><category term="emacs"></category><category term="org-mode"></category></entry><entry><title>WebSockets in Python (and some Redux)</title><link href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><published>2016-10-20T00:00:00-07:00</published><updated>2016-10-20T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:/blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
 &lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
 we&amp;rsquo;ve developed an easy
 mechanism for Python web developers to
