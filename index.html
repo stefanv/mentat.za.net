@@ -330,6 +330,8 @@ Until May 2014, I lectured at
     for (var i = 0; i < 5; i++) {
       var entry = response.query.results.feed.entry[i];
 
+      console.log("blog: ", entry.title);
+
       html = '\n<li class="feed_entry">' +
              '<span class="feed_title">' +
              '<a href="' + entry.link.href + '">' + entry.title + '</a>' +
