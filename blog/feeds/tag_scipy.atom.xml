@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - scipy</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_scipy.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2013-06-27T17:20:00-07:00</updated><entry><title>SciPy2013 Proceedings</title><link href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/" rel="alternate"></link><published>2013-06-27T17:20:00-07:00</published><updated>2013-06-27T17:20:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2013-06-27:/blog/2013/06/27/scipy2013-proceedings/</id><summary type="html">&lt;p&gt;Where I announce the SciPy 2013 proceedings, and talk about how we did it.&lt;/p&gt;</summary><content type="html">&lt;p&gt;The talks for the 12th (fantastic) Python in Science conference just concluded,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - scipy</title><link href="https://mentat.za.net/blog/" rel="alternate"></link><link href="https://mentat.za.net/blog/feeds/tag_scipy.atom.xml" rel="self"></link><id>https://mentat.za.net/blog/</id><updated>2013-06-27T17:20:00-07:00</updated><entry><title>SciPy2013 Proceedings</title><link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/" rel="alternate"></link><published>2013-06-27T17:20:00-07:00</published><updated>2013-06-27T17:20:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2013-06-27:/blog/2013/06/27/scipy2013-proceedings/</id><summary type="html">&lt;p&gt;Where I announce the SciPy 2013 proceedings, and talk about how we did it.&lt;/p&gt;</summary><content type="html">&lt;p&gt;The talks for the 12th (fantastic) Python in Science conference just concluded,
 and I am happy to announce the
 &lt;a href="https://dl.dropboxusercontent.com/u/380268/scipy_2013_proceedings_draft.pdf"&gt;conference proceedings&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This may come as a surprize to some, since in the past we have been unable to
@@ -29,7 +29,7 @@ submit a pull request on
 &lt;h2 id="thanks"&gt;Thanks&lt;/h2&gt;
 &lt;p&gt;Finally, a big shout-out to the amazing team of people who organized this
 year&amp;rsquo;s conference, and to the wonderfully inclusive and talented Scientific
-Python community, of which I am proud to be part of.&lt;/p&gt;</content><category term="scipy"></category><category term="python"></category></entry><entry><title>scikits-image 0.7</title><link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><published>2012-09-30T16:18:00-07:00</published><updated>2012-09-30T16:18:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:/blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
+Python community, of which I am proud to be part of.&lt;/p&gt;</content><category term="scipy"></category><category term="python"></category></entry><entry><title>scikits-image 0.7</title><link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/" rel="alternate"></link><published>2012-09-30T16:18:00-07:00</published><updated>2012-09-30T16:18:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-30:/blog/2012/09/30/scikits-image-0-dot-7/</id><summary type="html">&lt;p&gt;We&amp;rsquo;re happy to announce the 7th version of scikits-image!&lt;/p&gt;
 &lt;p&gt;Scikits-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
 analysis, filtering, morphology, feature detection, and more.&lt;/p&gt;
@@ -59,7 +59,7 @@ time, we&amp;rsquo;ve managed to add plenty of new features and enhancements, in
 &lt;/ul&gt;
 &lt;p&gt;Plus, this release adds a number of bug fixes, new examples, and performance
 enhancements.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Comparison of pupular segmentation algorithms" src="http://mentat.za.net/blog/images/lena_superpixels.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Comparison of pupular segmentation algorithms" src="https://mentat.za.net/blog/images/lena_superpixels.jpg" /&gt;&lt;/p&gt;
 &lt;h2 id="contributors-to-this-release"&gt;Contributors to this release&lt;/h2&gt;
 &lt;p&gt;This release was only possible due to the efforts of many contributors, both
 new and old.&lt;/p&gt;
@@ -90,7 +90,7 @@ new and old.&lt;/p&gt;
 &lt;li&gt;Tomas Kazmar&lt;/li&gt;
 &lt;li&gt;Tony S Yu&lt;/li&gt;
 &lt;li&gt;Wei Li&lt;/li&gt;
-&lt;/ul&gt;</content><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Emacs package management</title><link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><published>2012-09-25T17:14:00-07:00</published><updated>2012-09-25T17:14:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:/blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
+&lt;/ul&gt;</content><category term="image processing"></category><category term="scipy"></category><category term="python"></category><category term="science"></category></entry><entry><title>Emacs package management</title><link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/" rel="alternate"></link><published>2012-09-25T17:14:00-07:00</published><updated>2012-09-25T17:14:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2012-09-25:/blog/2012/09/25/emacs-package-management/</id><summary type="html">&lt;p&gt;I recently tried to install MuMaMo as one of the dependencies for Takafumi
 Arakaki&amp;rsquo;s &lt;a href="https://github.com/tkf/emacs-ipython-notebook"&gt;Emacs-based IPython notebook&lt;/a&gt;.  The instructions on the MuMaMo
 webpage were as clear as mud and aimed primarily at Windows users.  Enters
 &lt;a href="https://github.com/dimitri/el-get"&gt;apt-get for Emacs&lt;/a&gt;!&lt;/p&gt;
