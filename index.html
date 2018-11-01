@@ -334,10 +334,10 @@ Until May 2014, I lectured at
              '<span class="feed_title">' +
              '<a href="' + entry.link.href + '">' + entry.title + '</a>' +
              '</span><br/><span class="feed_date">' +
-             entry.published.split(" ").slice(0, 4).join(" ") +
+             entry.published.split("T").slice(0, 1) +
              '</span> in <span class="feed_tags">';
 
-      var categories = entry.category.term.split(" ");
+      var categories = entry.category.map(x => x.term);
       for (j=0; j < categories.length; j++) {
         html += '<span class="feed_tag">' + categories[j] + '</span>';
         if (j < categories.length - 1) {
