@@ -227,7 +227,7 @@ Redux has, for me, returned the joy of web development.&lt;/p&gt;
 
 
 &lt;p&gt;Please take a look at the more detailed technical description (with code!)
-&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;on the Cesium blog&lt;/a&gt;.&lt;/p&gt;</content><category term="web python javascript websocket redux react"></category></entry><entry><title>Compile TensorFlow from source with gcc6.1</title><link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/" rel="alternate"></link><published>2016-09-14T00:00:00-07:00</published><updated>2016-09-14T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-09-14:/blog/2016/09/14/tensorflow-gcc6-1/</id><summary type="html">&lt;p&gt;Due to two bugs in gcc 6.1
+&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;on the Cesium blog&lt;/a&gt;.&lt;/p&gt;</content><category term="web"></category><category term="python"></category><category term="javascript"></category><category term="websocket"></category><category term="redux"></category><category term="react"></category></entry><entry><title>Compile TensorFlow from source with gcc6.1</title><link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/" rel="alternate"></link><published>2016-09-14T00:00:00-07:00</published><updated>2016-09-14T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-09-14:/blog/2016/09/14/tensorflow-gcc6-1/</id><summary type="html">&lt;p&gt;Due to two bugs in gcc 6.1
 &lt;a href="https://github.com/google/re2/issues/102"&gt;affecting the re2 library&lt;/a&gt;
 (one of which has been fixed in 6.2)),
 &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt; cannot be
@@ -365,7 +365,7 @@ proprietary notices or labels on the Kindle Content. In addition,
 you may not attempt to bypass, modify, defeat, or otherwise
 circumvent any digital rights management system or other content
 protection or features used as part of the Service.&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="drm amazon kindle ebooks"></category></entry><entry><title>Python &amp; Matplotlib on OSX</title><link href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/" rel="alternate"></link><published>2016-02-26T00:00:00-08:00</published><updated>2016-02-26T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-02-26:/blog/2016/02/26/matplotlib-on-osx/</id><summary type="html">&lt;p&gt;One day, we will hopefully have a grand unified build and package management
+&lt;/blockquote&gt;</content><category term="drm"></category><category term="amazon"></category><category term="kindle"></category><category term="ebooks"></category></entry><entry><title>Python &amp; Matplotlib on OSX</title><link href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/" rel="alternate"></link><published>2016-02-26T00:00:00-08:00</published><updated>2016-02-26T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-02-26:/blog/2016/02/26/matplotlib-on-osx/</id><summary type="html">&lt;p&gt;One day, we will hopefully have a grand unified build and package management
 system for Python where everything is free &amp;amp; open and Just Works (TM).  Until
 then, you have two options:&lt;/p&gt;
 &lt;h2 id="brew-python-pip"&gt;brew Python + pip&lt;/h2&gt;
