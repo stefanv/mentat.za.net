@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - linux</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_linux.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2015-01-24T00:00:00-08:00</updated><entry><title>VPN-only access to the internet</title><link href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/" rel="alternate"></link><published>2015-01-24T00:00:00-08:00</published><updated>2015-01-24T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-24:/blog/2015/01/24/vpn-only-internet/</id><summary type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN&lt;/p&gt;
-&lt;p&gt;A few days ago, I noticed that my outbound email wasn&amp;rsquo;t being
-delivered&amp;mdash;it seems as if my ISP blocks access to some outbound ports.
-An easy workaround is to route traffic through the work …&lt;/p&gt;</summary><content type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - linux</title><link href="http://mentat.za.net/blog/" rel="alternate"></link><link href="http://mentat.za.net/blog/feeds/tag_linux.atom.xml" rel="self"></link><id>http://mentat.za.net/blog/</id><updated>2015-01-24T00:00:00-08:00</updated><entry><title>VPN-only access to the internet</title><link href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/" rel="alternate"></link><published>2015-01-24T00:00:00-08:00</published><updated>2015-01-24T00:00:00-08:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2015-01-24:/blog/2015/01/24/vpn-only-internet/</id><summary type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN.
+</summary><content type="html">&lt;p&gt;tl;dr A firewall setup that allows traffic to leave &lt;em&gt;only&lt;/em&gt; via the VPN.
+&lt;/p&gt;
 &lt;p&gt;A few days ago, I noticed that my outbound email wasn&amp;rsquo;t being
 delivered&amp;mdash;it seems as if my ISP blocks access to some outbound ports.
 An easy workaround is to route traffic through the work VPN, but

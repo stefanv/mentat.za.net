@@ -3,13 +3,13 @@
 &lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
 we&amp;rsquo;ve developed an easy
 mechanism for Python web developers to
-&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you want
-to verify a credit card …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
+&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.
+</summary><content type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
 &lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
 we&amp;rsquo;ve developed an easy
 mechanism for Python web developers to
-&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.
+&lt;/p&gt;
 &lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you want
 to verify a credit card number submitted by your user.  Traditionally, you&amp;rsquo;d
 submit the number, and then poll the backend repeatedly from the browser.  Not
