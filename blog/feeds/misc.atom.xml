@@ -268,7 +268,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;switch out of the TensorFlow source directory and try again.&lt;/p&gt;</content><category term="tensorflow python"></category></entry><entry><title>Amazon owns your ebooks</title><link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/" rel="alternate"></link><published>2016-08-21T00:00:00-07:00</published><updated>2016-08-21T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-08-21:/blog/2016/08/21/amazon-owns-your-ebooks/</id><summary type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
+&lt;p&gt;switch out of the TensorFlow source directory and try again.&lt;/p&gt;</content><category term="tensorflow"></category><category term="python"></category></entry><entry><title>Amazon owns your ebooks</title><link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/" rel="alternate"></link><published>2016-08-21T00:00:00-07:00</published><updated>2016-08-21T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-08-21:/blog/2016/08/21/amazon-owns-your-ebooks/</id><summary type="html">&lt;p&gt;Did you know that Amazon does not sell ebooks?  But, wait, you say, I
 have bought ebooks from them myself!  Sadly, that is not the case.  I
 will summarize part of the
 &lt;a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=201014950"&gt;Kindle Store Terms of Use&lt;/a&gt;
