@@ -142,7 +142,8 @@ body>#Header {height:1em;}
         float: left;
         margin-left: 1em;
         margin-right: 2em;
-	padding:1em;
+        margin-bottom: 1em;
+	padding: 1em 1em 0.25em 1em;
 	background-color:#E5E5E5;
 /*	border:1px solid #CCC;*/
 	line-height:1.4em;
@@ -150,7 +151,15 @@ body>#Header {height:1em;}
 	voice-family: "\"}\"";
 	voice-family:inherit;
 	width:12.2em;
-	}
+}
+
+#Menu .section {
+    border-top: 1px solid #aaa;
+    padding-top: 0.75em;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
 /* Again, "be nice to Opera 5". */
 body>#Menu {width:12.2em;}
 
