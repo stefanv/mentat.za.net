@@ -156,17 +156,12 @@ by emacs), and then launches interactive forward regular expression search.&lt;/
 &lt;p&gt;And that&amp;rsquo;s it!  Pressing &lt;code&gt;C-c g&lt;/code&gt; (for &amp;ldquo;go&amp;rdquo;) in org-mode will
 now present you with a search prompt.  Typing a heading name will take you
 there directly, at which point you can choose to expand it with the
-TAB key.&lt;/p&gt;</content><category term="emacs"></category><category term="org-mode"></category></entry><entry><title>WebSockets in Python (and some Redux)</title><link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><published>2016-10-20T00:00:00-07:00</published><updated>2016-10-20T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:/blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
+TAB key.&lt;/p&gt;</content><category term="emacs"></category><category term="org-mode"></category></entry><entry><title>WebSockets in Python (and some Redux)</title><link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/" rel="alternate"></link><published>2016-10-20T00:00:00-07:00</published><updated>2016-10-20T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2016-10-20:/blog/2016/10/20/websockets-in-python/</id><summary type="html">&lt;p&gt;Where we make pushing messages from a Python backend to
+the browser easy.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
 &lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
 we&amp;rsquo;ve developed an easy
 mechanism for Python web developers to
-&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.
-</summary><content type="html">&lt;p&gt;As part of our work on &lt;a href="http://cesium.ml"&gt;Cesium&lt;/a&gt; and its
-&lt;a href="https://github.com/cesium-ml/cesium_web"&gt;web frontend&lt;/a&gt;,
-we&amp;rsquo;ve developed an easy
-mechanism for Python web developers to
-&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.
-&lt;/p&gt;
+&lt;a href="http://cesium.ml/blog/2016/07/13/a-pattern-for-websockets-in-python/"&gt;push messages from their Python backends to the browser&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;There are plenty of potential use cases, but consider, e.g., that you want
 to verify a credit card number submitted by your user.  Traditionally, you&amp;rsquo;d
 submit the number, and then poll the backend repeatedly from the browser.  Not
