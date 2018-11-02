@@ -129,13 +129,14 @@ and make it executable using <code>chmod +x mutt-save-org-link.py</code>.</p>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">email</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
 
 <span class="c1"># Parse the email from standard input</span>
 <span class="n">message_bytes</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">message</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">message_from_bytes</span><span class="p">(</span><span class="n">message_bytes</span><span class="p">)</span>
 
 <span class="c1"># Grab the relevant message headers</span>
-<span class="n">message_id</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;message-id&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">message_id</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;message-id&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">subject</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>
 
 <span class="c1"># Ask emacsclient to save a link to the message</span>
