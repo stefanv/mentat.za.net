@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - python</title><link href="https://mentat.za.net/blog/" rel="alternate"></link><link href="https://mentat.za.net/blog/feeds/tag_python.atom.xml" rel="self"></link><id>https://mentat.za.net/blog/</id><updated>2018-10-31T00:00:00-07:00</updated><entry><title>Using org-mode with neomutt</title><link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/" rel="alternate"></link><published>2018-10-31T00:00:00-07:00</published><updated>2018-10-31T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2018-10-31:/blog/2018/10/31/using-org-mode-with-neomutt/</id><summary type="html">&lt;p&gt;Where we store links to emails in org-mode, and open them using neomutt.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://orgmode.org"&gt;org-mode&lt;/a&gt; is, to me, is one of the most valuable
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Stéfan van der Walt - python</title><link href="https://mentat.za.net/blog/" rel="alternate"></link><link href="https://mentat.za.net/blog/feeds/tag_python.atom.xml" rel="self"></link><id>https://mentat.za.net/blog/</id><updated>2018-10-31T00:00:00-07:00</updated><entry><title>Linking to emails in org-mode (using neomutt)</title><link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/" rel="alternate"></link><published>2018-10-31T00:00:00-07:00</published><updated>2018-10-31T00:00:00-07:00</updated><author><name>Stefan van der Walt</name></author><id>tag:mentat.za.net,2018-10-31:/blog/2018/10/31/using-org-mode-with-neomutt/</id><summary type="html">&lt;p&gt;Where we store links to emails in org-mode, and open them using neomutt.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;Update 2018-11-2:&lt;/strong&gt; Change the URL scheme to &lt;code&gt;message://&lt;/code&gt;.
+See &lt;a href="#other-systems"&gt;&amp;ldquo;Other Systems&amp;rdquo;&lt;/a&gt; below.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://orgmode.org"&gt;org-mode&lt;/a&gt; is, to me, is one of the most valuable
 parts of the emacs ecosystem.  I use it to take notes, plan projects,
 manage tasks, and write &amp;amp; publish documents.&lt;/p&gt;
 &lt;p&gt;Nowadays, a lot of work arrives via email, and so it is helpful to be
@@ -48,7 +50,7 @@ and make it executable using &lt;code&gt;chmod +x mutt-save-org-link.py&lt;/code
 &lt;span class="c1"&gt;# Ask emacsclient to save a link to the message&lt;/span&gt;
 &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Popen&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;emacsclient&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;org-protocol://store-link?url=mutt:{message_id}&amp;amp;title={subject}&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;org-protocol://store-link?url=message://{message_id}&amp;amp;title={subject}&amp;#39;&lt;/span&gt;
 &lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -63,7 +65,7 @@ script with a shortcut.  I chose Esc-L (the same as Alt-L).&lt;/p&gt;
 &lt;p&gt;Using &lt;code&gt;org-protocol&lt;/code&gt;, we instruct emacsclient to intercept URLs with
 the &lt;code&gt;org-protocol://&lt;/code&gt; scheme, as used by our &lt;code&gt;mutt-save-org-link.py&lt;/code&gt;
 script.  We also tell org-mode how to handle special URLs of the form
-&lt;code&gt;mutt:message-id+goes_here@mail.gmail.com&lt;/code&gt;.  Neomutt needs to know
+&lt;code&gt;message://message-id+goes_here@mail.gmail.com&lt;/code&gt;.  Neomutt needs to know
 which Maildir folder to open, so we ask &lt;code&gt;notmuch&lt;/code&gt; to tell us where the
 message is located.&lt;/p&gt;
 &lt;p&gt;In my &lt;code&gt;~/.emacs&lt;/code&gt; file I have:&lt;/p&gt;
@@ -72,12 +74,12 @@ message is located.&lt;/p&gt;
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="nv"&gt;org-protocol&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;; Call this function, which spawns neomutt, whenever org-mode&lt;/span&gt;
-&lt;span class="c1"&gt;; tries to open a link of the form mutt:message-id+goes_here@mail.gmail.com&lt;/span&gt;
+&lt;span class="c1"&gt;; tries to open a link of the form message://message-id+goes_here@mail.gmail.com&lt;/span&gt;
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;stefanv/mutt-open-message&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;message-id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="s"&gt;&amp;quot;In neomutt, open the email with the the given Message-ID&amp;quot;&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt;
-      &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;mail-file&lt;/span&gt;
+      &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;message-id&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;^/*&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;message-id&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+       &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;mail-file&lt;/span&gt;
         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;replace-regexp-in-string&lt;/span&gt;
          &lt;span class="s"&gt;&amp;quot;\n$&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;shell-command-to-string&lt;/span&gt;
                    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;notmuch search --output=files id:%s&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;message-id&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
@@ -96,9 +98,9 @@ message is located.&lt;/p&gt;
                    &lt;span class="s"&gt;&amp;quot;neomutt&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-R&amp;quot;&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-f&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;mail-dir&lt;/span&gt;
                    &lt;span class="s"&gt;&amp;quot;-e&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;push &amp;#39;%s&amp;#39;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;mutt-keystrokes&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
 
-&lt;span class="c1"&gt;; Whenever org-mode sees a link starting with `mutt:...`, it&lt;/span&gt;
+&lt;span class="c1"&gt;; Whenever org-mode sees a link starting with `message://`, it&lt;/span&gt;
 &lt;span class="c1"&gt;; calls our `mutt-open-message` function&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;org-add-link-type&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;mutt&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;stefanv/mutt-open-message&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;org-add-link-type&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;message&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;stefanv/mutt-open-message&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -107,6 +109,13 @@ command is &lt;code&gt;mu find -f l i:%s&lt;/code&gt; instead of notmuch; and if
 on Linux, then &lt;code&gt;setsid&lt;/code&gt; (which we use to launch a detached background
 process) is not going to work, and you will want to use a different
 terminal emulator.&lt;/p&gt;
+&lt;h2 id="other-systems"&gt;&lt;a name="#other-systems"&gt;&lt;/a&gt;Other Systems&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://vxlabs.com/"&gt;Charl Botha&lt;/a&gt; mentioned in the comments that, on
+MacOS,
+&lt;a href="https://orgmode.org/worg/org-contrib/org-mac-link.html"&gt;org-mac-link&lt;/a&gt;
+lets you grab hyperlinks from a wide variety of apps.  Email messages,
+specifically, are stored as &lt;code&gt;message://message-id&lt;/code&gt; URLs, which MacOS
+knows how to open.  This post has been updated to use the same link schema.&lt;/p&gt;
 &lt;h2 id="wrap-up"&gt;Wrap-up&lt;/h2&gt;
 &lt;p&gt;That&amp;rsquo;s it!  I&amp;rsquo;ve added the code
 to
