@@ -58,7 +58,7 @@ and make it executable using &lt;code&gt;chmod +x mutt-save-org-link.py&lt;/code
 
 &lt;p&gt;We then configure neomutt (typically in &lt;code&gt;~/.muttrc&lt;/code&gt;) to call the
 script with a shortcut.  I chose Esc-L (the same as Alt-L).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;macro index,pager \el &amp;quot;|~/scripts/mutt-save-org-link.py\n&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;macro&lt;/span&gt; &lt;span class="k"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;pager&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;el&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;|~/scripts/mutt-save-org-link.py\n&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

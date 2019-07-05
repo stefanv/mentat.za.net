@@ -43,19 +43,19 @@ It is typically available either on &lt;code&gt;http://localhost:4243&lt;/code&g
 &lt;code&gt;/var/run/docker.sock&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;One of the following two calls should therefore extract the image
 status:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -s http://localhost:4243/images/json?all=1
-echo -e &amp;quot;GET /images/json?all=1 HTTP/1.0\r\n&amp;quot; | nc -U /var/run/docker.sock
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;localhost&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4243&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="k"&gt;all&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;GET /images/json?all=1 HTTP/1.0\r\n&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;nc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;On my machine, the second query returns:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;HTTP/1.0 200 OK
-Content-Type: application/json
-Date: Sun, 18 Jan 2015 17:41:34 GMT
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;HTTP&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="n"&gt;OK&lt;/span&gt;
+&lt;span class="n"&gt;Content&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;Type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;
+&lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Sun&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt; &lt;span class="n"&gt;Jan&lt;/span&gt; &lt;span class="mi"&gt;2015&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;41&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;34&lt;/span&gt; &lt;span class="n"&gt;GMT&lt;/span&gt;
 
-[{&amp;quot;Created&amp;quot;:1421528518,&amp;quot;Id&amp;quot;:&amp;quot;d6244a9e8b5ff885579c8c7d203e4da703e3e80621449dbbd58c365dba5c83b1&amp;quot;,&amp;quot;ParentId&amp;quot;:&amp;quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&amp;quot;,&amp;quot;RepoTags&amp;quot;:[&amp;quot;datascience-base:latest&amp;quot;],&amp;quot;Size&amp;quot;:0,&amp;quot;VirtualSize&amp;quot;:2041562468}
-,{&amp;quot;Created&amp;quot;:1421528517,&amp;quot;Id&amp;quot;:&amp;quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&amp;quot;,&amp;quot;ParentId&amp;quot;:&amp;quot;d3cb571e5e16fce16a59c16c87e01ea4051d7cae016dba90688c9e4a53a921c4&amp;quot;,&amp;quot;RepoTags&amp;quot;:[&amp;quot;\u003cnone\u003e:\u003cnone\u003e&amp;quot;],&amp;quot;Size&amp;quot;:0,&amp;quot;VirtualSize&amp;quot;:2041562468}
-...
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Created&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1421528518&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;d6244a9e8b5ff885579c8c7d203e4da703e3e80621449dbbd58c365dba5c83b1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;ParentId&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;RepoTags&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;datascience-base:latest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Size&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;VirtualSize&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2041562468&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Created&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1421528517&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;ParentId&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;d3cb571e5e16fce16a59c16c87e01ea4051d7cae016dba90688c9e4a53a921c4&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;RepoTags&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;\u003cnone\u003e:\u003cnone\u003e&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Size&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;VirtualSize&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2041562468&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -98,13 +98,13 @@ image earlier, and these are its remaining dependencies.&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;docker images&lt;/code&gt; command allows us to
 &lt;a href="https://docs.docker.com/reference/commandline/cli/#images"&gt;list dangling images&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker images --filter dangling=true --quiet
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;images&lt;/span&gt; &lt;span class="c1"&gt;--filter dangling=true --quiet&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And we obtain a list of containers (images that were fired up and
 modified) using:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker ps -aq
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aq&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

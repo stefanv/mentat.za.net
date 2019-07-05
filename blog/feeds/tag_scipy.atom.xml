@@ -149,8 +149,8 @@ fashion.  Here are some relevant configuration snippets:&lt;/p&gt;
 the &lt;code&gt;my-packages&lt;/code&gt; list, or add them to &lt;code&gt;el-get-sources&lt;/code&gt;, which in addition
 allows further customization upon successful loading of the package.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://software-carpentry.org/2012/09/whats-in-your-stack/"&gt;What&amp;rsquo;s in your stack?&lt;/a&gt; Here&amp;rsquo;s my list of Emacs packages:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Org Mode, Ethan&amp;#39;s wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
-JS2
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Org&lt;/span&gt; &lt;span class="k"&gt;Mode&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Ethan&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;wspace&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Tab&lt;/span&gt; &lt;span class="n"&gt;Bar&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;Column&lt;/span&gt; &lt;span class="n"&gt;Marker&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;Max&lt;/span&gt; &lt;span class="n"&gt;Frame&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;EIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="n"&gt;JS2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

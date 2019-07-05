@@ -128,19 +128,19 @@ It is typically available either on <code>http://localhost:4243</code> or
 <code>/var/run/docker.sock</code>.</p>
 <p>One of the following two calls should therefore extract the image
 status:</p>
-<div class="highlight"><pre><span></span>curl -s http://localhost:4243/images/json?all=1
-echo -e &quot;GET /images/json?all=1 HTTP/1.0\r\n&quot; | nc -U /var/run/docker.sock
+<div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">4243</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">json</span><span class="o">?</span><span class="k">all</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="ss">&quot;GET /images/json?all=1 HTTP/1.0\r\n&quot;</span> <span class="o">|</span> <span class="n">nc</span> <span class="o">-</span><span class="n">U</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">docker</span><span class="p">.</span><span class="n">sock</span>
 </pre></div>
 
 
 <p>On my machine, the second query returns:</p>
-<div class="highlight"><pre><span></span>HTTP/1.0 200 OK
-Content-Type: application/json
-Date: Sun, 18 Jan 2015 17:41:34 GMT
+<div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Content</span><span class="o">-</span><span class="k">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="nb">Date</span><span class="p">:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">18</span> <span class="n">Jan</span> <span class="mi">2015</span> <span class="mi">17</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">34</span> <span class="n">GMT</span>
 
-[{&quot;Created&quot;:1421528518,&quot;Id&quot;:&quot;d6244a9e8b5ff885579c8c7d203e4da703e3e80621449dbbd58c365dba5c83b1&quot;,&quot;ParentId&quot;:&quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&quot;,&quot;RepoTags&quot;:[&quot;datascience-base:latest&quot;],&quot;Size&quot;:0,&quot;VirtualSize&quot;:2041562468}
-,{&quot;Created&quot;:1421528517,&quot;Id&quot;:&quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&quot;,&quot;ParentId&quot;:&quot;d3cb571e5e16fce16a59c16c87e01ea4051d7cae016dba90688c9e4a53a921c4&quot;,&quot;RepoTags&quot;:[&quot;\u003cnone\u003e:\u003cnone\u003e&quot;],&quot;Size&quot;:0,&quot;VirtualSize&quot;:2041562468}
-...
+<span class="p">[</span><span class="err">{</span><span class="ss">&quot;Created&quot;</span><span class="p">:</span><span class="mi">1421528518</span><span class="p">,</span><span class="ss">&quot;Id&quot;</span><span class="p">:</span><span class="ss">&quot;d6244a9e8b5ff885579c8c7d203e4da703e3e80621449dbbd58c365dba5c83b1&quot;</span><span class="p">,</span><span class="ss">&quot;ParentId&quot;</span><span class="p">:</span><span class="ss">&quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&quot;</span><span class="p">,</span><span class="ss">&quot;RepoTags&quot;</span><span class="p">:[</span><span class="ss">&quot;datascience-base:latest&quot;</span><span class="p">],</span><span class="ss">&quot;Size&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="ss">&quot;VirtualSize&quot;</span><span class="p">:</span><span class="mi">2041562468</span><span class="err">}</span>
+<span class="p">,</span><span class="err">{</span><span class="ss">&quot;Created&quot;</span><span class="p">:</span><span class="mi">1421528517</span><span class="p">,</span><span class="ss">&quot;Id&quot;</span><span class="p">:</span><span class="ss">&quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&quot;</span><span class="p">,</span><span class="ss">&quot;ParentId&quot;</span><span class="p">:</span><span class="ss">&quot;d3cb571e5e16fce16a59c16c87e01ea4051d7cae016dba90688c9e4a53a921c4&quot;</span><span class="p">,</span><span class="ss">&quot;RepoTags&quot;</span><span class="p">:[</span><span class="ss">&quot;\u003cnone\u003e:\u003cnone\u003e&quot;</span><span class="p">],</span><span class="ss">&quot;Size&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="ss">&quot;VirtualSize&quot;</span><span class="p">:</span><span class="mi">2041562468</span><span class="err">}</span>
+<span class="p">...</span>
 </pre></div>
 
 
@@ -183,13 +183,13 @@ image earlier, and these are its remaining dependencies.</p>
 
 <p>The <code>docker images</code> command allows us to
 <a href="https://docs.docker.com/reference/commandline/cli/#images">list dangling images</a>:</p>
-<div class="highlight"><pre><span></span>docker images --filter dangling=true --quiet
+<div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">images</span> <span class="c1">--filter dangling=true --quiet</span>
 </pre></div>
 
 
 <p>And we obtain a list of containers (images that were fired up and
 modified) using:</p>
-<div class="highlight"><pre><span></span>docker ps -aq
+<div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">ps</span> <span class="o">-</span><span class="n">aq</span>
 </pre></div>
 
 
@@ -266,6 +266,9 @@ process to get rid of its left-over dependencies.</p></div>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/">Designing for Intelligent Augmentation</a>
+      </li>
+      <li class="post">
           <a href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/">Linking to emails in org-mode (using neomutt)</a>
       </li>
       <li class="post">
@@ -276,9 +279,6 @@ process to get rid of its left-over dependencies.</p></div>
       </li>
       <li class="post">
           <a href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Compile TensorFlow from source with gcc6.1</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
       </li>
     </ul>
   </section>
@@ -294,7 +294,7 @@ process to get rid of its left-over dependencies.</p></div>
 -->
   <section>
   <h1>Tags</h1>
-    <a href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>,    <a href="https://mentat.za.net/blog/tag/web.html">web</a>,    <a href="https://mentat.za.net/blog/tag/javascript.html">javascript</a>,    <a href="https://mentat.za.net/blog/tag/websocket.html">websocket</a>,    <a href="https://mentat.za.net/blog/tag/redux.html">redux</a>,    <a href="https://mentat.za.net/blog/tag/react.html">react</a>,    <a href="https://mentat.za.net/blog/tag/tensorflow.html">tensorflow</a>,    <a href="https://mentat.za.net/blog/tag/drm.html">drm</a>,    <a href="https://mentat.za.net/blog/tag/amazon.html">amazon</a>,    <a href="https://mentat.za.net/blog/tag/kindle.html">kindle</a>,    <a href="https://mentat.za.net/blog/tag/ebooks.html">ebooks</a>,    <a href="https://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="https://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="https://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="https://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="https://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="https://mentat.za.net/blog/tag/science.html">science</a>,    <a href="https://mentat.za.net/blog/tag/coding.html">coding</a>  </section>
+    <a href="https://mentat.za.net/blog/tag/artifial-intelligence.html">artifial intelligence</a>,    <a href="https://mentat.za.net/blog/tag/machine-learning.html">machine learning</a>,    <a href="https://mentat.za.net/blog/tag/design.html">design</a>,    <a href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>,    <a href="https://mentat.za.net/blog/tag/web.html">web</a>,    <a href="https://mentat.za.net/blog/tag/javascript.html">javascript</a>,    <a href="https://mentat.za.net/blog/tag/websocket.html">websocket</a>,    <a href="https://mentat.za.net/blog/tag/redux.html">redux</a>,    <a href="https://mentat.za.net/blog/tag/react.html">react</a>,    <a href="https://mentat.za.net/blog/tag/tensorflow.html">tensorflow</a>,    <a href="https://mentat.za.net/blog/tag/drm.html">drm</a>,    <a href="https://mentat.za.net/blog/tag/amazon.html">amazon</a>,    <a href="https://mentat.za.net/blog/tag/kindle.html">kindle</a>,    <a href="https://mentat.za.net/blog/tag/ebooks.html">ebooks</a>,    <a href="https://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="https://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="https://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="https://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="https://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="https://mentat.za.net/blog/tag/science.html">science</a>,    <a href="https://mentat.za.net/blog/tag/coding.html">coding</a>  </section>
 
 <!--  
 
@@ -347,7 +347,7 @@ process to get rid of its left-over dependencies.</p></div>
 </aside>    </div>
   </div>
   <footer role="contentinfo"><p>
-    Copyright &copy;  2012&ndash;2018  Stefan van der Walt &mdash;
+    Copyright &copy;  2012&ndash;2019  Stefan van der Walt &mdash;
   <span class="credit">Powered by <a href="https://getpelican.com">Pelican</a></span>
 </p></footer>
   <script src="https://mentat.za.net/blog/theme/js/modernizr-2.0.js"></script>

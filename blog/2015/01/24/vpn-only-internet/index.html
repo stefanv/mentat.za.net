@@ -96,7 +96,7 @@ leaving through the VPN (since I was sure I&rsquo;d notice <em>that</em> pretty
 quickly).</p>
 <p>I&rsquo;d have preferred to use firewalld, which is neatly integrated into
 Ubuntu, but as of 01/24/2015 it 
-<a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html">doesn&rsquo;t allow filtering outbound traffic</a><sup id="fnref:firewalld_direct_zones"><a class="footnote-ref" href="#fn:firewalld_direct_zones" rel="footnote">1</a></sup>. What
+<a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html">doesn&rsquo;t allow filtering outbound traffic</a><sup id="fnref:firewalld_direct_zones"><a class="footnote-ref" href="#fn:firewalld_direct_zones">1</a></sup>. What
 follows, then, is a simple approach implementing the following rule:</p>
 <blockquote>
 <p>Block wifi traffic unless it goes to either the local
@@ -133,26 +133,26 @@ iptables -A OUTPUT -p tcp -o wlan1 -j DROP
 <p>Make sure the script is set to executable (<code>chmod +x fw-up</code>).</p>
 <p>Add a symlink to <code>if-up.d</code> to ensure that the firewall gets built
 whenever the network is reconfigured:</p>
-<div class="highlight"><pre><span></span>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+<div class="highlight"><pre><span></span><span class="nv">sudo</span> <span class="nv">ln</span> <span class="o">-</span><span class="nv">s</span> <span class="o">~/</span><span class="nv">scripts</span><span class="o">/</span><span class="nv">fw</span><span class="o">-</span><span class="nv">up</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">network</span><span class="o">/</span><span class="k">if</span><span class="o">-</span><span class="nv">up</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">iptables</span>
 </pre></div>
 
 
 <p>Now, whenever you connect to a wifi hotspot, internet traffic will be
 blocked until you fire up your VPN.  If, on occasion, you need to work
 without the VPN, simply raze the firewall:</p>
-<div class="highlight"><pre><span></span>sudo iptables -F
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">F</span>
 </pre></div>
 
 
 <p><strong>Update:</strong> Typically, you wouldn&rsquo;t want the firewall to go up when
   connecting to the wireless at work, so I added the following conditional
   in the <code>fw-up</code> script:</p>
-<div class="highlight"><pre><span></span>iptables -F
+<div class="highlight"><pre><span></span><span class="nv">iptables</span> <span class="o">-</span><span class="nv">F</span>
 
-if [[ `iwgetid -r` != &#39;WorkSSID&#39; ]]; then
-   # Firewall rules go here
+<span class="k">if</span> [[ `<span class="nv">iwgetid</span> <span class="o">-</span><span class="nv">r</span>` <span class="o">!=</span> <span class="s1">&#39;</span><span class="s">WorkSSID</span><span class="s1">&#39;</span> ]]<span class="c1">; then</span>
+   # <span class="nv">Firewall</span> <span class="nv">rules</span> <span class="nv">go</span> <span class="nv">here</span>
    ...
-fi
+<span class="nv">fi</span>
 </pre></div>
 
 
@@ -164,7 +164,7 @@ fi
 <code>vpn_only</code>, and to assign your home wifi SSID to it.  A direct rule that
 blocks any non-VPN traffic can then be added to the new zone (this
 should be possible soon, and is on the firewalld
-<a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO">TODO list</a>).&#160;<a class="footnote-backref" href="#fnref:firewalld_direct_zones" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO">TODO list</a>).&#160;<a class="footnote-backref" href="#fnref:firewalld_direct_zones" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div>
@@ -198,6 +198,9 @@ should be possible soon, and is on the firewalld
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/">Designing for Intelligent Augmentation</a>
+      </li>
+      <li class="post">
           <a href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/">Linking to emails in org-mode (using neomutt)</a>
       </li>
       <li class="post">
@@ -208,9 +211,6 @@ should be possible soon, and is on the firewalld
       </li>
       <li class="post">
           <a href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Compile TensorFlow from source with gcc6.1</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
       </li>
     </ul>
   </section>
@@ -226,7 +226,7 @@ should be possible soon, and is on the firewalld
 -->
   <section>
   <h1>Tags</h1>
-    <a href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>,    <a href="https://mentat.za.net/blog/tag/web.html">web</a>,    <a href="https://mentat.za.net/blog/tag/javascript.html">javascript</a>,    <a href="https://mentat.za.net/blog/tag/websocket.html">websocket</a>,    <a href="https://mentat.za.net/blog/tag/redux.html">redux</a>,    <a href="https://mentat.za.net/blog/tag/react.html">react</a>,    <a href="https://mentat.za.net/blog/tag/tensorflow.html">tensorflow</a>,    <a href="https://mentat.za.net/blog/tag/drm.html">drm</a>,    <a href="https://mentat.za.net/blog/tag/amazon.html">amazon</a>,    <a href="https://mentat.za.net/blog/tag/kindle.html">kindle</a>,    <a href="https://mentat.za.net/blog/tag/ebooks.html">ebooks</a>,    <a href="https://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="https://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="https://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="https://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="https://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="https://mentat.za.net/blog/tag/science.html">science</a>,    <a href="https://mentat.za.net/blog/tag/coding.html">coding</a>  </section>
+    <a href="https://mentat.za.net/blog/tag/artifial-intelligence.html">artifial intelligence</a>,    <a href="https://mentat.za.net/blog/tag/machine-learning.html">machine learning</a>,    <a href="https://mentat.za.net/blog/tag/design.html">design</a>,    <a href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>,    <a href="https://mentat.za.net/blog/tag/web.html">web</a>,    <a href="https://mentat.za.net/blog/tag/javascript.html">javascript</a>,    <a href="https://mentat.za.net/blog/tag/websocket.html">websocket</a>,    <a href="https://mentat.za.net/blog/tag/redux.html">redux</a>,    <a href="https://mentat.za.net/blog/tag/react.html">react</a>,    <a href="https://mentat.za.net/blog/tag/tensorflow.html">tensorflow</a>,    <a href="https://mentat.za.net/blog/tag/drm.html">drm</a>,    <a href="https://mentat.za.net/blog/tag/amazon.html">amazon</a>,    <a href="https://mentat.za.net/blog/tag/kindle.html">kindle</a>,    <a href="https://mentat.za.net/blog/tag/ebooks.html">ebooks</a>,    <a href="https://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="https://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="https://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="https://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="https://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="https://mentat.za.net/blog/tag/science.html">science</a>,    <a href="https://mentat.za.net/blog/tag/coding.html">coding</a>  </section>
 
 <!--  
 
@@ -279,7 +279,7 @@ should be possible soon, and is on the firewalld
 </aside>    </div>
   </div>
   <footer role="contentinfo"><p>
-    Copyright &copy;  2012&ndash;2018  Stefan van der Walt &mdash;
+    Copyright &copy;  2012&ndash;2019  Stefan van der Walt &mdash;
   <span class="credit">Powered by <a href="https://getpelican.com">Pelican</a></span>
 </p></footer>
   <script src="https://mentat.za.net/blog/theme/js/modernizr-2.0.js"></script>

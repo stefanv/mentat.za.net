@@ -94,24 +94,24 @@
 one some systems (including my Debian Testing install).</p>
 <p>To work around the issue, modify <code>tensorflow/workspace.bzl</code> and
 change the re2 description to:</p>
-<div class="highlight"><pre><span></span>native.git_repository(
-  name = &quot;com_googlesource_code_re2&quot;,
-  remote = &quot;https://github.com/stefanv/re2.git&quot;,
-  commit = &quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;,
-)
+<div class="highlight"><pre><span></span><span class="n">native</span><span class="p">.</span><span class="n">git_repository</span><span class="p">(</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="ss">&quot;com_googlesource_code_re2&quot;</span><span class="p">,</span>
+  <span class="n">remote</span> <span class="o">=</span> <span class="ss">&quot;https://github.com/stefanv/re2.git&quot;</span><span class="p">,</span>
+  <span class="k">commit</span> <span class="o">=</span> <span class="ss">&quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 
 
 <p>The re2 library is now downloaded from my fork, which applies a
 <a href="https://github.com/stefanv/re2/commit/86503cb89d82b723ae0bce35e1e09524910cd319">one line patch</a>.</p>
 <p>Compile the TensorFlow Python package as usual with:</p>
-<div class="highlight"><pre><span></span>bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
-bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+<div class="highlight"><pre><span></span><span class="n">bazel</span> <span class="n">build</span> <span class="o">-</span><span class="k">c</span> <span class="n">opt</span> <span class="o">//</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">pip_package</span><span class="p">:</span><span class="n">build_pip_package</span>
+<span class="n">bazel</span><span class="o">-</span><span class="n">bin</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">pip_package</span><span class="o">/</span><span class="n">build_pip_package</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tensorflow_pkg</span>
 </pre></div>
 
 
 <p>After installing the pip wheel using</p>
-<div class="highlight"><pre><span></span>pip install /tmp/tensorflow_pkg/*.whl
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tensorflow_pkg</span><span class="cm">/*.whl</span>
 </pre></div>
 
 
@@ -151,6 +151,9 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/">Designing for Intelligent Augmentation</a>
+      </li>
+      <li class="post">
           <a href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/">Linking to emails in org-mode (using neomutt)</a>
       </li>
       <li class="post">
@@ -161,9 +164,6 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
       </li>
       <li class="post">
           <a href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Compile TensorFlow from source with gcc6.1</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">Amazon owns your ebooks</a>
       </li>
     </ul>
   </section>
@@ -179,7 +179,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 -->
   <section>
   <h1>Tags</h1>
-    <a href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>,    <a href="https://mentat.za.net/blog/tag/web.html">web</a>,    <a href="https://mentat.za.net/blog/tag/javascript.html">javascript</a>,    <a href="https://mentat.za.net/blog/tag/websocket.html">websocket</a>,    <a href="https://mentat.za.net/blog/tag/redux.html">redux</a>,    <a href="https://mentat.za.net/blog/tag/react.html">react</a>,    <a href="https://mentat.za.net/blog/tag/tensorflow.html">tensorflow</a>,    <a href="https://mentat.za.net/blog/tag/drm.html">drm</a>,    <a href="https://mentat.za.net/blog/tag/amazon.html">amazon</a>,    <a href="https://mentat.za.net/blog/tag/kindle.html">kindle</a>,    <a href="https://mentat.za.net/blog/tag/ebooks.html">ebooks</a>,    <a href="https://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="https://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="https://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="https://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="https://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="https://mentat.za.net/blog/tag/science.html">science</a>,    <a href="https://mentat.za.net/blog/tag/coding.html">coding</a>  </section>
+    <a href="https://mentat.za.net/blog/tag/artifial-intelligence.html">artifial intelligence</a>,    <a href="https://mentat.za.net/blog/tag/machine-learning.html">machine learning</a>,    <a href="https://mentat.za.net/blog/tag/design.html">design</a>,    <a href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>,    <a href="https://mentat.za.net/blog/tag/web.html">web</a>,    <a href="https://mentat.za.net/blog/tag/javascript.html">javascript</a>,    <a href="https://mentat.za.net/blog/tag/websocket.html">websocket</a>,    <a href="https://mentat.za.net/blog/tag/redux.html">redux</a>,    <a href="https://mentat.za.net/blog/tag/react.html">react</a>,    <a href="https://mentat.za.net/blog/tag/tensorflow.html">tensorflow</a>,    <a href="https://mentat.za.net/blog/tag/drm.html">drm</a>,    <a href="https://mentat.za.net/blog/tag/amazon.html">amazon</a>,    <a href="https://mentat.za.net/blog/tag/kindle.html">kindle</a>,    <a href="https://mentat.za.net/blog/tag/ebooks.html">ebooks</a>,    <a href="https://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="https://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="https://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="https://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="https://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="https://mentat.za.net/blog/tag/science.html">science</a>,    <a href="https://mentat.za.net/blog/tag/coding.html">coding</a>  </section>
 
 <!--  
 
@@ -232,7 +232,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 </aside>    </div>
   </div>
   <footer role="contentinfo"><p>
-    Copyright &copy;  2012&ndash;2018  Stefan van der Walt &mdash;
+    Copyright &copy;  2012&ndash;2019  Stefan van der Walt &mdash;
   <span class="credit">Powered by <a href="https://getpelican.com">Pelican</a></span>
 </p></footer>
   <script src="https://mentat.za.net/blog/theme/js/modernizr-2.0.js"></script>
