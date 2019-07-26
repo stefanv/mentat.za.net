@@ -1,300 +1,241 @@
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>VPN-only access to the internet &mdash; Stéfan van der Walt</title>
-  <meta name="author" content="Stefan van der Walt">
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://mentat.za.net/blog/atom.xml" type="application/atom+xml" rel="alternate"
-        title="Stéfan van der Walt Atom Feed" />
+		<title>
+				VPN-only access to the internet &middot; Stéfan&#39;s blog
+		</title>
 
+		
+  		<link rel="stylesheet" href="/blog/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+		<link rel="stylesheet" href="/blog/custom.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Stéfan&#39;s blog" />
+	</head>
 
-
-    <link href="https://mentat.za.net/blog/favicon.png" rel="icon">
-
-  <link href="https://mentat.za.net/blog/theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="https://mentat.za.net/blog/">Stéfan van der Walt</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="https://mentat.za.net/blog/atom.xml" rel="subscribe-atom">Atom Feed</a></li>
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/blog/">
+					<h2 class="nav-title">Stéfan&#39;s blog</h2>
+				</a>
+				<ul>
+    <li><a href="https://mentat.za.net">mentat.za.net</a></li>
+    <li><a href="/blog/atom.xml">Atom / RSS feed</a></li>
 </ul>
 
+			</div>
+		</nav>
 
-<!-- <form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:mentat.za.net/blog" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
--->
+        
 
-<script>
-  (function() {
-    var cx = '001734058120475597871:piammqv2npu';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
+<main>
+	<div class="post">
+		<div class="post-info">
+</div>
 
-<style type="text/css">
-  form.gsc-search-box { width: 20em; }
-</style>
+		<h1 class="post-title">VPN-only access to the internet</h1>
 
-<div style="inline: block;"><gcse:searchbox-only></gcse:searchbox-only></div>
+<div class="post-date">
+  
+    January 24, 2015
+  
+</div>
 
-<ul class="main-navigation">
-    <li><a href="https://mentat.za.net/blog">Blog</a></li>
-    <li><a href="https://mentat.za.net">mentat.za.net</a></li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">VPN-only access to the internet</h1>
-    <p class="meta">
-<time datetime="2015-01-24T00:00:00-08:00" pubdate>Sat 24 January 2015</time>      &middot;
-      <span class="categories" style="text-transform: lowercase;">
-        <a class="category"
-           style="text-decoration: none;"
-           href="https://mentat.za.net/blog/tag/linux.html">linux</a>      </span>
+<div class="post-tags">
+  
+    <div class="post-tag">
+      <a href=/blog/tags/linux>
+        #linux
+      </a>
+    </div>
+  
+</div>
 
-    </p>
-</header>
 
-  <div class="entry-content"><p>tl;dr A firewall setup that allows traffic to leave <em>only</em> via the VPN.
-</p>
-<p>A few days ago, I noticed that my outbound email wasn&rsquo;t being
+		
+
+		<p>A few days ago, I noticed that my outbound email wasn&rsquo;t being
 delivered&mdash;it seems as if my ISP blocks access to some outbound ports.
 An easy workaround is to route traffic through the work VPN, but
 knowing myself I&rsquo;d forget to switch it on, leaving my outbound mail
 stranded.</p>
+
 <p>I needed a way of blocking <em>any</em> access to the internet, unless it was
 leaving through the VPN (since I was sure I&rsquo;d notice <em>that</em> pretty
 quickly).</p>
+
 <p>I&rsquo;d have preferred to use firewalld, which is neatly integrated into
-Ubuntu, but as of 01/24/2015 it 
-<a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html">doesn&rsquo;t allow filtering outbound traffic</a><sup id="fnref:firewalld_direct_zones"><a class="footnote-ref" href="#fn:firewalld_direct_zones">1</a></sup>. What
+Ubuntu, but as of 01/24/2015 it
+<a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html">doesn&rsquo;t allow filtering outbound traffic</a><sup class="footnote-ref" id="fnref:firewalld-direct-zones"><a href="#fn:firewalld-direct-zones">1</a></sup>. What
 follows, then, is a simple approach implementing the following rule:</p>
+
 <blockquote>
 <p>Block wifi traffic unless it goes to either the local
 network or the VPN.</p>
 </blockquote>
+
 <p>Create a script (I called it <code>~/scripts/fw-up</code>) that sets up the
 firewall:</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="c1"># Clear any existing rules</span>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007020">#!/bin/bash
+</span><span style="color:#007020"></span>
+<span style="color:#60a0b0;font-style:italic"># Clear any existing rules</span>
 iptables -F
 
-<span class="c1"># Allow outbound DNS</span>
-iptables -A OUTPUT -p udp --dport <span class="m">53</span> -j ACCEPT
-iptables -A INPUT -p udp --sport <span class="m">53</span> -j ACCEPT
+<span style="color:#60a0b0;font-style:italic"># Allow outbound DNS</span>
+iptables -A OUTPUT -p udp --dport <span style="color:#40a070">53</span> -j ACCEPT
+iptables -A INPUT -p udp --sport <span style="color:#40a070">53</span> -j ACCEPT
 
-<span class="c1"># Allow TCP access to the work VPN</span>
-<span class="c1"># Replace X.Y below with your VPN address range</span>
+<span style="color:#60a0b0;font-style:italic"># Allow TCP access to the work VPN</span>
+<span style="color:#60a0b0;font-style:italic"># Replace X.Y below with your VPN address range</span>
 iptables -A OUTPUT -p tcp -d X.Y.0.0/16 -o wlan1 -j ACCEPT
 
-<span class="c1"># Allow any traffic destined for the vpn to go out</span>
+<span style="color:#60a0b0;font-style:italic"># Allow any traffic destined for the vpn to go out</span>
 iptables -A OUTPUT -o vpn0 -j ACCEPT
 
-<span class="c1"># Allow local traffic</span>
-iptables -A OUTPUT -p tcp -o wlan1 -d <span class="m">10</span>.0.0.0/8 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d <span class="m">172</span>.16.0.0/12 -j ACCEPT
-iptables -A OUTPUT -p tcp -o wlan1 -d <span class="m">192</span>.168.0.0/16 -j ACCEPT
+<span style="color:#60a0b0;font-style:italic"># Allow local traffic</span>
+iptables -A OUTPUT -p tcp -o wlan1 -d <span style="color:#40a070">10</span>.0.0.0/8 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d <span style="color:#40a070">172</span>.16.0.0/12 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d <span style="color:#40a070">192</span>.168.0.0/16 -j ACCEPT
 
-<span class="c1"># Drop everything else on the wifi</span>
-iptables -A OUTPUT -p tcp -o wlan1 -j DROP
-</pre></div>
-
-
+<span style="color:#60a0b0;font-style:italic"># Drop everything else on the wifi</span>
+iptables -A OUTPUT -p tcp -o wlan1 -j DROP</code></pre></div>
 <p>Make sure the script is set to executable (<code>chmod +x fw-up</code>).</p>
+
 <p>Add a symlink to <code>if-up.d</code> to ensure that the firewall gets built
 whenever the network is reconfigured:</p>
-<div class="highlight"><pre><span></span><span class="nv">sudo</span> <span class="nv">ln</span> <span class="o">-</span><span class="nv">s</span> <span class="o">~/</span><span class="nv">scripts</span><span class="o">/</span><span class="nv">fw</span><span class="o">-</span><span class="nv">up</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">network</span><span class="o">/</span><span class="k">if</span><span class="o">-</span><span class="nv">up</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">iptables</span>
-</pre></div>
 
+<pre><code>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+</code></pre>
 
 <p>Now, whenever you connect to a wifi hotspot, internet traffic will be
 blocked until you fire up your VPN.  If, on occasion, you need to work
 without the VPN, simply raze the firewall:</p>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">F</span>
-</pre></div>
 
+<pre><code>sudo iptables -F
+</code></pre>
 
 <p><strong>Update:</strong> Typically, you wouldn&rsquo;t want the firewall to go up when
   connecting to the wireless at work, so I added the following conditional
   in the <code>fw-up</code> script:</p>
-<div class="highlight"><pre><span></span><span class="nv">iptables</span> <span class="o">-</span><span class="nv">F</span>
 
-<span class="k">if</span> [[ `<span class="nv">iwgetid</span> <span class="o">-</span><span class="nv">r</span>` <span class="o">!=</span> <span class="s1">&#39;</span><span class="s">WorkSSID</span><span class="s1">&#39;</span> ]]<span class="c1">; then</span>
-   # <span class="nv">Firewall</span> <span class="nv">rules</span> <span class="nv">go</span> <span class="nv">here</span>
+<pre><code>iptables -F
+
+if [[ `iwgetid -r` != 'WorkSSID' ]]; then
+   # Firewall rules go here
    ...
-<span class="nv">fi</span>
-</pre></div>
+fi
+</code></pre>
 
-
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:firewalld_direct_zones">
-<p>The idea would be to set up a zone, say
-<code>vpn_only</code>, and to assign your home wifi SSID to it.  A direct rule that
+<p><code>vpn_only</code>, and to assign your home wifi SSID to it.  A direct rule that
 blocks any non-VPN traffic can then be added to the new zone (this
 should be possible soon, and is on the firewalld
-<a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO">TODO list</a>).&#160;<a class="footnote-backref" href="#fnref:firewalld_direct_zones" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
+<a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO">TODO list</a>).</p>
+
+<!---
+# Create a new zone
+
+**Direct rules not supported for zones yet**
+
+
+
+``sgs3``
+
+```
+sudo firewall-cmd --permanent --new-zone=vpn_only
+sudo firewall-cmd --reload
+```
+
+In NetworkManager, go to the wifi connection and set its zone to
+``vpn_only``.
+
+(Alternatively, directly edit
+``/etc/NetworkManager/system-connections/<ssid>``)
+
+
+Restart NetworkManager:
+
+```
+$ sudo service network-manager restart
+```
+
+When your connection comes back up, you should see it in the new zone:
+
+```
+sudo firewall-cmd --zone=vpn_only --list-interfaces
+```
+
+Firewalld has a *direct* mode which gives us access to the inner
+workings of the firewall, among other things allowing us to manipulate
+outgoing and IP-based rules.
+
+sudo firewall-cmd --zone=vpn_only --permanent --add-rich-rule='rule family="ipv4" destination address="136.152.0.0/16" invert="True" port port="1-65535" protocol="tcp" reject'
+
+rule family="ipv4" destination NOT address="136.152.0.0/16" port
+port="1-65535" protocol="tcp" reject
+-->
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:firewalld-direct-zones">The idea would be to set up a zone, say
+ <a class="footnote-return" href="#fnref:firewalld-direct-zones"><sup>[return]</sup></a></li>
 </ol>
-</div></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">
-        Stefan van der Walt
-    </span>
-  </span>
-<time datetime="2015-01-24T00:00:00-08:00" pubdate>Sat 24 January 2015</time>
-<!--
-  <span class="categories">
-    <a class='category' href='https://mentat.za.net/blog/category/misc.html'>misc</a>
-  </span>
--->
-
-  <span class="categories">
-    <a class="category" href="https://mentat.za.net/blog/tag/linux.html">linux</a>  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
-  </section>
 </div>
-<aside class="sidebar">
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/">Designing for Intelligent Augmentation</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/">Linking to emails in org-mode (using neomutt)</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/">Search headers in org-mode</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/">WebSockets in Python (and some Redux)</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Compile TensorFlow from source with gcc6.1</a>
-      </li>
-    </ul>
-  </section>
-<!--
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="https://mentat.za.net/blog/category/misc.html">misc</a></li>
-    </ul>
-  </section>
- 
--->
-  <section>
-  <h1>Tags</h1>
-    <a href="https://mentat.za.net/blog/tag/artificial-intelligence.html">artificial intelligence</a>,    <a href="https://mentat.za.net/blog/tag/machine-learning.html">machine learning</a>,    <a href="https://mentat.za.net/blog/tag/design.html">design</a>,    <a href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>,    <a href="https://mentat.za.net/blog/tag/web.html">web</a>,    <a href="https://mentat.za.net/blog/tag/javascript.html">javascript</a>,    <a href="https://mentat.za.net/blog/tag/websocket.html">websocket</a>,    <a href="https://mentat.za.net/blog/tag/redux.html">redux</a>,    <a href="https://mentat.za.net/blog/tag/react.html">react</a>,    <a href="https://mentat.za.net/blog/tag/tensorflow.html">tensorflow</a>,    <a href="https://mentat.za.net/blog/tag/drm.html">drm</a>,    <a href="https://mentat.za.net/blog/tag/amazon.html">amazon</a>,    <a href="https://mentat.za.net/blog/tag/kindle.html">kindle</a>,    <a href="https://mentat.za.net/blog/tag/ebooks.html">ebooks</a>,    <a href="https://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="https://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="https://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="https://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="https://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="https://mentat.za.net/blog/tag/science.html">science</a>,    <a href="https://mentat.za.net/blog/tag/coding.html">coding</a>  </section>
-
-<!--  
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
-    </ul>
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = 'https://mentat.za.net/blog/theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
-
-          github.showRepos({
-              user: 'stefanv',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="https://mentat.za.net/blog/theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
- -->
 
 
-<div style="vertical-align: -40%; display: inline;"><a href="https://twitter.com/stefanvdwalt"
-              class="twitter-follow-button" data-show-count="false"
-              data-size="large" data-dnt="true">Follow @stefanvdwalt</a>
-<script>!function(d,s,id){var
-  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,
-  'script', 'twitter-wjs');</script></div>
+		<script type="text/javascript">
+  var disqus_identifier = "http://stefanv.github.com/blog/2015/01/24/vpn-only-internet/";
+</script>
 
-<div style="display: inline; vertical-align: -40%;"><iframe src="https://ghbtns.com/github-btn.html?user=stefanv&type=follow&size=large"
-  allowtransparency="true" frameborder="0" scrolling="0" width="180px"
-  height="30px"></iframe></div>
+<div style="border-top: 0.5px solid #e5e5e5; padding-top: 1em;">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "stefanvdwalt" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+	</div>
+
+	<div class="pagination">
+		<a href="/blog/2015/01/18/docker-image-tree/" class="left arrow">&#8592;</a>
+		<a href="/blog/2016/02/26/matplotlib-on-osx/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
 
 
-<!--  
-<section>
-    <a href="https://twitter.com/stefanvdwalt" class="twitter-follow-button" data-show-count="true">Follow @stefanvdwalt</a>
-</section>
--->
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2012&ndash;2019  Stefan van der Walt &mdash;
-  <span class="credit">Powered by <a href="https://getpelican.com">Pelican</a></span>
-</p></footer>
-  <script src="https://mentat.za.net/blog/theme/js/modernizr-2.0.js"></script>
-  <script src="https://mentat.za.net/blog/theme/js/ender.js"></script>
-  <script src="https://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	  var disqus_shortname = 'stefanvdwalt';
-          var disqus_identifier = 'http://stefanv.github.com/blog/2015/01/24/vpn-only-internet/';
-          var disqus_url = 'https://mentat.za.net/blog/2015/01/24/vpn-only-internet/';
-          var disqus_title = "VPN-only access to the internet";
-	  (function() {
-	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
-	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	   })();
-	</script>
-</body>
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-07-26 11:19:23.176606745 -0700 PDT m=&#43;0.078524864">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
 </html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>image-processing on Stéfan&#39;s blog</title>
+    <link>http://mentat.za.net/blog/tags/image-processing/</link>
+    <description>Recent content in image-processing on Stéfan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Oct 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://mentat.za.net/blog/tags/image-processing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Replicable super-resolution paper</title>
+      <link>http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</link>
+      <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</guid>
+      <description>Where I summarize 5 years of my life in 10 pages.</description>
+    </item>
+    
+    <item>
+      <title>scikits-image 0.7</title>
+      <link>http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</link>
+      <pubDate>Sun, 30 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</guid>
+      <description>We&amp;rsquo;re happy to announce the 7th version of scikits-image!
+Scikits-image is an image processing toolbox for SciPy that includes algorithms for segmentation, geometric transformations, color space manipulation, analysis, filtering, morphology, feature detection, and more.
+For more information, examples, and documentation, please visit our website.
+New Features It&amp;rsquo;s been only 3 months since scikits-image 0.6 was released, but in that short time, we&amp;rsquo;ve managed to add plenty of new features and enhancements, including</description>
+    </item>
+    
+  </channel>
+</rss>

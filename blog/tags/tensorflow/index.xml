@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tensorflow on Stéfan&#39;s blog</title>
+    <link>http://mentat.za.net/blog/tags/tensorflow/</link>
+    <description>Recent content in tensorflow on Stéfan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Sep 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://mentat.za.net/blog/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Compile TensorFlow from source with gcc6.1</title>
+      <link>http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</link>
+      <pubDate>Wed, 14 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</guid>
+      <description>Where we build TensorFlow from scratch.</description>
+    </item>
+    
+  </channel>
+</rss>

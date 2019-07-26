@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>artificial intelligence on Stéfan&#39;s blog</title>
+    <link>http://mentat.za.net/blog/tags/artificial-intelligence/</link>
+    <description>Recent content in artificial intelligence on Stéfan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://mentat.za.net/blog/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Designing for Intelligent Augmentation</title>
+      <link>http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</link>
+      <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</guid>
+      <description>How can we better design systems that combine computational inference and human intelligence?</description>
+    </item>
+    
+  </channel>
+</rss>

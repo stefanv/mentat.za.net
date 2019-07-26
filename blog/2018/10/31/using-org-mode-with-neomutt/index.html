@@ -1,346 +1,267 @@
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Linking to emails in org-mode (using neomutt) &mdash; Stéfan van der Walt</title>
-  <meta name="author" content="Stefan van der Walt">
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://mentat.za.net/blog/atom.xml" type="application/atom+xml" rel="alternate"
-        title="Stéfan van der Walt Atom Feed" />
+		<title>
+				Linking to emails in org-mode (using neomutt) &middot; Stéfan&#39;s blog
+		</title>
 
+		
+  		<link rel="stylesheet" href="/blog/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+		<link rel="stylesheet" href="/blog/custom.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Stéfan&#39;s blog" />
+	</head>
 
-
-    <link href="https://mentat.za.net/blog/favicon.png" rel="icon">
-
-  <link href="https://mentat.za.net/blog/theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="https://mentat.za.net/blog/">Stéfan van der Walt</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="https://mentat.za.net/blog/atom.xml" rel="subscribe-atom">Atom Feed</a></li>
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/blog/">
+					<h2 class="nav-title">Stéfan&#39;s blog</h2>
+				</a>
+				<ul>
+    <li><a href="https://mentat.za.net">mentat.za.net</a></li>
+    <li><a href="/blog/atom.xml">Atom / RSS feed</a></li>
 </ul>
 
+			</div>
+		</nav>
 
-<!-- <form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:mentat.za.net/blog" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
--->
+        
 
-<script>
-  (function() {
-    var cx = '001734058120475597871:piammqv2npu';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
+<main>
+	<div class="post">
+		<div class="post-info">
+</div>
 
-<style type="text/css">
-  form.gsc-search-box { width: 20em; }
-</style>
+		<h1 class="post-title">Linking to emails in org-mode (using neomutt)</h1>
 
-<div style="inline: block;"><gcse:searchbox-only></gcse:searchbox-only></div>
+<div class="post-date">
+  
+    October 31, 2018
+  
+</div>
 
-<ul class="main-navigation">
-    <li><a href="https://mentat.za.net/blog">Blog</a></li>
-    <li><a href="https://mentat.za.net">mentat.za.net</a></li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">Linking to emails in org-mode (using neomutt)</h1>
-    <p class="meta">
-<time datetime="2018-10-31T00:00:00-07:00" pubdate>Wed 31 October 2018</time>      &middot;
-      <span class="categories" style="text-transform: lowercase;">
-        <a class="category"
-           style="text-decoration: none;"
-           href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,        <a class="category"
-           style="text-decoration: none;"
-           href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,        <a class="category"
-           style="text-decoration: none;"
-           href="https://mentat.za.net/blog/tag/python.html">python</a>,        <a class="category"
-           style="text-decoration: none;"
-           href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>      </span>
+<div class="post-tags">
+  
+    <div class="post-tag">
+      <a href=/blog/tags/org-mode>
+        #org-mode
+      </a>
+    </div>
+  
+    <div class="post-tag">
+      <a href=/blog/tags/emacs>
+        #emacs
+      </a>
+    </div>
+  
+    <div class="post-tag">
+      <a href=/blog/tags/python>
+        #python
+      </a>
+    </div>
+  
+    <div class="post-tag">
+      <a href=/blog/tags/mutt>
+        #mutt
+      </a>
+    </div>
+  
+</div>
 
-    </p>
-</header>
 
-  <div class="entry-content"><p><em><strong>Update 2018-11-2:</strong> Change the URL scheme to <code>message://</code>.
+		
+
+		
+
+<p><em><strong>Update 2018-11-2:</strong> Change the URL scheme to <code>message://</code>.
 See <a href="#other-systems">&ldquo;Other Systems&rdquo;</a> below.</em></p>
+
 <p><a href="https://orgmode.org">org-mode</a> is, to me, is one of the most valuable
 parts of the emacs ecosystem.  I use it to take notes, plan projects,
 manage tasks, and write &amp; publish documents.</p>
+
 <p>Nowadays, a lot of work arrives via email, and so it is helpful to be
 able to refer to messages directly from my notes or lists of
 tasks.</p>
+
 <p>The <em>simplest</em> option might be to store URLs pointing to an online
 inbox such as <a href="https://fastmail.com">Fastmail</a> or GMail, but I wanted
 a solution that was both future proof (i.e., what if I moved my emails
 to a different provider?) and worked with my terminal-based mail
 client of choice, <a href="https://neomutt.org/">neomutt</a>.</p>
+
 <p>I started with
 a
 <a href="https://upsilon.cc/~zack/blog/posts/2010/02/integrating_Mutt_with_Org-mode/">solution provided by Stefano Zacchiroli</a>,
 and simplified it for my specific use-case.</p>
+
 <h2 id="overview">Overview</h2>
+
 <p>The solution has two parts: sending email links from neomutt to Emacs,
 and later opening those links from Emacs by invoking neomutt.  The
 first achieved via <code>org-protocol</code>, the latter via launching neomutt
 and then simulating keypresses.</p>
+
 <p>When launching neomutt, we have to tell it in which directory the
 message lives.  We therefore use <code>notmuch</code> to find the message file
 first, based on its Message-ID.  <code>maildir-utils</code> would be another way
 of doing so.  <strong>Please note that you have to have notmuch or
 maildir-utils set up already for this scheme to work.</strong></p>
+
 <p>I initially avoided the <code>org-protocol</code> package, because installation
 looked complicated.  That, it turns out, is only the case if you care
 about web browser integration, which we don&rsquo;t.</p>
+
 <h2 id="neomutt-configuration">Neomutt configuration</h2>
+
 <p>First, we have a Python script that can parse an e-mail and share the
 Message-ID and Subject with emacs.  I call it <code>mutt-save-org-link.py</code>,
 and make it executable using <code>chmod +x mutt-save-org-link.py</code>.</p>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic">#!/usr/bin/env python3</span>
 
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">email</span>
-<span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">sys</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">email</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">subprocess</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">urllib.parse</span>
 
-<span class="c1"># Parse the email from standard input</span>
-<span class="n">message_bytes</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">message</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">message_from_bytes</span><span class="p">(</span><span class="n">message_bytes</span><span class="p">)</span>
+<span style="color:#60a0b0;font-style:italic"># Parse the email from standard input</span>
+message_bytes <span style="color:#666">=</span> sys<span style="color:#666">.</span>stdin<span style="color:#666">.</span><span style="color:#007020">buffer</span><span style="color:#666">.</span>read()
+message <span style="color:#666">=</span> email<span style="color:#666">.</span>message_from_bytes(message_bytes)
 
-<span class="c1"># Grab the relevant message headers</span>
-<span class="n">message_id</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;message-id&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">subject</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span>
+<span style="color:#60a0b0;font-style:italic"># Grab the relevant message headers</span>
+message_id <span style="color:#666">=</span> urllib<span style="color:#666">.</span>parse<span style="color:#666">.</span>quote(message[<span style="color:#4070a0">&#39;message-id&#39;</span>][<span style="color:#40a070">1</span>:<span style="color:#666">-</span><span style="color:#40a070">1</span>])
+subject <span style="color:#666">=</span> message[<span style="color:#4070a0">&#39;subject&#39;</span>]
 
-<span class="c1"># Ask emacsclient to save a link to the message</span>
-<span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span>
-    <span class="s1">&#39;emacsclient&#39;</span><span class="p">,</span>
-    <span class="n">f</span><span class="s1">&#39;org-protocol://store-link?url=message://{message_id}&amp;title={subject}&#39;</span>
-<span class="p">])</span>
-</pre></div>
-
-
+<span style="color:#60a0b0;font-style:italic"># Ask emacsclient to save a link to the message</span>
+subprocess<span style="color:#666">.</span>Popen([
+    <span style="color:#4070a0">&#39;emacsclient&#39;</span>,
+    f<span style="color:#4070a0">&#39;org-protocol://store-link?url=message://{message_id}&amp;title={subject}&#39;</span>
+])</code></pre></div>
 <p>We then configure neomutt (typically in <code>~/.muttrc</code>) to call the
 script with a shortcut.  I chose Esc-L (the same as Alt-L).</p>
-<div class="highlight"><pre><span></span><span class="n">macro</span> <span class="k">index</span><span class="p">,</span><span class="n">pager</span> <span class="err">\</span><span class="n">el</span> <span class="ss">&quot;|~/scripts/mutt-save-org-link.py\n&quot;</span>
-</pre></div>
 
+<pre><code>macro index,pager \el &quot;|~/scripts/mutt-save-org-link.py\n&quot;
+</code></pre>
 
 <h2 id="emacs-configuration">Emacs configuration</h2>
+
 <p>Using <code>org-protocol</code>, we instruct emacsclient to intercept URLs with
 the <code>org-protocol://</code> scheme, as used by our <code>mutt-save-org-link.py</code>
 script.  We also tell org-mode how to handle special URLs of the form
 <code>message://message-id+goes_here@mail.gmail.com</code>.  Neomutt needs to know
 which Maildir folder to open, so we ask <code>notmuch</code> to tell us where the
 message is located.</p>
+
 <p>In my <code>~/.emacs</code> file I have:</p>
-<div class="highlight"><pre><span></span><span class="c1">; Make sure org-protocol is loaded</span>
-<span class="c1">; Now, org-protocol:// schemas are intercepted.</span>
-<span class="p">(</span><span class="nb">require</span> <span class="nv">org-protocol</span><span class="p">)</span>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="color:#60a0b0;font-style:italic">; Make sure org-protocol is loaded</span>
+<span style="color:#60a0b0;font-style:italic">; Now, org-protocol:// schemas are intercepted.</span>
+(<span style="color:#007020">require</span> <span style="color:#bb60d5">org-protocol</span>)
 
-<span class="c1">; Call this function, which spawns neomutt, whenever org-mode</span>
-<span class="c1">; tries to open a link of the form message://message-id+goes_here@mail.gmail.com</span>
-<span class="p">(</span><span class="nb">defun</span> <span class="nv">stefanv/mutt-open-message</span> <span class="p">(</span><span class="nv">message-id</span><span class="p">)</span>
-  <span class="s">&quot;In neomutt, open the email with the the given Message-ID&quot;</span>
-  <span class="p">(</span><span class="k">let*</span>
-      <span class="p">((</span><span class="nv">message-id</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">&quot;^/*&quot;</span> <span class="s">&quot;&quot;</span> <span class="nv">message-id</span><span class="p">))</span>
-       <span class="p">(</span><span class="nv">mail-file</span>
-        <span class="p">(</span><span class="nv">replace-regexp-in-string</span>
-         <span class="s">&quot;\n$&quot;</span> <span class="s">&quot;&quot;</span> <span class="p">(</span><span class="nv">shell-command-to-string</span>
-                   <span class="p">(</span><span class="nf">format</span> <span class="s">&quot;notmuch search --output=files id:%s&quot;</span> <span class="nv">message-id</span><span class="p">))))</span>
-       <span class="p">(</span><span class="nv">mail-dir</span> <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">&quot;/\\(cur\\|new\\|tmp\\)/$&quot;</span> <span class="s">&quot;&quot;</span>
-                                           <span class="p">(</span><span class="nf">file-name-directory</span> <span class="nv">mail-file</span><span class="p">)))</span>
-       <span class="p">(</span><span class="nf">process-id</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&quot;neomutt-&quot;</span> <span class="nv">message-id</span><span class="p">))</span>
-       <span class="p">(</span><span class="nv">message-id-escaped</span> <span class="p">(</span><span class="nf">regexp-quote</span> <span class="nv">message-id</span><span class="p">))</span>
-       <span class="p">(</span><span class="nv">mutt-keystrokes</span>
-        <span class="p">(</span><span class="nf">format</span> <span class="s">&quot;l~i %s\n\n&quot;</span> <span class="p">(</span><span class="nv">shell-quote-argument</span> <span class="nv">message-id-escaped</span><span class="p">)))</span>
-       <span class="p">(</span><span class="nv">mutt-command</span> <span class="p">(</span><span class="nf">list</span> <span class="s">&quot;neomutt&quot;</span> <span class="s">&quot;-R&quot;</span> <span class="s">&quot;-f&quot;</span> <span class="nv">mail-dir</span>
-                           <span class="s">&quot;-e&quot;</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&quot;push &#39;%s&#39;&quot;</span> <span class="nv">mutt-keystrokes</span><span class="p">))))</span>
+<span style="color:#60a0b0;font-style:italic">; Call this function, which spawns neomutt, whenever org-mode</span>
+<span style="color:#60a0b0;font-style:italic">; tries to open a link of the form message://message-id+goes_here@mail.gmail.com</span>
+(<span style="color:#007020">defun</span> <span style="color:#bb60d5">stefanv/mutt-open-message</span> (<span style="color:#bb60d5">message-id</span>)
+  <span style="color:#4070a0">&#34;In neomutt, open the email with the the given Message-ID&#34;</span>
+  (<span style="color:#007020">let*</span>
+      ((<span style="color:#bb60d5">message-id</span> (<span style="color:#bb60d5">replace-regexp-in-string</span> <span style="color:#4070a0">&#34;^/*&#34;</span> <span style="color:#4070a0">&#34;&#34;</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">mail-file</span>
+        (<span style="color:#bb60d5">replace-regexp-in-string</span>
+         <span style="color:#4070a0">&#34;\n$&#34;</span> <span style="color:#4070a0">&#34;&#34;</span> (<span style="color:#bb60d5">shell-command-to-string</span>
+                   (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;notmuch search --output=files id:%s&#34;</span> <span style="color:#bb60d5">message-id</span>))))
+       (<span style="color:#bb60d5">mail-dir</span> (<span style="color:#bb60d5">replace-regexp-in-string</span> <span style="color:#4070a0">&#34;/\\(cur\\|new\\|tmp\\)/$&#34;</span> <span style="color:#4070a0">&#34;&#34;</span>
+                                           (<span style="color:#06287e">file-name-directory</span> <span style="color:#bb60d5">mail-file</span>)))
+       (<span style="color:#06287e">process-id</span> (<span style="color:#06287e">concat</span> <span style="color:#4070a0">&#34;neomutt-&#34;</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">message-id-escaped</span> (<span style="color:#06287e">regexp-quote</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">mutt-keystrokes</span>
+        (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;l~i %s\n\n&#34;</span> (<span style="color:#bb60d5">shell-quote-argument</span> <span style="color:#bb60d5">message-id-escaped</span>)))
+       (<span style="color:#bb60d5">mutt-command</span> (<span style="color:#06287e">list</span> <span style="color:#4070a0">&#34;neomutt&#34;</span> <span style="color:#4070a0">&#34;-R&#34;</span> <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#bb60d5">mail-dir</span>
+                           <span style="color:#4070a0">&#34;-e&#34;</span> (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;push &#39;%s&#39;&#34;</span> <span style="color:#bb60d5">mutt-keystrokes</span>))))
 
-    <span class="p">(</span><span class="nf">message</span> <span class="s">&quot;Launching neomutt for message %s&quot;</span> <span class="nv">message-id</span><span class="p">)</span>
-    <span class="p">(</span><span class="nf">call-process</span> <span class="s">&quot;setsid&quot;</span> <span class="no">nil</span> <span class="no">nil</span>
-                   <span class="s">&quot;-f&quot;</span> <span class="s">&quot;gnome-terminal&quot;</span> <span class="s">&quot;--window&quot;</span> <span class="s">&quot;--&quot;</span>
-                   <span class="s">&quot;neomutt&quot;</span> <span class="s">&quot;-R&quot;</span> <span class="s">&quot;-f&quot;</span> <span class="nv">mail-dir</span>
-                   <span class="s">&quot;-e&quot;</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&quot;push &#39;%s&#39;&quot;</span> <span class="nv">mutt-keystrokes</span><span class="p">))))</span>
+    (<span style="color:#06287e">message</span> <span style="color:#4070a0">&#34;Launching neomutt for message %s&#34;</span> <span style="color:#bb60d5">message-id</span>)
+    (<span style="color:#06287e">call-process</span> <span style="color:#4070a0">&#34;setsid&#34;</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span>
+                   <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#4070a0">&#34;gnome-terminal&#34;</span> <span style="color:#4070a0">&#34;--window&#34;</span> <span style="color:#4070a0">&#34;--&#34;</span>
+                   <span style="color:#4070a0">&#34;neomutt&#34;</span> <span style="color:#4070a0">&#34;-R&#34;</span> <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#bb60d5">mail-dir</span>
+                   <span style="color:#4070a0">&#34;-e&#34;</span> (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;push &#39;%s&#39;&#34;</span> <span style="color:#bb60d5">mutt-keystrokes</span>))))
 
-<span class="c1">; Whenever org-mode sees a link starting with `message://`, it</span>
-<span class="c1">; calls our `mutt-open-message` function</span>
-<span class="p">(</span><span class="nv">org-add-link-type</span> <span class="s">&quot;message&quot;</span> <span class="ss">&#39;stefanv/mutt-open-message</span><span class="p">)</span>
-</pre></div>
-
-
+<span style="color:#60a0b0;font-style:italic">; Whenever org-mode sees a link starting with `message://`, it</span>
+<span style="color:#60a0b0;font-style:italic">; calls our `mutt-open-message` function</span>
+(<span style="color:#bb60d5">org-add-link-type</span> <span style="color:#4070a0">&#34;message&#34;</span> <span style="color:#517918">&#39;stefanv/mutt-open-message</span>)</code></pre></div>
 <p>There are a few caveats: if you use <code>maildir-utils</code>, the search
 command is <code>mu find -f l i:%s</code> instead of notmuch; and if you are not
 on Linux, then <code>setsid</code> (which we use to launch a detached background
 process) is not going to work, and you will want to use a different
 terminal emulator.</p>
-<h2 id="other-systems"><a name="#other-systems"></a>Other Systems</h2>
+
+<h2 id="a-name-other-systems-a-other-systems"><a name="#other-systems"></a>Other Systems</h2>
+
 <p><a href="https://vxlabs.com/">Charl Botha</a> mentioned in the comments that, on
 MacOS,
 <a href="https://orgmode.org/worg/org-contrib/org-mac-link.html">org-mac-link</a>
 lets you grab hyperlinks from a wide variety of apps.  Email messages,
 specifically, are stored as <code>message://message-id</code> URLs, which MacOS
 knows how to open.  This post has been updated to use the same link schema.</p>
+
 <h2 id="wrap-up">Wrap-up</h2>
+
 <p>That&rsquo;s it!  I&rsquo;ve added the code
 to
 <a href="https://github.com/stefanv/org-neomutt">https://github.com/stefanv/org-neomutt</a>.
 Please file issues and PRs there, or tell me about your use cases
-in the comments below.</p></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">
-        Stefan van der Walt
-    </span>
-  </span>
-<time datetime="2018-10-31T00:00:00-07:00" pubdate>Wed 31 October 2018</time>
-<!--
-  <span class="categories">
-    <a class='category' href='https://mentat.za.net/blog/category/misc.html'>misc</a>
-  </span>
--->
+in the comments below.</p>
 
-  <span class="categories">
-    <a class="category" href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a class="category" href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a class="category" href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a class="category" href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
-  </section>
+		<script type="text/javascript">
+  var disqus_identifier = "http://stefanv.github.com/blog/2018/10/31/using-org-mode-with-neomutt/";
+</script>
+
+<div style="border-top: 0.5px solid #e5e5e5; padding-top: 1em;">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "stefanvdwalt" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-<aside class="sidebar">
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/">Designing for Intelligent Augmentation</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/">Linking to emails in org-mode (using neomutt)</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/">Search headers in org-mode</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/">WebSockets in Python (and some Redux)</a>
-      </li>
-      <li class="post">
-          <a href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">Compile TensorFlow from source with gcc6.1</a>
-      </li>
-    </ul>
-  </section>
-<!--
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="https://mentat.za.net/blog/category/misc.html">misc</a></li>
-    </ul>
-  </section>
- 
--->
-  <section>
-  <h1>Tags</h1>
-    <a href="https://mentat.za.net/blog/tag/artificial-intelligence.html">artificial intelligence</a>,    <a href="https://mentat.za.net/blog/tag/machine-learning.html">machine learning</a>,    <a href="https://mentat.za.net/blog/tag/design.html">design</a>,    <a href="https://mentat.za.net/blog/tag/org-mode.html">org-mode</a>,    <a href="https://mentat.za.net/blog/tag/emacs.html">emacs</a>,    <a href="https://mentat.za.net/blog/tag/python.html">python</a>,    <a href="https://mentat.za.net/blog/tag/mutt.html">mutt</a>,    <a href="https://mentat.za.net/blog/tag/web.html">web</a>,    <a href="https://mentat.za.net/blog/tag/javascript.html">javascript</a>,    <a href="https://mentat.za.net/blog/tag/websocket.html">websocket</a>,    <a href="https://mentat.za.net/blog/tag/redux.html">redux</a>,    <a href="https://mentat.za.net/blog/tag/react.html">react</a>,    <a href="https://mentat.za.net/blog/tag/tensorflow.html">tensorflow</a>,    <a href="https://mentat.za.net/blog/tag/drm.html">drm</a>,    <a href="https://mentat.za.net/blog/tag/amazon.html">amazon</a>,    <a href="https://mentat.za.net/blog/tag/kindle.html">kindle</a>,    <a href="https://mentat.za.net/blog/tag/ebooks.html">ebooks</a>,    <a href="https://mentat.za.net/blog/tag/linux.html">linux</a>,    <a href="https://mentat.za.net/blog/tag/docker.html">docker</a>,    <a href="https://mentat.za.net/blog/tag/scipy.html">scipy</a>,    <a href="https://mentat.za.net/blog/tag/super-resolution.html">super-resolution</a>,    <a href="https://mentat.za.net/blog/tag/image-processing.html">image-processing</a>,    <a href="https://mentat.za.net/blog/tag/science.html">science</a>,    <a href="https://mentat.za.net/blog/tag/coding.html">coding</a>  </section>
 
-<!--  
+	</div>
 
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
-    </ul>
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = 'https://mentat.za.net/blog/theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
+	<div class="pagination">
+		<a href="/blog/2016/12/15/org-mode-header-search/" class="left arrow">&#8592;</a>
+		<a href="/blog/2019/07/05/intelligent-augmentation/" class="right arrow">&#8594;</a>
 
-          github.showRepos({
-              user: 'stefanv',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="https://mentat.za.net/blog/theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
- -->
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
 
 
-<div style="vertical-align: -40%; display: inline;"><a href="https://twitter.com/stefanvdwalt"
-              class="twitter-follow-button" data-show-count="false"
-              data-size="large" data-dnt="true">Follow @stefanvdwalt</a>
-<script>!function(d,s,id){var
-  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,
-  'script', 'twitter-wjs');</script></div>
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-07-26 11:19:23.167601809 -0700 PDT m=&#43;0.069519912">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
 
-<div style="display: inline; vertical-align: -40%;"><iframe src="https://ghbtns.com/github-btn.html?user=stefanv&type=follow&size=large"
-  allowtransparency="true" frameborder="0" scrolling="0" width="180px"
-  height="30px"></iframe></div>
-
-
-<!--  
-<section>
-    <a href="https://twitter.com/stefanvdwalt" class="twitter-follow-button" data-show-count="true">Follow @stefanvdwalt</a>
-</section>
--->
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2012&ndash;2019  Stefan van der Walt &mdash;
-  <span class="credit">Powered by <a href="https://getpelican.com">Pelican</a></span>
-</p></footer>
-  <script src="https://mentat.za.net/blog/theme/js/modernizr-2.0.js"></script>
-  <script src="https://mentat.za.net/blog/theme/js/ender.js"></script>
-  <script src="https://mentat.za.net/blog/theme/js/octopress.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	  var disqus_shortname = 'stefanvdwalt';
-          var disqus_identifier = 'http://stefanv.github.com/blog/2018/10/31/using-org-mode-with-neomutt/';
-          var disqus_url = 'https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/';
-          var disqus_title = "Linking to emails in org-mode (using neomutt)";
-	  (function() {
-	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	    dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
-	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	   })();
-	</script>
-</body>
+    </body>
 </html>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/posts/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/artificial-intelligence/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/design/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/machine-learning/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/emacs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/mutt/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/org-mode/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/python/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2016/12/15/org-mode-header-search/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2016/10/20/websockets-in-python/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/javascript/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/react/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/redux/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/web/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/websocket/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/tensorflow/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/amazon/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/drm/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/ebooks/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/kindle/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2015/01/24/vpn-only-internet/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/linux/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2015/01/18/docker-image-tree/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/docker/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/scipy/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/image-processing/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/science/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/super-resolution/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/tags/coding/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/2012/09/25/emacs-package-management/</loc>
+  </url>
+  
+  <url>
+    <loc>http://mentat.za.net/blog/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
