@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on Stéfan&#39;s blog</title>
-    <link>http://mentat.za.net/blog/tags/python/</link>
+    <link>https://mentat.za.net/blog/tags/python/</link>
     <description>Recent content in python on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mentat.za.net/blog/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mentat.za.net/blog/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linking to emails in org-mode (using neomutt)</title>
-      <link>http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</link>
+      <link>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</guid>
+      <guid>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</guid>
       <description>Where we store links to emails in org-mode, and open them using neomutt.</description>
     </item>
     
     <item>
       <title>WebSockets in Python (and some Redux)</title>
-      <link>http://mentat.za.net/blog/2016/10/20/websockets-in-python/</link>
+      <link>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/10/20/websockets-in-python/</guid>
+      <guid>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</guid>
       <description>where we make pushing messages from a python backend to the browser easy.</description>
     </item>
     
     <item>
       <title>Compile TensorFlow from source with gcc6.1</title>
-      <link>http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</link>
+      <link>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</link>
       <pubDate>Wed, 14 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</guid>
+      <guid>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</guid>
       <description>Where we build TensorFlow from scratch.</description>
     </item>
     
     <item>
       <title>Python &amp; Matplotlib on OSX</title>
-      <link>http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</link>
+      <link>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</link>
       <pubDate>Fri, 26 Feb 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</guid>
+      <guid>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</guid>
       <description>Where we discuss two ways of installing Matplotlib on MacOS.</description>
     </item>
     
     <item>
       <title>SciPy2013 Proceedings</title>
-      <link>http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</link>
+      <link>https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</link>
       <pubDate>Thu, 27 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</guid>
+      <guid>https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</guid>
       <description>Where I announce the SciPy 2013 proceedings, and talk about how we did it.</description>
     </item>
     
     <item>
       <title>Replicable super-resolution paper</title>
-      <link>http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</link>
+      <link>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</link>
       <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</guid>
+      <guid>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</guid>
       <description>Where I summarize 5 years of my life in 10 pages.</description>
     </item>
     
     <item>
       <title>scikits-image 0.7</title>
-      <link>http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</link>
+      <link>https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</link>
       <pubDate>Sun, 30 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</guid>
+      <guid>https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</guid>
       <description>We&amp;rsquo;re happy to announce the 7th version of scikits-image!
 Scikits-image is an image processing toolbox for SciPy that includes algorithms for segmentation, geometric transformations, color space manipulation, analysis, filtering, morphology, feature detection, and more.
 For more information, examples, and documentation, please visit our website.
@@ -79,10 +79,10 @@ New Features It&amp;rsquo;s been only 3 months since scikits-image 0.6 was relea
     
     <item>
       <title>Emacs package management</title>
-      <link>http://mentat.za.net/blog/2012/09/25/emacs-package-management/</link>
+      <link>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</link>
       <pubDate>Tue, 25 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/09/25/emacs-package-management/</guid>
+      <guid>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</guid>
       <description>I recently tried to install MuMaMo as one of the dependencies for Takafumi Arakaki&amp;rsquo;s Emacs-based IPython notebook. The instructions on the MuMaMo webpage were as clear as mud and aimed primarily at Windows users. Enters apt-get for Emacs!
 My Emacs setup is shared across multiple machines: a synchronized elisp folder, containing *.el files, along with my .emacs configuration. el-get allows you to share your package installation folder in a similar fashion.</description>
     </item>

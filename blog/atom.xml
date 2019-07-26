@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Stéfan&#39;s blog</title>
-  <link href="http://mentat.za.net/blog/index.xml" rel="self"/>
-  <link href="http://mentat.za.net/blog/"/>
+  <link href="https://mentat.za.net/blog/index.xml" rel="self"/>
+  <link href="https://mentat.za.net/blog/"/>
   <updated>2019-07-05T00:00:00+00:00</updated>
-  <id>http://mentat.za.net/blog/</id>
+  <id>https://mentat.za.net/blog/</id>
   <generator>Hugo -- gohugo.io</generator>
   <entry>
     <title type="html"><![CDATA[Designing for Intelligent Augmentation]]></title>
-    <link href="http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/"/>
-    <id>http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</id>
+    <link href="https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/"/>
+    <id>https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -46,8 +46,8 @@
   </entry>
   <entry>
     <title type="html"><![CDATA[Linking to emails in org-mode (using neomutt)]]></title>
-    <link href="http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/"/>
-    <id>http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</id>
+    <link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/"/>
+    <id>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -193,8 +193,8 @@ in the comments below.</p>
   </entry>
   <entry>
     <title type="html"><![CDATA[Search headers in org-mode]]></title>
-    <link href="http://mentat.za.net/blog/2016/12/15/org-mode-header-search/"/>
-    <id>http://mentat.za.net/blog/2016/12/15/org-mode-header-search/</id>
+    <link href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/"/>
+    <id>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -239,8 +239,8 @@ TAB key.</p>
   </entry>
   <entry>
     <title type="html"><![CDATA[WebSockets in Python (and some Redux)]]></title>
-    <link href="http://mentat.za.net/blog/2016/10/20/websockets-in-python/"/>
-    <id>http://mentat.za.net/blog/2016/10/20/websockets-in-python/</id>
+    <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/"/>
+    <id>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -320,8 +320,8 @@ self<span style="color:#666">.</span>flow<span style="color:#666">.</span>push(<
   </entry>
   <entry>
     <title type="html"><![CDATA[Compile TensorFlow from source with gcc6.1]]></title>
-    <link href="http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/"/>
-    <id>http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</id>
+    <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/"/>
+    <id>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -365,8 +365,8 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
   </entry>
   <entry>
     <title type="html"><![CDATA[Amazon owns your ebooks]]></title>
-    <link href="http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/"/>
-    <id>http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</id>
+    <link href="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/"/>
+    <id>https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -447,7 +447,7 @@ shelves are available DRM-free, and is indicated as follows:</p>
 
 <figure>
     
-        <img src="http://mentat.za.net/blog/posts/images/kobo_drm_comparison.png"/> <figcaption>
+        <img src="https://mentat.za.net/blog/posts/images/kobo_drm_comparison.png"/> <figcaption>
                 
                     <h4>Kobo DRM information</h4>
                 
@@ -499,8 +499,8 @@ protection or features used as part of the Service.</p>
   </entry>
   <entry>
     <title type="html"><![CDATA[Python &amp; Matplotlib on OSX]]></title>
-    <link href="http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/"/>
-    <id>http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</id>
+    <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/"/>
+    <id>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -565,8 +565,8 @@ available for all packages<sup class="footnote-ref" id="fnref:1"><a href="#fn:1"
   </entry>
   <entry>
     <title type="html"><![CDATA[VPN-only access to the internet]]></title>
-    <link href="http://mentat.za.net/blog/2015/01/24/vpn-only-internet/"/>
-    <id>http://mentat.za.net/blog/2015/01/24/vpn-only-internet/</id>
+    <link href="https://mentat.za.net/blog/2015/01/24/vpn-only-internet/"/>
+    <id>https://mentat.za.net/blog/2015/01/24/vpn-only-internet/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -704,8 +704,8 @@ port="1-65535" protocol="tcp" reject
   </entry>
   <entry>
     <title type="html"><![CDATA[Visualizing and pruning the docker image tree]]></title>
-    <link href="http://mentat.za.net/blog/2015/01/18/docker-image-tree/"/>
-    <id>http://mentat.za.net/blog/2015/01/18/docker-image-tree/</id>
+    <link href="https://mentat.za.net/blog/2015/01/18/docker-image-tree/"/>
+    <id>https://mentat.za.net/blog/2015/01/18/docker-image-tree/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -877,8 +877,8 @@ process to get rid of its left-over dependencies.</p>
   </entry>
   <entry>
     <title type="html"><![CDATA[SciPy2013 Proceedings]]></title>
-    <link href="http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/"/>
-    <id>http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</id>
+    <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/"/>
+    <id>https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -932,8 +932,8 @@ Python community, of which I am proud to be part of.</p>
   </entry>
   <entry>
     <title type="html"><![CDATA[Replicable super-resolution paper]]></title>
-    <link href="http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/"/>
-    <id>http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</id>
+    <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/"/>
+    <id>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -964,8 +964,8 @@ a bit of the code has since graduated into <a href="http://scikit-image.org">sci
   </entry>
   <entry>
     <title type="html"><![CDATA[scikits-image 0.7]]></title>
-    <link href="http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/"/>
-    <id>http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</id>
+    <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/"/>
+    <id>https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -1009,7 +1009,7 @@ enhancements.</p>
 
 <figure>
     
-        <img src="http://mentat.za.net/blog/posts/images/lena_superpixels.jpg"/> <figcaption>
+        <img src="https://mentat.za.net/blog/posts/images/lena_superpixels.jpg"/> <figcaption>
                 
                     <h4>Comparison of pupular segmentation algorithms</h4>
                 
@@ -1054,8 +1054,8 @@ new and old.</p>
   </entry>
   <entry>
     <title type="html"><![CDATA[Adobe&#39;s new free font: Source Code Pro]]></title>
-    <link href="http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/"/>
-    <id>http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</id>
+    <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/"/>
+    <id>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>
@@ -1086,7 +1086,7 @@ Terminal, etc.  To make it the default font in Emacs::</p>
 
 <figure>
     
-        <img src="http://mentat.za.net/blog/posts/images/consolas_vs_source_code_pro.png"/> <figcaption>
+        <img src="https://mentat.za.net/blog/posts/images/consolas_vs_source_code_pro.png"/> <figcaption>
                 
                     <h4>Comparison: Consolas vs Source Code Pro</h4>
                 
@@ -1099,8 +1099,8 @@ Terminal, etc.  To make it the default font in Emacs::</p>
   </entry>
   <entry>
     <title type="html"><![CDATA[Emacs package management]]></title>
-    <link href="http://mentat.za.net/blog/2012/09/25/emacs-package-management/"/>
-    <id>http://mentat.za.net/blog/2012/09/25/emacs-package-management/</id>
+    <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/"/>
+    <id>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</id>
     <author>
       <name>Stéfan van der Walt</name>
     </author>

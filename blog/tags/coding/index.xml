@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>coding on Stéfan&#39;s blog</title>
-    <link>http://mentat.za.net/blog/tags/coding/</link>
+    <link>https://mentat.za.net/blog/tags/coding/</link>
     <description>Recent content in coding on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 26 Sep 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mentat.za.net/blog/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mentat.za.net/blog/tags/coding/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Adobe&#39;s new free font: Source Code Pro</title>
-      <link>http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</link>
+      <link>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</link>
       <pubDate>Wed, 26 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</guid>
+      <guid>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</guid>
       <description>Adobe yesterday released its free and open source Type family, Source Code Pro, which includes an eye-pleasing monospace font ideally suited for coding. In the past, and at the recommendation of Fernando Perez, I&amp;rsquo;ve used the beautiful (but non-free) Consolas by Microsoft; now, which is best?
 To install on Linux:
  Grab the font. Copy the files to ~/.fonts. Run fc-cache -f -v.  The font should now be available for selection in apps such as Firefox, Gnome Terminal, etc.</description>

@@ -2,228 +2,228 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Stéfan&#39;s blog</title>
-    <link>http://mentat.za.net/blog/tags/</link>
+    <link>https://mentat.za.net/blog/tags/</link>
     <description>Recent content in Tags on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mentat.za.net/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mentat.za.net/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>artificial intelligence</title>
-      <link>http://mentat.za.net/blog/tags/artificial-intelligence/</link>
+      <link>https://mentat.za.net/blog/tags/artificial-intelligence/</link>
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/artificial-intelligence/</guid>
+      <guid>https://mentat.za.net/blog/tags/artificial-intelligence/</guid>
       <description></description>
     </item>
     
     <item>
       <title>design</title>
-      <link>http://mentat.za.net/blog/tags/design/</link>
+      <link>https://mentat.za.net/blog/tags/design/</link>
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/design/</guid>
+      <guid>https://mentat.za.net/blog/tags/design/</guid>
       <description></description>
     </item>
     
     <item>
       <title>machine learning</title>
-      <link>http://mentat.za.net/blog/tags/machine-learning/</link>
+      <link>https://mentat.za.net/blog/tags/machine-learning/</link>
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/machine-learning/</guid>
+      <guid>https://mentat.za.net/blog/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>emacs</title>
-      <link>http://mentat.za.net/blog/tags/emacs/</link>
+      <link>https://mentat.za.net/blog/tags/emacs/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/emacs/</guid>
+      <guid>https://mentat.za.net/blog/tags/emacs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mutt</title>
-      <link>http://mentat.za.net/blog/tags/mutt/</link>
+      <link>https://mentat.za.net/blog/tags/mutt/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/mutt/</guid>
+      <guid>https://mentat.za.net/blog/tags/mutt/</guid>
       <description></description>
     </item>
     
     <item>
       <title>org-mode</title>
-      <link>http://mentat.za.net/blog/tags/org-mode/</link>
+      <link>https://mentat.za.net/blog/tags/org-mode/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/org-mode/</guid>
+      <guid>https://mentat.za.net/blog/tags/org-mode/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>http://mentat.za.net/blog/tags/python/</link>
+      <link>https://mentat.za.net/blog/tags/python/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/python/</guid>
+      <guid>https://mentat.za.net/blog/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>javascript</title>
-      <link>http://mentat.za.net/blog/tags/javascript/</link>
+      <link>https://mentat.za.net/blog/tags/javascript/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/javascript/</guid>
+      <guid>https://mentat.za.net/blog/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>react</title>
-      <link>http://mentat.za.net/blog/tags/react/</link>
+      <link>https://mentat.za.net/blog/tags/react/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/react/</guid>
+      <guid>https://mentat.za.net/blog/tags/react/</guid>
       <description></description>
     </item>
     
     <item>
       <title>redux</title>
-      <link>http://mentat.za.net/blog/tags/redux/</link>
+      <link>https://mentat.za.net/blog/tags/redux/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/redux/</guid>
+      <guid>https://mentat.za.net/blog/tags/redux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>web</title>
-      <link>http://mentat.za.net/blog/tags/web/</link>
+      <link>https://mentat.za.net/blog/tags/web/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/web/</guid>
+      <guid>https://mentat.za.net/blog/tags/web/</guid>
       <description></description>
     </item>
     
     <item>
       <title>websocket</title>
-      <link>http://mentat.za.net/blog/tags/websocket/</link>
+      <link>https://mentat.za.net/blog/tags/websocket/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/websocket/</guid>
+      <guid>https://mentat.za.net/blog/tags/websocket/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tensorflow</title>
-      <link>http://mentat.za.net/blog/tags/tensorflow/</link>
+      <link>https://mentat.za.net/blog/tags/tensorflow/</link>
       <pubDate>Wed, 14 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/tensorflow/</guid>
+      <guid>https://mentat.za.net/blog/tags/tensorflow/</guid>
       <description></description>
     </item>
     
     <item>
       <title>amazon</title>
-      <link>http://mentat.za.net/blog/tags/amazon/</link>
+      <link>https://mentat.za.net/blog/tags/amazon/</link>
       <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/amazon/</guid>
+      <guid>https://mentat.za.net/blog/tags/amazon/</guid>
       <description></description>
     </item>
     
     <item>
       <title>drm</title>
-      <link>http://mentat.za.net/blog/tags/drm/</link>
+      <link>https://mentat.za.net/blog/tags/drm/</link>
       <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/drm/</guid>
+      <guid>https://mentat.za.net/blog/tags/drm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ebooks</title>
-      <link>http://mentat.za.net/blog/tags/ebooks/</link>
+      <link>https://mentat.za.net/blog/tags/ebooks/</link>
       <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/ebooks/</guid>
+      <guid>https://mentat.za.net/blog/tags/ebooks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kindle</title>
-      <link>http://mentat.za.net/blog/tags/kindle/</link>
+      <link>https://mentat.za.net/blog/tags/kindle/</link>
       <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/kindle/</guid>
+      <guid>https://mentat.za.net/blog/tags/kindle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>http://mentat.za.net/blog/tags/linux/</link>
+      <link>https://mentat.za.net/blog/tags/linux/</link>
       <pubDate>Sat, 24 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/linux/</guid>
+      <guid>https://mentat.za.net/blog/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>http://mentat.za.net/blog/tags/docker/</link>
+      <link>https://mentat.za.net/blog/tags/docker/</link>
       <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/docker/</guid>
+      <guid>https://mentat.za.net/blog/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>scipy</title>
-      <link>http://mentat.za.net/blog/tags/scipy/</link>
+      <link>https://mentat.za.net/blog/tags/scipy/</link>
       <pubDate>Thu, 27 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/scipy/</guid>
+      <guid>https://mentat.za.net/blog/tags/scipy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>image-processing</title>
-      <link>http://mentat.za.net/blog/tags/image-processing/</link>
+      <link>https://mentat.za.net/blog/tags/image-processing/</link>
       <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/image-processing/</guid>
+      <guid>https://mentat.za.net/blog/tags/image-processing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>science</title>
-      <link>http://mentat.za.net/blog/tags/science/</link>
+      <link>https://mentat.za.net/blog/tags/science/</link>
       <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/science/</guid>
+      <guid>https://mentat.za.net/blog/tags/science/</guid>
       <description></description>
     </item>
     
     <item>
       <title>super-resolution</title>
-      <link>http://mentat.za.net/blog/tags/super-resolution/</link>
+      <link>https://mentat.za.net/blog/tags/super-resolution/</link>
       <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/super-resolution/</guid>
+      <guid>https://mentat.za.net/blog/tags/super-resolution/</guid>
       <description></description>
     </item>
     
     <item>
       <title>coding</title>
-      <link>http://mentat.za.net/blog/tags/coding/</link>
+      <link>https://mentat.za.net/blog/tags/coding/</link>
       <pubDate>Wed, 26 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/tags/coding/</guid>
+      <guid>https://mentat.za.net/blog/tags/coding/</guid>
       <description></description>
     </item>
     

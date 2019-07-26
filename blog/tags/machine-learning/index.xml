@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>machine learning on Stéfan&#39;s blog</title>
-    <link>http://mentat.za.net/blog/tags/machine-learning/</link>
+    <link>https://mentat.za.net/blog/tags/machine-learning/</link>
     <description>Recent content in machine learning on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mentat.za.net/blog/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mentat.za.net/blog/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Designing for Intelligent Augmentation</title>
-      <link>http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</link>
+      <link>https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</link>
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</guid>
+      <guid>https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</guid>
       <description>How can we better design systems that combine computational inference and human intelligence?</description>
     </item>
     

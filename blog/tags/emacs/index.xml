@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>emacs on Stéfan&#39;s blog</title>
-    <link>http://mentat.za.net/blog/tags/emacs/</link>
+    <link>https://mentat.za.net/blog/tags/emacs/</link>
     <description>Recent content in emacs on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mentat.za.net/blog/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mentat.za.net/blog/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linking to emails in org-mode (using neomutt)</title>
-      <link>http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</link>
+      <link>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</guid>
+      <guid>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</guid>
       <description>Where we store links to emails in org-mode, and open them using neomutt.</description>
     </item>
     
     <item>
       <title>Search headers in org-mode</title>
-      <link>http://mentat.za.net/blog/2016/12/15/org-mode-header-search/</link>
+      <link>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</link>
       <pubDate>Thu, 15 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/12/15/org-mode-header-search/</guid>
+      <guid>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</guid>
       <description>Where we show a quick way of navigating org-mode files.</description>
     </item>
     
     <item>
       <title>Adobe&#39;s new free font: Source Code Pro</title>
-      <link>http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</link>
+      <link>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</link>
       <pubDate>Wed, 26 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</guid>
+      <guid>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</guid>
       <description>Adobe yesterday released its free and open source Type family, Source Code Pro, which includes an eye-pleasing monospace font ideally suited for coding. In the past, and at the recommendation of Fernando Perez, I&amp;rsquo;ve used the beautiful (but non-free) Consolas by Microsoft; now, which is best?
 To install on Linux:
  Grab the font. Copy the files to ~/.fonts. Run fc-cache -f -v.  The font should now be available for selection in apps such as Firefox, Gnome Terminal, etc.</description>
@@ -42,10 +42,10 @@ To install on Linux:
     
     <item>
       <title>Emacs package management</title>
-      <link>http://mentat.za.net/blog/2012/09/25/emacs-package-management/</link>
+      <link>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</link>
       <pubDate>Tue, 25 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/09/25/emacs-package-management/</guid>
+      <guid>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</guid>
       <description>I recently tried to install MuMaMo as one of the dependencies for Takafumi Arakaki&amp;rsquo;s Emacs-based IPython notebook. The instructions on the MuMaMo webpage were as clear as mud and aimed primarily at Windows users. Enters apt-get for Emacs!
 My Emacs setup is shared across multiple machines: a synchronized elisp folder, containing *.el files, along with my .emacs configuration. el-get allows you to share your package installation folder in a similar fashion.</description>
     </item>

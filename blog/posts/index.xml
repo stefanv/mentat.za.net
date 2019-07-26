@@ -2,120 +2,120 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Stéfan&#39;s blog</title>
-    <link>http://mentat.za.net/blog/posts/</link>
+    <link>https://mentat.za.net/blog/posts/</link>
     <description>Recent content in Posts on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mentat.za.net/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mentat.za.net/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Designing for Intelligent Augmentation</title>
-      <link>http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</link>
+      <link>https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</link>
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</guid>
+      <guid>https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</guid>
       <description>How can we better design systems that combine computational inference and human intelligence?</description>
     </item>
     
     <item>
       <title>Linking to emails in org-mode (using neomutt)</title>
-      <link>http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</link>
+      <link>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</guid>
+      <guid>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</guid>
       <description>Where we store links to emails in org-mode, and open them using neomutt.</description>
     </item>
     
     <item>
       <title>Search headers in org-mode</title>
-      <link>http://mentat.za.net/blog/2016/12/15/org-mode-header-search/</link>
+      <link>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</link>
       <pubDate>Thu, 15 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/12/15/org-mode-header-search/</guid>
+      <guid>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</guid>
       <description>Where we show a quick way of navigating org-mode files.</description>
     </item>
     
     <item>
       <title>WebSockets in Python (and some Redux)</title>
-      <link>http://mentat.za.net/blog/2016/10/20/websockets-in-python/</link>
+      <link>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</link>
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/10/20/websockets-in-python/</guid>
+      <guid>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</guid>
       <description>where we make pushing messages from a python backend to the browser easy.</description>
     </item>
     
     <item>
       <title>Compile TensorFlow from source with gcc6.1</title>
-      <link>http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</link>
+      <link>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</link>
       <pubDate>Wed, 14 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</guid>
+      <guid>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</guid>
       <description>Where we build TensorFlow from scratch.</description>
     </item>
     
     <item>
       <title>Amazon owns your ebooks</title>
-      <link>http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</link>
+      <link>https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</link>
       <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</guid>
+      <guid>https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</guid>
       <description>Where we realize Amazon owns your books.</description>
     </item>
     
     <item>
       <title>Python &amp; Matplotlib on OSX</title>
-      <link>http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</link>
+      <link>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</link>
       <pubDate>Fri, 26 Feb 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</guid>
+      <guid>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</guid>
       <description>Where we discuss two ways of installing Matplotlib on MacOS.</description>
     </item>
     
     <item>
       <title>VPN-only access to the internet</title>
-      <link>http://mentat.za.net/blog/2015/01/24/vpn-only-internet/</link>
+      <link>https://mentat.za.net/blog/2015/01/24/vpn-only-internet/</link>
       <pubDate>Sat, 24 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2015/01/24/vpn-only-internet/</guid>
+      <guid>https://mentat.za.net/blog/2015/01/24/vpn-only-internet/</guid>
       <description>Where we set up a firewall that allows traffic to leave only via the VPN.</description>
     </item>
     
     <item>
       <title>Visualizing and pruning the docker image tree</title>
-      <link>http://mentat.za.net/blog/2015/01/18/docker-image-tree/</link>
+      <link>https://mentat.za.net/blog/2015/01/18/docker-image-tree/</link>
       <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2015/01/18/docker-image-tree/</guid>
+      <guid>https://mentat.za.net/blog/2015/01/18/docker-image-tree/</guid>
       <description>Where we prune unused Docker images, and save a lot of disk space.</description>
     </item>
     
     <item>
       <title>SciPy2013 Proceedings</title>
-      <link>http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</link>
+      <link>https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</link>
       <pubDate>Thu, 27 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</guid>
+      <guid>https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</guid>
       <description>Where I announce the SciPy 2013 proceedings, and talk about how we did it.</description>
     </item>
     
     <item>
       <title>Replicable super-resolution paper</title>
-      <link>http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</link>
+      <link>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</link>
       <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</guid>
+      <guid>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</guid>
       <description>Where I summarize 5 years of my life in 10 pages.</description>
     </item>
     
     <item>
       <title>scikits-image 0.7</title>
-      <link>http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</link>
+      <link>https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</link>
       <pubDate>Sun, 30 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</guid>
+      <guid>https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</guid>
       <description>We&amp;rsquo;re happy to announce the 7th version of scikits-image!
 Scikits-image is an image processing toolbox for SciPy that includes algorithms for segmentation, geometric transformations, color space manipulation, analysis, filtering, morphology, feature detection, and more.
 For more information, examples, and documentation, please visit our website.
@@ -124,10 +124,10 @@ New Features It&amp;rsquo;s been only 3 months since scikits-image 0.6 was relea
     
     <item>
       <title>Adobe&#39;s new free font: Source Code Pro</title>
-      <link>http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</link>
+      <link>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</link>
       <pubDate>Wed, 26 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</guid>
+      <guid>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</guid>
       <description>Adobe yesterday released its free and open source Type family, Source Code Pro, which includes an eye-pleasing monospace font ideally suited for coding. In the past, and at the recommendation of Fernando Perez, I&amp;rsquo;ve used the beautiful (but non-free) Consolas by Microsoft; now, which is best?
 To install on Linux:
  Grab the font. Copy the files to ~/.fonts. Run fc-cache -f -v.  The font should now be available for selection in apps such as Firefox, Gnome Terminal, etc.</description>
@@ -135,10 +135,10 @@ To install on Linux:
     
     <item>
       <title>Emacs package management</title>
-      <link>http://mentat.za.net/blog/2012/09/25/emacs-package-management/</link>
+      <link>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</link>
       <pubDate>Tue, 25 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://mentat.za.net/blog/2012/09/25/emacs-package-management/</guid>
+      <guid>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</guid>
       <description>I recently tried to install MuMaMo as one of the dependencies for Takafumi Arakaki&amp;rsquo;s Emacs-based IPython notebook. The instructions on the MuMaMo webpage were as clear as mud and aimed primarily at Windows users. Enters apt-get for Emacs!
 My Emacs setup is shared across multiple machines: a synchronized elisp folder, containing *.el files, along with my .emacs configuration. el-get allows you to share your package installation folder in a similar fashion.</description>
     </item>
