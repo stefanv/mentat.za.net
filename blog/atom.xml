@@ -173,7 +173,7 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 <p>(Instead of the context manager, you may also use <code>%gui = qt</code> in Jupyter or IPython.)</p>
 
 <p>I also happened to have ground truth labels available, so I loaded those up the same way I did the volume, and added it to the visualization:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">viewer<span style="color:#666">.</span>add_labels(labels <span style="color:#666">+</span> <span style="color:#40a070">1</span>, name<span style="color:#666">=</span><span style="color:#4070a0">&#39;Labels&#39;</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">viewer<span style="color:#666">.</span>add_labels(labels, name<span style="color:#666">=</span><span style="color:#4070a0">&#39;Labels&#39;</span>)</code></pre></div>
 
 
 
