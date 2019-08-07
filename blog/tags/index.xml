@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mentat.za.net/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>image processing</title>
+      <link>https://mentat.za.net/blog/tags/image-processing/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mentat.za.net/blog/tags/image-processing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://mentat.za.net/blog/tags/python/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mentat.za.net/blog/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>visualization</title>
+      <link>https://mentat.za.net/blog/tags/visualization/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mentat.za.net/blog/tags/visualization/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>artificial intelligence</title>
@@ -62,15 +89,6 @@
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/tags/org-mode/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://mentat.za.net/blog/tags/python/</link>
-      <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://mentat.za.net/blog/tags/python/</guid>
       <description></description>
     </item>
     
@@ -188,15 +206,6 @@
       <pubDate>Thu, 27 Jun 2013 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/tags/scipy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>image-processing</title>
-      <link>https://mentat.za.net/blog/tags/image-processing/</link>
-      <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://mentat.za.net/blog/tags/image-processing/</guid>
       <description></description>
     </item>
     
