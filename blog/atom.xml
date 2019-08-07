@@ -51,7 +51,7 @@ Out[<span style="color:#40a070">30</span>]: (cupy<span style="color:#666">.</spa
 
 <h2 id="pytorch-and-tensorflow-easily-consume-python-images">PyTorch and TensorFlow easily consume Python images</h2>
 
-<p>Images in scientific Python (<code>scikit-image</code>, <code>opencv</code>, <code>ITK</code>, etc.) are represented as NumPy arrays.  It is trivial to pass these arrays into deep learning libraries such as TensorFlow:</p>
+<p>Images in scientific Python (<code>scikit-image</code>, <code>opencv</code>, etc.) are represented as NumPy arrays.  It is trivial to pass these arrays into deep learning libraries such as TensorFlow:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">tensorflow.keras.applications.inception_v3</span> <span style="color:#007020;font-weight:bold">import</span> (
     InceptionV3, preprocess_input, decode_predictions
 )
