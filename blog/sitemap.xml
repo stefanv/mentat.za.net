@@ -3,8 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mentat.za.net/blog/tags/image-processing/</loc>
+  </url>
+  
+  <url>
     <loc>https://mentat.za.net/blog/posts/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/python/</loc>
   </url>
   
   <url>
@@ -12,33 +19,27 @@
   </url>
   
   <url>
+    <loc>https://mentat.za.net/blog/tags/scipy/</loc>
+  </url>
+  
+  <url>
     <loc>https://mentat.za.net/blog/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/tags/image-processing/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/tags/python/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/tags/scipy/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/visualization/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/artificial-intelligence/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/design/</loc>
   </url>
   
   <url>
@@ -46,18 +47,11 @@
   </url>
   
   <url>
-    <loc>https://mentat.za.net/blog/tags/artificial-intelligence/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/tags/design/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://mentat.za.net/blog/tags/machine-learning/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/emacs/</loc>
   </url>
   
   <url>
@@ -65,18 +59,11 @@
   </url>
   
   <url>
-    <loc>https://mentat.za.net/blog/tags/emacs/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://mentat.za.net/blog/tags/mutt/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/org-mode/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -84,32 +71,27 @@
   </url>
   
   <url>
-    <loc>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</loc>
-  </url>
-  
-  <url>
     <loc>https://mentat.za.net/blog/tags/javascript/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/react/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/redux/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/web/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/websocket/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</loc>
   </url>
   
   <url>
@@ -118,7 +100,10 @@
   
   <url>
     <loc>https://mentat.za.net/blog/tags/tensorflow/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/amazon/</loc>
   </url>
   
   <url>
@@ -126,23 +111,15 @@
   </url>
   
   <url>
-    <loc>https://mentat.za.net/blog/tags/amazon/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://mentat.za.net/blog/tags/drm/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/ebooks/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/kindle/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -150,21 +127,19 @@
   </url>
   
   <url>
+    <loc>https://mentat.za.net/blog/tags/linux/</loc>
+  </url>
+  
+  <url>
     <loc>https://mentat.za.net/blog/2015/01/24/vpn-only-internet/</loc>
   </url>
   
   <url>
-    <loc>https://mentat.za.net/blog/tags/linux/</loc>
-    <priority>0</priority>
+    <loc>https://mentat.za.net/blog/tags/docker/</loc>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/2015/01/18/docker-image-tree/</loc>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/tags/docker/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -177,12 +152,10 @@
   
   <url>
     <loc>https://mentat.za.net/blog/tags/science/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/tags/super-resolution/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -195,7 +168,6 @@
   
   <url>
     <loc>https://mentat.za.net/blog/tags/coding/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -204,7 +176,6 @@
   
   <url>
     <loc>https://mentat.za.net/blog/categories/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

@@ -17,7 +17,9 @@
       <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2019/08/06/portland-microscopy/</guid>
-      <description>Where we demonstrate a new way of doing interactive image analysis.</description>
+      <description>Today, I presented a talk titled &amp;ldquo;Scientific Python: A Mature Computational Ecosystem for Microscopy&amp;rdquo; [PDF] at the Microscopy and MicroAnalysis conference in Portland.
+A few members of the audience familiar with scientific Python told me they had learned something, so I&amp;rsquo;ll highlight the few topics that I think may have qualified.
+SciPy 1.0 paper The first official release of SciPy was in 2001, and a mere 16 years later we reached 1.</description>
     </item>
     
   </channel>

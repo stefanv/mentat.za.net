@@ -17,7 +17,8 @@
       <pubDate>Sat, 24 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2015/01/24/vpn-only-internet/</guid>
-      <description>Where we set up a firewall that allows traffic to leave only via the VPN.</description>
+      <description>A few days ago, I noticed that my outbound email wasn&amp;rsquo;t being delivered&amp;mdash;it seems as if my ISP blocks access to some outbound ports. An easy workaround is to route traffic through the work VPN, but knowing myself I&amp;rsquo;d forget to switch it on, leaving my outbound mail stranded.
+I needed a way of blocking any access to the internet, unless it was leaving through the VPN (since I was sure I&amp;rsquo;d notice that pretty quickly).</description>
     </item>
     
     <item>

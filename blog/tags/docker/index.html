@@ -4,13 +4,11 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>
-				docker &middot; Stéfan&#39;s blog
-		</title>
+		<title>docker &middot; Stéfan&#39;s blog</title>
 
 		
   		<link rel="stylesheet" href="/blog/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+		<link rel="stylesheet" href="/blog/css/fonts.css">
 		<link rel="stylesheet" href="/blog/custom.css">
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
@@ -51,7 +49,9 @@
       
     </div>
     <p>
-      Where we prune unused Docker images, and save a lot of disk space.
+      Visualizing the Docker image dependency tree is a useful way of checking image sizes and inter-image dependencies. Since images occupy a lot of disk space, we may also want to prune unused images.
+Visualizing image dependencies In version 1.2.0 of Docker, the image dependency tree is available via the docker images --tree command:
+$ docker images --tree Warning: '--tree' is deprecated, it will be removed soon. See usage. ├─511136ea3c5a Virtual Size: 0 B │ ├─5bc37dc2dfba Virtual Size: 192.
     </p>
   </a>
 </div>
@@ -70,7 +70,7 @@
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-08-07 00:43:52.771981054 -0700 PDT m=&#43;0.077174210">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2019-10-11 17:07:29.191526845 -0700 PDT m=&#43;0.149739153">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

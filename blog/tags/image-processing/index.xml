@@ -17,7 +17,9 @@
       <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2019/08/06/portland-microscopy/</guid>
-      <description>Where we demonstrate a new way of doing interactive image analysis.</description>
+      <description>Today, I presented a talk titled &amp;ldquo;Scientific Python: A Mature Computational Ecosystem for Microscopy&amp;rdquo; [PDF] at the Microscopy and MicroAnalysis conference in Portland.
+A few members of the audience familiar with scientific Python told me they had learned something, so I&amp;rsquo;ll highlight the few topics that I think may have qualified.
+SciPy 1.0 paper The first official release of SciPy was in 2001, and a mere 16 years later we reached 1.</description>
     </item>
     
     <item>
@@ -26,7 +28,10 @@
       <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</guid>
-      <description>Where I summarize 5 years of my life in 10 pages.</description>
+      <description>While I loved the topic of my PhD, I had to take a break after staring at that problem for several years. Thereafter, I was side-tracked by several other projects, and never got around to publishing a paper on my dissertation.
+Here, then, is a summary of the simple but effective super-resolution algorithm described therein:
+http://arxiv.org/abs/1210.3404
+I also submitted this work to NIPS: the reviewers liked the paper, but they were not convinced of its novelty.</description>
     </item>
     
     <item>

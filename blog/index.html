@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-	<meta name="generator" content="Hugo 0.55.6" />
+	<meta name="generator" content="Hugo 0.57.2" />
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<meta name="description" content="">
 
-		<title>
-				Stéfan&#39;s blog
-		</title>
+		<title>Stéfan&#39;s blog</title>
 
 		
   		<link rel="stylesheet" href="/blog/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+		<link rel="stylesheet" href="/blog/css/fonts.css">
 		<link rel="stylesheet" href="/blog/custom.css">
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
@@ -61,7 +59,9 @@
       
     </div>
     <p>
-      Where we demonstrate a new way of doing interactive image analysis.
+      Today, I presented a talk titled &ldquo;Scientific Python: A Mature Computational Ecosystem for Microscopy&rdquo; [PDF] at the Microscopy and MicroAnalysis conference in Portland.
+A few members of the audience familiar with scientific Python told me they had learned something, so I&rsquo;ll highlight the few topics that I think may have qualified.
+SciPy 1.0 paper The first official release of SciPy was in 2001, and a mere 16 years later we reached 1.
     </p>
   </a>
 </div>
@@ -81,7 +81,8 @@
       
     </div>
     <p>
-      How can we better design systems that combine computational inference and human intelligence?
+      The first issue of the Harvard Data Science Review was published last month. I enjoyed Michael Jordan&rsquo;s opinion piece, in which he considers progress made (and, yes, hype!) in so-called artificial intelligence. Particularly, I was excited about the phrase &ldquo;Intelligent Augmentation&rdquo;—the pursuit of systems that enhances our ability to reason about a subject, by providing additional analysis, data, and emphasis. Jordan writes:
+ IA will also remain quite essential, because for the foreseeable future, computers will not be able to match humans in their ability to reason abstractly about real-world situations.
     </p>
   </a>
 </div>
@@ -103,7 +104,9 @@
       
     </div>
     <p>
-      Where we store links to emails in org-mode, and open them using neomutt.
+      Update 2018-11-2: Change the URL scheme to message://. See &ldquo;Other Systems&rdquo; below.
+org-mode is, to me, is one of the most valuable parts of the emacs ecosystem. I use it to take notes, plan projects, manage tasks, and write &amp; publish documents.
+Nowadays, a lot of work arrives via email, and so it is helpful to be able to refer to messages directly from my notes or lists of tasks.
     </p>
   </a>
 </div>
@@ -121,7 +124,9 @@
       
     </div>
     <p>
-      Where we show a quick way of navigating org-mode files.
+      In org-mode, I often have the need to jump to a top-level heading matching some word.
+Since an org-mode buffer can be searched just like any other, I can simply invoke forward search with C-s, but this will match all occurrences of the text, instead of limiting the search to headings only.
+This makes it hard to search for a phrase like &ldquo;Travel&rdquo;, for which I have a top-level heading, but also often occurs elsewhere in my notes.
     </p>
   </a>
 </div>
@@ -147,7 +152,8 @@
       
     </div>
     <p>
-      where we make pushing messages from a python backend to the browser easy.
+      As part of our work on Cesium and its web frontend, we&rsquo;ve developed an easy mechanism for Python web developers to push messages from their Python backends to the browser.
+There are plenty of potential use cases, but consider, e.g., that you want to verify a credit card number submitted by your user. Traditionally, you&rsquo;d submit the number, and then poll the backend repeatedly from the browser. Not very elegant :/
     </p>
   </a>
 </div>
@@ -165,7 +171,9 @@
       
     </div>
     <p>
-      Where we build TensorFlow from scratch.
+      Due to two bugs in gcc 6.1 affecting the re2 library (one of which has been fixed in 6.2)), TensorFlow cannot be compiled from source one some systems (including my Debian Testing install).
+To work around the issue, modify tensorflow/workspace.bzl and change the re2 description to:
+native.git_repository( name = &quot;com_googlesource_code_re2&quot;, remote = &quot;https://github.com/stefanv/re2.git&quot;, commit = &quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;, )  The re2 library is now downloaded from my fork, which applies a one line patch.
     </p>
   </a>
 </div>
@@ -187,7 +195,8 @@
       
     </div>
     <p>
-      Where we realize Amazon owns your books.
+      Did you know that Amazon does not sell ebooks? But, wait, you say, I have bought ebooks from them myself! Sadly, that is not the case. I will summarize part of the Kindle Store Terms of Use quoted at the bottom of this post:
+ You do not own any Kindle book that you have &ldquo;bought&rdquo;, even if it said &ldquo;buy with one click&rdquo; in the store (the book still belongs to Amazon, you&rsquo;re just leasing it).
     </p>
   </a>
 </div>
@@ -203,7 +212,9 @@
       
     </div>
     <p>
-      Where we discuss two ways of installing Matplotlib on MacOS.
+      One day, we will hopefully have a grand unified build and package management system for Python where everything is free &amp; open and Just Works &trade;. Until then, you have two options:
+brew Python + pip  brew install python3 pyvenv -v ~/envs/py3 source ~/envs/py3/bin/activate pip install matplotlib  Pros/cons:
+ Pip is the standard Python package management tool, and uses the official Python Package Index (PyPi) repository. Wheels on PyPi are built by authors themselves from open recipes.
     </p>
   </a>
 </div>
@@ -219,7 +230,8 @@
       
     </div>
     <p>
-      Where we set up a firewall that allows traffic to leave only via the VPN.
+      A few days ago, I noticed that my outbound email wasn&rsquo;t being delivered&mdash;it seems as if my ISP blocks access to some outbound ports. An easy workaround is to route traffic through the work VPN, but knowing myself I&rsquo;d forget to switch it on, leaving my outbound mail stranded.
+I needed a way of blocking any access to the internet, unless it was leaving through the VPN (since I was sure I&rsquo;d notice that pretty quickly).
     </p>
   </a>
 </div>
@@ -235,20 +247,22 @@
       
     </div>
     <p>
-      Where we prune unused Docker images, and save a lot of disk space.
+      Visualizing the Docker image dependency tree is a useful way of checking image sizes and inter-image dependencies. Since images occupy a lot of disk space, we may also want to prune unused images.
+Visualizing image dependencies In version 1.2.0 of Docker, the image dependency tree is available via the docker images --tree command:
+$ docker images --tree Warning: '--tree' is deprecated, it will be removed soon. See usage. ├─511136ea3c5a Virtual Size: 0 B │ ├─5bc37dc2dfba Virtual Size: 192.
     </p>
   </a>
 </div>
 
 		
 	</div>
-	
+
 	<div class="pagination">
 		
 		
 			<a href="/blog/page/2/" class="right arrow">&#8594;</a>
 		
-	
+
 		<span>1</span>
 	</div>
 </main>
@@ -256,7 +270,7 @@
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-08-07 00:43:52.748866288 -0700 PDT m=&#43;0.054059444">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2019-10-11 17:07:29.19153369 -0700 PDT m=&#43;0.149746009">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

@@ -1,21 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Stéfan&#39;s blog</title>
-  <link href="https://mentat.za.net/blog/index.xml" rel="self"/>
-  <link href="https://mentat.za.net/blog/"/>
-  <updated>2019-08-06T00:00:00+00:00</updated>
-  <id>https://mentat.za.net/blog/</id>
-  <generator>Hugo -- gohugo.io</generator>
-  <entry>
-    <title type="html"><![CDATA[Scientific Python at Microscopy &amp; MicroAnalysis 2019]]></title>
-    <link href="https://mentat.za.net/blog/2019/08/06/portland-microscopy/"/>
-    <id>https://mentat.za.net/blog/2019/08/06/portland-microscopy/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2019-08-06T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.57.2">Hugo</generator><title type="html"><![CDATA[Stéfan's blog]]></title>
+    
+    
+    
+            <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
+    <updated>2019-10-11T17:07:29-07:00</updated>
+    
+    
+    
+    
+        <id>https://mentat.za.net/blog/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Scientific Python at Microscopy & MicroAnalysis 2019]]></title>
+            <link href="https://mentat.za.net/blog/2019/08/06/portland-microscopy/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+                <link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/?utm_source=atom_feed" rel="related" type="text/html" title="Linking to emails in org-mode (using neomutt)" />
+                <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/?utm_source=atom_feed" rel="related" type="text/html" title="WebSockets in Python (and some Redux)" />
+            
+                <id>https://mentat.za.net/blog/2019/08/06/portland-microscopy/</id>
+            
+            
+            <published>2019-08-06T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we demonstrate a new way of doing interactive image analysis.</blockquote>
 
 <p>Today, I presented a talk titled <a href="https://doi.org/10.1017/S1431927619001399">&ldquo;Scientific Python: A Mature Computational Ecosystem for Microscopy&rdquo;</a> [<a href="http://www.jhmartins.com/mm2019c/7337/0132.pdf">PDF</a>] at the Microscopy and MicroAnalysis conference in Portland.</p>
 
@@ -34,14 +50,14 @@
 
 In [<span style="color:#40a070">25</span>]: x <span style="color:#666">=</span> cp<span style="color:#666">.</span>random<span style="color:#666">.</span>random([<span style="color:#40a070">10</span>, <span style="color:#40a070">10</span>])
 
-In [<span style="color:#40a070">26</span>]: y <span style="color:#666">=</span> x<span style="color:#666">.</span><span style="color:#007020">sum</span>(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
+In [<span style="color:#40a070">26</span>]: y <span style="color:#666">=</span> x<span style="color:#666">.</span>sum(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
 
 In [<span style="color:#40a070">27</span>]: <span style="color:#007020">type</span>(y), y<span style="color:#666">.</span>shape
 Out[<span style="color:#40a070">27</span>]: (cupy<span style="color:#666">.</span>core<span style="color:#666">.</span>core<span style="color:#666">.</span>ndarray, (<span style="color:#40a070">10</span>,))
 
 In [<span style="color:#40a070">28</span>]: <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
 
-In [<span style="color:#40a070">29</span>]: z <span style="color:#666">=</span> np<span style="color:#666">.</span><span style="color:#007020">sum</span>(x, axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
+In [<span style="color:#40a070">29</span>]: z <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(x, axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
 
 In [<span style="color:#40a070">30</span>]: <span style="color:#007020">type</span>(z), z<span style="color:#666">.</span>shape
 Out[<span style="color:#40a070">30</span>]: (cupy<span style="color:#666">.</span>core<span style="color:#666">.</span>core<span style="color:#666">.</span>ndarray, (<span style="color:#40a070">10</span>,))</code></pre></div>
@@ -158,7 +174,7 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 
 <p>We can do numerous operations on this array, such as summing it with <code>vol.sum(axis=0)</code>, although this still yields an uncomputed <code>dask</code> <code>Array</code>.  To get actual values, we need to call:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vol<span style="color:#666">.</span><span style="color:#007020">sum</span>(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)<span style="color:#666">.</span>compute()</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vol<span style="color:#666">.</span>sum(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)<span style="color:#666">.</span>compute()</code></pre></div>
 <h2 id="napari">Napari</h2>
 
 <p>To visualize a volume like the one above, I could have sliced into it and displayed the result using <code>matplotlib</code>.  However, I used this opportunity to play around with a brand new open source image viewer called <a href="https://github.com/napari/napari">Napari</a>.</p>
@@ -198,17 +214,43 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 <p>Thank you to the organizers of M&amp;M 2019 for inviting me to speak; I very much enjoyed our session, and look forward to working with this community on making scientific Python an <em>even better</em> platform for mirocroscopy analysis!</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Designing for Intelligent Augmentation]]></title>
-    <link href="https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/"/>
-    <id>https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2019-07-05T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[<p>The first issue of the <a href="https://hdsr.mitpress.mit.edu/">Harvard Data Science Review</a> was published last month.  I enjoyed <a href="https://hdsr.mitpress.mit.edu/pub/wot7mkc1">Michael Jordan&rsquo;s opinion piece</a>, in which he considers progress made (and, yes, hype!) in so-called artificial intelligence.  Particularly, I was excited about the phrase &ldquo;Intelligent Augmentation&rdquo;—the pursuit of systems that enhances our ability to reason about a subject, by providing additional analysis, data, and emphasis. Jordan writes:</p>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/scipy" term="scipy" label="scipy" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/visualization" term="visualization" label="visualization" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/image-processing" term="image-processing" label="image processing" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Designing for Intelligent Augmentation]]></title>
+            <link href="https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://mentat.za.net/blog/2019/07/05/intelligent-augmentation/</id>
+            
+            
+            <published>2019-07-05T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>How can we better design systems that combine computational inference and human intelligence?</blockquote><p>The first issue of the <a href="https://hdsr.mitpress.mit.edu/">Harvard Data Science Review</a> was published last month.  I enjoyed <a href="https://hdsr.mitpress.mit.edu/pub/wot7mkc1">Michael Jordan&rsquo;s opinion piece</a>, in which he considers progress made (and, yes, hype!) in so-called artificial intelligence.  Particularly, I was excited about the phrase &ldquo;Intelligent Augmentation&rdquo;—the pursuit of systems that enhances our ability to reason about a subject, by providing additional analysis, data, and emphasis. Jordan writes:</p>
 
 <blockquote>
 <p>IA will also remain quite essential, because for the foreseeable future, computers will not be able to match humans in their ability to reason abstractly about real-world situations. We will need well-thought-out interactions of humans and computers to solve our most pressing problems. And we will want computers to trigger new levels of human creativity, not replace human creativity (whatever that might mean).</p>
@@ -236,17 +278,46 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 <p>For the humanist, intelligence augmentation must now and forever be our goal. Machine learning only matters insofar as it makes us fundamentally more intelligent and deepens our understanding.</p>
 </blockquote>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Linking to emails in org-mode (using neomutt)]]></title>
-    <link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/"/>
-    <id>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2018-10-31T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/artificial-intelligence" term="artificial-intelligence" label="artificial intelligence" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/machine-learning" term="machine-learning" label="machine learning" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/design" term="design" label="design" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Linking to emails in org-mode (using neomutt)]]></title>
+            <link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/?utm_source=atom_feed" rel="related" type="text/html" title="Search headers in org-mode" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+                <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/?utm_source=atom_feed" rel="related" type="text/html" title="WebSockets in Python (and some Redux)" />
+                <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/?utm_source=atom_feed" rel="related" type="text/html" title="Compile TensorFlow from source with gcc6.1" />
+                <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="related" type="text/html" title="Python &amp; Matplotlib on OSX" />
+            
+                <id>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</id>
+            
+            
+            <published>2018-10-31T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we store links to emails in org-mode, and open them using neomutt.</blockquote>
 
 <p><em><strong>Update 2018-11-2:</strong> Change the URL scheme to <code>message://</code>.
 See <a href="#other-systems">&ldquo;Other Systems&rdquo;</a> below.</em></p>
@@ -300,7 +371,7 @@ and make it executable using <code>chmod +x mutt-save-org-link.py</code>.</p>
 <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">urllib.parse</span>
 
 <span style="color:#60a0b0;font-style:italic"># Parse the email from standard input</span>
-message_bytes <span style="color:#666">=</span> sys<span style="color:#666">.</span>stdin<span style="color:#666">.</span><span style="color:#007020">buffer</span><span style="color:#666">.</span>read()
+message_bytes <span style="color:#666">=</span> sys<span style="color:#666">.</span>stdin<span style="color:#666">.</span>buffer<span style="color:#666">.</span>read()
 message <span style="color:#666">=</span> email<span style="color:#666">.</span>message_from_bytes(message_bytes)
 
 <span style="color:#60a0b0;font-style:italic"># Grab the relevant message headers</span>
@@ -383,17 +454,45 @@ to
 Please file issues and PRs there, or tell me about your use cases
 in the comments below.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Search headers in org-mode]]></title>
-    <link href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/"/>
-    <id>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2016-12-15T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[<p>In org-mode, I often have the need to jump to a top-level heading
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/org-mode" term="org-mode" label="org-mode" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/emacs" term="emacs" label="emacs" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/mutt" term="mutt" label="mutt" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Search headers in org-mode]]></title>
+            <link href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/?utm_source=atom_feed" rel="related" type="text/html" title="Adobe&#39;s new free font: Source Code Pro" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</id>
+            
+            
+            <published>2016-12-15T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we show a quick way of navigating org-mode files.</blockquote><p>In org-mode, I often have the need to jump to a top-level heading
 matching some word.</p>
 
 <p>Since an org-mode buffer can be searched just like any other, I can
@@ -429,17 +528,44 @@ now present you with a search prompt.  Typing a heading name will take you
 there directly, at which point you can choose to expand it with the
 TAB key.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[WebSockets in Python (and some Redux)]]></title>
-    <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/"/>
-    <id>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2016-10-20T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[<p>As part of our work on <a href="https://cesium-ml.org">Cesium</a> and its
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/emacs" term="emacs" label="emacs" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/org-mode" term="org-mode" label="org-mode" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[WebSockets in Python (and some Redux)]]></title>
+            <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/?utm_source=atom_feed" rel="related" type="text/html" title="Compile TensorFlow from source with gcc6.1" />
+                <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="related" type="text/html" title="Python &amp; Matplotlib on OSX" />
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+            
+                <id>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</id>
+            
+            
+            <published>2016-10-20T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>where we make pushing messages from a python backend to the browser easy.</blockquote><p>As part of our work on <a href="https://cesium-ml.org">Cesium</a> and its
 <a href="https://github.com/cesium-ml/cesium_web">web frontend</a>,
 we&rsquo;ve developed an easy
 mechanism for Python web developers to
@@ -510,17 +636,52 @@ self<span style="color:#666">.</span>flow<span style="color:#666">.</span>push(<
 <p>Please take a look at the more detailed technical description (with code!)
 <a href="http://cesium-ml.org/blog/2016/07/13/a-pattern-for-websockets-in-python/">on the Cesium blog</a>.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Compile TensorFlow from source with gcc6.1]]></title>
-    <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/"/>
-    <id>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2016-09-14T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[<p>Due to two bugs in gcc 6.1
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/web" term="web" label="web" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/javascript" term="javascript" label="javascript" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/websocket" term="websocket" label="websocket" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/redux" term="redux" label="redux" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/react" term="react" label="react" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Compile TensorFlow from source with gcc6.1]]></title>
+            <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="related" type="text/html" title="Python &amp; Matplotlib on OSX" />
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</id>
+            
+            
+            <published>2016-09-14T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we build TensorFlow from scratch.</blockquote><p>Due to two bugs in gcc 6.1
 <a href="https://github.com/google/re2/issues/102">affecting the re2 library</a>
 (one of which has been fixed in 6.2)),
 <a href="https://www.tensorflow.org/">TensorFlow</a> cannot be
@@ -555,17 +716,39 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ImportError: cannot import name &#39;pywrap_tensorflow&#39;</code></pre></div>
 <p>switch out of the TensorFlow source directory and try again.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Amazon owns your ebooks]]></title>
-    <link href="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/"/>
-    <id>https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2016-08-21T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/tensorflow" term="tensorflow" label="tensorflow" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Amazon owns your ebooks]]></title>
+            <link href="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/</id>
+            
+            
+            <published>2016-08-21T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we realize Amazon owns your books.</blockquote>
 
 <p>Did you know that Amazon does not sell ebooks?  But, wait, you say, I
 have bought ebooks from them myself!  Sadly, that is not the case.  I
@@ -689,17 +872,47 @@ circumvent any digital rights management system or other content
 protection or features used as part of the Service.</p>
 </blockquote>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Python &amp; Matplotlib on OSX]]></title>
-    <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/"/>
-    <id>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2016-02-26T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/drm" term="drm" label="drm" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/amazon" term="amazon" label="amazon" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/kindle" term="kindle" label="kindle" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/ebooks" term="ebooks" label="ebooks" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Python & Matplotlib on OSX]]></title>
+            <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</id>
+            
+            
+            <published>2016-02-26T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we discuss two ways of installing Matplotlib on MacOS.</blockquote>
 
 <p>One day, we will hopefully have a grand unified build and package management
 system for Python where everything is free &amp; open and Just Works &trade;.  Until
@@ -755,17 +968,38 @@ available for all packages<sup class="footnote-ref" id="fnref:1"><a href="#fn:1"
 </ol>
 </div>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[VPN-only access to the internet]]></title>
-    <link href="https://mentat.za.net/blog/2015/01/24/vpn-only-internet/"/>
-    <id>https://mentat.za.net/blog/2015/01/24/vpn-only-internet/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2015-01-24T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[<p>A few days ago, I noticed that my outbound email wasn&rsquo;t being
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[VPN-only access to the internet]]></title>
+            <link href="https://mentat.za.net/blog/2015/01/24/vpn-only-internet/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/?utm_source=atom_feed" rel="related" type="text/html" title="Adobe&#39;s new free font: Source Code Pro" />
+            
+                <id>https://mentat.za.net/blog/2015/01/24/vpn-only-internet/</id>
+            
+            
+            <published>2015-01-24T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we set up a firewall that allows traffic to leave only via the VPN.</blockquote><p>A few days ago, I noticed that my outbound email wasn&rsquo;t being
 delivered&mdash;it seems as if my ISP blocks access to some outbound ports.
 An easy workaround is to route traffic through the work VPN, but
 knowing myself I&rsquo;d forget to switch it on, leaving my outbound mail
@@ -894,17 +1128,37 @@ port="1-65535" protocol="tcp" reject
 </ol>
 </div>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Visualizing and pruning the docker image tree]]></title>
-    <link href="https://mentat.za.net/blog/2015/01/18/docker-image-tree/"/>
-    <id>https://mentat.za.net/blog/2015/01/18/docker-image-tree/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2015-01-18T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/linux" term="linux" label="linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Visualizing and pruning the docker image tree]]></title>
+            <link href="https://mentat.za.net/blog/2015/01/18/docker-image-tree/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://mentat.za.net/blog/2015/01/18/docker-image-tree/</id>
+            
+            
+            <published>2015-01-18T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we prune unused Docker images, and save a lot of disk space.</blockquote>
 
 <p>Visualizing the Docker image dependency tree is a useful way of
 checking image sizes and inter-image dependencies.  Since images
@@ -1067,17 +1321,40 @@ $ docktree
 images.  If I remove <code>ubuntu:utopic</code>, I can again run the pruning
 process to get rid of its left-over dependencies.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[SciPy2013 Proceedings]]></title>
-    <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/"/>
-    <id>https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2013-06-27T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/docker" term="docker" label="docker" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[SciPy2013 Proceedings]]></title>
+            <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+            
+                <id>https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</id>
+            
+            
+            <published>2013-06-27T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where I announce the SciPy 2013 proceedings, and talk about how we did it.</blockquote>
 
 <p>The talks for the 12th (fantastic) Python in Science conference just concluded,
 and I am happy to announce the
@@ -1122,17 +1399,41 @@ submit a pull request on
 year&rsquo;s conference, and to the wonderfully inclusive and talented Scientific
 Python community, of which I am proud to be part of.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Replicable super-resolution paper]]></title>
-    <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/"/>
-    <id>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2012-10-15T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[<p>While I loved the topic of my PhD, I had to take a break after staring at that
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/scipy" term="scipy" label="scipy" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Replicable super-resolution paper]]></title>
+            <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</id>
+            
+            
+            <published>2012-10-15T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where I summarize 5 years of my life in 10 pages.</blockquote><p>While I loved the topic of my PhD, I had to take a break after staring at that
 problem for several years.  Thereafter, I was side-tracked by
 <a href="http://github.com/scipy">several</a> <a href="http://scikit-image.org">other</a>
 <a href="http://dipy.org">projects</a>, and never got around to publishing a paper on
@@ -1154,17 +1455,44 @@ as a linear operator and using it for super-resolution was not.</p>
 sample data-set) and play with the different reconstruction parameters.  Quite
 a bit of the code has since graduated into <a href="http://scikit-image.org">scikit-image</a>.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[scikits-image 0.7]]></title>
-    <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/"/>
-    <id>https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2012-09-30T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/super-resolution" term="super-resolution" label="super-resolution" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/image-processing" term="image-processing" label="image-processing" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/science" term="science" label="science" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[scikits-image 0.7]]></title>
+            <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</id>
+            
+            
+            <published>2012-09-30T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[
 
 <p>We&rsquo;re happy to announce the 7th version of scikits-image!</p>
 
@@ -1244,17 +1572,44 @@ new and old.</p>
 <li>Wei Li</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Adobe&#39;s new free font: Source Code Pro]]></title>
-    <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/"/>
-    <id>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2012-09-26T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[<p>Adobe yesterday
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/image-processing" term="image-processing" label="image processing" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/scipy" term="scipy" label="scipy" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/science" term="science" label="science" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Adobe's new free font: Source Code Pro]]></title>
+            <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</id>
+            
+            
+            <published>2012-09-26T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Adobe yesterday
 <a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html">released its free and open source Type family, Source Code Pro</a>,
 which includes an eye-pleasing monospace font  ideally suited for coding.
 In the past, and at the recommendation of <a href="http://blog.fperez.org/">Fernando Perez</a>, I&rsquo;ve
@@ -1289,17 +1644,41 @@ Terminal, etc.  To make it the default font in Emacs::</p>
 
 <p>Comments also on <a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik">Google+</a>.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[Emacs package management]]></title>
-    <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/"/>
-    <id>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</id>
-    <author>
-      <name>Stéfan van der Walt</name>
-    </author>
-    <published>2012-09-25T00:00:00+00:00</published>
-    <updated>0001-01-01T00:00:00+00:00</updated>
-    <content type="html"><![CDATA[<p>I recently tried to install MuMaMo as one of the dependencies for Takafumi
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/coding" term="coding" label="coding" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/emacs" term="emacs" label="emacs" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/linux" term="linux" label="linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Emacs package management]]></title>
+            <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</id>
+            
+            
+            <published>2012-09-25T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>I recently tried to install MuMaMo as one of the dependencies for Takafumi
 Arakaki&rsquo;s <a href="https://github.com/tkf/emacs-ipython-notebook">Emacs-based IPython notebook</a>.  The instructions on the MuMaMo
 webpage were as clear as mud and aimed primarily at Windows users.  Enters
 <a href="https://github.com/dimitri/el-get">apt-get for Emacs</a>!</p>
@@ -1311,38 +1690,38 @@ fashion.  Here are some relevant configuration snippets:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-common-lisp" data-lang="common-lisp"><span style="color:#60a0b0;font-style:italic">; Everything gets installed into ~/elisp, a folder</span>
 <span style="color:#60a0b0;font-style:italic">; I sync across all my machines</span>
 
-(<span style="color:#bb60d5">setq</span> <span style="color:#bb60d5">el-get-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get&#34;</span>)
-(<span style="color:#bb60d5">setq</span> <span style="color:#bb60d5">el-get-install-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get/el-get&#34;</span>)
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get&#34;</span>)
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-install-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get/el-get&#34;</span>)
 (<span style="color:#bb60d5">add-to-list</span> <span style="color:#517918">&#39;load-path</span> <span style="color:#bb60d5">el-get-install-dir</span>)
 
 <span style="color:#60a0b0;font-style:italic">; If el-get is missing, install it automatically</span>
 
-(<span style="color:#bb60d5">unless</span> (<span style="color:#bb60d5">require</span> <span style="color:#517918">&#39;el-get</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+(<span style="color:#007020">unless</span> (<span style="color:#06287e">require</span> <span style="color:#517918">&#39;el-get</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
   (<span style="color:#bb60d5">url-retrieve</span>
    <span style="color:#4070a0">&#34;https://raw.github.com/dimitri/el-get/master/el-get-install.el&#34;</span>
-   (<span style="color:#bb60d5">lambda</span> (<span style="color:#bb60d5">s</span>)
+   (<span style="color:#007020">lambda</span> (<span style="color:#bb60d5">s</span>)
      (<span style="color:#bb60d5">goto-char</span> (<span style="color:#bb60d5">point-max</span>))
      (<span style="color:#bb60d5">eval-print-last-sexp</span>))))
 
 <span style="color:#60a0b0;font-style:italic">; Install these packages, and call the specified configuration snippets</span>
 <span style="color:#60a0b0;font-style:italic">; after each load</span>
-(<span style="color:#bb60d5">setq</span> <span style="color:#bb60d5">el-get-sources</span>
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-sources</span>
       <span style="color:#666">&#39;</span>(
 
         (<span style="color:#517918">:name</span> <span style="color:#bb60d5">ethan-wspace</span>
-         <span style="color:#517918">:after</span> (<span style="color:#bb60d5">progn</span>
+         <span style="color:#517918">:after</span> (<span style="color:#007020;font-weight:bold">progn</span>
                   (<span style="color:#bb60d5">global-ethan-wspace-mode</span> <span style="color:#40a070">1</span>)
                   (<span style="color:#bb60d5">set-face-background</span> <span style="color:#517918">&#39;ethan-wspace-face</span> <span style="color:#4070a0">&#34;gray95&#34;</span>)))
 
         (<span style="color:#517918">:name</span> <span style="color:#bb60d5">column-marker</span>
          <span style="color:#517918">:after</span> (<span style="color:#bb60d5">add-hook</span> <span style="color:#517918">&#39;font-lock-mode-hook</span>
-                          (<span style="color:#bb60d5">lambda</span> () (<span style="color:#bb60d5">interactive</span>) (<span style="color:#bb60d5">column-marker-1</span> <span style="color:#40a070">80</span>))))
+                          (<span style="color:#007020">lambda</span> () (<span style="color:#bb60d5">interactive</span>) (<span style="color:#bb60d5">column-marker-1</span> <span style="color:#40a070">80</span>))))
 
 <span style="color:#60a0b0;font-style:italic">; Also install these packages, no configuration required</span>
-(<span style="color:#bb60d5">setq</span> <span style="color:#bb60d5">my-packages</span>
-      (<span style="color:#bb60d5">append</span>
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">my-packages</span>
+      (<span style="color:#06287e">append</span>
        <span style="color:#666">&#39;</span>(<span style="color:#bb60d5">el-get</span> <span style="color:#bb60d5">maxframe</span> <span style="color:#bb60d5">markdown-mode</span> <span style="color:#bb60d5">ein</span> <span style="color:#bb60d5">python</span>)
-       (<span style="color:#bb60d5">mapcar</span> <span style="color:#517918">&#39;el-get-source-name</span> <span style="color:#bb60d5">el-get-sources</span>)
+       (<span style="color:#06287e">mapcar</span> <span style="color:#517918">&#39;el-get-source-name</span> <span style="color:#bb60d5">el-get-sources</span>)
        )
 )
 
@@ -1362,5 +1741,25 @@ JS2
 
 <!-- References -->
 ]]></content>
-  </entry>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/emacs" term="emacs" label="emacs" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/python" term="python" label="python" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/scipy" term="scipy" label="scipy" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
 </feed>

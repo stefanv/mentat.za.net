@@ -17,7 +17,9 @@
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</guid>
-      <description>Where we store links to emails in org-mode, and open them using neomutt.</description>
+      <description>Update 2018-11-2: Change the URL scheme to message://. See &amp;ldquo;Other Systems&amp;rdquo; below.
+org-mode is, to me, is one of the most valuable parts of the emacs ecosystem. I use it to take notes, plan projects, manage tasks, and write &amp;amp; publish documents.
+Nowadays, a lot of work arrives via email, and so it is helpful to be able to refer to messages directly from my notes or lists of tasks.</description>
     </item>
     
     <item>
@@ -26,7 +28,9 @@
       <pubDate>Thu, 15 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</guid>
-      <description>Where we show a quick way of navigating org-mode files.</description>
+      <description>In org-mode, I often have the need to jump to a top-level heading matching some word.
+Since an org-mode buffer can be searched just like any other, I can simply invoke forward search with C-s, but this will match all occurrences of the text, instead of limiting the search to headings only.
+This makes it hard to search for a phrase like &amp;ldquo;Travel&amp;rdquo;, for which I have a top-level heading, but also often occurs elsewhere in my notes.</description>
     </item>
     
     <item>

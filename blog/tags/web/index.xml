@@ -17,7 +17,8 @@
       <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</guid>
-      <description>where we make pushing messages from a python backend to the browser easy.</description>
+      <description>As part of our work on Cesium and its web frontend, we&amp;rsquo;ve developed an easy mechanism for Python web developers to push messages from their Python backends to the browser.
+There are plenty of potential use cases, but consider, e.g., that you want to verify a credit card number submitted by your user. Traditionally, you&amp;rsquo;d submit the number, and then poll the backend repeatedly from the browser. Not very elegant :/</description>
     </item>
     
   </channel>

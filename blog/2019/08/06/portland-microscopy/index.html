@@ -3,14 +3,13 @@
     <head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="Where we demonstrate a new way of doing interactive image analysis.">
 
-		<title>
-				Scientific Python at Microscopy &amp; MicroAnalysis 2019 &middot; Stéfan&#39;s blog
-		</title>
+		<title>Scientific Python at Microscopy &amp; MicroAnalysis 2019 &middot; Stéfan&#39;s blog</title>
 
 		
   		<link rel="stylesheet" href="/blog/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+		<link rel="stylesheet" href="/blog/css/fonts.css">
 		<link rel="stylesheet" href="/blog/custom.css">
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
@@ -100,14 +99,14 @@
 
 In [<span style="color:#40a070">25</span>]: x <span style="color:#666">=</span> cp<span style="color:#666">.</span>random<span style="color:#666">.</span>random([<span style="color:#40a070">10</span>, <span style="color:#40a070">10</span>])
 
-In [<span style="color:#40a070">26</span>]: y <span style="color:#666">=</span> x<span style="color:#666">.</span><span style="color:#007020">sum</span>(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
+In [<span style="color:#40a070">26</span>]: y <span style="color:#666">=</span> x<span style="color:#666">.</span>sum(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
 
 In [<span style="color:#40a070">27</span>]: <span style="color:#007020">type</span>(y), y<span style="color:#666">.</span>shape
 Out[<span style="color:#40a070">27</span>]: (cupy<span style="color:#666">.</span>core<span style="color:#666">.</span>core<span style="color:#666">.</span>ndarray, (<span style="color:#40a070">10</span>,))
 
 In [<span style="color:#40a070">28</span>]: <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
 
-In [<span style="color:#40a070">29</span>]: z <span style="color:#666">=</span> np<span style="color:#666">.</span><span style="color:#007020">sum</span>(x, axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
+In [<span style="color:#40a070">29</span>]: z <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(x, axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
 
 In [<span style="color:#40a070">30</span>]: <span style="color:#007020">type</span>(z), z<span style="color:#666">.</span>shape
 Out[<span style="color:#40a070">30</span>]: (cupy<span style="color:#666">.</span>core<span style="color:#666">.</span>core<span style="color:#666">.</span>ndarray, (<span style="color:#40a070">10</span>,))</code></pre></div>
@@ -224,7 +223,7 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 
 <p>We can do numerous operations on this array, such as summing it with <code>vol.sum(axis=0)</code>, although this still yields an uncomputed <code>dask</code> <code>Array</code>.  To get actual values, we need to call:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vol<span style="color:#666">.</span><span style="color:#007020">sum</span>(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)<span style="color:#666">.</span>compute()</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vol<span style="color:#666">.</span>sum(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)<span style="color:#666">.</span>compute()</code></pre></div>
 <h2 id="napari">Napari</h2>
 
 <p>To visualize a volume like the one above, I could have sliced into it and displayed the result using <code>matplotlib</code>.  However, I used this opportunity to play around with a brand new open source image viewer called <a href="https://github.com/napari/napari">Napari</a>.</p>
@@ -304,7 +303,7 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-08-07 00:43:52.765510322 -0700 PDT m=&#43;0.070703476">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2019-10-11 17:07:29.112710796 -0700 PDT m=&#43;0.070923114">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

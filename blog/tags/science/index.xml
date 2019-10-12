@@ -17,7 +17,10 @@
       <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</guid>
-      <description>Where I summarize 5 years of my life in 10 pages.</description>
+      <description>While I loved the topic of my PhD, I had to take a break after staring at that problem for several years. Thereafter, I was side-tracked by several other projects, and never got around to publishing a paper on my dissertation.
+Here, then, is a summary of the simple but effective super-resolution algorithm described therein:
+http://arxiv.org/abs/1210.3404
+I also submitted this work to NIPS: the reviewers liked the paper, but they were not convinced of its novelty.</description>
     </item>
     
     <item>

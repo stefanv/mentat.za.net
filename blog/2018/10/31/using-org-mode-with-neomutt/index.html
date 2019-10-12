@@ -3,14 +3,13 @@
     <head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="Where we store links to emails in org-mode, and open them using neomutt.">
 
-		<title>
-				Linking to emails in org-mode (using neomutt) &middot; Stéfan&#39;s blog
-		</title>
+		<title>Linking to emails in org-mode (using neomutt) &middot; Stéfan&#39;s blog</title>
 
 		
   		<link rel="stylesheet" href="/blog/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+		<link rel="stylesheet" href="/blog/css/fonts.css">
 		<link rel="stylesheet" href="/blog/custom.css">
 		
 		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
@@ -135,7 +134,7 @@ and make it executable using <code>chmod +x mutt-save-org-link.py</code>.</p>
 <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">urllib.parse</span>
 
 <span style="color:#60a0b0;font-style:italic"># Parse the email from standard input</span>
-message_bytes <span style="color:#666">=</span> sys<span style="color:#666">.</span>stdin<span style="color:#666">.</span><span style="color:#007020">buffer</span><span style="color:#666">.</span>read()
+message_bytes <span style="color:#666">=</span> sys<span style="color:#666">.</span>stdin<span style="color:#666">.</span>buffer<span style="color:#666">.</span>read()
 message <span style="color:#666">=</span> email<span style="color:#666">.</span>message_from_bytes(message_bytes)
 
 <span style="color:#60a0b0;font-style:italic"># Grab the relevant message headers</span>
@@ -259,7 +258,7 @@ in the comments below.</p>
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-08-07 00:43:52.76767188 -0700 PDT m=&#43;0.072865026">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2019-10-11 17:07:29.130606522 -0700 PDT m=&#43;0.088818844">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 
