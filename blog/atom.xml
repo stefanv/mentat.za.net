@@ -6,7 +6,7 @@
     
             <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
             <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
-    <updated>2019-10-11T17:07:29-07:00</updated>
+    <updated>2019-10-11T21:47:49-07:00</updated>
     
     
     
@@ -565,7 +565,7 @@ TAB key.</p>
             <updated>0001-01-01T00:00:00+00:00</updated>
             
             
-            <content type="html"><![CDATA[<blockquote>where we make pushing messages from a python backend to the browser easy.</blockquote><p>As part of our work on <a href="https://cesium-ml.org">Cesium</a> and its
+            <content type="html"><![CDATA[<blockquote>Where we make pushing messages from a python backend to the browser easy.</blockquote><p>As part of our work on <a href="https://cesium-ml.org">Cesium</a> and its
 <a href="https://github.com/cesium-ml/cesium_web">web frontend</a>,
 we&rsquo;ve developed an easy
 mechanism for Python web developers to
