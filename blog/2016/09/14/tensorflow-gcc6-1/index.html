@@ -74,34 +74,23 @@
 <a href="https://www.tensorflow.org/">TensorFlow</a> cannot be
 <a href="https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html">compiled from source</a>
 one some systems (including my Debian Testing install).</p>
-
 <p>To work around the issue, modify <code>tensorflow/workspace.bzl</code> and
 change the re2 description to:</p>
-
 <pre><code>native.git_repository(
   name = &quot;com_googlesource_code_re2&quot;,
   remote = &quot;https://github.com/stefanv/re2.git&quot;,
   commit = &quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;,
 )
-</code></pre>
-
-<p>The re2 library is now downloaded from my fork, which applies a
+</code></pre><p>The re2 library is now downloaded from my fork, which applies a
 <a href="https://github.com/stefanv/re2/commit/86503cb89d82b723ae0bce35e1e09524910cd319">one line patch</a>.</p>
-
 <p>Compile the TensorFlow Python package as usual with:</p>
-
 <pre><code>bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-</code></pre>
-
-<p>After installing the pip wheel using</p>
-
+</code></pre><p>After installing the pip wheel using</p>
 <pre><code>pip install /tmp/tensorflow_pkg/*.whl
-</code></pre>
-
-<p>you should have a working installation.  If importing fails with</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ImportError: cannot import name &#39;pywrap_tensorflow&#39;</code></pre></div>
-<p>switch out of the TensorFlow source directory and try again.</p>
+</code></pre><p>you should have a working installation.  If importing fails with</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ImportError: cannot import name &#39;pywrap_tensorflow&#39;
+</code></pre></div><p>switch out of the TensorFlow source directory and try again.</p>
 
 
 		<script type="text/javascript">
@@ -144,7 +133,7 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-10-11 21:47:49.398286793 -0700 PDT m=&#43;0.163004916">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-04-28 10:13:48.000032376 -0700 PDT m=&#43;0.041482896">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

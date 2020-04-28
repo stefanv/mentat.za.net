@@ -80,49 +80,37 @@
 
 		
 
-		
-
-<p><em><strong>Update 2018-11-2:</strong> Change the URL scheme to <code>message://</code>.
+		<p><em><strong>Update 2018-11-2:</strong> Change the URL scheme to <code>message://</code>.
 See <a href="#other-systems">&ldquo;Other Systems&rdquo;</a> below.</em></p>
-
 <p><a href="https://orgmode.org">org-mode</a> is, to me, is one of the most valuable
 parts of the emacs ecosystem.  I use it to take notes, plan projects,
 manage tasks, and write &amp; publish documents.</p>
-
 <p>Nowadays, a lot of work arrives via email, and so it is helpful to be
 able to refer to messages directly from my notes or lists of
 tasks.</p>
-
 <p>The <em>simplest</em> option might be to store URLs pointing to an online
 inbox such as <a href="https://fastmail.com">Fastmail</a> or GMail, but I wanted
 a solution that was both future proof (i.e., what if I moved my emails
 to a different provider?) and worked with my terminal-based mail
 client of choice, <a href="https://neomutt.org/">neomutt</a>.</p>
-
 <p>I started with
 a
 <a href="https://upsilon.cc/~zack/blog/posts/2010/02/integrating_Mutt_with_Org-mode/">solution provided by Stefano Zacchiroli</a>,
 and simplified it for my specific use-case.</p>
-
 <h2 id="overview">Overview</h2>
-
 <p>The solution has two parts: sending email links from neomutt to Emacs,
 and later opening those links from Emacs by invoking neomutt.  The
 first achieved via <code>org-protocol</code>, the latter via launching neomutt
 and then simulating keypresses.</p>
-
 <p>When launching neomutt, we have to tell it in which directory the
 message lives.  We therefore use <code>notmuch</code> to find the message file
 first, based on its Message-ID.  <code>maildir-utils</code> would be another way
 of doing so.  <strong>Please note that you have to have notmuch or
 maildir-utils set up already for this scheme to work.</strong></p>
-
 <p>I initially avoided the <code>org-protocol</code> package, because installation
 looked complicated.  That, it turns out, is only the case if you care
 about web browser integration, which we don&rsquo;t.</p>
-
 <h2 id="neomutt-configuration">Neomutt configuration</h2>
-
 <p>First, we have a Python script that can parse an e-mail and share the
 Message-ID and Subject with emacs.  I call it <code>mutt-save-org-link.py</code>,
 and make it executable using <code>chmod +x mutt-save-org-link.py</code>.</p>
@@ -145,22 +133,17 @@ subject <span style="color:#666">=</span> message[<span style="color:#4070a0">&#
 subprocess<span style="color:#666">.</span>Popen([
     <span style="color:#4070a0">&#39;emacsclient&#39;</span>,
     f<span style="color:#4070a0">&#39;org-protocol://store-link?url=message://{message_id}&amp;title={subject}&#39;</span>
-])</code></pre></div>
-<p>We then configure neomutt (typically in <code>~/.muttrc</code>) to call the
+])
+</code></pre></div><p>We then configure neomutt (typically in <code>~/.muttrc</code>) to call the
 script with a shortcut.  I chose Esc-L (the same as Alt-L).</p>
-
 <pre><code>macro index,pager \el &quot;|~/scripts/mutt-save-org-link.py\n&quot;
-</code></pre>
-
-<h2 id="emacs-configuration">Emacs configuration</h2>
-
+</code></pre><h2 id="emacs-configuration">Emacs configuration</h2>
 <p>Using <code>org-protocol</code>, we instruct emacsclient to intercept URLs with
 the <code>org-protocol://</code> scheme, as used by our <code>mutt-save-org-link.py</code>
 script.  We also tell org-mode how to handle special URLs of the form
 <code>message://message-id+goes_here@mail.gmail.com</code>.  Neomutt needs to know
 which Maildir folder to open, so we ask <code>notmuch</code> to tell us where the
 message is located.</p>
-
 <p>In my <code>~/.emacs</code> file I have:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="color:#60a0b0;font-style:italic">; Make sure org-protocol is loaded</span>
 <span style="color:#60a0b0;font-style:italic">; Now, org-protocol:// schemas are intercepted.</span>
@@ -193,24 +176,20 @@ message is located.</p>
 
 <span style="color:#60a0b0;font-style:italic">; Whenever org-mode sees a link starting with `message://`, it</span>
 <span style="color:#60a0b0;font-style:italic">; calls our `mutt-open-message` function</span>
-(<span style="color:#bb60d5">org-add-link-type</span> <span style="color:#4070a0">&#34;message&#34;</span> <span style="color:#517918">&#39;stefanv/mutt-open-message</span>)</code></pre></div>
-<p>There are a few caveats: if you use <code>maildir-utils</code>, the search
+(<span style="color:#bb60d5">org-add-link-type</span> <span style="color:#4070a0">&#34;message&#34;</span> <span style="color:#517918">&#39;stefanv/mutt-open-message</span>)
+</code></pre></div><p>There are a few caveats: if you use <code>maildir-utils</code>, the search
 command is <code>mu find -f l i:%s</code> instead of notmuch; and if you are not
 on Linux, then <code>setsid</code> (which we use to launch a detached background
 process) is not going to work, and you will want to use a different
 terminal emulator.</p>
-
-<h2 id="a-name-other-systems-a-other-systems"><a name="#other-systems"></a>Other Systems</h2>
-
+<h2 id="a-nameother-systemsaother-systems"><!-- raw HTML omitted --><!-- raw HTML omitted -->Other Systems</h2>
 <p><a href="https://vxlabs.com/">Charl Botha</a> mentioned in the comments that, on
 MacOS,
 <a href="https://orgmode.org/worg/org-contrib/org-mac-link.html">org-mac-link</a>
 lets you grab hyperlinks from a wide variety of apps.  Email messages,
 specifically, are stored as <code>message://message-id</code> URLs, which MacOS
 knows how to open.  This post has been updated to use the same link schema.</p>
-
 <h2 id="wrap-up">Wrap-up</h2>
-
 <p>That&rsquo;s it!  I&rsquo;ve added the code
 to
 <a href="https://github.com/stefanv/org-neomutt">https://github.com/stefanv/org-neomutt</a>.
@@ -258,7 +237,7 @@ in the comments below.</p>
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-10-11 21:47:49.33210026 -0700 PDT m=&#43;0.096818378">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-04-28 10:13:48.008594256 -0700 PDT m=&#43;0.050044758">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

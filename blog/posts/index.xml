@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Stéfan&#39;s blog</title>
@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mentat.za.net/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Voice capture org-mode tasks on Android</title>
+      <link>https://mentat.za.net/blog/2020/04/28/voice-capture-org-tasks-on-android/</link>
+      <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://mentat.za.net/blog/2020/04/28/voice-capture-org-tasks-on-android/</guid>
+      <description>I often want to capture tasks on the go—in a hurry. When there&amp;rsquo;s no time to fire up organice or http://www.orgzly.com/, being able to transcribe tasks comes in really handy.
+In this post, I show how, on Android phones, you can hook up Google&amp;rsquo;s Assistant with org-mode, so that you can speak notes and have them appear as TODO items in a buffer.
+Set up Google Assistant First, we need to teach Google Assistant a new keyword, and tell it to store transcribed notes in an accessible location.</description>
+    </item>
     
     <item>
       <title>Scientific Python at Microscopy &amp; MicroAnalysis 2019</title>
@@ -72,7 +83,7 @@ There are plenty of potential use cases, but consider, e.g., that you want to ve
       <guid>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</guid>
       <description>Due to two bugs in gcc 6.1 affecting the re2 library (one of which has been fixed in 6.2)), TensorFlow cannot be compiled from source one some systems (including my Debian Testing install).
 To work around the issue, modify tensorflow/workspace.bzl and change the re2 description to:
-native.git_repository( name = &amp;quot;com_googlesource_code_re2&amp;quot;, remote = &amp;quot;https://github.com/stefanv/re2.git&amp;quot;, commit = &amp;quot;86503cb89d82b723ae0bce35e1e09524910cd319&amp;quot;, )  The re2 library is now downloaded from my fork, which applies a one line patch.</description>
+native.git_repository( name = &amp;quot;com_googlesource_code_re2&amp;quot;, remote = &amp;quot;https://github.com/stefanv/re2.git&amp;quot;, commit = &amp;quot;86503cb89d82b723ae0bce35e1e09524910cd319&amp;quot;, ) The re2 library is now downloaded from my fork, which applies a one line patch.</description>
     </item>
     
     <item>
@@ -91,7 +102,7 @@ native.git_repository( name = &amp;quot;com_googlesource_code_re2&amp;quot;, rem
       <pubDate>Fri, 26 Feb 2016 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</guid>
-      <description>One day, we will hopefully have a grand unified build and package management system for Python where everything is free &amp;amp; open and Just Works &amp;trade;. Until then, you have two options:
+      <description>One day, we will hopefully have a grand unified build and package management system for Python where everything is free &amp;amp; open and Just Works (TM). Until then, you have two options:
 brew Python + pip  brew install python3 pyvenv -v ~/envs/py3 source ~/envs/py3/bin/activate pip install matplotlib  Pros/cons:
  Pip is the standard Python package management tool, and uses the official Python Package Index (PyPi) repository. Wheels on PyPi are built by authors themselves from open recipes.</description>
     </item>

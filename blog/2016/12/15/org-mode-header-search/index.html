@@ -70,36 +70,31 @@
 
 		<p>In org-mode, I often have the need to jump to a top-level heading
 matching some word.</p>
-
 <p>Since an org-mode buffer can be searched just like any other, I can
 simply invoke forward search with <code>C-s</code>, but this will match <em>all</em>
 occurrences of the text, instead of limiting the search to headings only.</p>
-
 <p>This makes it hard to search for a phrase like &ldquo;Travel&rdquo;, for which I
 have a top-level heading, but also often occurs elsewhere in my notes.</p>
-
 <p>I have a solution of the following form:</p>
-
 <ol>
 <li>Launch a regular expression search</li>
-<li>Pre-fill the text input with <code>^*</code> so that only headings are
+<li>Pre-fill the text input with <code>^* </code> so that only headings are
 matched.</li>
 </ol>
-
-<p>First, define a custom search function.  It puts the keys <code>^*</code> in the
+<p>First, define a custom search function.  It puts the keys <code>^* </code> in the
 &ldquo;unread command events&rdquo; list (i.e, a list of events waiting to be seen
 by emacs), and then launches interactive forward regular expression search.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defun</span> <span style="color:#bb60d5">stefan/isearch-heading</span> ()
   (<span style="color:#007020">interactive</span>)
   (<span style="color:#007020">setq</span> <span style="color:#bb60d5">unread-command-events</span> (<span style="color:#bb60d5">listify-key-sequence</span> <span style="color:#4070a0">&#34;^* &#34;</span>))
-  (<span style="color:#bb60d5">isearch-mode</span> <span style="color:#60add5">t</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>))</code></pre></div>
-<p>Next, we add a keybinding for org-mode:</p>
+  (<span style="color:#bb60d5">isearch-mode</span> <span style="color:#60add5">t</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>))
+</code></pre></div><p>Next, we add a keybinding for org-mode:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defun</span> <span style="color:#bb60d5">org-mode-keys</span> ()
   (<span style="color:#007020">interactive</span>)
   (<span style="color:#bb60d5">local-set-key</span> (<span style="color:#bb60d5">kbd</span> <span style="color:#4070a0">&#34;C-c g&#34;</span>) <span style="color:#517918">&#39;stefan/isearch-heading</span>)
 )
-(<span style="color:#bb60d5">add-hook</span> <span style="color:#517918">&#39;org-mode-hook</span> <span style="color:#517918">&#39;org-mode-keys</span>)</code></pre></div>
-<p>And that&rsquo;s it!  Pressing <code>C-c g</code> (for &ldquo;go&rdquo;) in org-mode will
+(<span style="color:#bb60d5">add-hook</span> <span style="color:#517918">&#39;org-mode-hook</span> <span style="color:#517918">&#39;org-mode-keys</span>)
+</code></pre></div><p>And that&rsquo;s it!  Pressing <code>C-c g</code> (for &ldquo;go&rdquo;) in org-mode will
 now present you with a search prompt.  Typing a heading name will take you
 there directly, at which point you can choose to expand it with the
 TAB key.</p>
@@ -145,7 +140,7 @@ TAB key.</p>
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-10-11 21:47:49.334189317 -0700 PDT m=&#43;0.098907448">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-04-28 10:13:48.002964084 -0700 PDT m=&#43;0.044414590">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

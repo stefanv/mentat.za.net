@@ -39,6 +39,26 @@
 	<div class="catalogue">
 		
 			<div class="catalogue-item">
+  <a href="https://mentat.za.net/blog/2020/04/28/voice-capture-org-tasks-on-android/">
+    <time datetime="2020-04-28 00:00:00 &#43;0000 UTC" class="catalogue-time">April 28, 2020</time>
+    <h1 class="catalogue-title">Voice capture org-mode tasks on Android</h1>
+    <div class="catalogue-tags">
+      
+      <div class="post-tag"><a href=/blog/tags/org-mode>#org-mode</a></div>
+      
+      <div class="post-tag"><a href=/blog/tags/productivity>#productivity</a></div>
+      
+    </div>
+    <p>
+      I often want to capture tasks on the go—in a hurry. When there&rsquo;s no time to fire up organice or http://www.orgzly.com/, being able to transcribe tasks comes in really handy.
+In this post, I show how, on Android phones, you can hook up Google&rsquo;s Assistant with org-mode, so that you can speak notes and have them appear as TODO items in a buffer.
+Set up Google Assistant First, we need to teach Google Assistant a new keyword, and tell it to store transcribed notes in an accessible location.
+    </p>
+  </a>
+</div>
+
+		
+			<div class="catalogue-item">
   <a href="https://mentat.za.net/blog/2019/08/06/portland-microscopy/">
     <time datetime="2019-08-06 00:00:00 &#43;0000 UTC" class="catalogue-time">August 6, 2019</time>
     <h1 class="catalogue-title">Scientific Python at Microscopy &amp; MicroAnalysis 2019</h1>
@@ -168,7 +188,7 @@ There are plenty of potential use cases, but consider, e.g., that you want to ve
     <p>
       Due to two bugs in gcc 6.1 affecting the re2 library (one of which has been fixed in 6.2)), TensorFlow cannot be compiled from source one some systems (including my Debian Testing install).
 To work around the issue, modify tensorflow/workspace.bzl and change the re2 description to:
-native.git_repository( name = &quot;com_googlesource_code_re2&quot;, remote = &quot;https://github.com/stefanv/re2.git&quot;, commit = &quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;, )  The re2 library is now downloaded from my fork, which applies a one line patch.
+native.git_repository( name = &quot;com_googlesource_code_re2&quot;, remote = &quot;https://github.com/stefanv/re2.git&quot;, commit = &quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;, ) The re2 library is now downloaded from my fork, which applies a one line patch.
     </p>
   </a>
 </div>
@@ -207,7 +227,7 @@ native.git_repository( name = &quot;com_googlesource_code_re2&quot;, remote = &q
       
     </div>
     <p>
-      One day, we will hopefully have a grand unified build and package management system for Python where everything is free &amp; open and Just Works &trade;. Until then, you have two options:
+      One day, we will hopefully have a grand unified build and package management system for Python where everything is free &amp; open and Just Works (TM). Until then, you have two options:
 brew Python + pip  brew install python3 pyvenv -v ~/envs/py3 source ~/envs/py3/bin/activate pip install matplotlib  Pros/cons:
  Pip is the standard Python package management tool, and uses the official Python Package Index (PyPi) repository. Wheels on PyPi are built by authors themselves from open recipes.
     </p>
@@ -232,24 +252,6 @@ I needed a way of blocking any access to the internet, unless it was leaving thr
 </div>
 
 		
-			<div class="catalogue-item">
-  <a href="https://mentat.za.net/blog/2015/01/18/docker-image-tree/">
-    <time datetime="2015-01-18 00:00:00 &#43;0000 UTC" class="catalogue-time">January 18, 2015</time>
-    <h1 class="catalogue-title">Visualizing and pruning the docker image tree</h1>
-    <div class="catalogue-tags">
-      
-      <div class="post-tag"><a href=/blog/tags/docker>#docker</a></div>
-      
-    </div>
-    <p>
-      Visualizing the Docker image dependency tree is a useful way of checking image sizes and inter-image dependencies. Since images occupy a lot of disk space, we may also want to prune unused images.
-Visualizing image dependencies In version 1.2.0 of Docker, the image dependency tree is available via the docker images --tree command:
-$ docker images --tree Warning: '--tree' is deprecated, it will be removed soon. See usage. ├─511136ea3c5a Virtual Size: 0 B │ ├─5bc37dc2dfba Virtual Size: 192.
-    </p>
-  </a>
-</div>
-
-		
 	</div>
 	
 	<div class="pagination">
@@ -265,7 +267,7 @@ $ docker images --tree Warning: '--tree' is deprecated, it will be removed soon.
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-10-11 21:47:49.406023132 -0700 PDT m=&#43;0.170741254">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-04-28 10:13:48.070524006 -0700 PDT m=&#43;0.111974490">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

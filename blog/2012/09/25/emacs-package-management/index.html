@@ -77,12 +77,12 @@
 Arakaki&rsquo;s <a href="https://github.com/tkf/emacs-ipython-notebook">Emacs-based IPython notebook</a>.  The instructions on the MuMaMo
 webpage were as clear as mud and aimed primarily at Windows users.  Enters
 <a href="https://github.com/dimitri/el-get">apt-get for Emacs</a>!</p>
-
 <p>My Emacs setup is shared across multiple machines: a synchronized <code>elisp</code>
 folder, containing <code>*.el</code> files, along with my <code>.emacs</code> configuration.
 <code>el-get</code> allows you to share your package installation folder in a similar
 fashion.  Here are some relevant configuration snippets:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-common-lisp" data-lang="common-lisp"><span style="color:#60a0b0;font-style:italic">; Everything gets installed into ~/elisp, a folder</span>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-common-lisp" data-lang="common-lisp">
+<span style="color:#60a0b0;font-style:italic">; Everything gets installed into ~/elisp, a folder</span>
 <span style="color:#60a0b0;font-style:italic">; I sync across all my machines</span>
 
 (<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get&#34;</span>)
@@ -121,20 +121,16 @@ fashion.  Here are some relevant configuration snippets:</p>
 )
 
 <span style="color:#60a0b0;font-style:italic">; Check packages and install any that are missing</span>
-(<span style="color:#bb60d5">el-get</span> <span style="color:#517918">&#39;sync</span> <span style="color:#bb60d5">my-packages</span>)</code></pre></div>
-<p>There are two ways to specify packages to be installed: either include them in
+(<span style="color:#bb60d5">el-get</span> <span style="color:#517918">&#39;sync</span> <span style="color:#bb60d5">my-packages</span>)
+</code></pre></div><p>There are two ways to specify packages to be installed: either include them in
 the <code>my-packages</code> list, or add them to <code>el-get-sources</code>, which in addition
 allows further customization upon successful loading of the package.</p>
-
 <p><a href="http://software-carpentry.org/2012/09/whats-in-your-stack/">What&rsquo;s in your stack?</a> Here&rsquo;s my list of Emacs packages:</p>
-
 <pre><code>Org Mode, Ethan's wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
 JS2
 </code></pre>
-
 <p>Do you know of any other useful packages?  Let me know!</p>
-
-<!-- References -->
+<!-- raw HTML omitted -->
 
 
 		<script type="text/javascript">
@@ -176,7 +172,7 @@ JS2
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-10-11 21:47:49.40898306 -0700 PDT m=&#43;0.173701190">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-04-28 10:13:48.004108437 -0700 PDT m=&#43;0.045558942">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

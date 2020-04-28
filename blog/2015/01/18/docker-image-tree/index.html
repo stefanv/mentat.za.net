@@ -62,17 +62,12 @@
 
 		
 
-		
-
-<p>Visualizing the Docker image dependency tree is a useful way of
+		<p>Visualizing the Docker image dependency tree is a useful way of
 checking image sizes and inter-image dependencies.  Since images
 occupy a lot of disk space, we may also want to prune unused images.</p>
-
 <h2 id="visualizing-image-dependencies">Visualizing image dependencies</h2>
-
 <p>In version 1.2.0 of Docker, the image dependency tree is available via
 the <code>docker images --tree</code> command:</p>
-
 <pre><code>$ docker images --tree
 Warning: '--tree' is deprecated, it will be removed soon. See usage.
 ├─511136ea3c5a Virtual Size: 0 B
@@ -95,32 +90,22 @@ Warning: '--tree' is deprecated, it will be removed soon. See usage.
 │ │       └─8f118367086c Virtual Size: 228.5 MB
 │ │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:utopic, ubuntu:14.10
 ...
-</code></pre>
-
-<p>However, the Docker team is trying to streamline its client, and has
+</code></pre><p>However, the Docker team is trying to streamline its client, and has
 scheduled this feature for deprecation.  How, then, do we replicate
 its behavior?</p>
-
 <p>Enter <a href="https://github.com/justone/dockviz">DockerViz</a>.  Grab a binary
 from <a href="http://gobuild.io/github.com/justone/dockviz">gobuild.io</a> and
 place it somewhere on your path.</p>
-
 <h3 id="querying-the-docker-image-status">Querying the Docker image status</h3>
-
 <p>The Docker server can be queried via its
 <a href="https://docs.docker.com/reference/api/docker_remote_api/">public API</a>.
 It is typically available either on <code>http://localhost:4243</code> or
 <code>/var/run/docker.sock</code>.</p>
-
 <p>One of the following two calls should therefore extract the image
 status:</p>
-
 <pre><code>curl -s http://localhost:4243/images/json?all=1
 echo -e &quot;GET /images/json?all=1 HTTP/1.0\r\n&quot; | nc -U /var/run/docker.sock
-</code></pre>
-
-<p>On my machine, the second query returns:</p>
-
+</code></pre><p>On my machine, the second query returns:</p>
 <pre><code>HTTP/1.0 200 OK
 Content-Type: application/json
 Date: Sun, 18 Jan 2015 17:41:34 GMT
@@ -128,10 +113,7 @@ Date: Sun, 18 Jan 2015 17:41:34 GMT
 [{&quot;Created&quot;:1421528518,&quot;Id&quot;:&quot;d6244a9e8b5ff885579c8c7d203e4da703e3e80621449dbbd58c365dba5c83b1&quot;,&quot;ParentId&quot;:&quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&quot;,&quot;RepoTags&quot;:[&quot;datascience-base:latest&quot;],&quot;Size&quot;:0,&quot;VirtualSize&quot;:2041562468}
 ,{&quot;Created&quot;:1421528517,&quot;Id&quot;:&quot;b68521997660ae8a6916037696cf716ca415bba0766487bfa5b79cda4adfb62c&quot;,&quot;ParentId&quot;:&quot;d3cb571e5e16fce16a59c16c87e01ea4051d7cae016dba90688c9e4a53a921c4&quot;,&quot;RepoTags&quot;:[&quot;\u003cnone\u003e:\u003cnone\u003e&quot;],&quot;Size&quot;:0,&quot;VirtualSize&quot;:2041562468}
 ...
-</code></pre>
-
-<p>DockViz parses this JSON and outputs a formatted tree:</p>
-
+</code></pre><p>DockViz parses this JSON and outputs a formatted tree:</p>
 <pre><code>$ cat ~/scripts/docktree 
 echo -e &quot;GET /images/json?all=1 HTTP/1.0\r\n&quot; | nc -U /var/run/docker.sock | tail -n +5 | dockviz images --tree
 $ docktree
@@ -154,37 +136,23 @@ $ docktree
 │ │     └─37dde56c3a42 Virtual Size: 199.1 MB
 │ │       └─8f118367086c Virtual Size: 228.5 MB
 │ │         └─277eb4304907 Virtual Size: 228.5 MB Tags: ubuntu:14.10, ubuntu:utopic
-</code></pre>
-
-<p>Note that, on my system, the first branch of the tree is dangling,
+</code></pre><p>Note that, on my system, the first branch of the tree is dangling,
 i.e. not associated with a tagged image&ndash;I must have removed a tagged
 image earlier, and these are its remaining dependencies.</p>
-
 <h2 id="pruning-unusued-images">Pruning unusued images</h2>
-
 <p>Built and downloaded Docker images quickly gobble up a lot of space:</p>
-
 <pre><code>$ sudo du -hcs /var/lib/docker/
 10G	/var/lib/docker/
 10G	total
-</code></pre>
-
-<p>The <code>docker images</code> command allows us to
+</code></pre><p>The <code>docker images</code> command allows us to
 <a href="https://docs.docker.com/reference/commandline/cli/#images">list dangling images</a>:</p>
-
 <pre><code>docker images --filter dangling=true --quiet
-</code></pre>
-
-<p>And we obtain a list of containers (images that were fired up and
+</code></pre><p>And we obtain a list of containers (images that were fired up and
 modified) using:</p>
-
 <pre><code>docker ps -aq
-</code></pre>
-
-<p>I remove both of these with the following script (WARNING: This
+</code></pre><p>I remove both of these with the following script (WARNING: This
 will delete ALL containers and any unused, downloaded images, so use
 with caution!):</p>
-
 <pre><code>#!/bin/bash
 CONTAINERS=$(docker ps -aq)
 IMAGES=$(docker images --filter dangling=true --quiet)
@@ -199,10 +167,7 @@ if [[ $IMAGES ]]; then
 else
     echo &quot;No dangling images to remove&quot;
 fi
-</code></pre>
-
-<p>Then:</p>
-
+</code></pre><p>Then:</p>
 <pre><code>$ docker-clean
 $ sudo du -hcs /var/lib/docker/
 6.6G	/var/lib/docker/
@@ -219,9 +184,7 @@ $ docktree
   │ └─ccb62158e970 Virtual Size: 192.7 MB
   │   └─e791be0477f2 Virtual Size: 192.7 MB
 ...
-</code></pre>
-
-<p>Note that, now, all branches of the tree are associated with tagged
+</code></pre><p>Note that, now, all branches of the tree are associated with tagged
 images.  If I remove <code>ubuntu:utopic</code>, I can again run the pruning
 process to get rid of its left-over dependencies.</p>
 
@@ -266,7 +229,7 @@ process to get rid of its left-over dependencies.</p>
 
         		<footer>
 			<span>
-			&copy; <time datetime="2019-10-11 21:47:49.406968284 -0700 PDT m=&#43;0.171686400">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-04-28 10:13:47.99798613 -0700 PDT m=&#43;0.039436623">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tensorflow on Stéfan&#39;s blog</title>
@@ -19,7 +19,7 @@
       <guid>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</guid>
       <description>Due to two bugs in gcc 6.1 affecting the re2 library (one of which has been fixed in 6.2)), TensorFlow cannot be compiled from source one some systems (including my Debian Testing install).
 To work around the issue, modify tensorflow/workspace.bzl and change the re2 description to:
-native.git_repository( name = &amp;quot;com_googlesource_code_re2&amp;quot;, remote = &amp;quot;https://github.com/stefanv/re2.git&amp;quot;, commit = &amp;quot;86503cb89d82b723ae0bce35e1e09524910cd319&amp;quot;, )  The re2 library is now downloaded from my fork, which applies a one line patch.</description>
+native.git_repository( name = &amp;quot;com_googlesource_code_re2&amp;quot;, remote = &amp;quot;https://github.com/stefanv/re2.git&amp;quot;, commit = &amp;quot;86503cb89d82b723ae0bce35e1e09524910cd319&amp;quot;, ) The re2 library is now downloaded from my fork, which applies a one line patch.</description>
     </item>
     
   </channel>

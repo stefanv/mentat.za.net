@@ -1,13 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mentat.za.net/blog/tags/image-processing/</loc>
+    <loc>https://mentat.za.net/blog/tags/org-mode/</loc>
   </url>
   
   <url>
     <loc>https://mentat.za.net/blog/posts/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/productivity/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/2020/04/28/voice-capture-org-tasks-on-android/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/image-processing/</loc>
   </url>
   
   <url>
@@ -20,14 +40,6 @@
   
   <url>
     <loc>https://mentat.za.net/blog/tags/scipy/</loc>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/</loc>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/tags/</loc>
   </url>
   
   <url>
@@ -60,10 +72,6 @@
   
   <url>
     <loc>https://mentat.za.net/blog/tags/mutt/</loc>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/tags/org-mode/</loc>
   </url>
   
   <url>
