@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="Where we discuss our approach toward code review.">
+
+		<title>The Philosophy of Code Review &middot; Stéfan&#39;s blog</title>
+
+		
+  		<link rel="stylesheet" href="/blog/css/style.css">
+		<link rel="stylesheet" href="/blog/css/fonts.css">
+		<link rel="stylesheet" href="/blog/custom.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Stéfan&#39;s blog" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/blog/">
+					<h2 class="nav-title">Stéfan&#39;s blog</h2>
+				</a>
+				<ul>
+    <li><a href="https://mentat.za.net">mentat.za.net</a></li>
+    <li><a href="/blog/atom.xml">Atom / RSS feed</a></li>
+</ul>
+
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+</div>
+
+		<h1 class="post-title">The Philosophy of Code Review</h1>
+
+<div class="post-date">
+  
+    April 29, 2020
+  
+</div>
+
+<div class="post-tags">
+  
+    <div class="post-tag">
+      <a href=/blog/tags/coding>
+        #coding
+      </a>
+    </div>
+  
+    <div class="post-tag">
+      <a href=/blog/tags/collaboration>
+        #collaboration
+      </a>
+    </div>
+  
+</div>
+
+
+		
+
+		<p>Recently, a colleague of mine was agitated by a comment I left during a code review.  Who could blame them: I had asked them to motivate an implementation choice that still didn&rsquo;t make sense to me&mdash;after numerous rounds of discussion.</p>
+<p>To their great credit, they were supremely polite about it:</p>
+<blockquote>
+<p>Thanks for checking in. Overall, I really appreciate your reviews and feedback. At times, I&rsquo;ve been feeling frustrated that I&rsquo;m having to address comments that aren&rsquo;t relevant. With the current circumstances of not being able to talk things over in person, this has been feeling like an inefficient use of both of our limited cycles right now. I really respect and appreciate your perspective and feedback.</p>
+</blockquote>
+<p>I couldn&rsquo;t help but think back to when I learned unit testing. Initially, it seemed like a lot of work, but once the impact of it dawned, there was no turning back.  In this case, I felt like I had not clearly communicated my philosophy around code review, and that doing so would change this from an adverserial to a cooperative conversation.</p>
+<p>Here, then, follows is a summary of my philosophy around code review.</p>
+<h2 id="why-code-review-is-important">Why Code Review is Important</h2>
+<h2 id="why-code-review-is-complicated">Why Code Review is Complicated</h2>
+<h2 id="heading"></h2>
+<p>This made me consider why code review is important to me, how to share my philosophy so as to</p>
+<p>This kicked off a conversation (still ongoing),</p>
+<p>Thanks for the honest feedback.  I&rsquo;d like to explain my motivation for
+doing code review, which perhaps may help you to consider my feedback
+in a charitable light, even when it feels frustrating.</p>
+<p>My primary goal with code review is to minimize future work for both
+of us.  For this to be effective, several things have to be true: 1)
+The reviewer has to understand the code they&rsquo;re reading 2) They have
+to make an estimate of the code&mdash;in terms of simplicity,
+applicability, and future-proofing and 3) They have to convince
+themselves that all design decisions were justified.</p>
+<p>Why am I so concerned with all these things: well, the primary
+motivation is my own failings at being a perfect programmer.  No
+matter how hard I try, I introduce errors in PRs, and design decisions
+which seem brilliant in the moment often have large caveats.  So,
+whatever comments I make on PRs should never be read as &ldquo;I think I
+know how to do this better&rdquo;, but as the question &ldquo;has this specific
+aspect of the problem received due consideration&rdquo;.  The answer, many
+times, will be &ldquo;yes, and here&rsquo;s why I did it that way&rdquo;&mdash;absolutely
+okay!</p>
+<p>Coding is a technical but also an aesthetic endeavor.  As such, as
+much as our understanding guides us, we also intuit whether a piece of
+code does something &ldquo;right&rdquo;, where &ldquo;right&rdquo; can mean: simply as
+possible, efficiently as possible, with the right level of
+generalization, etc.  But, it remains a feeling, and there is no
+absolute right or wrong.</p>
+<p>So, where that brings us is this: I read your code, and most of the
+time it makes sense.  Sometimes, it doesn&rsquo;t&mdash;often because I don&rsquo;t
+quite understand the problem, or because I missed something (like that
+it was a POST and not a GET method :slightly_smiling_face:).  The hope
+is that the slightly noise review is worth it for the rare event in
+which I catch something that is not quite the way it should be, with
+full knowledge that, most of the time, you will have to take the time
+to explain to me what is going on.  But, if the decision was
+well-reasoned, hopefully that goes quickly (hence all the &ldquo;oh, yeah,
+that makes sense&quot;s and &ldquo;resolved&quot;s).</p>
+<p>Now, I can tweak the slider and be more conservative in when I query a
+line of code or a decision.  With beginners, like the students, we
+have to keep a much closer eye on what happens, whereas with you or
+me, who have more experience, we can be a bit more lax.  But, I still
+believe that the benefit of identifying issues that may cause major
+refactors later is so important, that strict code review benefits us
+in the long run.  And, not only big issues.  A growing project like
+SkyPortal can easily succumb to death by a thousand cuts, if we don&rsquo;t
+ensure that we write code that doesn&rsquo;t have to be modified and fixed
+up all the time.</p>
+<p>The &ldquo;gut feel&rdquo; when reviewing isn&rsquo;t always reliable.  But, in cases
+like the DB structure, a conversation last night on the team call was
+quite informative.  Our understanding of what needed to happen around
+candidates wasn&rsquo;t quite right, and it was going to cause a lot of
+unnecessary complexity down the lines.  I realize that feedback like
+as &ldquo;this doesn&rsquo;t feel quite right&rdquo; isn&rsquo;t exactly satisfying, but if a
+team member feels that way, it often means that we have not
+sufficiently communicated either requirements or the justification for
+the proposed implementation.  Especially in times of reduced cycles,
+being on the same page feels important to me.</p>
+<p>OK, so I wrote a lot, but it may not address your concerns, or may
+make me come across as a smug know-it-all (I hope not!)  Please
+continue to reach out&mdash;I&rsquo;d be happy to chat more, here or via video.</p>
+<p>Most importantly: I thank you for your patience, and for educating me
+during review of your work.  I cannot promise to always know what is
+going on, but I can promise to do my best to learn!</p>
+
+
+		<script type="text/javascript">
+  var disqus_identifier = "http://stefanv.github.com/blog/2020/04/29/philosophy-of-code-review/";
+</script>
+
+<div style="border-top: 0.5px solid #e5e5e5; padding-top: 1em;">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "stefanvdwalt" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+	</div>
+
+	<div class="pagination">
+		<a href="/blog/2020/04/28/org-tasks-from-google-assistant/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-05-03 06:56:34.90524523 -0700 PDT m=&#43;0.048519951">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

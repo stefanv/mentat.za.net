@@ -133,14 +133,30 @@ net <span style="color:#666">=</span> InceptionV3()
 </code></pre></div>
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/chelsea.png"/> <figcaption>
-                
-                    <h4>Chelsea the Cat</h4>
-                
-                
-            </figcaption></figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         
+         
+         
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/chelsea.png"
+         /> <figcaption>
+            <h4>Chelsea the Cat</h4>
+        </figcaption>
+</figure>
 
 <p>For example, when running <code>inception_predict</code> on <code>skimage.data.chelsea()</code>, I get:</p>
 <pre><code>Egyptian_cat (0.904)
@@ -198,9 +214,28 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/dask-array-stack.png" height="200"/> </figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_480x0_resize_box_2.png 480w
+         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png 800w 
+         
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png"
+          height="200"/> 
+</figure>
 
 <p>We can do numerous operations on this array, such as summing it with <code>vol.sum(axis=0)</code>, although this still yields an uncomputed <code>dask</code> <code>Array</code>.  To get actual values, we need to call:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vol<span style="color:#666">.</span>sum(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)<span style="color:#666">.</span>compute()
@@ -218,9 +253,28 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 </code></pre></div>
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/napari-ct-volume.jpg"/> </figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_480x0_resize_q75_box.jpg 480w
+         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg 800w 
+         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_1200x0_resize_q75_box.jpg 1200w
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg"
+         /> 
+</figure>
 
 <p>If you&rsquo;d like to play with Napari yourself, I have a <a href="https://gist.github.com/stefanv/7c296c26b0c3624746f4317bed6a3540">3D cell segmentation example available online</a>.</p>
 <h2 id="community">Community</h2>
@@ -277,7 +331,7 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
         		<footer>
 			<span>
-			&copy; <time datetime="2020-04-28 10:13:48.011608903 -0700 PDT m=&#43;0.053059394">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-05-03 06:56:34.915140978 -0700 PDT m=&#43;0.058415676">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

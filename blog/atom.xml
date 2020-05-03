@@ -6,12 +6,182 @@
     
             <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
             <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
-    <updated>2020-04-28T10:13:48-07:00</updated>
+    <updated>2020-05-03T06:56:34-07:00</updated>
     
     
     
     
         <id>https://mentat.za.net/blog/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[The Philosophy of Code Review]]></title>
+            <link href="https://mentat.za.net/blog/2020/04/29/philosophy-of-code-review/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/?utm_source=atom_feed" rel="related" type="text/html" title="Adobe&#39;s new free font: Source Code Pro" />
+            
+                <id>https://mentat.za.net/blog/2020/04/29/philosophy-of-code-review/</id>
+            
+            
+            <published>2020-04-29T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we discuss our approach toward code review.</blockquote><p>Recently, a colleague of mine was agitated by a comment I left during a code review.  Who could blame them: I had asked them to motivate an implementation choice that still didn&rsquo;t make sense to me&mdash;after numerous rounds of discussion.</p>
+<p>To their great credit, they were supremely polite about it:</p>
+<blockquote>
+<p>Thanks for checking in. Overall, I really appreciate your reviews and feedback. At times, I&rsquo;ve been feeling frustrated that I&rsquo;m having to address comments that aren&rsquo;t relevant. With the current circumstances of not being able to talk things over in person, this has been feeling like an inefficient use of both of our limited cycles right now. I really respect and appreciate your perspective and feedback.</p>
+</blockquote>
+<p>I couldn&rsquo;t help but think back to when I learned unit testing. Initially, it seemed like a lot of work, but once the impact of it dawned, there was no turning back.  In this case, I felt like I had not clearly communicated my philosophy around code review, and that doing so would change this from an adverserial to a cooperative conversation.</p>
+<p>Here, then, follows is a summary of my philosophy around code review.</p>
+<h2 id="why-code-review-is-important">Why Code Review is Important</h2>
+<h2 id="why-code-review-is-complicated">Why Code Review is Complicated</h2>
+<h2 id="heading"></h2>
+<p>This made me consider why code review is important to me, how to share my philosophy so as to</p>
+<p>This kicked off a conversation (still ongoing),</p>
+<p>Thanks for the honest feedback.  I&rsquo;d like to explain my motivation for
+doing code review, which perhaps may help you to consider my feedback
+in a charitable light, even when it feels frustrating.</p>
+<p>My primary goal with code review is to minimize future work for both
+of us.  For this to be effective, several things have to be true: 1)
+The reviewer has to understand the code they&rsquo;re reading 2) They have
+to make an estimate of the code&mdash;in terms of simplicity,
+applicability, and future-proofing and 3) They have to convince
+themselves that all design decisions were justified.</p>
+<p>Why am I so concerned with all these things: well, the primary
+motivation is my own failings at being a perfect programmer.  No
+matter how hard I try, I introduce errors in PRs, and design decisions
+which seem brilliant in the moment often have large caveats.  So,
+whatever comments I make on PRs should never be read as &ldquo;I think I
+know how to do this better&rdquo;, but as the question &ldquo;has this specific
+aspect of the problem received due consideration&rdquo;.  The answer, many
+times, will be &ldquo;yes, and here&rsquo;s why I did it that way&rdquo;&mdash;absolutely
+okay!</p>
+<p>Coding is a technical but also an aesthetic endeavor.  As such, as
+much as our understanding guides us, we also intuit whether a piece of
+code does something &ldquo;right&rdquo;, where &ldquo;right&rdquo; can mean: simply as
+possible, efficiently as possible, with the right level of
+generalization, etc.  But, it remains a feeling, and there is no
+absolute right or wrong.</p>
+<p>So, where that brings us is this: I read your code, and most of the
+time it makes sense.  Sometimes, it doesn&rsquo;t&mdash;often because I don&rsquo;t
+quite understand the problem, or because I missed something (like that
+it was a POST and not a GET method :slightly_smiling_face:).  The hope
+is that the slightly noise review is worth it for the rare event in
+which I catch something that is not quite the way it should be, with
+full knowledge that, most of the time, you will have to take the time
+to explain to me what is going on.  But, if the decision was
+well-reasoned, hopefully that goes quickly (hence all the &ldquo;oh, yeah,
+that makes sense&quot;s and &ldquo;resolved&quot;s).</p>
+<p>Now, I can tweak the slider and be more conservative in when I query a
+line of code or a decision.  With beginners, like the students, we
+have to keep a much closer eye on what happens, whereas with you or
+me, who have more experience, we can be a bit more lax.  But, I still
+believe that the benefit of identifying issues that may cause major
+refactors later is so important, that strict code review benefits us
+in the long run.  And, not only big issues.  A growing project like
+SkyPortal can easily succumb to death by a thousand cuts, if we don&rsquo;t
+ensure that we write code that doesn&rsquo;t have to be modified and fixed
+up all the time.</p>
+<p>The &ldquo;gut feel&rdquo; when reviewing isn&rsquo;t always reliable.  But, in cases
+like the DB structure, a conversation last night on the team call was
+quite informative.  Our understanding of what needed to happen around
+candidates wasn&rsquo;t quite right, and it was going to cause a lot of
+unnecessary complexity down the lines.  I realize that feedback like
+as &ldquo;this doesn&rsquo;t feel quite right&rdquo; isn&rsquo;t exactly satisfying, but if a
+team member feels that way, it often means that we have not
+sufficiently communicated either requirements or the justification for
+the proposed implementation.  Especially in times of reduced cycles,
+being on the same page feels important to me.</p>
+<p>OK, so I wrote a lot, but it may not address your concerns, or may
+make me come across as a smug know-it-all (I hope not!)  Please
+continue to reach out&mdash;I&rsquo;d be happy to chat more, here or via video.</p>
+<p>Most importantly: I thank you for your patience, and for educating me
+during review of your work.  I cannot promise to always know what is
+going on, but I can promise to do my best to learn!</p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/coding" term="coding" label="coding" />
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/collaboration" term="collaboration" label="collaboration" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[CaptureOrg tasks from Google Assistant]]></title>
+            <link href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-google-assistant/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-assistant/?utm_source=atom_feed" rel="related" type="text/html" title="Org Tasks From Assistant" />
+            
+                <id>https://mentat.za.net/blog/2020/04/28/org-tasks-from-google-assistant/</id>
+            
+            
+            <published>2020-04-28T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where I capture TODO items from my Android phone into org-mode</blockquote>]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/" term="" label="" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Org Tasks From Assistant]]></title>
+            <link href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-assistant/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-google-assistant/?utm_source=atom_feed" rel="related" type="text/html" title="CaptureOrg tasks from Google Assistant" />
+            
+                <id>https://mentat.za.net/blog/2020/04/28/org-tasks-from-assistant/</id>
+            
+            
+            <published>2020-04-28T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/" term="" label="" />
+                            
+                        
+                    
+                
+            
+        </entry>
     
         
         <entry>
@@ -152,14 +322,30 @@ net <span style="color:#666">=</span> InceptionV3()
 </code></pre></div>
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/chelsea.png"/> <figcaption>
-                
-                    <h4>Chelsea the Cat</h4>
-                
-                
-            </figcaption></figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         
+         
+         
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/chelsea.png"
+         /> <figcaption>
+            <h4>Chelsea the Cat</h4>
+        </figcaption>
+</figure>
 
 <p>For example, when running <code>inception_predict</code> on <code>skimage.data.chelsea()</code>, I get:</p>
 <pre><code>Egyptian_cat (0.904)
@@ -217,9 +403,28 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/dask-array-stack.png" height="200"/> </figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_480x0_resize_box_2.png 480w
+         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png 800w 
+         
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png"
+          height="200"/> 
+</figure>
 
 <p>We can do numerous operations on this array, such as summing it with <code>vol.sum(axis=0)</code>, although this still yields an uncomputed <code>dask</code> <code>Array</code>.  To get actual values, we need to call:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vol<span style="color:#666">.</span>sum(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)<span style="color:#666">.</span>compute()
@@ -237,9 +442,28 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 </code></pre></div>
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/napari-ct-volume.jpg"/> </figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_480x0_resize_q75_box.jpg 480w
+         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg 800w 
+         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_1200x0_resize_q75_box.jpg 1200w
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg"
+         /> 
+</figure>
 
 <p>If you&rsquo;d like to play with Napari yourself, I have a <a href="https://gist.github.com/stefanv/7c296c26b0c3624746f4317bed6a3540">3D cell segmentation example available online</a>.</p>
 <h2 id="community">Community</h2>
@@ -789,14 +1013,30 @@ shelves are available DRM-free, and is indicated as follows:</p>
 
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/kobo_drm_comparison.png"/> <figcaption>
-                
-                    <h4>Kobo DRM information</h4>
-                
-                
-            </figcaption></figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_480x0_resize_box_2.png 480w
+         ,https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_800x0_resize_box_2.png 800w 
+         ,https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1200x0_resize_box_2.png 1200w
+         ,https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1500x0_resize_box_2.png 1500w'
+         
+         
+         
+           src="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_800x0_resize_box_2.png"
+         /> <figcaption>
+            <h4>Kobo DRM information</h4>
+        </figcaption>
+</figure>
 
 <p>Defective by Design maintains a
 <a href="https://www.defectivebydesign.org/guide/ebooks">list of DRM-free publishers and stores</a>.</p>
@@ -1359,14 +1599,30 @@ enhancements.</p>
 
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/lena_superpixels.jpg"/> <figcaption>
-                
-                    <h4>Comparison of pupular segmentation algorithms</h4>
-                
-                
-            </figcaption></figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_480x0_resize_q75_box.jpg 480w
+         ,https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg 800w 
+         
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg"
+         /> <figcaption>
+            <h4>Comparison of pupular segmentation algorithms</h4>
+        </figcaption>
+</figure>
 
 <h2 id="contributors-to-this-release">Contributors to this release</h2>
 <p>This release was only possible due to the efforts of many contributors, both
@@ -1456,14 +1712,30 @@ Terminal, etc.  To make it the default font in Emacs::</p>
 
 
 
+
+
+
+
+
+
+
+
 <figure>
-    
-        <img src="https://mentat.za.net/blog/posts/images/consolas_vs_source_code_pro.png"/> <figcaption>
-                
-                    <h4>Comparison: Consolas vs Source Code Pro</h4>
-                
-                
-            </figcaption></figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_480x0_resize_box_2.png 480w
+         ,https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png 800w 
+         ,https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_1200x0_resize_box_2.png 1200w
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png"
+         /> <figcaption>
+            <h4>Comparison: Consolas vs Source Code Pro</h4>
+        </figcaption>
+</figure>
 
 <p>Comments also on <a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik">Google+</a>.</p>
 ]]></content>
