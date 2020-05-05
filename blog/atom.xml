@@ -6,12 +6,73 @@
     
             <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
             <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
-    <updated>2020-05-03T06:56:34-07:00</updated>
+    <updated>2020-05-05T04:13:49-07:00</updated>
     
     
     
     
         <id>https://mentat.za.net/blog/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[A small screenshot]]></title>
+            <link href="https://mentat.za.net/blog/2020/05/04/test/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://mentat.za.net/blog/2020/05/04/test/</id>
+            
+            
+            <published>2020-05-04T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we test new figurecodes</blockquote>
+
+
+
+
+
+
+
+<figure>
+    <img sizes="(min-width: 35em) 1200px, 100vw"
+           
+         srcset='
+         
+           
+         
+           
+         
+           
+         
+           
+         '
+         
+         
+         
+           src="https://mentat.za.net/blog/2020/05/04/test/screenshot.png"
+         /> <figcaption>
+            <h4>A small screenshot</h4>
+        </figcaption>
+</figure>
+
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://mentat.za.net/blog/tags/test" term="test" label="test" />
+                            
+                        
+                    
+                
+            
+        </entry>
     
         
         <entry>
@@ -327,16 +388,18 @@ net <span style="color:#666">=</span> InceptionV3()
 
 
 
-
-
-
 <figure>
     <img sizes="(min-width: 35em) 1200px, 100vw"
            
          srcset='
          
+           
          
+           
          
+           
+         
+           
          '
          
          
@@ -408,16 +471,18 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 
 
-
-
-
 <figure>
     <img sizes="(min-width: 35em) 1200px, 100vw"
            
          srcset='
-         https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_480x0_resize_box_2.png 480w
-         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png 800w 
          
+           https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_480x0_resize_box_2.png 480w,
+         
+           https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png 800w,
+         
+           
+         
+           
          '
          
          
@@ -447,16 +512,18 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 
 
-
-
-
 <figure>
     <img sizes="(min-width: 35em) 1200px, 100vw"
            
          srcset='
-         https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_480x0_resize_q75_box.jpg 480w
-         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg 800w 
-         ,https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_1200x0_resize_q75_box.jpg 1200w
+         
+           https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_480x0_resize_q75_box.jpg 480w,
+         
+           https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg 800w,
+         
+           https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_1200x0_resize_q75_box.jpg 1200w,
+         
+           
          '
          
          
@@ -1018,17 +1085,19 @@ shelves are available DRM-free, and is indicated as follows:</p>
 
 
 
-
-
-
 <figure>
     <img sizes="(min-width: 35em) 1200px, 100vw"
            
          srcset='
-         https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_480x0_resize_box_2.png 480w
-         ,https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_800x0_resize_box_2.png 800w 
-         ,https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1200x0_resize_box_2.png 1200w
-         ,https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1500x0_resize_box_2.png 1500w'
+         
+           https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_480x0_resize_box_2.png 480w,
+         
+           https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_800x0_resize_box_2.png 800w,
+         
+           https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1200x0_resize_box_2.png 1200w,
+         
+           https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1500x0_resize_box_2.png 1500w,
+         '
          
          
          
@@ -1604,16 +1673,18 @@ enhancements.</p>
 
 
 
-
-
-
 <figure>
     <img sizes="(min-width: 35em) 1200px, 100vw"
            
          srcset='
-         https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_480x0_resize_q75_box.jpg 480w
-         ,https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg 800w 
          
+           https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_480x0_resize_q75_box.jpg 480w,
+         
+           https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg 800w,
+         
+           
+         
+           
          '
          
          
@@ -1717,16 +1788,18 @@ Terminal, etc.  To make it the default font in Emacs::</p>
 
 
 
-
-
-
 <figure>
     <img sizes="(min-width: 35em) 1200px, 100vw"
            
          srcset='
-         https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_480x0_resize_box_2.png 480w
-         ,https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png 800w 
-         ,https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_1200x0_resize_box_2.png 1200w
+         
+           https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_480x0_resize_box_2.png 480w,
+         
+           https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png 800w,
+         
+           https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_1200x0_resize_box_2.png 1200w,
+         
+           
          '
          
          
