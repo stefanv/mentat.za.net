@@ -6,7 +6,7 @@
     
             <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
             <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
-    <updated>2020-05-05T04:13:49-07:00</updated>
+    <updated>2020-05-10T12:14:05-07:00</updated>
     
     
     
@@ -35,23 +35,27 @@
 
 
 <figure>
-    <img sizes="(min-width: 35em) 1200px, 100vw"
-           
-         srcset='
-         
-           
-         
-           
-         
-           
-         
-           
-         '
-         
-         
-         
-           src="https://mentat.za.net/blog/2020/05/04/test/screenshot.png"
-         /> <figcaption>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   
+            
+                   
+            
+                   
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2020/05/04/test/screenshot.png"
+            
+
+        /> <figcaption>
             <h4>A small screenshot</h4>
         </figcaption>
 </figure>
@@ -389,23 +393,27 @@ net <span style="color:#666">=</span> InceptionV3()
 
 
 <figure>
-    <img sizes="(min-width: 35em) 1200px, 100vw"
-           
-         srcset='
-         
-           
-         
-           
-         
-           
-         
-           
-         '
-         
-         
-         
-           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/chelsea.png"
-         /> <figcaption>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   
+            
+                   
+            
+                   
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/chelsea.png"
+            
+
+        /> <figcaption>
             <h4>Chelsea the Cat</h4>
         </figcaption>
 </figure>
@@ -472,23 +480,27 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 
 <figure>
-    <img sizes="(min-width: 35em) 1200px, 100vw"
-           
-         srcset='
-         
-           https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_480x0_resize_box_2.png 480w,
-         
-           https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png 800w,
-         
-           
-         
-           
-         '
-         
-         
-         
-           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png"
-          height="200"/> 
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_480x0_resize_box_2.png 480w,
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png 800w,
+            
+                   
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png"
+            
+
+         height="200"/> 
 </figure>
 
 <p>We can do numerous operations on this array, such as summing it with <code>vol.sum(axis=0)</code>, although this still yields an uncomputed <code>dask</code> <code>Array</code>.  To get actual values, we need to call:</p>
@@ -513,23 +525,27 @@ vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(s
 
 
 <figure>
-    <img sizes="(min-width: 35em) 1200px, 100vw"
-           
-         srcset='
-         
-           https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_480x0_resize_q75_box.jpg 480w,
-         
-           https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg 800w,
-         
-           https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_1200x0_resize_q75_box.jpg 1200w,
-         
-           
-         '
-         
-         
-         
-           src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg"
-         /> 
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_480x0_resize_q75_box.jpg 480w,
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg 800w,
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_1200x0_resize_q75_box.jpg 1200w,
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg"
+            
+
+        /> 
 </figure>
 
 <p>If you&rsquo;d like to play with Napari yourself, I have a <a href="https://gist.github.com/stefanv/7c296c26b0c3624746f4317bed6a3540">3D cell segmentation example available online</a>.</p>
@@ -1086,23 +1102,27 @@ shelves are available DRM-free, and is indicated as follows:</p>
 
 
 <figure>
-    <img sizes="(min-width: 35em) 1200px, 100vw"
-           
-         srcset='
-         
-           https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_480x0_resize_box_2.png 480w,
-         
-           https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_800x0_resize_box_2.png 800w,
-         
-           https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1200x0_resize_box_2.png 1200w,
-         
-           https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1500x0_resize_box_2.png 1500w,
-         '
-         
-         
-         
-           src="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_800x0_resize_box_2.png"
-         /> <figcaption>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_480x0_resize_box_2.png 480w,
+            
+                   https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_800x0_resize_box_2.png 800w,
+            
+                   https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1200x0_resize_box_2.png 1200w,
+            
+                   https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_1500x0_resize_box_2.png 1500w,
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/kobo_drm_comparison_hua35d956db53d0bde6a95a19b28732de7_390966_800x0_resize_box_2.png"
+            
+
+        /> <figcaption>
             <h4>Kobo DRM information</h4>
         </figcaption>
 </figure>
@@ -1674,23 +1694,27 @@ enhancements.</p>
 
 
 <figure>
-    <img sizes="(min-width: 35em) 1200px, 100vw"
-           
-         srcset='
-         
-           https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_480x0_resize_q75_box.jpg 480w,
-         
-           https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg 800w,
-         
-           
-         
-           
-         '
-         
-         
-         
-           src="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg"
-         /> <figcaption>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_480x0_resize_q75_box.jpg 480w,
+            
+                   https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg 800w,
+            
+                   
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg"
+            
+
+        /> <figcaption>
             <h4>Comparison of pupular segmentation algorithms</h4>
         </figcaption>
 </figure>
@@ -1789,23 +1813,27 @@ Terminal, etc.  To make it the default font in Emacs::</p>
 
 
 <figure>
-    <img sizes="(min-width: 35em) 1200px, 100vw"
-           
-         srcset='
-         
-           https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_480x0_resize_box_2.png 480w,
-         
-           https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png 800w,
-         
-           https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_1200x0_resize_box_2.png 1200w,
-         
-           
-         '
-         
-         
-         
-           src="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png"
-         /> <figcaption>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_480x0_resize_box_2.png 480w,
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png 800w,
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_1200x0_resize_box_2.png 1200w,
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png"
+            
+
+        /> <figcaption>
             <h4>Comparison: Consolas vs Source Code Pro</h4>
         </figcaption>
 </figure>
