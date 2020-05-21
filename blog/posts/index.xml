@@ -6,20 +6,10 @@
     <description>Recent content in Posts on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mentat.za.net/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>pass: A truly transparent password manager</title>
-      <link>https://mentat.za.net/blog/2020/05/14/pass-a-truly-transparent-password-manager/</link>
-      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://mentat.za.net/blog/2020/05/14/pass-a-truly-transparent-password-manager/</guid>
-      <description>Hopefully, with phishing being as prevalent as it is, no one still uses their birthday (or any other single password) to access all their online services. Indeed, services get compromised all the time, which means that your email address and perhaps even your password already got leaked. Here, check for yourself.
-A few years ago, I started signing up for services with unique email addresses of the form servicename@domain-i-own.com, to track where spammers obtained my address.</description>
-    </item>
     
     <item>
       <title>The Philosophy of Code Review</title>
