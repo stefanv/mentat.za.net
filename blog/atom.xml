@@ -6,7 +6,7 @@
     
             <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
             <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
-    <updated>2020-05-10T12:14:05-07:00</updated>
+    <updated>2020-05-21T10:47:10-07:00</updated>
     
     
     
@@ -15,51 +15,32 @@
     
         
         <entry>
-            <title type="html"><![CDATA[A small screenshot]]></title>
-            <link href="https://mentat.za.net/blog/2020/05/04/test/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            <title type="html"><![CDATA[pass: A truly transparent password manager]]></title>
+            <link href="https://mentat.za.net/blog/2020/05/14/pass-a-truly-transparent-password-manager/?utm_source=atom_feed" rel="alternate" type="text/html" />
             
             
-                <id>https://mentat.za.net/blog/2020/05/04/test/</id>
+                <id>https://mentat.za.net/blog/2020/05/14/pass-a-truly-transparent-password-manager/</id>
             
             
-            <published>2020-05-04T00:00:00+00:00</published>
+            <published>2020-05-14T00:00:00+00:00</published>
             <updated>0001-01-01T00:00:00+00:00</updated>
             
             
-            <content type="html"><![CDATA[<blockquote>Where we test new figurecodes</blockquote>
-
-
-
-
-
-
-
-<figure>
-    <img
-        
-            sizes="(min-width: 35em) 1200px, 100vw"
-              
-            srcset='
-            
-                   
-            
-                   
-            
-                   
-            
-                   
-            '
-
-            
-            
-            src="https://mentat.za.net/blog/2020/05/04/test/screenshot.png"
-            
-
-        /> <figcaption>
-            <h4>A small screenshot</h4>
-        </figcaption>
-</figure>
-
+            <content type="html"><![CDATA[<blockquote>Where we show how we use <code>pass</code> to do no-nonsense password management.</blockquote><p>Hopefully, with phishing being as prevalent as it is, no one still uses their birthday (or any other single password) to access all their online services.  Indeed, services get compromised <em>all the time</em>, which means that your email address and perhaps even your password already got leaked.  Here, <a href="https://monitor.firefox.com/">check for yourself</a>.</p>
+<p>A few years ago, I started signing up for services with unique email addresses of the form <code>servicename@domain-i-own.com</code>, to track where spammers obtained my address.  You&rsquo;d be surprised at how many non-solicited emails I receive on those addresses, even from ones tied to reputable companies.</p>
+<p>What you can and <em>definitely should</em> do is to use a unique password for each site.  There are numerous tools that help you to generate and remember such passwords, such as <a href="https://www.lastpass.com/">LastPass</a>, <a href="https://1password.com/">1Password</a>, and <a href="https://medium.com/@JoeKreydt/how-secure-is-firefox-lockwise-password-manager-51d44dcf4dbc">Firefox Lockwise</a>.  However, since I prefer to (a) keep my systems simple and transparent and (b) prefer not to rely on external services, I have found two other password management systems that work well:</p>
+<ol>
+<li>
+<p><a href="https://www.keepassx.org/">KeePassX</a></p>
+<p>KeePassX is a cross-platform open source application that stores your passwords in an encrypted file on your hard-drive. It has a great graphical user interface that makes it easy to pull up passwords and fill them where necessary.  It also allows you to store secret files as attachments.</p>
+</li>
+<li>
+<p><a href="https://www.passwordstore.org/">Pass</a></p>
+<p>Pass is a very simple, highly transparent</p>
+</li>
+</ol>
+<h2 id="what-do-i-recommend--use">What do I recommend / use?</h2>
+<p>I typically recommend different password managers depending on the technical level of sophistication of the person asking.  <code>LastPass</code> for the general public, <code>KeePassX</code> for tech-savvy users, and <code>pass</code> for users who enjoy their terminal and may already have GPG keys.</p>
 ]]></content>
             
                  
@@ -70,7 +51,7 @@
                         
                             
                              
-                                <category scheme="https://mentat.za.net/blog/tags/test" term="test" label="test" />
+                                <category scheme="https://mentat.za.net/blog/tags/" term="" label="" />
                             
                         
                     
@@ -177,70 +158,6 @@ going on, but I can promise to do my best to learn!</p>
                                 <category scheme="https://mentat.za.net/blog/tags/coding" term="coding" label="coding" />
                              
                                 <category scheme="https://mentat.za.net/blog/tags/collaboration" term="collaboration" label="collaboration" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[CaptureOrg tasks from Google Assistant]]></title>
-            <link href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-google-assistant/?utm_source=atom_feed" rel="alternate" type="text/html" />
-            
-                <link href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-assistant/?utm_source=atom_feed" rel="related" type="text/html" title="Org Tasks From Assistant" />
-            
-                <id>https://mentat.za.net/blog/2020/04/28/org-tasks-from-google-assistant/</id>
-            
-            
-            <published>2020-04-28T00:00:00+00:00</published>
-            <updated>0001-01-01T00:00:00+00:00</updated>
-            
-            
-            <content type="html"><![CDATA[<blockquote>Where I capture TODO items from my Android phone into org-mode</blockquote>]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://mentat.za.net/blog/tags/" term="" label="" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[Org Tasks From Assistant]]></title>
-            <link href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-assistant/?utm_source=atom_feed" rel="alternate" type="text/html" />
-            
-                <link href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-google-assistant/?utm_source=atom_feed" rel="related" type="text/html" title="CaptureOrg tasks from Google Assistant" />
-            
-                <id>https://mentat.za.net/blog/2020/04/28/org-tasks-from-assistant/</id>
-            
-            
-            <published>2020-04-28T00:00:00+00:00</published>
-            <updated>0001-01-01T00:00:00+00:00</updated>
-            
-            
-            <content type="html"><![CDATA[]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://mentat.za.net/blog/tags/" term="" label="" />
                             
                         
                     

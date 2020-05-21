@@ -44,16 +44,17 @@
 	<div class="catalogue">
 		
 			<div class="catalogue-item">
-  <a href="https://mentat.za.net/blog/2020/05/04/test/">
-    <time datetime="2020-05-04 00:00:00 &#43;0000 UTC" class="catalogue-time">May 4, 2020</time>
-    <h1 class="catalogue-title">A small screenshot</h1>
+  <a href="https://mentat.za.net/blog/2020/05/14/pass-a-truly-transparent-password-manager/">
+    <time datetime="2020-05-14 00:00:00 &#43;0000 UTC" class="catalogue-time">May 14, 2020</time>
+    <h1 class="catalogue-title">pass: A truly transparent password manager</h1>
     <div class="catalogue-tags">
       
-      <div class="post-tag"><a href=/blog/tags/test>#test</a></div>
+      <div class="post-tag"><a href=/blog/tags>#</a></div>
       
     </div>
     <p>
-         A small screenshot   
+      Hopefully, with phishing being as prevalent as it is, no one still uses their birthday (or any other single password) to access all their online services. Indeed, services get compromised all the time, which means that your email address and perhaps even your password already got leaked. Here, check for yourself.
+A few years ago, I started signing up for services with unique email addresses of the form servicename@domain-i-own.com, to track where spammers obtained my address.
     </p>
   </a>
 </div>
@@ -74,38 +75,6 @@
       Recently, a colleague of mine was agitated by a comment I left during a code review. Who could blame them: I had asked them to motivate an implementation choice that still didn&rsquo;t make sense to me&mdash;after numerous rounds of discussion.
 To their great credit, they were supremely polite about it:
  Thanks for checking in. Overall, I really appreciate your reviews and feedback. At times, I&rsquo;ve been feeling frustrated that I&rsquo;m having to address comments that aren&rsquo;t relevant.
-    </p>
-  </a>
-</div>
-
-		
-			<div class="catalogue-item">
-  <a href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-google-assistant/">
-    <time datetime="2020-04-28 00:00:00 &#43;0000 UTC" class="catalogue-time">April 28, 2020</time>
-    <h1 class="catalogue-title">CaptureOrg tasks from Google Assistant</h1>
-    <div class="catalogue-tags">
-      
-      <div class="post-tag"><a href=/blog/tags>#</a></div>
-      
-    </div>
-    <p>
-      
-    </p>
-  </a>
-</div>
-
-		
-			<div class="catalogue-item">
-  <a href="https://mentat.za.net/blog/2020/04/28/org-tasks-from-assistant/">
-    <time datetime="2020-04-28 00:00:00 &#43;0000 UTC" class="catalogue-time">April 28, 2020</time>
-    <h1 class="catalogue-title">Org Tasks From Assistant</h1>
-    <div class="catalogue-tags">
-      
-      <div class="post-tag"><a href=/blog/tags>#</a></div>
-      
-    </div>
-    <p>
-      
     </p>
   </a>
 </div>
@@ -247,6 +216,49 @@ There are plenty of potential use cases, but consider, e.g., that you want to ve
 </div>
 
 		
+			<div class="catalogue-item">
+  <a href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/">
+    <time datetime="2016-09-14 00:00:00 &#43;0000 UTC" class="catalogue-time">September 14, 2016</time>
+    <h1 class="catalogue-title">Compile TensorFlow from source with gcc6.1</h1>
+    <div class="catalogue-tags">
+      
+      <div class="post-tag"><a href=/blog/tags/tensorflow>#tensorflow</a></div>
+      
+      <div class="post-tag"><a href=/blog/tags/python>#python</a></div>
+      
+    </div>
+    <p>
+      Due to two bugs in gcc 6.1 affecting the re2 library (one of which has been fixed in 6.2)), TensorFlow cannot be compiled from source one some systems (including my Debian Testing install).
+To work around the issue, modify tensorflow/workspace.bzl and change the re2 description to:
+native.git_repository( name = &quot;com_googlesource_code_re2&quot;, remote = &quot;https://github.com/stefanv/re2.git&quot;, commit = &quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;, ) The re2 library is now downloaded from my fork, which applies a one line patch.
+    </p>
+  </a>
+</div>
+
+		
+			<div class="catalogue-item">
+  <a href="https://mentat.za.net/blog/2016/08/21/amazon-owns-your-ebooks/">
+    <time datetime="2016-08-21 00:00:00 &#43;0000 UTC" class="catalogue-time">August 21, 2016</time>
+    <h1 class="catalogue-title">Amazon owns your ebooks</h1>
+    <div class="catalogue-tags">
+      
+      <div class="post-tag"><a href=/blog/tags/drm>#drm</a></div>
+      
+      <div class="post-tag"><a href=/blog/tags/amazon>#amazon</a></div>
+      
+      <div class="post-tag"><a href=/blog/tags/kindle>#kindle</a></div>
+      
+      <div class="post-tag"><a href=/blog/tags/ebooks>#ebooks</a></div>
+      
+    </div>
+    <p>
+      Did you know that Amazon does not sell ebooks? But, wait, you say, I have bought ebooks from them myself! Sadly, that is not the case. I will summarize part of the Kindle Store Terms of Use quoted at the bottom of this post:
+ You do not own any Kindle book that you have &ldquo;bought&rdquo;, even if it said &ldquo;buy with one click&rdquo; in the store (the book still belongs to Amazon, you&rsquo;re just leasing it).
+    </p>
+  </a>
+</div>
+
+		
 	</div>
 
 	<div class="pagination">
@@ -262,7 +274,7 @@ There are plenty of potential use cases, but consider, e.g., that you want to ve
 
         		<footer>
 			<span>
-			&copy; <time datetime="2020-05-10 12:14:05.42463827 -0700 PDT m=&#43;0.111195217">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-05-21 10:47:10.762742745 -0700 PDT m=&#43;0.128161034">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

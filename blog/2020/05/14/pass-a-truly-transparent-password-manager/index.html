@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="Where we show how we use `pass` to do no-nonsense password management.">
+
+		<title>pass: A truly transparent password manager &middot; Stéfan&#39;s blog</title>
+
+		
+  		<link rel="stylesheet" href="/blog/css/style.css">
+		<link rel="stylesheet" href="/blog/css/fonts.css">
+		<link rel="stylesheet" href="/blog/custom.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Stéfan&#39;s blog" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/blog/">
+					<h2 class="nav-title">Stéfan&#39;s blog</h2>
+				</a>
+				<ul>
+    <li><a href="https://mentat.za.net">mentat.za.net</a></li>
+    <li><a href="/blog/atom.xml">Atom / RSS feed</a></li>
+</ul>
+
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+</div>
+
+		<h1 class="post-title">pass: A truly transparent password manager</h1>
+
+<div class="post-date">
+  
+    May 14, 2020
+  
+</div>
+
+<div class="post-tags">
+  
+    <div class="post-tag">
+      <a href=/blog/tags>
+        #
+      </a>
+    </div>
+  
+</div>
+
+
+		
+
+		<p>Hopefully, with phishing being as prevalent as it is, no one still uses their birthday (or any other single password) to access all their online services.  Indeed, services get compromised <em>all the time</em>, which means that your email address and perhaps even your password already got leaked.  Here, <a href="https://monitor.firefox.com/">check for yourself</a>.</p>
+<p>A few years ago, I started signing up for services with unique email addresses of the form <code>servicename@domain-i-own.com</code>, to track where spammers obtained my address.  You&rsquo;d be surprised at how many non-solicited emails I receive on those addresses, even from ones tied to reputable companies.</p>
+<p>What you can and <em>definitely should</em> do is to use a unique password for each site.  There are numerous tools that help you to generate and remember such passwords, such as <a href="https://www.lastpass.com/">LastPass</a>, <a href="https://1password.com/">1Password</a>, and <a href="https://medium.com/@JoeKreydt/how-secure-is-firefox-lockwise-password-manager-51d44dcf4dbc">Firefox Lockwise</a>.  However, since I prefer to (a) keep my systems simple and transparent and (b) prefer not to rely on external services, I have found two other password management systems that work well:</p>
+<ol>
+<li>
+<p><a href="https://www.keepassx.org/">KeePassX</a></p>
+<p>KeePassX is a cross-platform open source application that stores your passwords in an encrypted file on your hard-drive. It has a great graphical user interface that makes it easy to pull up passwords and fill them where necessary.  It also allows you to store secret files as attachments.</p>
+</li>
+<li>
+<p><a href="https://www.passwordstore.org/">Pass</a></p>
+<p>Pass is a very simple, highly transparent</p>
+</li>
+</ol>
+<h2 id="what-do-i-recommend--use">What do I recommend / use?</h2>
+<p>I typically recommend different password managers depending on the technical level of sophistication of the person asking.  <code>LastPass</code> for the general public, <code>KeePassX</code> for tech-savvy users, and <code>pass</code> for users who enjoy their terminal and may already have GPG keys.</p>
+
+
+		<script type="text/javascript">
+  var disqus_identifier = "http://stefanv.github.com/blog/2020/05/14/pass-a-truly-transparent-password-manager/";
+</script>
+
+<div style="border-top: 0.5px solid #e5e5e5; padding-top: 1em;">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "stefanvdwalt" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+	</div>
+
+	<div class="pagination">
+		<a href="/blog/2020/04/29/philosophy-of-code-review/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-05-21 10:47:10.692884244 -0700 PDT m=&#43;0.058302541">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>
