@@ -6,7 +6,7 @@
     
             <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
             <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
-    <updated>2020-05-21T10:48:53-07:00</updated>
+    <updated>2020-05-21T10:57:56-07:00</updated>
     
     
     
@@ -28,7 +28,7 @@
             <updated>0001-01-01T00:00:00+00:00</updated>
             
             
-            <content type="html"><![CDATA[<blockquote>Where I show how to hook up org-mode and Google Assistant</blockquote><p>I often want to capture tasks on the go—in a hurry. When there&rsquo;s no time to fire up <a href="https://organice.200ok.ch/">organice</a> or <a href="http://www.orgzly.com/">http://www.orgzly.com/</a>, being able to transcribe tasks comes in really handy.</p>
+            <content type="html"><![CDATA[<blockquote>Where I show how to hook up org-mode and Google Assistant</blockquote><p>I often want to capture tasks on the go—in a hurry. When there&rsquo;s no time to fire up <a href="https://organice.200ok.ch/">organice</a> or <a href="http://www.orgzly.com/">Orgzly</a>, being able to transcribe tasks comes in really handy.</p>
 <p>In this post, I show how, on Android phones, you can hook up Google&rsquo;s Assistant with org-mode, so that you can <em>speak</em> notes and have them appear as TODO items in a buffer.</p>
 <h2 id="set-up-google-assistant">Set up Google Assistant</h2>
 <p>First, we need to teach Google Assistant a new keyword, and tell it to store transcribed notes in an accessible location.  We do this via the free <a href="https://ifttt.com/">If This Then That</a> service.  Add the &ldquo;Log notes in a Google Drive spreadsheet&rdquo; applet, and configure it as follows:</p>

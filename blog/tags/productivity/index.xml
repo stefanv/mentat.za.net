@@ -17,7 +17,7 @@
       <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/2020/04/28/voice-capture-org-tasks-on-android/</guid>
-      <description>I often want to capture tasks on the go—in a hurry. When there&amp;rsquo;s no time to fire up organice or http://www.orgzly.com/, being able to transcribe tasks comes in really handy.
+      <description>I often want to capture tasks on the go—in a hurry. When there&amp;rsquo;s no time to fire up organice or Orgzly, being able to transcribe tasks comes in really handy.
 In this post, I show how, on Android phones, you can hook up Google&amp;rsquo;s Assistant with org-mode, so that you can speak notes and have them appear as TODO items in a buffer.
 Set up Google Assistant First, we need to teach Google Assistant a new keyword, and tell it to store transcribed notes in an accessible location.</description>
     </item>
