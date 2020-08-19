@@ -3,7 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mentat.za.net/blog/tags/org-mode/</loc>
+    <loc>https://mentat.za.net/blog/tags/coding/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/2020/08/19/how-to-write-good-scientific-software/</loc>
   </url>
   
   <url>
@@ -11,7 +15,11 @@
   </url>
   
   <url>
-    <loc>https://mentat.za.net/blog/tags/productivity/</loc>
+    <loc>https://mentat.za.net/blog/tags/science/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/software/</loc>
   </url>
   
   <url>
@@ -20,6 +28,14 @@
   
   <url>
     <loc>https://mentat.za.net/blog/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/org-mode/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/tags/productivity/</loc>
   </url>
   
   <url>
@@ -159,10 +175,6 @@
   </url>
   
   <url>
-    <loc>https://mentat.za.net/blog/tags/science/</loc>
-  </url>
-  
-  <url>
     <loc>https://mentat.za.net/blog/tags/super-resolution/</loc>
   </url>
   
@@ -172,10 +184,6 @@
   
   <url>
     <loc>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</loc>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/tags/coding/</loc>
   </url>
   
   <url>

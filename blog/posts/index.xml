@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mentat.za.net/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Write Good Scientific Software</title>
+      <link>https://mentat.za.net/blog/2020/08/19/how-to-write-good-scientific-software/</link>
+      <pubDate>Wed, 19 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://mentat.za.net/blog/2020/08/19/how-to-write-good-scientific-software/</guid>
+      <description>This is a lightly edited transcript of a talk I delivered at MLSS South Africa on 16 January 2019.
+In this post, I will define scientific software, describe how it is different from other types of software, and discuss the social, mechanical, and scholarly disciplines required for making it the best it can be.
+Upfront, I should note that these are all rough guidelines, but that the context in which software is developed and used will affect the extent to which they apply.</description>
+    </item>
     
     <item>
       <title>Voice capture org-mode tasks on Android</title>

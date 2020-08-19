@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Stéfan&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mentat.za.net/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>coding</title>
+      <link>https://mentat.za.net/blog/tags/coding/</link>
+      <pubDate>Wed, 19 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://mentat.za.net/blog/tags/coding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>science</title>
+      <link>https://mentat.za.net/blog/tags/science/</link>
+      <pubDate>Wed, 19 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://mentat.za.net/blog/tags/science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software</title>
+      <link>https://mentat.za.net/blog/tags/software/</link>
+      <pubDate>Wed, 19 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://mentat.za.net/blog/tags/software/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>org-mode</title>
@@ -219,29 +246,11 @@
     </item>
     
     <item>
-      <title>science</title>
-      <link>https://mentat.za.net/blog/tags/science/</link>
-      <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://mentat.za.net/blog/tags/science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>super-resolution</title>
       <link>https://mentat.za.net/blog/tags/super-resolution/</link>
       <pubDate>Mon, 15 Oct 2012 00:00:00 +0000</pubDate>
       
       <guid>https://mentat.za.net/blog/tags/super-resolution/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>coding</title>
-      <link>https://mentat.za.net/blog/tags/coding/</link>
-      <pubDate>Wed, 26 Sep 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://mentat.za.net/blog/tags/coding/</guid>
       <description></description>
     </item>
     

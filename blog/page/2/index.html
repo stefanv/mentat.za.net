@@ -1,25 +1,49 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-	<meta name="generator" content="Hugo 0.65.3" />
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.71.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
 
-		<title>Stéfan&#39;s blog</title>
+  <title>Stéfan&#39;s blog</title>
 
-		
-  		<link rel="stylesheet" href="/blog/css/style.css">
-		<link rel="stylesheet" href="/blog/css/fonts.css">
-		<link rel="stylesheet" href="/blog/custom.css">
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/fonts.css">
+  <link rel="stylesheet" href="/blog/custom.css">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
 
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Stéfan&#39;s blog" />
-	</head>
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Stéfan&#39;s blog" />
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function(x){
+      x.parentElement.classList += 'has-jax'})
+  });
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+</head>
 
     <body>
         		<nav class="nav">
@@ -42,6 +66,23 @@
 
 
 	<div class="catalogue">
+		
+			<div class="catalogue-item">
+  <a href="https://mentat.za.net/blog/2015/01/24/vpn-only-internet/">
+    <time datetime="2015-01-24 00:00:00 &#43;0000 UTC" class="catalogue-time">January 24, 2015</time>
+    <h1 class="catalogue-title">VPN-only access to the internet</h1>
+    <div class="catalogue-tags">
+      
+      <div class="post-tag"><a href=/blog/tags/linux>#linux</a></div>
+      
+    </div>
+    <p>
+      A few days ago, I noticed that my outbound email wasn&rsquo;t being delivered&mdash;it seems as if my ISP blocks access to some outbound ports. An easy workaround is to route traffic through the work VPN, but knowing myself I&rsquo;d forget to switch it on, leaving my outbound mail stranded.
+I needed a way of blocking any access to the internet, unless it was leaving through the VPN (since I was sure I&rsquo;d notice that pretty quickly).
+    </p>
+  </a>
+</div>
+
 		
 			<div class="catalogue-item">
   <a href="https://mentat.za.net/blog/2015/01/18/docker-image-tree/">
@@ -189,7 +230,7 @@ My Emacs setup is shared across multiple machines: a synchronized elisp folder, 
 
         		<footer>
 			<span>
-			&copy; <time datetime="2020-05-21 10:57:56.570094834 -0700 PDT m=&#43;0.109507841">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-08-19 13:40:00.271147114 -0700 PDT m=&#43;0.168346048">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 

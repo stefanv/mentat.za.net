@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>coding &middot; Stéfan&#39;s blog</title>
+  <title>coding &middot; Stéfan&#39;s blog</title>
 
-		
-  		<link rel="stylesheet" href="/blog/css/style.css">
-		<link rel="stylesheet" href="/blog/css/fonts.css">
-		<link rel="stylesheet" href="/blog/custom.css">
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/fonts.css">
+  <link rel="stylesheet" href="/blog/custom.css">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
 
-		
-		<link href="/blog/tags/coding/index.xml" rel="alternate" type="application/rss+xml" title="Stéfan&#39;s blog" />
-	</head>
+  
+  <link href="/blog/tags/coding/index.xml" rel="alternate" type="application/rss+xml" title="Stéfan&#39;s blog" />
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function(x){
+      x.parentElement.classList += 'has-jax'})
+  });
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+</head>
 
     <body>
         		<nav class="nav">
@@ -38,6 +62,28 @@
 <main>
     <h1>Tag coding</h1>
 	<div class="catalogue">
+		
+			<div class="catalogue-item">
+  <a href="https://mentat.za.net/blog/2020/08/19/how-to-write-good-scientific-software/">
+    <time datetime="2020-08-19 00:00:00 &#43;0000 UTC" class="catalogue-time">August 19, 2020</time>
+    <h1 class="catalogue-title">How to Write Good Scientific Software</h1>
+    <div class="catalogue-tags">
+      
+      <div class="post-tag"><a href=/blog/tags/science>#science</a></div>
+      
+      <div class="post-tag"><a href=/blog/tags/software>#software</a></div>
+      
+      <div class="post-tag"><a href=/blog/tags/coding>#coding</a></div>
+      
+    </div>
+    <p>
+      This is a lightly edited transcript of a talk I delivered at MLSS South Africa on 16 January 2019.
+In this post, I will define scientific software, describe how it is different from other types of software, and discuss the social, mechanical, and scholarly disciplines required for making it the best it can be.
+Upfront, I should note that these are all rough guidelines, but that the context in which software is developed and used will affect the extent to which they apply.
+    </p>
+  </a>
+</div>
+
 		
 			<div class="catalogue-item">
   <a href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/">
@@ -74,7 +120,7 @@ To install on Linux:
 
         		<footer>
 			<span>
-			&copy; <time datetime="2020-05-21 10:57:56.511355328 -0700 PDT m=&#43;0.050768328">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-08-19 13:40:00.209541695 -0700 PDT m=&#43;0.106740644">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 
