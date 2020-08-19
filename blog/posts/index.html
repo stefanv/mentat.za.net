@@ -76,9 +76,9 @@
       
     </div>
     <p>
-      This is a lightly edited transcript of a talk I delivered at MLSS South Africa on 16 January 2019.
-In this post, I will define scientific software, describe how it is different from other types of software, and discuss the social, mechanical, and scholarly disciplines required for making it the best it can be.
-Upfront, I should note that these are all rough guidelines, but that the context in which software is developed and used will affect the extent to which they apply.
+      
+        Where I discuss social, mechanical, and scholarly disciplines required for writing good scientific software.
+      
     </p>
   </a>
 </div>
@@ -96,9 +96,9 @@ Upfront, I should note that these are all rough guidelines, but that the context
       
     </div>
     <p>
-      I often want to capture tasks on the go—in a hurry. When there&rsquo;s no time to fire up organice or Orgzly, being able to transcribe tasks comes in really handy.
-In this post, I show how, on Android phones, you can hook up Google&rsquo;s Assistant with org-mode, so that you can speak notes and have them appear as TODO items in a buffer.
-Set up Google Assistant First, we need to teach Google Assistant a new keyword, and tell it to store transcribed notes in an accessible location.
+      
+        Where I show how to hook up org-mode and Google Assistant
+      
     </p>
   </a>
 </div>
@@ -120,9 +120,9 @@ Set up Google Assistant First, we need to teach Google Assistant a new keyword, 
       
     </div>
     <p>
-      Today, I presented a talk titled &ldquo;Scientific Python: A Mature Computational Ecosystem for Microscopy&rdquo; [PDF] at the Microscopy and MicroAnalysis conference in Portland.
-A few members of the audience familiar with scientific Python told me they had learned something, so I&rsquo;ll highlight the few topics that I think may have qualified.
-SciPy 1.0 paper The first official release of SciPy was in 2001, and a mere 16 years later we reached 1.
+      
+        Where we demonstrate a new way of doing interactive image analysis.
+      
     </p>
   </a>
 </div>
@@ -142,8 +142,9 @@ SciPy 1.0 paper The first official release of SciPy was in 2001, and a mere 16 y
       
     </div>
     <p>
-      The first issue of the Harvard Data Science Review was published last month. I enjoyed Michael Jordan&rsquo;s opinion piece, in which he considers progress made (and, yes, hype!) in so-called artificial intelligence. Particularly, I was excited about the phrase &ldquo;Intelligent Augmentation&rdquo;—the pursuit of systems that enhances our ability to reason about a subject, by providing additional analysis, data, and emphasis. Jordan writes:
- IA will also remain quite essential, because for the foreseeable future, computers will not be able to match humans in their ability to reason abstractly about real-world situations.
+      
+        How can we better design systems that combine computational inference and human intelligence?
+      
     </p>
   </a>
 </div>
@@ -165,9 +166,9 @@ SciPy 1.0 paper The first official release of SciPy was in 2001, and a mere 16 y
       
     </div>
     <p>
-      Update 2018-11-2: Change the URL scheme to message://. See &ldquo;Other Systems&rdquo; below.
-org-mode is, to me, is one of the most valuable parts of the emacs ecosystem. I use it to take notes, plan projects, manage tasks, and write &amp; publish documents.
-Nowadays, a lot of work arrives via email, and so it is helpful to be able to refer to messages directly from my notes or lists of tasks.
+      
+        Where we store links to emails in org-mode, and open them using neomutt.
+      
     </p>
   </a>
 </div>
@@ -185,9 +186,9 @@ Nowadays, a lot of work arrives via email, and so it is helpful to be able to re
       
     </div>
     <p>
-      In org-mode, I often have the need to jump to a top-level heading matching some word.
-Since an org-mode buffer can be searched just like any other, I can simply invoke forward search with C-s, but this will match all occurrences of the text, instead of limiting the search to headings only.
-This makes it hard to search for a phrase like &ldquo;Travel&rdquo;, for which I have a top-level heading, but also often occurs elsewhere in my notes.
+      
+        Where we show a quick way of navigating org-mode files.
+      
     </p>
   </a>
 </div>
@@ -213,8 +214,9 @@ This makes it hard to search for a phrase like &ldquo;Travel&rdquo;, for which I
       
     </div>
     <p>
-      As part of our work on Cesium and its web frontend, we&rsquo;ve developed an easy mechanism for Python web developers to push messages from their Python backends to the browser.
-There are plenty of potential use cases, but consider, e.g., that you want to verify a credit card number submitted by your user. Traditionally, you&rsquo;d submit the number, and then poll the backend repeatedly from the browser. Not very elegant :/
+      
+        Where we make pushing messages from a python backend to the browser easy.
+      
     </p>
   </a>
 </div>
@@ -232,9 +234,9 @@ There are plenty of potential use cases, but consider, e.g., that you want to ve
       
     </div>
     <p>
-      Due to two bugs in gcc 6.1 affecting the re2 library (one of which has been fixed in 6.2)), TensorFlow cannot be compiled from source one some systems (including my Debian Testing install).
-To work around the issue, modify tensorflow/workspace.bzl and change the re2 description to:
-native.git_repository( name = &quot;com_googlesource_code_re2&quot;, remote = &quot;https://github.com/stefanv/re2.git&quot;, commit = &quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;, ) The re2 library is now downloaded from my fork, which applies a one line patch.
+      
+        Where we build TensorFlow from scratch.
+      
     </p>
   </a>
 </div>
@@ -256,8 +258,9 @@ native.git_repository( name = &quot;com_googlesource_code_re2&quot;, remote = &q
       
     </div>
     <p>
-      Did you know that Amazon does not sell ebooks? But, wait, you say, I have bought ebooks from them myself! Sadly, that is not the case. I will summarize part of the Kindle Store Terms of Use quoted at the bottom of this post:
- You do not own any Kindle book that you have &ldquo;bought&rdquo;, even if it said &ldquo;buy with one click&rdquo; in the store (the book still belongs to Amazon, you&rsquo;re just leasing it).
+      
+        Where we realize Amazon owns your books.
+      
     </p>
   </a>
 </div>
@@ -273,9 +276,9 @@ native.git_repository( name = &quot;com_googlesource_code_re2&quot;, remote = &q
       
     </div>
     <p>
-      One day, we will hopefully have a grand unified build and package management system for Python where everything is free &amp; open and Just Works (TM). Until then, you have two options:
-brew Python + pip  brew install python3 pyvenv -v ~/envs/py3 source ~/envs/py3/bin/activate pip install matplotlib  Pros/cons:
- Pip is the standard Python package management tool, and uses the official Python Package Index (PyPi) repository. Wheels on PyPi are built by authors themselves from open recipes.
+      
+        Where we discuss two ways of installing Matplotlib on MacOS.
+      
     </p>
   </a>
 </div>
@@ -296,7 +299,7 @@ brew Python + pip  brew install python3 pyvenv -v ~/envs/py3 source ~/envs/py3/b
 
         		<footer>
 			<span>
-			&copy; <time datetime="2020-08-19 13:40:00.270153522 -0700 PDT m=&#43;0.167352473">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			&copy; <time datetime="2020-08-19 14:03:19.357535486 -0700 PDT m=&#43;0.142403404">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
 			</span>
 		</footer>
 
