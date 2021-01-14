@@ -305,13 +305,14 @@ in Python, currently mainly <a href="http://www.numpy.org">NumPy</a>, <a href="h
 Until May 2014, I was a lecturer in <a href="http://appliedmaths.sun.ac.za">Applied Mathematics</a> at
 <a href="http://www.sun.ac.za">Stellenbosch University</a> in the Vision and Learning Group.</p>
 
-<h1>Latest <a href="https://mentat.za.net/blog">blog posts<a></h2>
+<h1>Latest <a href="https://mentat.za.net/blog">blog posts</a></h2>
 
 <div id="feed">
     <p><div id="feedLoading">Loading feed...</div></p>
-    <ul id="feed_list">
-  </ul>
+    <ul id="feed_list"></ul>
 </div>
+
+I also have some <a href="https://mentat.za.net/blog/personal/">personal retrospectives</a>, for those interested.
 
 <script type="text/javascript">
 
@@ -323,8 +324,6 @@ Until May 2014, I was a lecturer in <a href="http://appliedmaths.sun.ac.za">Appl
 
     for (var i = 0; i < 5; i++) {
       var entry = response.items[i];
-
-      console.log("blog: ", entry.title);
 
       html = '\n<li class="feed_entry">' +
              '<span class="feed_title">' +
@@ -343,7 +342,7 @@ Until May 2014, I was a lecturer in <a href="http://appliedmaths.sun.ac.za">Appl
 
       html += '</span><br/><span class="feed_content">';
       html += $(entry.description).first().html();
-      html += '</li>\n';
+      html += '</span></li>\n';
 
       ul.append(html);
       $("#feedLoading").remove();
