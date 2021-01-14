@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.80.0">Hugo</generator><title type="html"><![CDATA[python on Stéfan's blog]]></title>
+    
+    
+    
+            <link href="https://mentat.za.net/blog/tags/python/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://mentat.za.net/blog/tags/python/atom.xml" rel="self" type="application/atom" title="atom" />
+    <updated>2021-01-14T00:39:46-08:00</updated>
+    
+    
+    <author>
+            <name>Stéfan van der Walt</name>
+            </author>
+    
+        <id>https://mentat.za.net/blog/tags/python/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Scientific Python at Microscopy & MicroAnalysis 2019]]></title>
+            <link href="https://mentat.za.net/blog/2019/08/06/portland-microscopy/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+                <link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/?utm_source=atom_feed" rel="related" type="text/html" title="Linking to emails in org-mode (using neomutt)" />
+                <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/?utm_source=atom_feed" rel="related" type="text/html" title="WebSockets in Python (and some Redux)" />
+            
+                <id>https://mentat.za.net/blog/2019/08/06/portland-microscopy/</id>
+            
+            
+            <published>2019-08-06T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we demonstrate a new way of doing interactive image analysis.</blockquote><p>Today, I presented a talk titled <a href="https://doi.org/10.1017/S1431927619001399">&ldquo;Scientific Python: A Mature Computational Ecosystem for Microscopy&rdquo;</a> [<a href="http://www.jhmartins.com/mm2019c/7337/0132.pdf">PDF</a>] at the Microscopy and MicroAnalysis conference in Portland.</p>
+<p>A few members of the audience familiar with scientific Python told me they had learned something, so I&rsquo;ll highlight the few topics that I think may have qualified.</p>
+<h2 id="scipy-10-paper">SciPy 1.0 paper</h2>
+<p>The first official release of SciPy was in 2001, and a mere 16 years later we reached 1.0. This says a lot about the developer community, and how careful they are to label their own work as &ldquo;mature&rdquo;!  To celebrate this project milestone, we <a href="https://arxiv.org/abs/1907.10121">published a preprint on arXiv</a> that outlines the project history and its current status.  It mentions, among other achievements, that SciPy was instrumental in the first <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.119.161101">gravitational wave detection</a>, as well as the recent <a href="https://iopscience.iop.org/journal/2041-8205/page/Focus_on_EHT">imaging of the black hole in Messier 87</a>.</p>
+<h2 id="numpy-__array_function__-protocol">NumPy <code>__array_function__</code> protocol</h2>
+<p>The 1.17 release of NumPy (2019-07-26) has support for a <a href="https://numpy.org/neps/nep-0018-array-function-protocol.html">new array function protocol</a>, that allows external libraries to pass their array-like objects through NumPy without them being horribly mangled.  E.g., you may call NumPy&rsquo;s <code>sum</code> on a CuPy array: the computation will happen on the GPU, and the resulting array will still be a CuPy array.</p>
+<p>Here is an example:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">In [<span style="color:#40a070">24</span>]: <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">cupy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">cp</span>
+
+In [<span style="color:#40a070">25</span>]: x <span style="color:#666">=</span> cp<span style="color:#666">.</span>random<span style="color:#666">.</span>random([<span style="color:#40a070">10</span>, <span style="color:#40a070">10</span>])
+
+In [<span style="color:#40a070">26</span>]: y <span style="color:#666">=</span> x<span style="color:#666">.</span>sum(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
+
+In [<span style="color:#40a070">27</span>]: <span style="color:#007020">type</span>(y), y<span style="color:#666">.</span>shape
+Out[<span style="color:#40a070">27</span>]: (cupy<span style="color:#666">.</span>core<span style="color:#666">.</span>core<span style="color:#666">.</span>ndarray, (<span style="color:#40a070">10</span>,))
+
+In [<span style="color:#40a070">28</span>]: <span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+
+In [<span style="color:#40a070">29</span>]: z <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(x, axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)
+
+In [<span style="color:#40a070">30</span>]: <span style="color:#007020">type</span>(z), z<span style="color:#666">.</span>shape
+Out[<span style="color:#40a070">30</span>]: (cupy<span style="color:#666">.</span>core<span style="color:#666">.</span>core<span style="color:#666">.</span>ndarray, (<span style="color:#40a070">10</span>,))
+</code></pre></div><p>Note how the result is the same, whether you use CuPy or NumPy&rsquo;s <code>sum</code>.</p>
+<p>Whereas NumPy used to be the reference implementation for array computation in Python, it is fast evolving into a standard API, implemented by multiple libraries.</p>
+<h2 id="pytorch-and-tensorflow-easily-consume-python-images">PyTorch and TensorFlow easily consume Python images</h2>
+<p>Images in scientific Python (<code>scikit-image</code>, <code>opencv</code>, etc.) are represented as NumPy arrays.  It is trivial to pass these arrays into deep learning libraries such as TensorFlow:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">tensorflow.keras.applications.inception_v3</span> <span style="color:#007020;font-weight:bold">import</span> (
+    InceptionV3, preprocess_input, decode_predictions
+)
+<span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">skimage</span> <span style="color:#007020;font-weight:bold">import</span> transform
+
+net <span style="color:#666">=</span> InceptionV3()
+
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">inception_predict</span>(image):
+    <span style="color:#60a0b0;font-style:italic"># Rescale image to 299x299, as required by InceptionV3</span>
+    image_prep <span style="color:#666">=</span> transform<span style="color:#666">.</span>resize(image, (<span style="color:#40a070">299</span>, <span style="color:#40a070">299</span>, <span style="color:#40a070">3</span>), mode<span style="color:#666">=</span><span style="color:#4070a0">&#39;reflect&#39;</span>)
+    
+    <span style="color:#60a0b0;font-style:italic"># Scale image values to [-1, 1], as required by InceptionV3</span>
+    image_prep <span style="color:#666">=</span> (img_as_float(image_prep) <span style="color:#666">-</span> <span style="color:#40a070">0.5</span>) <span style="color:#666">*</span> <span style="color:#40a070">2</span>
+    
+    predictions <span style="color:#666">=</span> decode_predictions(
+        net<span style="color:#666">.</span>predict(image_prep[None, <span style="color:#666">...</span>])
+    )
+    
+    plt<span style="color:#666">.</span>imshow(image, cmap<span style="color:#666">=</span><span style="color:#4070a0">&#39;gray&#39;</span>)
+    
+    <span style="color:#007020;font-weight:bold">for</span> pred <span style="color:#007020;font-weight:bold">in</span> predictions[<span style="color:#40a070">0</span>]:
+        (n, klass, prob) <span style="color:#666">=</span> pred
+        <span style="color:#007020;font-weight:bold">print</span>(f<span style="color:#4070a0">&#39;{klass:&gt;15} ({prob:.3f})&#39;</span>)
+</code></pre></div>
+
+
+
+
+
+
+
+<figure>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   
+            
+                   
+            
+                   
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/chelsea.png"
+            
+
+        /> <figcaption>
+            <h4>Chelsea the Cat</h4>
+        </figcaption>
+</figure>
+
+<p>For example, when running <code>inception_predict</code> on <code>skimage.data.chelsea()</code>, I get:</p>
+<pre><code>Egyptian_cat (0.904)
+       tabby (0.054)
+   tiger_cat (0.035)
+        lynx (0.000)
+ plastic_bag (0.000)
+</code></pre><p>Looks about right!</p>
+<h2 id="imglyb">imglyb</h2>
+<p>Philipp Hanslovsky, at SciPy2019, <a href="https://www.youtube.com/watch?v=Ddo5z5qGMb8">demonstrated his Python ↔ Java bridge</a> called <code>imglyb</code>.  In contrast to many previous efforts, this library allows you to <em>share memory</em> between Python and Java, avoiding costly (and, potentially fatal, dependent on memory constraints) reallocations.  E.g., he showed how to manipulate volumes of data (3-D arrays) in Python, and to then view those using ImageJ&rsquo;s impressive <a href="https://imagej.net/BigDataViewer">BigDataViewer</a>, which can rapidly slice through the volume at an arbitrary plane.</p>
+<h2 id="lazy-viewing-of-data-using-dask">Lazy viewing of data using <code>dask</code></h2>
+<p>This is a trick I borrowed from <a href="http://matthewrocklin.com/blog/work/2017/01/17/dask-images">Matt Rocklin&rsquo;s blog post</a>.</p>
+<p>When you have a number of large images that, together, form a stack (3-D volume), it may not be possible to load the entire stack into memory.  Instead, you can use <code>dask</code> to lazily access parts of the volume on an as-needed basis.</p>
+<p>This is achieved in four steps:</p>
+<ol>
+<li>
+<p>Convert <code>skimage.io.imread</code> into a delayed function, i.e. instead of returning the image itself it returns a <code>dask</code> <code>Delayed</code> object (similar to a Future or a Promise), that can fetch the image when needed.</p>
+</li>
+<li>
+<p>Use this function to load all images.  The operation is instantaneous, returning a list of <code>Delayed</code> objects.</p>
+</li>
+<li>
+<p>Convert each <code>Delayed</code> object to a <code>dask</code> <code>Array</code>.</p>
+</li>
+<li>
+<p>Stack all of these <code>dask</code> <code>Array</code>s to form the volume.</p>
+</li>
+</ol>
+<p>Note that <em>each one</em> of these steps should execute almost instantaneously; no images files are accessed on disk: that only happens once we start operating on the <code>dask</code> <code>Array</code> volume.</p>
+<p>Here is the code:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">glob</span> <span style="color:#007020;font-weight:bold">import</span> glob
+
+<span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">dask</span> <span style="color:#007020;font-weight:bold">import</span> delayed
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">dask.array</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">da</span>
+
+<span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">skimage</span> <span style="color:#007020;font-weight:bold">import</span> io
+
+<span style="color:#60a0b0;font-style:italic"># Read one image to get dimensions</span>
+image <span style="color:#666">=</span> io<span style="color:#666">.</span>imread(<span style="color:#4070a0">&#39;samples/Test_TIRR_0_1p5_B0p2_01000.tiff&#39;</span>)
+
+<span style="color:#60a0b0;font-style:italic"># Turn imread into a delayed function, so that it does not immediately</span>
+<span style="color:#60a0b0;font-style:italic"># load an image file from disk</span>
+imread <span style="color:#666">=</span> delayed(io<span style="color:#666">.</span>imread, pure<span style="color:#666">=</span>True)
+
+<span style="color:#60a0b0;font-style:italic"># Create a list of all our samples; since a delayed version of `imread`</span>
+<span style="color:#60a0b0;font-style:italic"># is used, no work is done immediately</span>
+samples <span style="color:#666">=</span> [imread(f) <span style="color:#007020;font-weight:bold">for</span> f <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">sorted</span>(glob(<span style="color:#4070a0">&#39;samples/*.tiff&#39;</span>))]
+
+<span style="color:#60a0b0;font-style:italic"># Convert each &#34;delayed&#34; object in the list above into a dask array</span>
+sample_arrays <span style="color:#666">=</span> [da<span style="color:#666">.</span>from_delayed(sample, shape<span style="color:#666">=</span>image<span style="color:#666">.</span>shape, dtype<span style="color:#666">=</span>np<span style="color:#666">.</span>uint8) <span style="color:#007020;font-weight:bold">for</span> sample <span style="color:#007020;font-weight:bold">in</span> samples]
+
+<span style="color:#60a0b0;font-style:italic"># Stack all these arrays into a volume</span>
+vol <span style="color:#666">=</span> da<span style="color:#666">.</span>stack(sample_arrays)
+</code></pre></div><p>I have 101 slices of 2048x2048 each, so the resulting <code>dask</code> <code>Array</code> volume (at this stage fully virtual, without any data inside) is:</p>
+
+
+
+
+
+
+
+
+<figure>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_480x0_resize_box_2.png 480w,
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png 800w,
+            
+                   
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/dask-array-stack_hudcf8b4878943ce1b5f89d904b26d6a44_26566_800x0_resize_box_2.png"
+            
+
+         height="200"/> 
+</figure>
+
+<p>We can do numerous operations on this array, such as summing it with <code>vol.sum(axis=0)</code>, although this still yields an uncomputed <code>dask</code> <code>Array</code>.  To get actual values, we need to call:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vol<span style="color:#666">.</span>sum(axis<span style="color:#666">=</span><span style="color:#40a070">0</span>)<span style="color:#666">.</span>compute()
+</code></pre></div><h2 id="napari">Napari</h2>
+<p>To visualize a volume like the one above, I could have sliced into it and displayed the result using <code>matplotlib</code>.  However, I used this opportunity to play around with a brand new open source image viewer called <a href="https://github.com/napari/napari">Napari</a>.</p>
+<p>Napari allows you to visualize layers interactively, similarly to GIMP or Photoshop.  In Napari&rsquo;s case, these layers can be images, labels, points, and a few others.</p>
+<p>While this isn&rsquo;t explicitly documented (Napari is still in <a href="https://github.com/napari/napari/issues/467">alpha</a>!), I had some insider knowledge (👋 J!) that Napari supports both <code>dask</code> and <a href="https://zarr.readthedocs.io">Zarr</a> arrays.  So, we can pass in our volume from the example above as follows:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">napari</span>
+
+<span style="color:#007020;font-weight:bold">with</span> napari<span style="color:#666">.</span>gui_qt():
+    viewer <span style="color:#666">=</span> napari<span style="color:#666">.</span>view(vol, clim_range<span style="color:#666">=</span>(<span style="color:#40a070">0</span>, <span style="color:#40a070">255</span>))
+</code></pre></div><p>(Instead of the context manager, you may also use <code>%gui = qt</code> in Jupyter or IPython.)</p>
+<p>I also happened to have ground truth labels available, so I loaded those up the same way I did the volume, and added it to the visualization:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">viewer<span style="color:#666">.</span>add_labels(labels, name<span style="color:#666">=</span><span style="color:#4070a0">&#39;Labels&#39;</span>)
+</code></pre></div>
+
+
+
+
+
+
+
+<figure>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_480x0_resize_q75_box.jpg 480w,
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg 800w,
+            
+                   https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_1200x0_resize_q75_box.jpg 1200w,
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2019/08/06/portland-microscopy/napari-ct-volume_hu1f49f705645b1d6504d5c2bd42dc12b3_109127_800x0_resize_q75_box.jpg"
+            
+
+        /> 
+</figure>
+
+<p>If you&rsquo;d like to play with Napari yourself, I have a <a href="https://gist.github.com/stefanv/7c296c26b0c3624746f4317bed6a3540">3D cell segmentation example available online</a>.</p>
+<h2 id="community">Community</h2>
+<p>Toward the conclusion of my talk, I emphasized the role of community in building healthy scientific software ecosystems.  In the end, it is <em>all about people</em>.  I briefly highlight two community groups:</p>
+<ul>
+<li>
+<p><a href="https://pangeo.io/">PanGeo</a>, whom I think sets a great example of how to organize field-specific interest around existing open source tools, and building scalable online analysis platforms without reinventing the wheel.</p>
+</li>
+<li>
+<p><a href="https://www.openmicroscopy.org/">OME</a>, the Open Microscopy Environment, who is leading the charge on open data exchange formats for microscopy.  Interestingly, it <a href="https://blog.openmicroscopy.org/community/file-formats/2019/06/25/formats/">looks like</a> <a href="https://zarr.readthedocs.io">Zarr</a>—the chunked, compressed array container—may well be part of the next open standard they recommend.</p>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Thank you to the organizers of M&amp;M 2019 for inviting me to speak; I very much enjoyed our session, and look forward to working with this community on making scientific Python an <em>even better</em> platform for mirocroscopy analysis!</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="scipy" label="scipy" />
+                             
+                                <category scheme="taxonomy:Tags" term="visualization" label="visualization" />
+                             
+                                <category scheme="taxonomy:Tags" term="image-processing" label="image processing" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Linking to emails in org-mode (using neomutt)]]></title>
+            <link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/?utm_source=atom_feed" rel="related" type="text/html" title="Search headers in org-mode" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+                <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/?utm_source=atom_feed" rel="related" type="text/html" title="WebSockets in Python (and some Redux)" />
+                <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/?utm_source=atom_feed" rel="related" type="text/html" title="Compile TensorFlow from source with gcc6.1" />
+                <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="related" type="text/html" title="Python &amp; Matplotlib on OSX" />
+            
+                <id>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</id>
+            
+            
+            <published>2018-10-31T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we store links to emails in org-mode, and open them using neomutt.</blockquote><p><em><strong>Update 2018-11-2:</strong> Change the URL scheme to <code>message://</code>.
+See <a href="#other-systems">&ldquo;Other Systems&rdquo;</a> below.</em></p>
+<p><a href="https://orgmode.org">org-mode</a> is, to me, is one of the most valuable
+parts of the emacs ecosystem.  I use it to take notes, plan projects,
+manage tasks, and write &amp; publish documents.</p>
+<p>Nowadays, a lot of work arrives via email, and so it is helpful to be
+able to refer to messages directly from my notes or lists of
+tasks.</p>
+<p>The <em>simplest</em> option might be to store URLs pointing to an online
+inbox such as <a href="https://fastmail.com">Fastmail</a> or GMail, but I wanted
+a solution that was both future proof (i.e., what if I moved my emails
+to a different provider?) and worked with my terminal-based mail
+client of choice, <a href="https://neomutt.org/">neomutt</a>.</p>
+<p>I started with
+a
+<a href="https://upsilon.cc/~zack/blog/posts/2010/02/integrating_Mutt_with_Org-mode/">solution provided by Stefano Zacchiroli</a>,
+and simplified it for my specific use-case.</p>
+<h2 id="overview">Overview</h2>
+<p>The solution has two parts: sending email links from neomutt to Emacs,
+and later opening those links from Emacs by invoking neomutt.  The
+first achieved via <code>org-protocol</code>, the latter via launching neomutt
+and then simulating keypresses.</p>
+<p>When launching neomutt, we have to tell it in which directory the
+message lives.  We therefore use <code>notmuch</code> to find the message file
+first, based on its Message-ID.  <code>maildir-utils</code> would be another way
+of doing so.  <strong>Please note that you have to have notmuch or
+maildir-utils set up already for this scheme to work.</strong></p>
+<p>I initially avoided the <code>org-protocol</code> package, because installation
+looked complicated.  That, it turns out, is only the case if you care
+about web browser integration, which we don&rsquo;t.</p>
+<h2 id="neomutt-configuration">Neomutt configuration</h2>
+<p>First, we have a Python script that can parse an e-mail and share the
+Message-ID and Subject with emacs.  I call it <code>mutt-save-org-link.py</code>,
+and make it executable using <code>chmod +x mutt-save-org-link.py</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic">#!/usr/bin/env python3</span>
+
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">sys</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">email</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">subprocess</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">urllib.parse</span>
+
+<span style="color:#60a0b0;font-style:italic"># Parse the email from standard input</span>
+message_bytes <span style="color:#666">=</span> sys<span style="color:#666">.</span>stdin<span style="color:#666">.</span>buffer<span style="color:#666">.</span>read()
+message <span style="color:#666">=</span> email<span style="color:#666">.</span>message_from_bytes(message_bytes)
+
+<span style="color:#60a0b0;font-style:italic"># Grab the relevant message headers</span>
+message_id <span style="color:#666">=</span> urllib<span style="color:#666">.</span>parse<span style="color:#666">.</span>quote(message[<span style="color:#4070a0">&#39;message-id&#39;</span>][<span style="color:#40a070">1</span>:<span style="color:#666">-</span><span style="color:#40a070">1</span>])
+subject <span style="color:#666">=</span> message[<span style="color:#4070a0">&#39;subject&#39;</span>]
+
+<span style="color:#60a0b0;font-style:italic"># Ask emacsclient to save a link to the message</span>
+subprocess<span style="color:#666">.</span>Popen([
+    <span style="color:#4070a0">&#39;emacsclient&#39;</span>,
+    f<span style="color:#4070a0">&#39;org-protocol://store-link?url=message://{message_id}&amp;title={subject}&#39;</span>
+])
+</code></pre></div><p>We then configure neomutt (typically in <code>~/.muttrc</code>) to call the
+script with a shortcut.  I chose Esc-L (the same as Alt-L).</p>
+<pre><code>macro index,pager \el &quot;|~/scripts/mutt-save-org-link.py\n&quot;
+</code></pre><h2 id="emacs-configuration">Emacs configuration</h2>
+<p>Using <code>org-protocol</code>, we instruct emacsclient to intercept URLs with
+the <code>org-protocol://</code> scheme, as used by our <code>mutt-save-org-link.py</code>
+script.  We also tell org-mode how to handle special URLs of the form
+<code>message://message-id+goes_here@mail.gmail.com</code>.  Neomutt needs to know
+which Maildir folder to open, so we ask <code>notmuch</code> to tell us where the
+message is located.</p>
+<p>In my <code>~/.emacs</code> file I have:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="color:#60a0b0;font-style:italic">; Make sure org-protocol is loaded</span>
+<span style="color:#60a0b0;font-style:italic">; Now, org-protocol:// schemas are intercepted.</span>
+(<span style="color:#007020">require</span> <span style="color:#bb60d5">org-protocol</span>)
+
+<span style="color:#60a0b0;font-style:italic">; Call this function, which spawns neomutt, whenever org-mode</span>
+<span style="color:#60a0b0;font-style:italic">; tries to open a link of the form message://message-id+goes_here@mail.gmail.com</span>
+(<span style="color:#007020">defun</span> <span style="color:#bb60d5">stefanv/mutt-open-message</span> (<span style="color:#bb60d5">message-id</span>)
+  <span style="color:#4070a0">&#34;In neomutt, open the email with the the given Message-ID&#34;</span>
+  (<span style="color:#007020">let*</span>
+      ((<span style="color:#bb60d5">message-id</span> (<span style="color:#bb60d5">replace-regexp-in-string</span> <span style="color:#4070a0">&#34;^/*&#34;</span> <span style="color:#4070a0">&#34;&#34;</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">mail-file</span>
+        (<span style="color:#bb60d5">replace-regexp-in-string</span>
+         <span style="color:#4070a0">&#34;\n$&#34;</span> <span style="color:#4070a0">&#34;&#34;</span> (<span style="color:#bb60d5">shell-command-to-string</span>
+                   (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;notmuch search --output=files id:%s&#34;</span> <span style="color:#bb60d5">message-id</span>))))
+       (<span style="color:#bb60d5">mail-dir</span> (<span style="color:#bb60d5">replace-regexp-in-string</span> <span style="color:#4070a0">&#34;/\\(cur\\|new\\|tmp\\)/$&#34;</span> <span style="color:#4070a0">&#34;&#34;</span>
+                                           (<span style="color:#06287e">file-name-directory</span> <span style="color:#bb60d5">mail-file</span>)))
+       (<span style="color:#06287e">process-id</span> (<span style="color:#06287e">concat</span> <span style="color:#4070a0">&#34;neomutt-&#34;</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">message-id-escaped</span> (<span style="color:#06287e">regexp-quote</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">mutt-keystrokes</span>
+        (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;l~i %s\n\n&#34;</span> (<span style="color:#bb60d5">shell-quote-argument</span> <span style="color:#bb60d5">message-id-escaped</span>)))
+       (<span style="color:#bb60d5">mutt-command</span> (<span style="color:#06287e">list</span> <span style="color:#4070a0">&#34;neomutt&#34;</span> <span style="color:#4070a0">&#34;-R&#34;</span> <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#bb60d5">mail-dir</span>
+                           <span style="color:#4070a0">&#34;-e&#34;</span> (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;push &#39;%s&#39;&#34;</span> <span style="color:#bb60d5">mutt-keystrokes</span>))))
+
+    (<span style="color:#06287e">message</span> <span style="color:#4070a0">&#34;Launching neomutt for message %s&#34;</span> <span style="color:#bb60d5">message-id</span>)
+    (<span style="color:#06287e">call-process</span> <span style="color:#4070a0">&#34;setsid&#34;</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span>
+                   <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#4070a0">&#34;gnome-terminal&#34;</span> <span style="color:#4070a0">&#34;--window&#34;</span> <span style="color:#4070a0">&#34;--&#34;</span>
+                   <span style="color:#4070a0">&#34;neomutt&#34;</span> <span style="color:#4070a0">&#34;-R&#34;</span> <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#bb60d5">mail-dir</span>
+                   <span style="color:#4070a0">&#34;-e&#34;</span> (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;push &#39;%s&#39;&#34;</span> <span style="color:#bb60d5">mutt-keystrokes</span>))))
+
+<span style="color:#60a0b0;font-style:italic">; Whenever org-mode sees a link starting with `message://`, it</span>
+<span style="color:#60a0b0;font-style:italic">; calls our `mutt-open-message` function</span>
+(<span style="color:#bb60d5">org-add-link-type</span> <span style="color:#4070a0">&#34;message&#34;</span> <span style="color:#517918">&#39;stefanv/mutt-open-message</span>)
+</code></pre></div><p>There are a few caveats: if you use <code>maildir-utils</code>, the search
+command is <code>mu find -f l i:%s</code> instead of notmuch; and if you are not
+on Linux, then <code>setsid</code> (which we use to launch a detached background
+process) is not going to work, and you will want to use a different
+terminal emulator.</p>
+<h2 id="a-nameother-systemsaother-systems"><!-- raw HTML omitted --><!-- raw HTML omitted -->Other Systems</h2>
+<p><a href="https://vxlabs.com/">Charl Botha</a> mentioned in the comments that, on
+MacOS,
+<a href="https://orgmode.org/worg/org-contrib/org-mac-link.html">org-mac-link</a>
+lets you grab hyperlinks from a wide variety of apps.  Email messages,
+specifically, are stored as <code>message://message-id</code> URLs, which MacOS
+knows how to open.  This post has been updated to use the same link schema.</p>
+<h2 id="wrap-up">Wrap-up</h2>
+<p>That&rsquo;s it!  I&rsquo;ve added the code
+to
+<a href="https://github.com/stefanv/org-neomutt">https://github.com/stefanv/org-neomutt</a>.
+Please file issues and PRs there, or tell me about your use cases
+in the comments below.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="org-mode" label="org-mode" />
+                             
+                                <category scheme="taxonomy:Tags" term="emacs" label="emacs" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="mutt" label="mutt" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[WebSockets in Python (and some Redux)]]></title>
+            <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/?utm_source=atom_feed" rel="related" type="text/html" title="Compile TensorFlow from source with gcc6.1" />
+                <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="related" type="text/html" title="Python &amp; Matplotlib on OSX" />
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+            
+                <id>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</id>
+            
+            
+            <published>2016-10-20T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we make pushing messages from a python backend to the browser easy.</blockquote><p>As part of our work on <a href="https://cesium-ml.org">Cesium</a> and its
+<a href="https://github.com/cesium-ml/cesium_web">web frontend</a>,
+we&rsquo;ve developed an easy
+mechanism for Python web developers to
+<a href="http://cesium-ml.org/blog/2016/07/13/a-pattern-for-websockets-in-python/">push messages from their Python backends to the browser</a>.</p>
+<p>There are plenty of potential use cases, but consider, e.g., that you want
+to verify a credit card number submitted by your user.  Traditionally, you&rsquo;d
+submit the number, and then poll the backend repeatedly from the browser.  Not
+very elegant :/</p>
+<p>But with a WebSocket connection, you submit the credit card number and then
+forget about it.  The <em>server</em> will let you know when it&rsquo;s done by pushing a
+message to the frontend.</p>
+<p>Not only does this solve the annoying polling problem, but it opens up the
+door to an entirely new universe of tools, such as Dan Abramov&rsquo;s fantastic
+<a href="http://redux.js.org/">Redux</a>.  Many of these Javascript libraries rely on the server
+being able to notify the frontend when it needs to update itself.</p>
+<p>Let&rsquo;s talk a bit about Redux.  The
+<a href="http://redux.js.org/docs/introduction/ThreePrinciples.html">principles</a>
+behind it are simple and elegant:</p>
+<ol>
+<li>The entire state of your app is centrally
+stored (in the equivalent of a Python dictionary);</li>
+<li>the state is immutable, and</li>
+<li>can only be updated through a central function call.</li>
+</ol>
+<p>That centralization in turn enables other features such as logging, hot
+reloading, time travel, etc.</p>
+<p>One of the great joys of Redux lies in moving away from the traditional
+Model-View-Controller pattern.  With MVC, you are never quite sure how changes
+propagate through the system.  With Redux, it is highly predictable.  Say
+your app has a toggle button, and associated state <code>{toggle: true}</code>.  An
+action (e.g. &ldquo;the red button was clicked&rdquo;) is submitted to the central
+dispatcher which then calculates the new state of the app:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">new_state <span style="color:#666">=</span> reduce(current_state, action)
+</code></pre></div><p>The implementation could look something like this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#007020;font-weight:bold">function</span> reduce(current_state, action) {
+  <span style="color:#007020;font-weight:bold">switch</span> (action.type) {
+    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#4070a0">&#39;toggle_button&#39;</span><span style="color:#666">:</span>
+      <span style="color:#007020;font-weight:bold">return</span> {toggle<span style="color:#666">:</span> <span style="color:#666">!</span>current_state.toggle}
+    <span style="color:#007020;font-weight:bold">default</span><span style="color:#666">:</span>
+      <span style="color:#007020;font-weight:bold">return</span> current_state;
+  }
+}
+</code></pre></div><p>The toggle button monitors the app state, and when <code>state['toggle']</code> is
+updated, re-renders itself.</p>
+<p>By vastly simplifying flow of information, by
+<a href="http://redux.js.org/docs/introduction/Motivation.html">disentangling mutation and asynchronicity</a>, and by
+getting rid of JQuery &amp; hidden state stored somewhere in the bowels of the DOM,
+Redux has, for me, returned the joy of web development.</p>
+<p>But, I&rsquo;m getting distracted.  WebSockets&mdash;in Python!</p>
+<p>Pushing messages from your Python web server to the user&rsquo;s browser can now be
+<a href="https://github.com/cesium-ml/cesium_web/blob/e19e5543e193905da9555ce15fc71a52859c9fb0/cesium_app/handlers/base.py#L59">as simple as this</a>:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">Flow</span> <span style="color:#007020;font-weight:bold">import</span> flow
+
+self<span style="color:#666">.</span>flow<span style="color:#666">.</span>push(<span style="color:#4070a0">&#39;my_user@domain.com&#39;</span>, <span style="color:#4070a0">&#39;message to the user&#39;</span>,
+               {<span style="color:#4070a0">&#39;data&#39;</span>: <span style="color:#4070a0">&#39;to ship along&#39;</span>})
+</code></pre></div><p>Please take a look at the more detailed technical description (with code!)
+<a href="http://cesium-ml.org/blog/2016/07/13/a-pattern-for-websockets-in-python/">on the Cesium blog</a>.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="web" label="web" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="javascript" label="javascript" />
+                             
+                                <category scheme="taxonomy:Tags" term="websocket" label="websocket" />
+                             
+                                <category scheme="taxonomy:Tags" term="redux" label="redux" />
+                             
+                                <category scheme="taxonomy:Tags" term="react" label="react" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Compile TensorFlow from source with gcc6.1]]></title>
+            <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="related" type="text/html" title="Python &amp; Matplotlib on OSX" />
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/</id>
+            
+            
+            <published>2016-09-14T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we build TensorFlow from scratch.</blockquote><p>Due to two bugs in gcc 6.1
+<a href="https://github.com/google/re2/issues/102">affecting the re2 library</a>
+(one of which has been fixed in 6.2)),
+<a href="https://www.tensorflow.org/">TensorFlow</a> cannot be
+<a href="https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html">compiled from source</a>
+one some systems (including my Debian Testing install).</p>
+<p>To work around the issue, modify <code>tensorflow/workspace.bzl</code> and
+change the re2 description to:</p>
+<pre><code>native.git_repository(
+  name = &quot;com_googlesource_code_re2&quot;,
+  remote = &quot;https://github.com/stefanv/re2.git&quot;,
+  commit = &quot;86503cb89d82b723ae0bce35e1e09524910cd319&quot;,
+)
+</code></pre><p>The re2 library is now downloaded from my fork, which applies a
+<a href="https://github.com/stefanv/re2/commit/86503cb89d82b723ae0bce35e1e09524910cd319">one line patch</a>.</p>
+<p>Compile the TensorFlow Python package as usual with:</p>
+<pre><code>bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
+bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+</code></pre><p>After installing the pip wheel using</p>
+<pre><code>pip install /tmp/tensorflow_pkg/*.whl
+</code></pre><p>you should have a working installation.  If importing fails with</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ImportError: cannot import name &#39;pywrap_tensorflow&#39;
+</code></pre></div><p>switch out of the TensorFlow source directory and try again.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="tensorflow" label="tensorflow" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Python & Matplotlib on OSX]]></title>
+            <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/</id>
+            
+            
+            <published>2016-02-26T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we discuss two ways of installing Matplotlib on MacOS.</blockquote><p>One day, we will hopefully have a grand unified build and package management
+system for Python where everything is free &amp; open and Just Works (TM).  Until
+then, you have two options:</p>
+<h2 id="brew-python--pip">brew Python + pip</h2>
+<ol>
+<li><code>brew install python3</code></li>
+<li><code>pyvenv -v ~/envs/py3</code></li>
+<li><code>source ~/envs/py3/bin/activate</code></li>
+<li><code>pip install matplotlib</code></li>
+</ol>
+<p>Pros/cons:</p>
+<ul>
+<li>Pip is the standard Python package management tool, and uses the official
+Python Package Index (PyPi) repository.</li>
+<li>Wheels on PyPi are built by authors themselves from open recipes.</li>
+<li>Binary wheels may not be available for all packages.</li>
+<li>Pip is not the best of package management tools.</li>
+</ul>
+<h2 id="conda">Conda</h2>
+<ol>
+<li>Download and install miniconda</li>
+<li><code>conda create -n py3 python=3.5 matplotlib</code></li>
+<li><code>source activate py3</code></li>
+</ol>
+<p>Pros/cons:</p>
+<ul>
+<li>Conda is a great package management tool.</li>
+<li>Conda environments are well tested; almost everything works out of the
+box.  This includes fast linear algebra using MKL.</li>
+<li>Some of the conda build recipes are closed and binary wheels may not be
+available for all packages<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</li>
+<li>Conda and pip do not always play well together.</li>
+<li>Conda packages are supported almost exclusively by a single company.</li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Some members of the community maintain <a href="https://conda-forge.github.io">their own channels</a>, but there are still some issues to
+be aware of when <a href="https://github.com/conda-forge/conda-forge.github.io/issues/22">mixing those channels and the official ones</a>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[SciPy2013 Proceedings]]></title>
+            <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+            
+                <id>https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/</id>
+            
+            
+            <published>2013-06-27T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where I announce the SciPy 2013 proceedings, and talk about how we did it.</blockquote><p>The talks for the 12th (fantastic) Python in Science conference just concluded,
+and I am happy to announce the
+<a href="https://dl.dropboxusercontent.com/u/380268/scipy_2013_proceedings_draft.pdf">conference proceedings</a>.</p>
+<p>This may come as a surprize to some, since in the past we have been unable to
+publish the proceedings in a timely manner.  So, what changed?</p>
+<h2 id="review-process">Review process</h2>
+<p>For 2013 we followed a <strong>very light-weight review process, via comments on
+GitHub pull-requests</strong>.  This change has an important consequence: in contrast
+to the traditional review process, where reviewers critically pull apart
+papers, the process now changes into a constructive conversation&ndash;the reviewer
+becomes an ally to the author, helping them to get their paper signed off on.</p>
+<p>In addition, this is a very familiar process to most members of our community
+who regularly collaborate to open source projects.  Most such projects nowadays
+follow a similar methodology for discussing and integrating patches.</p>
+<h2 id="tools">Tools</h2>
+<p>Since we can&rsquo;t expect reviewers to check out and build the papers themselves, a
+<a href="http://stefan.pythonanywhere.com">paper build bot</a> is provided to generate
+PDFs from pull-requests, which contain papers in plain-text ReStructuredText
+format (see the
+<a href="https://github.com/scipy/scipy_proceedings/tree/2013">proceedings repository</a> for
+examples, and all papers starting 2010).</p>
+<p>For authors, tools are provided to convert the ReStructuredText papers to
+PDFs in IEEE Computer Society paper style.</p>
+<h2 id="help-us-with-the-final-review">Help us with the final review</h2>
+<p>We welcome your feedback on the proceedings!  If you spot a mistake, please
+submit a pull request on
+<a href="https://github.com/scipy/scipy_proceedings/tree/2013">GitHub</a>.</p>
+<h2 id="thanks">Thanks</h2>
+<p>Finally, a big shout-out to the amazing team of people who organized this
+year&rsquo;s conference, and to the wonderfully inclusive and talented Scientific
+Python community, of which I am proud to be part of.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="scipy" label="scipy" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Replicable super-resolution paper]]></title>
+            <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</id>
+            
+            
+            <published>2012-10-15T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where I summarize 5 years of my life in 10 pages.</blockquote><p>While I loved the topic of my PhD, I had to take a break after staring at that
+problem for several years.  Thereafter, I was side-tracked by
+<a href="http://github.com/scipy">several</a> <a href="http://scikit-image.org">other</a>
+<a href="http://dipy.org">projects</a>, and never got around to publishing a paper on
+<a href="http://mentat.za.net/phd_dissertation.html">my dissertation</a>.</p>
+<p>Here, then, is a summary of the simple but effective super-resolution algorithm
+described therein:</p>
+<p><a href="http://arxiv.org/abs/1210.3404">http://arxiv.org/abs/1210.3404</a></p>
+<p>I also submitted this work to NIPS: the reviewers liked the paper, but they
+were not convinced of its novelty.  Having spent a lot of time studying the
+existing literature, all I can say in response is that, while solving the
+problem as a sparse linear system was well known at the time, phrasing Drizzle
+as a linear operator and using it for super-resolution was not.</p>
+<p>But the proof of the pudding is in the eating! Have a look at the
+<a href="http://mentat.za.net/supreme">results and published code</a> &ndash; you can download it all (including a
+sample data-set) and play with the different reconstruction parameters.  Quite
+a bit of the code has since graduated into <a href="http://scikit-image.org">scikit-image</a>.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="super-resolution" label="super-resolution" />
+                             
+                                <category scheme="taxonomy:Tags" term="image-processing" label="image-processing" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="science" label="science" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[scikits-image 0.7]]></title>
+            <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/</id>
+            
+            
+            <published>2012-09-30T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>We&rsquo;re happy to announce the 7th version of scikits-image!</p>
+<p>Scikits-image is an image processing toolbox for SciPy that includes algorithms
+for segmentation, geometric transformations, color space manipulation,
+analysis, filtering, morphology, feature detection, and more.</p>
+<p>For more information, examples, and documentation, please visit <a href="http://skimage.org">our website</a>.</p>
+<h2 id="new-features">New Features</h2>
+<p>It&rsquo;s been only 3 months since scikits-image 0.6 was released, but in that short
+time, we&rsquo;ve managed to add plenty of new features and enhancements, including</p>
+<ul>
+<li>Geometric image transforms</li>
+<li>3 new image segmentation routines (Felsenzwalb, Quickshift, SLIC)</li>
+<li>Local binary patterns for texture characterization</li>
+<li>Morphological reconstruction</li>
+<li>Polygon approximation</li>
+<li>CIE Lab color space conversion</li>
+<li>Image pyramids</li>
+<li>Multispectral support in random walker segmentation</li>
+<li>Slicing, concatenation, and natural sorting of image collections</li>
+<li>Perimeter and coordinates measurements in regionprops</li>
+<li>An extensible image viewer based on Qt and Matplotlib, with plugins for edge
+detection, line-profiling, and viewing image collections</li>
+</ul>
+<p>Plus, this release adds a number of bug fixes, new examples, and performance
+enhancements.</p>
+
+
+
+
+
+
+
+
+<figure>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_480x0_resize_q75_box.jpg 480w,
+            
+                   https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg 800w,
+            
+                   
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/lena_superpixels_hu6d489b99ce5d1ae95f2fbf5eee585e7c_146391_800x0_resize_q75_box.jpg"
+            
+
+        /> <figcaption>
+            <h4>Comparison of pupular segmentation algorithms</h4>
+        </figcaption>
+</figure>
+
+<h2 id="contributors-to-this-release">Contributors to this release</h2>
+<p>This release was only possible due to the efforts of many contributors, both
+new and old.</p>
+<ul>
+<li>Andreas Mueller</li>
+<li>Andreas Wuerl</li>
+<li>Andy Wilson</li>
+<li>Brian Holt</li>
+<li>Christoph Gohlke</li>
+<li>Dharhas Pothina</li>
+<li>Emmanuelle Gouillart</li>
+<li>Guillaume Gay</li>
+<li>Josh Warner</li>
+<li>James Bergstra</li>
+<li>Johannes Schönberger</li>
+<li>Jonathan J. Helmus</li>
+<li>Juan Nunez-Iglesias</li>
+<li>Leon Tietz</li>
+<li>Marianne Corvellec</li>
+<li>Matt McCormick</li>
+<li>Neil Yager</li>
+<li>Nicolas Pinto</li>
+<li>Nicolas Poilvert</li>
+<li>Pavel Campr</li>
+<li>Petter Strandmark</li>
+<li>Stéfan van der Walt</li>
+<li>Tim Sheerman-Chase</li>
+<li>Tomas Kazmar</li>
+<li>Tony S Yu</li>
+<li>Wei Li</li>
+</ul>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="image-processing" label="image processing" />
+                             
+                                <category scheme="taxonomy:Tags" term="scipy" label="scipy" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="science" label="science" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Emacs package management]]></title>
+            <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</id>
+            
+            
+            <published>2012-09-25T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>I recently tried to install MuMaMo as one of the dependencies for Takafumi
+Arakaki&rsquo;s <a href="https://github.com/tkf/emacs-ipython-notebook">Emacs-based IPython notebook</a>.  The instructions on the MuMaMo
+webpage were as clear as mud and aimed primarily at Windows users.  Enters
+<a href="https://github.com/dimitri/el-get">apt-get for Emacs</a>!</p>
+<p>My Emacs setup is shared across multiple machines: a synchronized <code>elisp</code>
+folder, containing <code>*.el</code> files, along with my <code>.emacs</code> configuration.
+<code>el-get</code> allows you to share your package installation folder in a similar
+fashion.  Here are some relevant configuration snippets:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-common-lisp" data-lang="common-lisp">
+<span style="color:#60a0b0;font-style:italic">; Everything gets installed into ~/elisp, a folder</span>
+<span style="color:#60a0b0;font-style:italic">; I sync across all my machines</span>
+
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get&#34;</span>)
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-install-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get/el-get&#34;</span>)
+(<span style="color:#bb60d5">add-to-list</span> <span style="color:#517918">&#39;load-path</span> <span style="color:#bb60d5">el-get-install-dir</span>)
+
+<span style="color:#60a0b0;font-style:italic">; If el-get is missing, install it automatically</span>
+
+(<span style="color:#007020">unless</span> (<span style="color:#06287e">require</span> <span style="color:#517918">&#39;el-get</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+  (<span style="color:#bb60d5">url-retrieve</span>
+   <span style="color:#4070a0">&#34;https://raw.github.com/dimitri/el-get/master/el-get-install.el&#34;</span>
+   (<span style="color:#007020">lambda</span> (<span style="color:#bb60d5">s</span>)
+     (<span style="color:#bb60d5">goto-char</span> (<span style="color:#bb60d5">point-max</span>))
+     (<span style="color:#bb60d5">eval-print-last-sexp</span>))))
+
+<span style="color:#60a0b0;font-style:italic">; Install these packages, and call the specified configuration snippets</span>
+<span style="color:#60a0b0;font-style:italic">; after each load</span>
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-sources</span>
+      <span style="color:#666">&#39;</span>(
+
+        (<span style="color:#517918">:name</span> <span style="color:#bb60d5">ethan-wspace</span>
+         <span style="color:#517918">:after</span> (<span style="color:#007020;font-weight:bold">progn</span>
+                  (<span style="color:#bb60d5">global-ethan-wspace-mode</span> <span style="color:#40a070">1</span>)
+                  (<span style="color:#bb60d5">set-face-background</span> <span style="color:#517918">&#39;ethan-wspace-face</span> <span style="color:#4070a0">&#34;gray95&#34;</span>)))
+
+        (<span style="color:#517918">:name</span> <span style="color:#bb60d5">column-marker</span>
+         <span style="color:#517918">:after</span> (<span style="color:#bb60d5">add-hook</span> <span style="color:#517918">&#39;font-lock-mode-hook</span>
+                          (<span style="color:#007020">lambda</span> () (<span style="color:#bb60d5">interactive</span>) (<span style="color:#bb60d5">column-marker-1</span> <span style="color:#40a070">80</span>))))
+
+<span style="color:#60a0b0;font-style:italic">; Also install these packages, no configuration required</span>
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">my-packages</span>
+      (<span style="color:#06287e">append</span>
+       <span style="color:#666">&#39;</span>(<span style="color:#bb60d5">el-get</span> <span style="color:#bb60d5">maxframe</span> <span style="color:#bb60d5">markdown-mode</span> <span style="color:#bb60d5">ein</span> <span style="color:#bb60d5">python</span>)
+       (<span style="color:#06287e">mapcar</span> <span style="color:#517918">&#39;el-get-source-name</span> <span style="color:#bb60d5">el-get-sources</span>)
+       )
+)
+
+<span style="color:#60a0b0;font-style:italic">; Check packages and install any that are missing</span>
+(<span style="color:#bb60d5">el-get</span> <span style="color:#517918">&#39;sync</span> <span style="color:#bb60d5">my-packages</span>)
+</code></pre></div><p>There are two ways to specify packages to be installed: either include them in
+the <code>my-packages</code> list, or add them to <code>el-get-sources</code>, which in addition
+allows further customization upon successful loading of the package.</p>
+<p><a href="http://software-carpentry.org/2012/09/whats-in-your-stack/">What&rsquo;s in your stack?</a> Here&rsquo;s my list of Emacs packages:</p>
+<pre><code>Org Mode, Ethan's wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
+JS2
+</code></pre>
+<p>Do you know of any other useful packages?  Let me know!</p>
+<!-- raw HTML omitted -->
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="emacs" label="emacs" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="scipy" label="scipy" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.80.0">Hugo</generator><title type="html"><![CDATA[linux on Stéfan's blog]]></title>
+    
+    
+    
+            <link href="https://mentat.za.net/blog/tags/linux/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://mentat.za.net/blog/tags/linux/atom.xml" rel="self" type="application/atom" title="atom" />
+    <updated>2021-01-14T00:39:46-08:00</updated>
+    
+    
+    <author>
+            <name>Stéfan van der Walt</name>
+            </author>
+    
+        <id>https://mentat.za.net/blog/tags/linux/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[VPN-only access to the internet]]></title>
+            <link href="https://mentat.za.net/blog/2015/01/24/vpn-only-internet/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/?utm_source=atom_feed" rel="related" type="text/html" title="Adobe&#39;s new free font: Source Code Pro" />
+            
+                <id>https://mentat.za.net/blog/2015/01/24/vpn-only-internet/</id>
+            
+            
+            <published>2015-01-24T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we set up a firewall that allows traffic to leave only via the VPN.</blockquote><p>A few days ago, I noticed that my outbound email wasn&rsquo;t being
+delivered&mdash;it seems as if my ISP blocks access to some outbound ports.
+An easy workaround is to route traffic through the work VPN, but
+knowing myself I&rsquo;d forget to switch it on, leaving my outbound mail
+stranded.</p>
+<p>I needed a way of blocking <em>any</em> access to the internet, unless it was
+leaving through the VPN (since I was sure I&rsquo;d notice <em>that</em> pretty
+quickly).</p>
+<p>I&rsquo;d have preferred to use firewalld, which is neatly integrated into
+Ubuntu, but as of 01/24/2015 it
+<a href="https://lists.fedorahosted.org/pipermail/firewalld-users/2014-October/000250.html">doesn&rsquo;t allow filtering outbound traffic</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. What
+follows, then, is a simple approach implementing the following rule:</p>
+<blockquote>
+<p>Block wifi traffic unless it goes to either the local
+network or the VPN.</p>
+</blockquote>
+<p>Create a script (I called it <code>~/scripts/fw-up</code>) that sets up the
+firewall:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007020">#!/bin/bash
+</span><span style="color:#007020"></span>
+<span style="color:#60a0b0;font-style:italic"># Clear any existing rules</span>
+iptables -F
+
+<span style="color:#60a0b0;font-style:italic"># Allow outbound DNS</span>
+iptables -A OUTPUT -p udp --dport <span style="color:#40a070">53</span> -j ACCEPT
+iptables -A INPUT -p udp --sport <span style="color:#40a070">53</span> -j ACCEPT
+
+<span style="color:#60a0b0;font-style:italic"># Allow TCP access to the work VPN</span>
+<span style="color:#60a0b0;font-style:italic"># Replace X.Y below with your VPN address range</span>
+iptables -A OUTPUT -p tcp -d X.Y.0.0/16 -o wlan1 -j ACCEPT
+
+<span style="color:#60a0b0;font-style:italic"># Allow any traffic destined for the vpn to go out</span>
+iptables -A OUTPUT -o vpn0 -j ACCEPT
+
+<span style="color:#60a0b0;font-style:italic"># Allow local traffic</span>
+iptables -A OUTPUT -p tcp -o wlan1 -d 10.0.0.0/8 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d 172.16.0.0/12 -j ACCEPT
+iptables -A OUTPUT -p tcp -o wlan1 -d 192.168.0.0/16 -j ACCEPT
+
+<span style="color:#60a0b0;font-style:italic"># Drop everything else on the wifi</span>
+iptables -A OUTPUT -p tcp -o wlan1 -j DROP
+</code></pre></div><p>Make sure the script is set to executable (<code>chmod +x fw-up</code>).</p>
+<p>Add a symlink to <code>if-up.d</code> to ensure that the firewall gets built
+whenever the network is reconfigured:</p>
+<pre><code>sudo ln -s ~/scripts/fw-up /etc/network/if-up.d/iptables
+</code></pre><p>Now, whenever you connect to a wifi hotspot, internet traffic will be
+blocked until you fire up your VPN.  If, on occasion, you need to work
+without the VPN, simply raze the firewall:</p>
+<pre><code>sudo iptables -F
+</code></pre><p><strong>Update:</strong> Typically, you wouldn&rsquo;t want the firewall to go up when
+connecting to the wireless at work, so I added the following conditional
+in the <code>fw-up</code> script:</p>
+<pre><code>iptables -F
+
+if [[ `iwgetid -r` != 'WorkSSID' ]]; then
+   # Firewall rules go here
+   ...
+fi
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>The idea would be to set up a zone, say
+<code>vpn_only</code>, and to assign your home wifi SSID to it.  A direct rule that
+blocks any non-VPN traffic can then be added to the new zone (this
+should be possible soon, and is on the firewalld
+<a href="https://git.fedorahosted.org/cgit/firewalld.git/tree/TODO">TODO list</a>). <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="linux" label="linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Adobe's new free font: Source Code Pro]]></title>
+            <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</id>
+            
+            
+            <published>2012-09-26T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Adobe yesterday
+<a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html">released its free and open source Type family, Source Code Pro</a>,
+which includes an eye-pleasing monospace font  ideally suited for coding.
+In the past, and at the recommendation of <a href="http://blog.fperez.org/">Fernando Perez</a>, I&rsquo;ve
+used the beautiful (but non-free) <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879">Consolas by Microsoft</a>; now,
+which is best?</p>
+<p>To install on Linux:</p>
+<ol>
+<li><a href="https://github.com/adobe-fonts/source-sans-pro/releases/tag/variable-fonts">Grab the font</a>.</li>
+<li>Copy the files to <code>~/.fonts</code>.</li>
+<li>Run <code>fc-cache -f -v</code>.</li>
+</ol>
+<p>The font should now be available for selection in apps such as Firefox, Gnome
+Terminal, etc.  To make it the default font in Emacs::</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">    (<span style="color:#bb60d5">set-default-font</span> <span style="color:#4070a0">&#34;Source Code Pro&#34;</span>)
+</code></pre></div><p>Here&rsquo;s a comparison of Consolas (left) and Source Code Pro (right):</p>
+
+
+
+
+
+
+
+
+<figure>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_480x0_resize_box_2.png 480w,
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png 800w,
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_1200x0_resize_box_2.png 1200w,
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png"
+            
+
+        /> <figcaption>
+            <h4>Comparison: Consolas vs Source Code Pro</h4>
+        </figcaption>
+</figure>
+
+<p>Comments also on <a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik">Google+</a>.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="coding" label="coding" />
+                             
+                                <category scheme="taxonomy:Tags" term="emacs" label="emacs" />
+                             
+                                <category scheme="taxonomy:Tags" term="linux" label="linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

@@ -33,9 +33,18 @@ body {
     margin-bottom: 0.1rem;
 }
 
+.post-date {
+  display: inline-block;
+  padding-right: 0.5rem;
+}
+
+.post-author {
+  display: inline;
+}
+
 .post-tags {
     margin-bottom: 2rem;
-    display: inline-block;
+    display: block;
 }
 
 .post-tag {
@@ -55,11 +64,6 @@ body {
     padding-top: 1rem;
 }
 
-.post-date {
-    display: inline-block;
-    padding-right: 0.5rem;
-}
-
 .highlight {
     font-size: 1rem;
 }
@@ -71,4 +75,26 @@ code.has-jax {
     background: inherit !important;
     border: none !important;
     margin: 0;
+}
+
+.pagination {
+  list-style: none;
+}
+
+.pagination li {
+  display: inline;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.pagination .active a {
+  color: black;
+}
+
+.pagination .disabled {
+  display: none;
+}
+
+.read-more {
+  display: none;
 }

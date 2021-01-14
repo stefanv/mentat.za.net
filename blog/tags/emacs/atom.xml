@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.80.0">Hugo</generator><title type="html"><![CDATA[emacs on Stéfan's blog]]></title>
+    
+    
+    
+            <link href="https://mentat.za.net/blog/tags/emacs/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://mentat.za.net/blog/tags/emacs/atom.xml" rel="self" type="application/atom" title="atom" />
+    <updated>2021-01-14T00:39:46-08:00</updated>
+    
+    
+    <author>
+            <name>Stéfan van der Walt</name>
+            </author>
+    
+        <id>https://mentat.za.net/blog/tags/emacs/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Linking to emails in org-mode (using neomutt)]]></title>
+            <link href="https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/?utm_source=atom_feed" rel="related" type="text/html" title="Search headers in org-mode" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+                <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/?utm_source=atom_feed" rel="related" type="text/html" title="WebSockets in Python (and some Redux)" />
+                <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/?utm_source=atom_feed" rel="related" type="text/html" title="Compile TensorFlow from source with gcc6.1" />
+                <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="related" type="text/html" title="Python &amp; Matplotlib on OSX" />
+            
+                <id>https://mentat.za.net/blog/2018/10/31/using-org-mode-with-neomutt/</id>
+            
+            
+            <published>2018-10-31T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we store links to emails in org-mode, and open them using neomutt.</blockquote><p><em><strong>Update 2018-11-2:</strong> Change the URL scheme to <code>message://</code>.
+See <a href="#other-systems">&ldquo;Other Systems&rdquo;</a> below.</em></p>
+<p><a href="https://orgmode.org">org-mode</a> is, to me, is one of the most valuable
+parts of the emacs ecosystem.  I use it to take notes, plan projects,
+manage tasks, and write &amp; publish documents.</p>
+<p>Nowadays, a lot of work arrives via email, and so it is helpful to be
+able to refer to messages directly from my notes or lists of
+tasks.</p>
+<p>The <em>simplest</em> option might be to store URLs pointing to an online
+inbox such as <a href="https://fastmail.com">Fastmail</a> or GMail, but I wanted
+a solution that was both future proof (i.e., what if I moved my emails
+to a different provider?) and worked with my terminal-based mail
+client of choice, <a href="https://neomutt.org/">neomutt</a>.</p>
+<p>I started with
+a
+<a href="https://upsilon.cc/~zack/blog/posts/2010/02/integrating_Mutt_with_Org-mode/">solution provided by Stefano Zacchiroli</a>,
+and simplified it for my specific use-case.</p>
+<h2 id="overview">Overview</h2>
+<p>The solution has two parts: sending email links from neomutt to Emacs,
+and later opening those links from Emacs by invoking neomutt.  The
+first achieved via <code>org-protocol</code>, the latter via launching neomutt
+and then simulating keypresses.</p>
+<p>When launching neomutt, we have to tell it in which directory the
+message lives.  We therefore use <code>notmuch</code> to find the message file
+first, based on its Message-ID.  <code>maildir-utils</code> would be another way
+of doing so.  <strong>Please note that you have to have notmuch or
+maildir-utils set up already for this scheme to work.</strong></p>
+<p>I initially avoided the <code>org-protocol</code> package, because installation
+looked complicated.  That, it turns out, is only the case if you care
+about web browser integration, which we don&rsquo;t.</p>
+<h2 id="neomutt-configuration">Neomutt configuration</h2>
+<p>First, we have a Python script that can parse an e-mail and share the
+Message-ID and Subject with emacs.  I call it <code>mutt-save-org-link.py</code>,
+and make it executable using <code>chmod +x mutt-save-org-link.py</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic">#!/usr/bin/env python3</span>
+
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">sys</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">email</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">subprocess</span>
+<span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">urllib.parse</span>
+
+<span style="color:#60a0b0;font-style:italic"># Parse the email from standard input</span>
+message_bytes <span style="color:#666">=</span> sys<span style="color:#666">.</span>stdin<span style="color:#666">.</span>buffer<span style="color:#666">.</span>read()
+message <span style="color:#666">=</span> email<span style="color:#666">.</span>message_from_bytes(message_bytes)
+
+<span style="color:#60a0b0;font-style:italic"># Grab the relevant message headers</span>
+message_id <span style="color:#666">=</span> urllib<span style="color:#666">.</span>parse<span style="color:#666">.</span>quote(message[<span style="color:#4070a0">&#39;message-id&#39;</span>][<span style="color:#40a070">1</span>:<span style="color:#666">-</span><span style="color:#40a070">1</span>])
+subject <span style="color:#666">=</span> message[<span style="color:#4070a0">&#39;subject&#39;</span>]
+
+<span style="color:#60a0b0;font-style:italic"># Ask emacsclient to save a link to the message</span>
+subprocess<span style="color:#666">.</span>Popen([
+    <span style="color:#4070a0">&#39;emacsclient&#39;</span>,
+    f<span style="color:#4070a0">&#39;org-protocol://store-link?url=message://{message_id}&amp;title={subject}&#39;</span>
+])
+</code></pre></div><p>We then configure neomutt (typically in <code>~/.muttrc</code>) to call the
+script with a shortcut.  I chose Esc-L (the same as Alt-L).</p>
+<pre><code>macro index,pager \el &quot;|~/scripts/mutt-save-org-link.py\n&quot;
+</code></pre><h2 id="emacs-configuration">Emacs configuration</h2>
+<p>Using <code>org-protocol</code>, we instruct emacsclient to intercept URLs with
+the <code>org-protocol://</code> scheme, as used by our <code>mutt-save-org-link.py</code>
+script.  We also tell org-mode how to handle special URLs of the form
+<code>message://message-id+goes_here@mail.gmail.com</code>.  Neomutt needs to know
+which Maildir folder to open, so we ask <code>notmuch</code> to tell us where the
+message is located.</p>
+<p>In my <code>~/.emacs</code> file I have:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="color:#60a0b0;font-style:italic">; Make sure org-protocol is loaded</span>
+<span style="color:#60a0b0;font-style:italic">; Now, org-protocol:// schemas are intercepted.</span>
+(<span style="color:#007020">require</span> <span style="color:#bb60d5">org-protocol</span>)
+
+<span style="color:#60a0b0;font-style:italic">; Call this function, which spawns neomutt, whenever org-mode</span>
+<span style="color:#60a0b0;font-style:italic">; tries to open a link of the form message://message-id+goes_here@mail.gmail.com</span>
+(<span style="color:#007020">defun</span> <span style="color:#bb60d5">stefanv/mutt-open-message</span> (<span style="color:#bb60d5">message-id</span>)
+  <span style="color:#4070a0">&#34;In neomutt, open the email with the the given Message-ID&#34;</span>
+  (<span style="color:#007020">let*</span>
+      ((<span style="color:#bb60d5">message-id</span> (<span style="color:#bb60d5">replace-regexp-in-string</span> <span style="color:#4070a0">&#34;^/*&#34;</span> <span style="color:#4070a0">&#34;&#34;</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">mail-file</span>
+        (<span style="color:#bb60d5">replace-regexp-in-string</span>
+         <span style="color:#4070a0">&#34;\n$&#34;</span> <span style="color:#4070a0">&#34;&#34;</span> (<span style="color:#bb60d5">shell-command-to-string</span>
+                   (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;notmuch search --output=files id:%s&#34;</span> <span style="color:#bb60d5">message-id</span>))))
+       (<span style="color:#bb60d5">mail-dir</span> (<span style="color:#bb60d5">replace-regexp-in-string</span> <span style="color:#4070a0">&#34;/\\(cur\\|new\\|tmp\\)/$&#34;</span> <span style="color:#4070a0">&#34;&#34;</span>
+                                           (<span style="color:#06287e">file-name-directory</span> <span style="color:#bb60d5">mail-file</span>)))
+       (<span style="color:#06287e">process-id</span> (<span style="color:#06287e">concat</span> <span style="color:#4070a0">&#34;neomutt-&#34;</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">message-id-escaped</span> (<span style="color:#06287e">regexp-quote</span> <span style="color:#bb60d5">message-id</span>))
+       (<span style="color:#bb60d5">mutt-keystrokes</span>
+        (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;l~i %s\n\n&#34;</span> (<span style="color:#bb60d5">shell-quote-argument</span> <span style="color:#bb60d5">message-id-escaped</span>)))
+       (<span style="color:#bb60d5">mutt-command</span> (<span style="color:#06287e">list</span> <span style="color:#4070a0">&#34;neomutt&#34;</span> <span style="color:#4070a0">&#34;-R&#34;</span> <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#bb60d5">mail-dir</span>
+                           <span style="color:#4070a0">&#34;-e&#34;</span> (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;push &#39;%s&#39;&#34;</span> <span style="color:#bb60d5">mutt-keystrokes</span>))))
+
+    (<span style="color:#06287e">message</span> <span style="color:#4070a0">&#34;Launching neomutt for message %s&#34;</span> <span style="color:#bb60d5">message-id</span>)
+    (<span style="color:#06287e">call-process</span> <span style="color:#4070a0">&#34;setsid&#34;</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">nil</span>
+                   <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#4070a0">&#34;gnome-terminal&#34;</span> <span style="color:#4070a0">&#34;--window&#34;</span> <span style="color:#4070a0">&#34;--&#34;</span>
+                   <span style="color:#4070a0">&#34;neomutt&#34;</span> <span style="color:#4070a0">&#34;-R&#34;</span> <span style="color:#4070a0">&#34;-f&#34;</span> <span style="color:#bb60d5">mail-dir</span>
+                   <span style="color:#4070a0">&#34;-e&#34;</span> (<span style="color:#06287e">format</span> <span style="color:#4070a0">&#34;push &#39;%s&#39;&#34;</span> <span style="color:#bb60d5">mutt-keystrokes</span>))))
+
+<span style="color:#60a0b0;font-style:italic">; Whenever org-mode sees a link starting with `message://`, it</span>
+<span style="color:#60a0b0;font-style:italic">; calls our `mutt-open-message` function</span>
+(<span style="color:#bb60d5">org-add-link-type</span> <span style="color:#4070a0">&#34;message&#34;</span> <span style="color:#517918">&#39;stefanv/mutt-open-message</span>)
+</code></pre></div><p>There are a few caveats: if you use <code>maildir-utils</code>, the search
+command is <code>mu find -f l i:%s</code> instead of notmuch; and if you are not
+on Linux, then <code>setsid</code> (which we use to launch a detached background
+process) is not going to work, and you will want to use a different
+terminal emulator.</p>
+<h2 id="a-nameother-systemsaother-systems"><!-- raw HTML omitted --><!-- raw HTML omitted -->Other Systems</h2>
+<p><a href="https://vxlabs.com/">Charl Botha</a> mentioned in the comments that, on
+MacOS,
+<a href="https://orgmode.org/worg/org-contrib/org-mac-link.html">org-mac-link</a>
+lets you grab hyperlinks from a wide variety of apps.  Email messages,
+specifically, are stored as <code>message://message-id</code> URLs, which MacOS
+knows how to open.  This post has been updated to use the same link schema.</p>
+<h2 id="wrap-up">Wrap-up</h2>
+<p>That&rsquo;s it!  I&rsquo;ve added the code
+to
+<a href="https://github.com/stefanv/org-neomutt">https://github.com/stefanv/org-neomutt</a>.
+Please file issues and PRs there, or tell me about your use cases
+in the comments below.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="org-mode" label="org-mode" />
+                             
+                                <category scheme="taxonomy:Tags" term="emacs" label="emacs" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="mutt" label="mutt" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Search headers in org-mode]]></title>
+            <link href="https://mentat.za.net/blog/2016/12/15/org-mode-header-search/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/?utm_source=atom_feed" rel="related" type="text/html" title="Adobe&#39;s new free font: Source Code Pro" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2016/12/15/org-mode-header-search/</id>
+            
+            
+            <published>2016-12-15T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we show a quick way of navigating org-mode files.</blockquote><p>In org-mode, I often have the need to jump to a top-level heading
+matching some word.</p>
+<p>Since an org-mode buffer can be searched just like any other, I can
+simply invoke forward search with <code>C-s</code>, but this will match <em>all</em>
+occurrences of the text, instead of limiting the search to headings only.</p>
+<p>This makes it hard to search for a phrase like &ldquo;Travel&rdquo;, for which I
+have a top-level heading, but also often occurs elsewhere in my notes.</p>
+<p>I have a solution of the following form:</p>
+<ol>
+<li>Launch a regular expression search</li>
+<li>Pre-fill the text input with <code>^* </code> so that only headings are
+matched.</li>
+</ol>
+<p>First, define a custom search function.  It puts the keys <code>^* </code> in the
+&ldquo;unread command events&rdquo; list (i.e, a list of events waiting to be seen
+by emacs), and then launches interactive forward regular expression search.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defun</span> <span style="color:#bb60d5">stefan/isearch-heading</span> ()
+  (<span style="color:#007020">interactive</span>)
+  (<span style="color:#007020">setq</span> <span style="color:#bb60d5">unread-command-events</span> (<span style="color:#bb60d5">listify-key-sequence</span> <span style="color:#4070a0">&#34;^* &#34;</span>))
+  (<span style="color:#bb60d5">isearch-mode</span> <span style="color:#60add5">t</span> <span style="color:#60add5">t</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>))
+</code></pre></div><p>Next, we add a keybinding for org-mode:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#007020">defun</span> <span style="color:#bb60d5">org-mode-keys</span> ()
+  (<span style="color:#007020">interactive</span>)
+  (<span style="color:#bb60d5">local-set-key</span> (<span style="color:#bb60d5">kbd</span> <span style="color:#4070a0">&#34;C-c g&#34;</span>) <span style="color:#517918">&#39;stefan/isearch-heading</span>)
+)
+(<span style="color:#bb60d5">add-hook</span> <span style="color:#517918">&#39;org-mode-hook</span> <span style="color:#517918">&#39;org-mode-keys</span>)
+</code></pre></div><p>And that&rsquo;s it!  Pressing <code>C-c g</code> (for &ldquo;go&rdquo;) in org-mode will
+now present you with a search prompt.  Typing a heading name will take you
+there directly, at which point you can choose to expand it with the
+TAB key.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="emacs" label="emacs" />
+                             
+                                <category scheme="taxonomy:Tags" term="org-mode" label="org-mode" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Adobe's new free font: Source Code Pro]]></title>
+            <link href="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/</id>
+            
+            
+            <published>2012-09-26T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Adobe yesterday
+<a href="http://blogs.adobe.com/typblography/2012/09/source-code-pro.html">released its free and open source Type family, Source Code Pro</a>,
+which includes an eye-pleasing monospace font  ideally suited for coding.
+In the past, and at the recommendation of <a href="http://blog.fperez.org/">Fernando Perez</a>, I&rsquo;ve
+used the beautiful (but non-free) <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17879">Consolas by Microsoft</a>; now,
+which is best?</p>
+<p>To install on Linux:</p>
+<ol>
+<li><a href="https://github.com/adobe-fonts/source-sans-pro/releases/tag/variable-fonts">Grab the font</a>.</li>
+<li>Copy the files to <code>~/.fonts</code>.</li>
+<li>Run <code>fc-cache -f -v</code>.</li>
+</ol>
+<p>The font should now be available for selection in apps such as Firefox, Gnome
+Terminal, etc.  To make it the default font in Emacs::</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">    (<span style="color:#bb60d5">set-default-font</span> <span style="color:#4070a0">&#34;Source Code Pro&#34;</span>)
+</code></pre></div><p>Here&rsquo;s a comparison of Consolas (left) and Source Code Pro (right):</p>
+
+
+
+
+
+
+
+
+<figure>
+    <img
+        
+            sizes="(min-width: 35em) 1200px, 100vw"
+              
+            srcset='
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_480x0_resize_box_2.png 480w,
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png 800w,
+            
+                   https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_1200x0_resize_box_2.png 1200w,
+            
+                   
+            '
+
+            
+            
+            src="https://mentat.za.net/blog/2012/09/26/consolas-vs-source-code-pro/consolas_vs_source_code_pro_hu5928cdeab65da44e521dbc3c8a0668a4_193237_800x0_resize_box_2.png"
+            
+
+        /> <figcaption>
+            <h4>Comparison: Consolas vs Source Code Pro</h4>
+        </figcaption>
+</figure>
+
+<p>Comments also on <a href="https://plus.google.com/104831275312843762750/posts/Ju6Ns8Dtuik">Google+</a>.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="coding" label="coding" />
+                             
+                                <category scheme="taxonomy:Tags" term="emacs" label="emacs" />
+                             
+                                <category scheme="taxonomy:Tags" term="linux" label="linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Emacs package management]]></title>
+            <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://mentat.za.net/blog/2012/09/25/emacs-package-management/</id>
+            
+            
+            <published>2012-09-25T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>I recently tried to install MuMaMo as one of the dependencies for Takafumi
+Arakaki&rsquo;s <a href="https://github.com/tkf/emacs-ipython-notebook">Emacs-based IPython notebook</a>.  The instructions on the MuMaMo
+webpage were as clear as mud and aimed primarily at Windows users.  Enters
+<a href="https://github.com/dimitri/el-get">apt-get for Emacs</a>!</p>
+<p>My Emacs setup is shared across multiple machines: a synchronized <code>elisp</code>
+folder, containing <code>*.el</code> files, along with my <code>.emacs</code> configuration.
+<code>el-get</code> allows you to share your package installation folder in a similar
+fashion.  Here are some relevant configuration snippets:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-common-lisp" data-lang="common-lisp">
+<span style="color:#60a0b0;font-style:italic">; Everything gets installed into ~/elisp, a folder</span>
+<span style="color:#60a0b0;font-style:italic">; I sync across all my machines</span>
+
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get&#34;</span>)
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-install-dir</span> <span style="color:#4070a0">&#34;~/elisp/el-get/el-get&#34;</span>)
+(<span style="color:#bb60d5">add-to-list</span> <span style="color:#517918">&#39;load-path</span> <span style="color:#bb60d5">el-get-install-dir</span>)
+
+<span style="color:#60a0b0;font-style:italic">; If el-get is missing, install it automatically</span>
+
+(<span style="color:#007020">unless</span> (<span style="color:#06287e">require</span> <span style="color:#517918">&#39;el-get</span> <span style="color:#60add5">nil</span> <span style="color:#60add5">t</span>)
+  (<span style="color:#bb60d5">url-retrieve</span>
+   <span style="color:#4070a0">&#34;https://raw.github.com/dimitri/el-get/master/el-get-install.el&#34;</span>
+   (<span style="color:#007020">lambda</span> (<span style="color:#bb60d5">s</span>)
+     (<span style="color:#bb60d5">goto-char</span> (<span style="color:#bb60d5">point-max</span>))
+     (<span style="color:#bb60d5">eval-print-last-sexp</span>))))
+
+<span style="color:#60a0b0;font-style:italic">; Install these packages, and call the specified configuration snippets</span>
+<span style="color:#60a0b0;font-style:italic">; after each load</span>
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">el-get-sources</span>
+      <span style="color:#666">&#39;</span>(
+
+        (<span style="color:#517918">:name</span> <span style="color:#bb60d5">ethan-wspace</span>
+         <span style="color:#517918">:after</span> (<span style="color:#007020;font-weight:bold">progn</span>
+                  (<span style="color:#bb60d5">global-ethan-wspace-mode</span> <span style="color:#40a070">1</span>)
+                  (<span style="color:#bb60d5">set-face-background</span> <span style="color:#517918">&#39;ethan-wspace-face</span> <span style="color:#4070a0">&#34;gray95&#34;</span>)))
+
+        (<span style="color:#517918">:name</span> <span style="color:#bb60d5">column-marker</span>
+         <span style="color:#517918">:after</span> (<span style="color:#bb60d5">add-hook</span> <span style="color:#517918">&#39;font-lock-mode-hook</span>
+                          (<span style="color:#007020">lambda</span> () (<span style="color:#bb60d5">interactive</span>) (<span style="color:#bb60d5">column-marker-1</span> <span style="color:#40a070">80</span>))))
+
+<span style="color:#60a0b0;font-style:italic">; Also install these packages, no configuration required</span>
+(<span style="color:#007020;font-weight:bold">setq</span> <span style="color:#bb60d5">my-packages</span>
+      (<span style="color:#06287e">append</span>
+       <span style="color:#666">&#39;</span>(<span style="color:#bb60d5">el-get</span> <span style="color:#bb60d5">maxframe</span> <span style="color:#bb60d5">markdown-mode</span> <span style="color:#bb60d5">ein</span> <span style="color:#bb60d5">python</span>)
+       (<span style="color:#06287e">mapcar</span> <span style="color:#517918">&#39;el-get-source-name</span> <span style="color:#bb60d5">el-get-sources</span>)
+       )
+)
+
+<span style="color:#60a0b0;font-style:italic">; Check packages and install any that are missing</span>
+(<span style="color:#bb60d5">el-get</span> <span style="color:#517918">&#39;sync</span> <span style="color:#bb60d5">my-packages</span>)
+</code></pre></div><p>There are two ways to specify packages to be installed: either include them in
+the <code>my-packages</code> list, or add them to <code>el-get-sources</code>, which in addition
+allows further customization upon successful loading of the package.</p>
+<p><a href="http://software-carpentry.org/2012/09/whats-in-your-stack/">What&rsquo;s in your stack?</a> Here&rsquo;s my list of Emacs packages:</p>
+<pre><code>Org Mode, Ethan's wspace, Tab Bar, Column Marker, Max Frame, EIN, Python,
+JS2
+</code></pre>
+<p>Do you know of any other useful packages?  Let me know!</p>
+<!-- raw HTML omitted -->
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="emacs" label="emacs" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="scipy" label="scipy" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

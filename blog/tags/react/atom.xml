@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.80.0">Hugo</generator><title type="html"><![CDATA[react on Stéfan's blog]]></title>
+    
+    
+    
+            <link href="https://mentat.za.net/blog/tags/react/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://mentat.za.net/blog/tags/react/atom.xml" rel="self" type="application/atom" title="atom" />
+    <updated>2021-01-14T00:39:46-08:00</updated>
+    
+    
+    <author>
+            <name>Stéfan van der Walt</name>
+            </author>
+    
+        <id>https://mentat.za.net/blog/tags/react/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[WebSockets in Python (and some Redux)]]></title>
+            <link href="https://mentat.za.net/blog/2016/10/20/websockets-in-python/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2016/09/14/tensorflow-gcc6-1/?utm_source=atom_feed" rel="related" type="text/html" title="Compile TensorFlow from source with gcc6.1" />
+                <link href="https://mentat.za.net/blog/2016/02/26/matplotlib-on-osx/?utm_source=atom_feed" rel="related" type="text/html" title="Python &amp; Matplotlib on OSX" />
+                <link href="https://mentat.za.net/blog/2013/06/27/scipy2013-proceedings/?utm_source=atom_feed" rel="related" type="text/html" title="SciPy2013 Proceedings" />
+                <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="related" type="text/html" title="Replicable super-resolution paper" />
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+            
+                <id>https://mentat.za.net/blog/2016/10/20/websockets-in-python/</id>
+            
+            
+            <published>2016-10-20T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where we make pushing messages from a python backend to the browser easy.</blockquote><p>As part of our work on <a href="https://cesium-ml.org">Cesium</a> and its
+<a href="https://github.com/cesium-ml/cesium_web">web frontend</a>,
+we&rsquo;ve developed an easy
+mechanism for Python web developers to
+<a href="http://cesium-ml.org/blog/2016/07/13/a-pattern-for-websockets-in-python/">push messages from their Python backends to the browser</a>.</p>
+<p>There are plenty of potential use cases, but consider, e.g., that you want
+to verify a credit card number submitted by your user.  Traditionally, you&rsquo;d
+submit the number, and then poll the backend repeatedly from the browser.  Not
+very elegant :/</p>
+<p>But with a WebSocket connection, you submit the credit card number and then
+forget about it.  The <em>server</em> will let you know when it&rsquo;s done by pushing a
+message to the frontend.</p>
+<p>Not only does this solve the annoying polling problem, but it opens up the
+door to an entirely new universe of tools, such as Dan Abramov&rsquo;s fantastic
+<a href="http://redux.js.org/">Redux</a>.  Many of these Javascript libraries rely on the server
+being able to notify the frontend when it needs to update itself.</p>
+<p>Let&rsquo;s talk a bit about Redux.  The
+<a href="http://redux.js.org/docs/introduction/ThreePrinciples.html">principles</a>
+behind it are simple and elegant:</p>
+<ol>
+<li>The entire state of your app is centrally
+stored (in the equivalent of a Python dictionary);</li>
+<li>the state is immutable, and</li>
+<li>can only be updated through a central function call.</li>
+</ol>
+<p>That centralization in turn enables other features such as logging, hot
+reloading, time travel, etc.</p>
+<p>One of the great joys of Redux lies in moving away from the traditional
+Model-View-Controller pattern.  With MVC, you are never quite sure how changes
+propagate through the system.  With Redux, it is highly predictable.  Say
+your app has a toggle button, and associated state <code>{toggle: true}</code>.  An
+action (e.g. &ldquo;the red button was clicked&rdquo;) is submitted to the central
+dispatcher which then calculates the new state of the app:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">new_state <span style="color:#666">=</span> reduce(current_state, action)
+</code></pre></div><p>The implementation could look something like this:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#007020;font-weight:bold">function</span> reduce(current_state, action) {
+  <span style="color:#007020;font-weight:bold">switch</span> (action.type) {
+    <span style="color:#007020;font-weight:bold">case</span> <span style="color:#4070a0">&#39;toggle_button&#39;</span><span style="color:#666">:</span>
+      <span style="color:#007020;font-weight:bold">return</span> {toggle<span style="color:#666">:</span> <span style="color:#666">!</span>current_state.toggle}
+    <span style="color:#007020;font-weight:bold">default</span><span style="color:#666">:</span>
+      <span style="color:#007020;font-weight:bold">return</span> current_state;
+  }
+}
+</code></pre></div><p>The toggle button monitors the app state, and when <code>state['toggle']</code> is
+updated, re-renders itself.</p>
+<p>By vastly simplifying flow of information, by
+<a href="http://redux.js.org/docs/introduction/Motivation.html">disentangling mutation and asynchronicity</a>, and by
+getting rid of JQuery &amp; hidden state stored somewhere in the bowels of the DOM,
+Redux has, for me, returned the joy of web development.</p>
+<p>But, I&rsquo;m getting distracted.  WebSockets&mdash;in Python!</p>
+<p>Pushing messages from your Python web server to the user&rsquo;s browser can now be
+<a href="https://github.com/cesium-ml/cesium_web/blob/e19e5543e193905da9555ce15fc71a52859c9fb0/cesium_app/handlers/base.py#L59">as simple as this</a>:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">Flow</span> <span style="color:#007020;font-weight:bold">import</span> flow
+
+self<span style="color:#666">.</span>flow<span style="color:#666">.</span>push(<span style="color:#4070a0">&#39;my_user@domain.com&#39;</span>, <span style="color:#4070a0">&#39;message to the user&#39;</span>,
+               {<span style="color:#4070a0">&#39;data&#39;</span>: <span style="color:#4070a0">&#39;to ship along&#39;</span>})
+</code></pre></div><p>Please take a look at the more detailed technical description (with code!)
+<a href="http://cesium-ml.org/blog/2016/07/13/a-pattern-for-websockets-in-python/">on the Cesium blog</a>.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="web" label="web" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="javascript" label="javascript" />
+                             
+                                <category scheme="taxonomy:Tags" term="websocket" label="websocket" />
+                             
+                                <category scheme="taxonomy:Tags" term="redux" label="redux" />
+                             
+                                <category scheme="taxonomy:Tags" term="react" label="react" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

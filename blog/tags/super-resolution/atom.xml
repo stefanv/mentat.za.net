@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.80.0">Hugo</generator><title type="html"><![CDATA[super-resolution on Stéfan's blog]]></title>
+    
+    
+    
+            <link href="https://mentat.za.net/blog/tags/super-resolution/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://mentat.za.net/blog/tags/super-resolution/atom.xml" rel="self" type="application/atom" title="atom" />
+    <updated>2021-01-14T00:39:46-08:00</updated>
+    
+    
+    <author>
+            <name>Stéfan van der Walt</name>
+            </author>
+    
+        <id>https://mentat.za.net/blog/tags/super-resolution/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Replicable super-resolution paper]]></title>
+            <link href="https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://mentat.za.net/blog/2012/09/30/scikits-image-0-dot-7/?utm_source=atom_feed" rel="related" type="text/html" title="scikits-image 0.7" />
+                <link href="https://mentat.za.net/blog/2012/09/25/emacs-package-management/?utm_source=atom_feed" rel="related" type="text/html" title="Emacs package management" />
+            
+                <id>https://mentat.za.net/blog/2012/10/15/replicable-super-resolution-paper/</id>
+            
+            
+            <published>2012-10-15T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where I summarize 5 years of my life in 10 pages.</blockquote><p>While I loved the topic of my PhD, I had to take a break after staring at that
+problem for several years.  Thereafter, I was side-tracked by
+<a href="http://github.com/scipy">several</a> <a href="http://scikit-image.org">other</a>
+<a href="http://dipy.org">projects</a>, and never got around to publishing a paper on
+<a href="http://mentat.za.net/phd_dissertation.html">my dissertation</a>.</p>
+<p>Here, then, is a summary of the simple but effective super-resolution algorithm
+described therein:</p>
+<p><a href="http://arxiv.org/abs/1210.3404">http://arxiv.org/abs/1210.3404</a></p>
+<p>I also submitted this work to NIPS: the reviewers liked the paper, but they
+were not convinced of its novelty.  Having spent a lot of time studying the
+existing literature, all I can say in response is that, while solving the
+problem as a sparse linear system was well known at the time, phrasing Drizzle
+as a linear operator and using it for super-resolution was not.</p>
+<p>But the proof of the pudding is in the eating! Have a look at the
+<a href="http://mentat.za.net/supreme">results and published code</a> &ndash; you can download it all (including a
+sample data-set) and play with the different reconstruction parameters.  Quite
+a bit of the code has since graduated into <a href="http://scikit-image.org">scikit-image</a>.</p>
+]]></content>
+            
+                 
+                
+                 
+                
+                         
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Tags" term="super-resolution" label="super-resolution" />
+                             
+                                <category scheme="taxonomy:Tags" term="image-processing" label="image-processing" />
+                             
+                                <category scheme="taxonomy:Tags" term="python" label="python" />
+                             
+                                <category scheme="taxonomy:Tags" term="science" label="science" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

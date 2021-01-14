@@ -3,6 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mentat.za.net/blog/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/2021/01/13/january/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/categories/personal/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/personal/</loc>
+  </url>
+  
+  <url>
+    <loc>https://mentat.za.net/blog/</loc>
+  </url>
+  
+  <url>
     <loc>https://mentat.za.net/blog/tags/coding/</loc>
   </url>
   
@@ -20,10 +40,6 @@
   
   <url>
     <loc>https://mentat.za.net/blog/tags/software/</loc>
-  </url>
-  
-  <url>
-    <loc>https://mentat.za.net/blog/</loc>
   </url>
   
   <url>
@@ -191,7 +207,7 @@
   </url>
   
   <url>
-    <loc>https://mentat.za.net/blog/categories/</loc>
+    <loc>https://mentat.za.net/blog/follow/</loc>
   </url>
   
 </urlset>
