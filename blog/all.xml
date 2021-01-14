@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
-    <generator uri="https://gohugo.io/" version="0.80.0">Hugo</generator><title type="html"><![CDATA[Posts on Stéfan's blog]]></title>
+    <generator uri="https://gohugo.io/" version="0.80.0">Hugo</generator><title type="html"><![CDATA[Stéfan's blog]]></title>
     
     
     
-            <link href="https://mentat.za.net/blog/posts/" rel="alternate" type="text/html" title="HTML" />
-            <link href="https://mentat.za.net/blog/posts/atom.xml" rel="self" type="application/atom" title="atom" />
+            <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
     <updated>2021-01-14T01:49:31-08:00</updated>
     
     
@@ -13,7 +13,42 @@
             <name>Stéfan van der Walt</name>
             </author>
     
-        <id>https://mentat.za.net/blog/posts/</id>
+        <id>https://mentat.za.net/blog/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[First Post!]]></title>
+            <link href="https://mentat.za.net/blog/2021/01/13/january/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://mentat.za.net/blog/2021/01/13/january/</id>
+            
+            
+            <published>2021-01-13T00:00:00+00:00</published>
+            <updated>0001-01-01T00:00:00+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>Where I introduce personal blog posts.</blockquote><p>This has been a while in the making.  Some of you probably suspected this was coming.  Now it&rsquo;s here.  Watch this space.</p>
+]]></content>
+            
+                 
+                
+                         
+                        
+                          
+                        
+                        
+                            
+                             
+                                <category scheme="taxonomy:Categories" term="personal" label="personal" />
+                            
+                        
+                    
+                 
+                
+                
+            
+        </entry>
     
         
         <entry>
