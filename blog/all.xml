@@ -6,7 +6,7 @@
     
             <link href="https://mentat.za.net/blog/" rel="alternate" type="text/html" title="HTML" />
             <link href="https://mentat.za.net/blog/atom.xml" rel="self" type="application/atom" title="atom" />
-    <updated>2021-01-14T12:15:34-08:00</updated>
+    <updated>2021-01-19T18:35:39-08:00</updated>
     
     
     <author>
@@ -66,7 +66,7 @@
             <updated>0001-01-01T00:00:00+00:00</updated>
             
             
-            <content type="html"><![CDATA[<blockquote>Where I discuss social, mechanical, and scholarly disciplines required for writing good scientific software.</blockquote><p><em>This is a lightly edited transcript of a talk I delivered at MLSS South Africa on 16 January 2019.</em></p>
+            <content type="html"><![CDATA[<blockquote>Where I discuss social and technical disciplines required for writing good scientific software.</blockquote><p><em>This is a lightly edited transcript of a talk I delivered at MLSS South Africa on 16 January 2019.</em></p>
 <p>In this post, I will define scientific software, describe how it is
 different from other types of software, and discuss the social,
 mechanical, and scholarly disciplines required for making it the best
@@ -311,7 +311,7 @@ style you like, and stick to it.  Structure your entire code base the
 same way, and ask that collaborators use the same standards.  In the
 Python world, we have PEP8; but use whatever your community
 recommends.</p>
-<h2 id="scholarly-publication">Scholarly publication</h2>
+<h2 id="publication">Publication</h2>
 <p>Finally, your scientific code will likely be of better quality if it
 gets made public.  Why?  Because if you know your code is going to be
 published, you will take better care in its construction,
