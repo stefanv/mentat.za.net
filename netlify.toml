@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/blog/*"
+  to = "https://nostalgic-lichterman-a9c5c1.netlify.app/:splat"
+  status = 200
+  force = true
+  headers = { X-From = "Netlify" }
