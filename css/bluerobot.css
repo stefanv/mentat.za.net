@@ -1,19 +1,17 @@
-.centered
-{
-  text-align:center;
-  display:block;
+.centered {
+  text-align: center;
+  display: block;
 }
 
-.newsbox
-{
-    border-style: solid;
-    border-width: 1px;
-    width: 48%;
-    padding-left: 0px;
-    padding-right: 5px;
-    margin-left: 0px;
-    background: #E0E0F0;
-    margin-bottom: 0.5em;
+.newsbox {
+  border-style: solid;
+  border-width: 1px;
+  width: 48%;
+  padding-left: 0px;
+  padding-right: 5px;
+  margin-left: 0px;
+  background: #e0e0f0;
+  margin-bottom: 0.5em;
 }
 
 .twitter-follow-button img {
@@ -23,161 +21,175 @@
 }
 
 #google_plus {
-    margin-left: 1em;
-    padding-left: 1em;
-    font-size: 0.75em;
+  margin-left: 1em;
+  padding-left: 1em;
+  font-size: 0.75em;
 }
 
 #google_plus ul {
-    list-style: inside
-    margin-left: 0;
-    padding-left: 1em;
+  list-style: inside;
+  margin-left: 0;
+  padding-left: 1em;
 }
 
 #tweet {
-    margin-left: 0em;
-    padding-left: 0em;
-    font-size: 0.75em;
+  margin-left: 0em;
+  padding-left: 0em;
+  font-size: 0.75em;
 }
 
 .newsbox h2 {
-    padding-left: 0.5em;
-    padding-top: 1em;
-    margin-left: 0.5em;
-    font-size: 0.9em;
-    font-variant: small-caps;
+  padding-left: 0.5em;
+  padding-top: 1em;
+  margin-left: 0.5em;
+  font-size: 0.9em;
+  font-variant: small-caps;
 }
 html {
-    background: #e7e9eb;
+  background: #e7e9eb;
 }
 body {
-	margin:0px;
-	padding:0px;
-	color:#333;
-    line-height: 1.5em;
-    font-family:"Droid Serif","Georgia","Helvetica Neue",Arial,sans-serif;
-    font-size: 12pt;
+  margin: 0px;
+  padding: 0px;
+  color: #333;
+  line-height: 1.5em;
+  font-family: "Droid Serif", "Georgia", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12pt;
 }
 h1 {
-        font-family: verdana, arial, helvetica, sans-serif;
-	margin:1em 0px 0.5em 0px;
-	padding:0;
-	font-size:1.2em;
-	font-weight:900;
-	/*color:#aaa;*/
-	color:#444;
-	background-color:#eee;
-/*	background-image:url(skystrip.png);
-	background-repeat:repeat-x;*/
+  font-family: verdana, arial, helvetica, sans-serif;
+  margin: 1em 0px 0.5em 0px;
+  padding: 0;
+  font-size: 1.2em;
+  font-weight: 900;
+  /*color:#aaa;*/
+  color: #444;
+  background-color: #eee;
+  /*      background-image:url(skystrip.png);
+        background-repeat:repeat-x;*/
 }
 
 h1:first-of-type {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 p {
-  margin:0px 0px 0.8em 0px;
+  margin: 0px 0px 0.8em 0px;
 }
-#Content>p {margin:0px 0px 0em;}
-#Content>p+p {
+#Content > p {
+  margin: 0px 0px 0em;
+}
+#Content > p + p {
   margin-top: 0.5rem;
 }
 
 a {
-	color:#09c;
-	font-size:1em;
-	text-decoration:none;
-	font-weight:300;
-	/*font-family:verdana, arial, helvetica, sans-serif;*/
-	}
-a:link {color:#05a;}
-a:visited {color:#038;}
-a:hover {background-color:#eee;}
+  color: #09c;
+  font-size: 1em;
+  text-decoration: none;
+  font-weight: 300;
+  /*font-family:verdana, arial, helvetica, sans-serif;*/
+}
+a:link {
+  color: #05a;
+}
+a:visited {
+  color: #038;
+}
+a:hover {
+  background-color: #eee;
+}
 
 #Header {
-	font-family:verdana, arial, helvetica, sans-serif;
-	margin:0em 0px 1em 0px;
-	padding:1.3em 1em 1em 1em;
-	border-style:solid;
-	border-color: #CCC;
-	border-width:0px 0px 1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
-    background-color:#eee;
+  font-family: verdana, arial, helvetica, sans-serif;
+  margin: 0em 0px 1em 0px;
+  padding: 1.3em 1em 1em 1em;
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 0px 0px 1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
+  background-color: #eee;
 }
 
 #Header a {
-    font-weight: 600;
+  font-weight: 600;
 }
 /* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct
 length values to user agents that exhibit the parsing error exploited above yet get
 the CSS box model right and understand the CSS2 parent-child selector. ALWAYS include
 a "be nice to Opera 5" rule every time you use the Tantek Celik hack (above). */
-body>#Header {height:1em;}
+body > #Header {
+  height: 1em;
+}
 
-#Header>a {
-	font-size:1em;
-	color:#038;
+#Header > a {
+  font-size: 1em;
+  color: #038;
 }
 
 #outer-container {
-    width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    background-color: #F5F5F5;
-    -moz-box-shadow: 0 0 10px 10px #b9bcbf;
-    -webkit-box-shadow: 0 0 10px 10px #b9bcbf;
-    -icab-box-shadow: 0 0 10px 10px #b9bcbf;
-    -o-box-shadow: 0 0 10px 10px #b9bcbf;
-    box-shadow: 0 0 10px 10px #b9bcbf;
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  -moz-box-shadow: 0 0 10px 10px #b9bcbf;
+  -webkit-box-shadow: 0 0 10px 10px #b9bcbf;
+  -icab-box-shadow: 0 0 10px 10px #b9bcbf;
+  -o-box-shadow: 0 0 10px 10px #b9bcbf;
+  box-shadow: 0 0 10px 10px #b9bcbf;
 }
 
 #Content {
-    float: left;
-    width: 700px;
-    margin: 1em auto auto 0em;
-    padding:0.3em;
+  float: left;
+  width: 700px;
+  margin: 1em auto auto 0em;
+  padding: 0.3em;
 }
 
 .Note {
-	border-style:solid;
-	border-width: 1px 1px 1px 1px;
-	background-color:#fbffc3;
-	padding:0.5em;
-	margin: 0em 0em 0.5em 0em;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  background-color: #fbffc3;
+  padding: 0.5em;
+  margin: 0em 0em 0.5em 0em;
 }
 
 #Menu {
-        float: left;
-        margin-left: 1em;
-        margin-right: 2em;
-        margin-bottom: 1em;
-	padding: 1em 1em 0.25em 1em;
-	background-color:#E5E5E5;
-/*	border:1px solid #CCC;*/
-	line-height:1.4em;
-/* Again, the ugly brilliant hack. */
-	voice-family: "\"}\"";
-	voice-family:inherit;
-	width:12.2em;
+  float: left;
+  margin-left: 1em;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  padding: 1em 1em 0.25em 1em;
+  background-color: #e5e5e5;
+  /*      border:1px solid #CCC;*/
+  line-height: 1.4em;
+  /* Again, the ugly brilliant hack. */
+  voice-family: '"}"';
+  voice-family: inherit;
+  width: 12.2em;
 }
 
 #Menu .section {
-    border-top: 1px solid #aaa;
-    padding-top: 0.75em;
-    font-weight: bold;
-    font-family: sans-serif;
+  border-top: 1px solid #aaa;
+  padding-top: 0.75em;
+  font-weight: bold;
+  font-family: sans-serif;
 }
 
 /* Again, "be nice to Opera 5". */
-body>#Menu {width:12.2em;}
+body > #Menu {
+  width: 12.2em;
+}
 
-iframe { padding: 0;
-         margin: 0 0 0 0;
-	 }
+iframe {
+  padding: 0;
+  margin: 0 0 0 0;
+}
 
-img { padding: 0.3em;
-      margin: 0.5em;
-    }
+img {
+  padding: 0.3em;
+  margin: 0.5em;
+}
 
 #feed_list {
   list-style-type: lower-greek;
@@ -196,6 +208,10 @@ img { padding: 0.3em;
 .feed_tag {
   font-weight: bold;
   font-size: small;
+}
+
+.feed_tags a.feed_tag {
+  color: #333;
 }
 
 .feed_content {

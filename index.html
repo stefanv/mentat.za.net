@@ -308,16 +308,17 @@ I also have some <a href="https://mentat.za.net/blog/personal/">personal retrosp
     for (var i = 0; i < 5; i++) {
       var entry = response.items[i];
 
+      console.log(entry);
       html = '\n<li class="feed_entry">' +
              '<span class="feed_title">' +
              '<a href="' + entry.link + '">' + entry.title + '</a>' +
              '</span><br/><span class="feed_date">' +
-             entry.pubDate.split("T")[0] +
+             entry.pubDate.split(" ")[0] +
              '</span> in <span class="feed_tags">';
 
       var tags = entry.categories;
       for (j=0; j < tags.length; j++) {
-        html += '<span class="feed_tag">' + tags[j] + '</span>';
+        html += '<a href="https://mentat.za.net/blog/tags/' + tags[j] + '" class="feed_tag">#' + tags[j] + '</a>';
         if (j < tags.length - 1) {
           html += ', ';
         };
