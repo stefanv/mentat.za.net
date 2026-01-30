@@ -7,12 +7,9 @@
 <title>Stefan's Homepage</title>
 <link rel="shortcut icon" href="images/favicon.ico">
 <link rel="stylesheet" href="css/bluerobot.css">
-<link rel="stylesheet" href="css/colorbox.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&family=Droid+Serif:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro&display=swap" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
-<script src="js/jquery.colorbox-min.js" defer></script>
 </head>
 
 <body>
@@ -129,25 +126,24 @@
 
 <main id="Content">
 
-<div class="modal-content" hidden>
-<div id="learning-text">
-<p>
-Bertrand Russell's 10 commandments of teaching:
-</p>
-<ul>
-<li>Do not feel absolutely certain of anything.</li>
-<li>Do not think it worth while to proceed by concealing evidence, for the evidence is sure to come to light.</li>
-<li>Never try to discourage thinking for you are sure to succeed.</li>
-<li>When you meet with opposition, even if it should be from your partner or your children, endeavor to overcome it by argument and not by authority, for a victory dependent upon authority is unreal and illusory.</li>
-<li>Have no respect for the authority of others, for there are always contrary authorities to be found.</li>
-<li>Do not use power to suppress opinions you think pernicious, for if you do the opinions will suppress you.</li>
-<li>Do not fear to be eccentric in opinion, for every opinion now accepted was once eccentric.</li>
-<li>Find more pleasure in intelligent dissent than in passive agreement, for, if you value intelligence as you should, the former implies a deeper agreement than the latter.</li>
-<li>Be scrupulously truthful, even if the truth is inconvenient, for it is more inconvenient when you try to conceal it.</li>
-<li>Do not feel envious of the happiness of those who live in a fool's
-  paradise, for only a fool will think that it is happiness.</li>
-</ul>
-</div>
+<div id="learning-modal" class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <p class="modal-title">Let learning be cherished where liberty has arisen</p>
+    <p>Bertrand Russell's 10 commandments of teaching:</p>
+    <ul>
+      <li>Do not feel absolutely certain of anything.</li>
+      <li>Do not think it worth while to proceed by concealing evidence, for the evidence is sure to come to light.</li>
+      <li>Never try to discourage thinking for you are sure to succeed.</li>
+      <li>When you meet with opposition, even if it should be from your partner or your children, endeavor to overcome it by argument and not by authority, for a victory dependent upon authority is unreal and illusory.</li>
+      <li>Have no respect for the authority of others, for there are always contrary authorities to be found.</li>
+      <li>Do not use power to suppress opinions you think pernicious, for if you do the opinions will suppress you.</li>
+      <li>Do not fear to be eccentric in opinion, for every opinion now accepted was once eccentric.</li>
+      <li>Find more pleasure in intelligent dissent than in passive agreement, for, if you value intelligence as you should, the former implies a deeper agreement than the latter.</li>
+      <li>Be scrupulously truthful, even if the truth is inconvenient, for it is more inconvenient when you try to conceal it.</li>
+      <li>Do not feel envious of the happiness of those who live in a fool's paradise, for only a fool will think that it is happiness.</li>
+    </ul>
+  </div>
 </div>
 
 <h1>Personal</h1>
@@ -261,11 +257,27 @@ Before you can have a PhD, you must learn
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize colorbox for the motto link
-  $('#learning').colorbox({
-    inline: true,
-    title: "Let learning be cherished where liberty has arisen",
-    width: "50%"
+  // Modal functionality
+  const modal = document.getElementById('learning-modal');
+  const openBtn = document.getElementById('learning');
+  const closeBtn = modal.querySelector('.modal-close');
+
+  function openModal(e) {
+    e.preventDefault();
+    modal.classList.add('active');
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   });
 
   // Fetch and display blog posts
