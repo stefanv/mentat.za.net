@@ -193,7 +193,8 @@ a:hover {
 
 /* Blog feed */
 #feed_list {
-  list-style-type: lower-greek;
+  list-style-type: none;
+  padding-left: 1em;
 }
 
 .feed_entry {
@@ -207,10 +208,6 @@ a:hover {
 
 .feed_tags a.feed_tag {
   color: #333;
-}
-
-.feed_content {
-  font-style: italic;
 }
 
 /* Images */

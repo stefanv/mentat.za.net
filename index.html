@@ -178,7 +178,7 @@ Until May 2014, I was a lecturer in <a href="http://appliedmaths.sun.ac.za">Appl
     <ul id="feed_list"></ul>
 </div>
 
-<p>I also have some <a href="https://mentat.za.net/blog/personal/">personal retrospectives</a>, for those interested.</p>
+<!-- <p>I also have some <a href="https://mentat.za.net/blog/personal/">personal retrospectives</a>, for those interested.</p> -->
 
 <h1>Research and projects</h1>
 
@@ -286,18 +286,12 @@ document.addEventListener('DOMContentLoaded', function() {
           return `<a href="https://mentat.za.net/blog/tags/${tag}" class="feed_tag">#${tag}</a>${separator}`;
         }).join('');
 
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = entry.description;
-        const firstParagraph = tempDiv.querySelector('p');
-        const content = firstParagraph ? firstParagraph.innerHTML : entry.description;
-
         li.innerHTML = `
           <span class="feed_title">
             <a href="${entry.link}">${entry.title}</a>
           </span><br>
           <span class="feed_date">${entry.pubDate.split(' ')[0]}</span>
-          in <span class="feed_tags">${tags}</span><br>
-          <span class="feed_content">${content}</span>
+          in <span class="feed_tags">${tags}</span>
         `;
 
         feedList.appendChild(li);
